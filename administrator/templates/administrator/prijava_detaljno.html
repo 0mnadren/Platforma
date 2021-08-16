@@ -42,7 +42,8 @@
 
 
 
-{% if user.is_superuser %}
+
+{% if prijava.user.profile_accepted == None %}
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
 <div>
     <button type="button"
@@ -106,5 +107,7 @@
     </div>
   </div>
 </div>
+
+
 
 {% endblock %}
