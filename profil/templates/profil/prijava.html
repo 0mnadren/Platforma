@@ -1,0 +1,17 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+<title>Prijava</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Prijava za recenzenta {{ user.username }}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+<title>Admin Profil</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Admin {{ user.username }}</h1>
+
+<a href="{% url 'admin:index' %}">Django Admin</a>
+<br>
+<a href="{% url 'administrator:prijave' %}">Prijave recenzenata</a>
+<br>
+<a href="{% url 'admin:profil_oblast_add' %}">Dodaj oblast</a>
+<br>
+<a href="#">Ankete</a>
+<br>
+<a href="#">Obavestenja</a>
+<br>
+<a href="#">Naucni radovi</a>
+<br>
+<a href="#">Programski poziv</a>
+
+{% endblock %}

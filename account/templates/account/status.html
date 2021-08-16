@@ -1,0 +1,28 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+<title>Status</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Trenutni status prijave</h1>
+
+{% if user.profile_accepted == None %}
+    {% if not user.profil %}
+        <a href="{% url 'profil:prijava' %}" class="btn btn-outline-secondary">Napravi prijavu za recenzenta</a>
+    {% elif user.profile_accepted == None and not user.profil.pregleda_se %}
+        <h2>Vasa prijava je stigla!</h2>
+    {% elif user.profile_accepted == None and user.profil.pregleda_se %}
+        <h2>Vasa prijava se razmatra!</h2>
+    {% endif %}
+
+{% elif user.profile_accepted %}
+    <h2>Vasa prijava je prihvacena!</h2>
+{% elif not user.profile_accepted %}
+    <h2>Vasa prijava je odbijena!</h2>
+
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block title %}
+<title>Profil</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Profil {{ user.username }} recenzenta</h1>
+
+<a href="#">Ankete</a>
+<a href="#">Radovi</a>
+
+<h3>Obavestenja</h3>
+<p>Ovde mogu da stoje obavestenja od strane Admina, koja nisu poslata na email</p>
+<p>Nesto slicno kao postovi na profilu na fb-u</p>
+<br>
+<hr>
+<br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button class="btn btn-secondary mt-1" type="submit">Snimi</button>
+</form>
+
+{% endblock %}

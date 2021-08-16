@@ -1,0 +1,110 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block title %}
+<title>Prijava</title>
+{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'administrator:prijave' %}" class="btn btn-outline-secondary">Lista prijava</a>
+
+<h1>Prijavu poslao {{ prijava.user.username }}</h1>
+<h2>Licni podaci:</h2>
+
+<h4>Ime i prezime: {{ prijava.ime }} {{ prijava.prezime }}</h4>
+
+<h4>Oblasti:
+    {% for oblast in prijava.oblasti.all %}
+    {{oblast}},
+    {% endfor %}
+</h4>
+<h4>Nacionalnost: {{ prijava.nacionalnost }}</h4>
+<h4>NIO: {{ prijava.NIO }}</h4>
+<h4>Naucno zvanje: {{ prijava.naucno_zvanje }}</h4>
+<h4>Angazovanje: {{ prijava.angazovanje }}</h4>
+<h4>Adresa: {{ prijava.adresa }}</h4>
+<h4>Broj telefona: {{ prijava.broj_telefona }}</h4>
+<h4>Veb stranica: <a href="{{ prijava.website }}" target="_blank">link</a></h4>
+
+<!--Potrebno je da se napravi Static files i Media files da bi mogli da prikazemo pdf-->
+<h4>Biografija: <a href="{{ prijava.biografija.url }}">Biografija.pdf</a></h4>
+
+<h4>Naucni rad 1: {{ prijava.naucni_rad_1 }}</h4>
+<h4>Naucni rad 2: {{ prijava.naucni_rad_2 }}</h4>
+<h4>Naucni rad 3: {{ prijava.naucni_rad_3 }}</h4>
+<h4>Naucni rad 4: {{ prijava.naucni_rad_4 }}</h4>
+<h4>Naucni rad 5: {{ prijava.naucni_rad_5 }}</h4>
+<h4>Naucni rad 6: {{ prijava.naucni_rad_6 }}</h4>
+<h4>Naucni rad 7: {{ prijava.naucni_rad_7 }}</h4>
+<h4>Naucni rad 8: {{ prijava.naucni_rad_8 }}</h4>
+<h4>Naucni rad 9: {{ prijava.naucni_rad_9 }}</h4>
+<h4>Naucni rad 10: {{ prijava.naucni_rad_10 }}</h4>
+
+
+
+{% if user.is_superuser %}
+<!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
+<div>
+    <button type="button"
+            class="btn btn-outline-primary"
+            data-toggle="modal"
+            data-target="#odobri_prijavu">
+        Odobri prijavu
+    </button>
+    <button type="button"
+            class="btn btn-outline-danger"
+            data-toggle="modal"
+            data-target="#odbi_prijavu">
+        Odbi prijavu
+    </button>
+</div>
+
+{% endif %}
+
+<div class="modal fade" tabindex="-1" id="odobri_prijavu">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Odobri prijavu?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da zelite da odobrite ovu prijavu?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
+
+          <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odobrio prijavu!   -->
+          <form action="{% url 'administrator:prijava_prihvacena' prijava.id %}">
+              <input type="submit" value="Odobri" class="btn btn-success">
+          </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="odbi_prijavu">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Odbi prijavu?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da zelite da odbijete ovu prijavu?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
+
+          <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
+          <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
+              <input type="submit" value="Odbi" class="btn btn-danger">
+          </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

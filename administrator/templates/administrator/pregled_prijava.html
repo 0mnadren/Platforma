@@ -1,0 +1,30 @@
+{% extends 'account/base.html' %}
+
+{% block title %}
+<title>Prijave</title>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <ul>Lista prijava
+    {% for prijava in prijave %}
+        <a href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">
+            <li>
+                Korisnik {{ prijava.user.username }} Ime i prezime {{ prijava.ime }} {{ prijava.prezime }} -->
+                {% if prijava.user.profile_accepted %}
+                    <span style="color: green;">Prijava je odobrena</span>
+                {% elif prijava.user.profile_accepted == False %}
+                    <span style="color: red;">Prijava je odbijena</span>
+                {% else %}
+                    <span style="color: gray;">Prijava nije pregledana</span>
+                {% endif %}
+            </li>
+        </a>
+    {% endfor %}
+    </ul>
+
+
+
+{% endblock %}
