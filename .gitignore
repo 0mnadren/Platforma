@@ -96,5 +96,7 @@ db.sqlite3
 # uklanja celi dir i sve subdirove
 # /media/profil/pdfs
 
+
+# trazi profil/pdfs/.pdf u bilo kojem main folderu, te izbacuje *.pdf fajlove
 /*/profil/pdfs/*.pdf
 
