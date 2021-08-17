@@ -2,7 +2,7 @@
 
 {% block title %}
 <title>Logout</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
   <h2 class="pt-3">You have been logged out!</h2>
@@ -11,4 +11,4 @@
             <a class="btn btn-dark mt-2" href="{% url 'account:login' %}">Log In Again</a>
         </small>
   </div>
-{% endblock %}
+{% endblock content %}
