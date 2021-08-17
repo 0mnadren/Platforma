@@ -97,6 +97,6 @@ db.sqlite3
 # /media/profil/pdfs
 
 
-# trazi profil/pdfs/.pdf u bilo kojem main folderu, te izbacuje *.pdf fajlove
+# trazi profil/pdfs/.pdf u bilo kojem folderu u mainu, te izbacuje *.pdf fajlove
 /*/profil/pdfs/*.pdf
 
