@@ -91,4 +91,5 @@ db.sqlite3
 
 ### nemanja edit media ###
 
-*.pdf
+# *.pdf
+/media/profil/pdfs/
