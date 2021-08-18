@@ -99,4 +99,6 @@ db.sqlite3
 
 # trazi profil/pdfs/.pdf u bilo kojem folderu u mainu, te izbacuje *.pdf fajlove
 /*/profil/pdfs/*.pdf
-
+/*/profil/pdfs/*.doc
+/*/profil/pdfs/*.docx
+/*/profil/pdfs/*.odt

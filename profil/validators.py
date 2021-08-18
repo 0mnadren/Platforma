@@ -15,7 +15,8 @@ def validate_file_extension(self):
     if extension.lower() in settings.CONTENT_TYPES:        
         if self.size > int(settings.MAX_UPLOAD_SIZE):
             raise ValidationError(_(f'Please keep filesize under {filesizeformat(settings.MAX_UPLOAD_SIZE)}. Current filesize {filesizeformat(self.size)}'))
-    raise ValidationError('Unsupported file extension.')
+    else:
+        raise ValidationError('Unsupported file extension.')
     
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
