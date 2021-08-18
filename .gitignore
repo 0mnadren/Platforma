@@ -89,7 +89,7 @@ local_settings.py
 db.sqlite3
 
 
-### nemanja edit media ###
+#### nemanja edit media ####
 
 # *.pdf
 
