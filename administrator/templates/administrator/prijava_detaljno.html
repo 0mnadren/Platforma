@@ -1,13 +1,13 @@
 {% extends 'account/base.html' %}
 {% load static %}
 {% block title %}
-<title>Prijava</title>
+<title>Prijava detaljno</title>
 {% endblock title %}
 
 {% block content %}
-
+<br>
 <a href="{% url 'administrator:prijave' %}" class="btn btn-outline-secondary">Lista prijava</a>
-
+<br><br>
 <h1>Prijavu poslao {{ prijava.user.username }}</h1>
 <h2>Licni podaci:</h2>
 
@@ -44,7 +44,8 @@
 
 {% if user.is_superuser %}
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
-<div>
+{% if prijava.user.profile_accepted == None %}
+  <div>
     <button type="button"
             class="btn btn-outline-primary"
             data-toggle="modal"
@@ -55,9 +56,10 @@
             class="btn btn-outline-danger"
             data-toggle="modal"
             data-target="#odbi_prijavu">
-        Odbi prijavu
+        Odbij prijavu
     </button>
-</div>
+  </div>
+{% endif %}
 
 {% endif %}
 
