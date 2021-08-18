@@ -150,6 +150,12 @@ LOGIN_REDIRECT_URL = 'account:home'
 
 LOGIN_URL = 'account:login'
 
+### Settings for filetypes and their size - Zile ###
+
+CONTENT_TYPES = ['.pdf', '.doc', '.docx', '.odt']
+MAX_UPLOAD_SIZE = "5242880" # 5MB
+
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

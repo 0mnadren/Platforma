@@ -6,7 +6,6 @@ from .forms import ProfilForm
 from .models import Oblast
 from account.models import accepted_check
 
-
 @login_required()
 def prijava(request):
     if request.method == 'POST':
@@ -35,10 +34,9 @@ def prijava(request):
 
 @login_required()
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
-def profil(request):
+def profil(request):    
     if request.method == 'POST':
-        form = ProfilForm(request.POST, request.FILES, instance=request.user.profil)
-
+        form = ProfilForm(request.POST or None, request.FILES, instance=request.user.profil)
         if form.is_valid():
             form.save()
             messages.success(request, f'Vas nalog je azuriran!')

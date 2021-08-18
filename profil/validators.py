@@ -1,19 +1,23 @@
 import os
+from re import I
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from recenzentPlatforma import settings
+from profil import models
 
-
+from django.template.defaultfilters import filesizeformat
+from django.utils.translation import ugettext_lazy as _
 # Proverava ekstenziju fajla da vidi da li je .pdf
 # Ako nije dize ValidationError
 
-def validate_file_extension(value):
-    ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
-    valid_extensions = '.pdf'
-    if not ext.lower() == valid_extensions:
-        raise ValidationError('Unsupported file extension.')
-
+def validate_file_extension(self):
+    extension = os.path.splitext(self.name)[1]  # [0] returns path+filename
+    if extension.lower() in settings.CONTENT_TYPES:        
+        if self.size > int(settings.MAX_UPLOAD_SIZE):
+            raise ValidationError(_(f'Please keep filesize under {filesizeformat(settings.MAX_UPLOAD_SIZE)}. Current filesize {filesizeformat(self.size)}'))
+    raise ValidationError('Unsupported file extension.')
+    
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                              message="Phone number must be entered in the format: '+999999999'. "
                                      "Up to 15 digits allowed.")
-
