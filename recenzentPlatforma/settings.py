@@ -150,7 +150,8 @@ LOGIN_REDIRECT_URL = 'account:home'
 
 LOGIN_URL = 'account:login'
 
-### Settings for filetypes and their size - Zile ###
+
+### Settings for filetypes and their size - Zile edit ###
 
 CONTENT_TYPES = ['.pdf', '.doc', '.docx', '.odt']
 MAX_UPLOAD_SIZE = "5242880" # 5MB
