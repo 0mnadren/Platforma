@@ -1,4 +1,4 @@
-{% extends 'account/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 <title>Prijava</title>
@@ -55,11 +55,25 @@
     <button type="button"
             class="btn btn-outline-danger"
             data-toggle="modal"
-            data-target="#odbi_prijavu">
-        Odbi prijavu
+            data-target="#odbij_prijavu">
+        Odbij prijavu
+    </button>
+
+{% elif prijava.user.profile_accepted == False %}
+    <button type="button"
+            class="btn btn-outline-primary"
+            data-toggle="modal"
+            data-target="#odobri_prijavu">
+        Odobri prijavu
+    </button>
+{% else %}
+    <button type="button"
+            class="btn btn-outline-danger"
+            data-toggle="modal"
+            data-target="#odbij_prijavu">
+        Odbij prijavu
     </button>
 </div>
-
 {% endif %}
 
 <div class="modal fade" tabindex="-1" id="odobri_prijavu">
@@ -85,7 +99,7 @@
   </div>
 </div>
 
-<div class="modal fade" tabindex="-1" id="odbi_prijavu">
+<div class="modal fade" tabindex="-1" id="odbij_prijavu">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -100,7 +114,7 @@
 
           <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
           <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
-              <input type="submit" value="Odbi" class="btn btn-danger">
+              <input type="submit" value="Odbij" class="btn btn-danger">
           </form>
 
       </div>
