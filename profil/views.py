@@ -6,6 +6,7 @@ from .forms import ProfilForm
 from .models import Oblast
 from account.models import accepted_check
 
+# Ovo je komentar
 
 @login_required()
 def prijava(request):
