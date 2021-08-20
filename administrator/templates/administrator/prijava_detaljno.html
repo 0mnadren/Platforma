@@ -124,10 +124,41 @@
 
 
 
-{% if user.is_superuser %}
+
+{% if prijava.user.profile_accepted == None %}
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
 {% if prijava.user.profile_accepted == None %}
 <div>
+<<<<<<< HEAD
+    <button type="button"
+            class="btn btn-outline-primary"
+            data-toggle="modal"
+            data-target="#odobri_prijavu">
+        Odobri prijavu
+    </button>
+    <button type="button"
+            class="btn btn-outline-danger"
+            data-toggle="modal"
+            data-target="#odbij_prijavu">
+        Odbij prijavu
+    </button>
+
+{% elif prijava.user.profile_accepted == False %}
+    <button type="button"
+            class="btn btn-outline-primary"
+            data-toggle="modal"
+            data-target="#odobri_prijavu">
+        Odobri prijavu
+    </button>
+{% else %}
+    <button type="button"
+            class="btn btn-outline-danger"
+            data-toggle="modal"
+            data-target="#odbij_prijavu">
+        Odbij prijavu
+    </button>
+</div>
+=======
   <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
     Odobri prijavu
   </button>
@@ -144,6 +175,7 @@
   Odobri prijavu
 </button>
 {% endif %}
+>>>>>>> zile
 {% endif %}
 
 <div class="modal fade" tabindex="-1" id="odobri_prijavu">
@@ -169,7 +201,7 @@
   </div>
 </div>
 
-<div class="modal fade" tabindex="-1" id="odbi_prijavu">
+<div class="modal fade" tabindex="-1" id="odbij_prijavu">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -182,14 +214,27 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
 
+<<<<<<< HEAD
+          <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
+          <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
+              <input type="submit" value="Odbij" class="btn btn-danger">
+          </form>
+=======
         <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
         <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
           <input type="submit" value="Odbij" class="btn btn-danger">
         </form>
+>>>>>>> zile
 
       </div>
     </div>
   </div>
 </div>
 
+<<<<<<< HEAD
+
+
+{% endblock %}
+=======
 {% endblock content %}
+>>>>>>> zile

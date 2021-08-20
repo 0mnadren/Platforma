@@ -14,6 +14,7 @@ from django.views.generic import CreateView
 #     template_name = 'profil/prijava.html'
 #     fields = '__all__'
 
+# Ovo je komentar
 
 @login_required()
 def prijava(request):
