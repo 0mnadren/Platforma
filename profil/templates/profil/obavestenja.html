@@ -17,21 +17,8 @@
 <p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
 {% for obavestenje in obavestenja %}
     <table>
-        <tbody>
-            <tr>
-                <th>{{ forloop.counter }}</th>
-                <td class="text-center" scope="row" ><a href="#">Detaljno</a></td>
-                <td class="text-center">{{ user.obavestenje.naslov }}</td>
-                <td class="text-center">{{ obavestenje.tekst }}</td>
-                <td class="text-center">{{ obavestenje.datum_vreme_kreiranja }}</td>
-                <td class="text-center">{{ profili.user }}</td>
-                <td class="text-center">
-                    {% if user.is_authenticated %}
-                        <p>jbt kru</p>
-                        <td class="text-center">{{ naslov }}</td>
-                    {% endif %}
-                </td>
-              </tr>
+        {{ forloop.counter }}
+        <td class="text-center">{{ obavestenje }}</td>
         </tbody>
     </table>
 {% endfor %}
