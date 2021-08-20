@@ -6,8 +6,8 @@
 
 {% block content %}
 
-<h1>Profil korisnika: {{ user.username }}</h1>
-<h1>Status: Recezent</h1>
+<h1>Profil korisnika: {{ user.username }}</h1><br><br>
+<h1>Status: Recezent</h1><br><br><br>
 
 
 <h3>Obavestenja</h3>
@@ -19,39 +19,9 @@
     <table>
         {{ forloop.counter }}
         <td class="text-center">{{ obavestenje }}</td>
+        <td class="text-center">{{ obavestenje.tekst }}</td>
         </tbody>
     </table>
 {% endfor %}
-
-<p>Nesto slicno kao postovi na profilu na fb-u</p>
-<br>
-<hr>
-<br>
-<table class="table table-bordered table-dark">
-<div class="form-group">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {{ form.as_table }}
-        <!-- {% for field in form %}
-        <div class="mt-2">
-            <label class="form-label">{{ field.label }}:</label>
-            <div class="col">{{ field }}</div>
-            
-            <div class='text-danger'>
-                {{ field.errors }}
-            </div>
-        </div>        
-        {% endfor %} -->
-        <br>
-
-</table>
-
-<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
-
-</form>
-
-
 </div>
 {% endblock %}

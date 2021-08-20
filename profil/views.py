@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -55,9 +55,20 @@ def profil(request):
 
     return render(request, 'profil/profil.html', {'form': form})
 
+
+
+from django.db.models import Q
+
 @login_required()
 def obavestenja(request):
-    obavestenja = Obavestenje.objects.all()
+    user = request.user
+    
+    obavestenja = Obavestenje.objects.filter(
+        profil = user.profil
+    )
+    print(obavestenja)
+    # gde je profil == user.profil
+    print('obavestenja su: ' + str(obavestenja))
     context = {
         'obavestenja': obavestenja
     }
