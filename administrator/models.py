@@ -4,7 +4,7 @@ from datetime import datetime
 
 from profil.models import Profil, Oblast
 
-
+# nemanja zivkovic
 class Obavestenje(models.Model):
     profil = models.ManyToManyField(Profil)
 
@@ -63,7 +63,7 @@ class ProsledjenRad(models.Model):
         return f"Rad {self.rad} prosledjen {self.kada_poslat} {self.profil}"
 
 
-### ANKETE ###
+### ANKETE vukasin ###
 class Anketa(models.Model):
 
     ### Treba da se doda relationship
@@ -90,12 +90,11 @@ class AnketaPitanje(models.Model):
         return self.pitanje
 
 
-
 ### PROGRAMSKI POZIV ###
 class ProgramskiPoziv(models.Model):
-    oblast = models.OneToOneField(Oblast, on_delete=models.CASCADE)
+    oblast = models.OneToOneField(Oblast, on_delete=models.CASCADE) # profa rekao ne treba
 
-    # rad = models.ManyToManyField(Rad) mozda moze da se odradi preko oblast
+    rad = models.ManyToManyField(Rad) # mozda moze da se odradi preko oblast
 
     konacna_ocena = models.SmallIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)],
@@ -114,3 +113,5 @@ class ProgramskiPozivPitanje(models.Model):
 
     def __str__(self):
         return self.pitanje
+
+

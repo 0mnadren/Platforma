@@ -2,29 +2,42 @@
 
 {% block title %}
 <title>Prijave</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
+<br>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col-1">#</th>
+            <th class="text-center" scope="col">Pregled prijave</th>
+            <th class="text-center" scope="col">Korisnik</th>
+            <th class="text-center" scope="col">Ime i prezime</th>
+            <th class="text-center" scope="col">Stanje prijave</th>
+        </tr>
+        </thead>
 
-
-
-    <ul>Lista prijava
-    {% for prijava in prijave %}
-        <a href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">
-            <li>
-                Korisnik {{ prijava.user.username }} Ime i prezime {{ prijava.ime }} {{ prijava.prezime }} -->
-                {% if prijava.user.profile_accepted %}
-                    <span style="color: green;">Prijava je odobrena</span>
-                {% elif prijava.user.profile_accepted == False %}
-                    <span style="color: red;">Prijava je odbijena</span>
-                {% else %}
-                    <span style="color: gray;">Prijava nije pregledana</span>
-                {% endif %}
-            </li>
-        </a>
+    {% for prijava in prijave %}        
+            <tbody>
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td class="text-center" scope="row" ><a href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">Detaljno</a></td>
+                    <td class="text-center">{{ prijava.user.username }}</td>
+                    <td class="text-center">{{ prijava.ime }} {{ prijava.prezime }}</td>
+                    <td class="text-center">
+                        {% if prijava.user.profile_accepted %}
+                            <span style="color: green;">Prijava je odobrena</span>
+                        {% elif prijava.user.profile_accepted == False %}
+                            <span style="color: red;">Prijava je odbijena</span>
+                        {% else %}
+                            <span style="color: gray;">Prijava nije pregledana</span>
+                        {% endif %}
+                    </td>
+                  </tr>
+            </tbody>
     {% endfor %}
-    </ul>
+      </table>
+      
 
 
-
-{% endblock %}
+{% endblock content %}

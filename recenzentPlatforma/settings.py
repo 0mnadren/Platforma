@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$_=kw$&wjp0^dh2jrym)372%mg=zh6heigu4$%qyt#$v0_vf(-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False
 DEBUG = True
 
+# ALLOWED_HOSTS = ['127.0.0.1']
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'profil.apps.ProfilConfig',
     'account.apps.AccountConfig',
     'administrator.apps.AdministratorConfig',
+    'crispy_forms',
 
     # Django apps
     'django.contrib.admin',
@@ -57,6 +59,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'recenzentPlatforma.urls'
+
 
 TEMPLATES = [
     {
@@ -94,7 +97,7 @@ DATABASES = {
         "HOST": "localhost",
         "PORT": "3306",
         "USER": "root",
-        "PASSWORD": "12345678"
+        "PASSWORD": "nemanjasql" #neki dodatak
     }
 }
 
@@ -151,6 +154,13 @@ LOGIN_REDIRECT_URL = 'account:home'
 LOGIN_URL = 'account:login'
 
 
+### Settings for filetypes and their size - Zile edit ###
+
+CONTENT_TYPES = ['.pdf', '.doc', '.docx', '.odt']
+MAX_UPLOAD_SIZE = "5242880" # 5MB
+
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -161,3 +171,8 @@ EMAIL_USE_TLS = True
 # Treba da napravimo email od kog ce da se salju poruke
 EMAIL_HOST_USER = 'EMAIL_HOST_USER'
 EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+
+
+
+# Crispy requirements
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

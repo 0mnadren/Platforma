@@ -105,4 +105,8 @@ db.sqlite3
 
 /*/profil/pdfs/*.doc
 /*/profil/pdfs/*.docx
+<<<<<<< HEAD
 /*/profil/pdfs/*.odt
+=======
+/*/profil/pdfs/*.odt
+>>>>>>> zile

@@ -6,21 +6,44 @@
 
 {% block content %}
 
-<h1>Profil {{ user.username }} recenzenta</h1>
-
+<h1>Profil korisnika: {{ user.username }}</h1>
+<h1>Status: Recezent</h1>
 <a href="#">Ankete</a>
 <a href="#">Radovi</a>
+<a href="{% url 'profil:obavestenja' %}">OBAVESTENJA!</a>
 
-<h3>Obavestenja</h3>
+
+
 <p>Ovde mogu da stoje obavestenja od strane Admina, koja nisu poslata na email</p>
 <p>Nesto slicno kao postovi na profilu na fb-u</p>
 <br>
 <hr>
 <br>
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form }}
-    <button class="btn btn-secondary mt-1" type="submit">Snimi</button>
+<table class="table table-bordered table-dark">
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_table }}
+        <!-- {% for field in form %}
+        <div class="mt-2">
+            <label class="form-label">{{ field.label }}:</label>
+            <div class="col">{{ field }}</div>
+            
+            <div class='text-danger'>
+                {{ field.errors }}
+            </div>
+        </div>        
+        {% endfor %} -->
+        <br>
+
+</table>
+
+<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
+<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
+
 </form>
 
+
+</div>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block title %}
 <title>Admin Profil</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
 
@@ -16,10 +16,10 @@
 <br>
 <a href="#">Ankete</a>
 <br>
-<a href="#">Obavestenja</a>
+<a href="{% url 'profil:obavestenja' %}">Obavestenja</a>
 <br>
 <a href="#">Naucni radovi</a>
 <br>
 <a href="#">Programski poziv</a>
 
-{% endblock %}
+{% endblock content %}
