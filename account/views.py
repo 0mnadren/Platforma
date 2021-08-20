@@ -3,6 +3,7 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 
 
+
 def home(request):
     return render(request, 'account/home.html')
 

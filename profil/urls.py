@@ -6,4 +6,5 @@ app_name = 'profil'
 urlpatterns = [
     path('', views.profil, name='profil'),
     path('prijava/', views.prijava, name='prijava'),
+    path('obavestenja/', views.obavestenja, name='obavestenja'),
 ]

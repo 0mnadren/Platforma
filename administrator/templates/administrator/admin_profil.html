@@ -1,4 +1,4 @@
-{% extends 'account/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
 <title>Admin Profil</title>
@@ -16,7 +16,7 @@
 <br>
 <a href="#">Ankete</a>
 <br>
-<a href="#">Obavestenja</a>
+<a href="{% url 'profil:obavestenja' %}">Obavestenja</a>
 <br>
 <a href="#">Naucni radovi</a>
 <br>

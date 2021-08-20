@@ -8,13 +8,34 @@
 
 <h1>Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
-<a href="#">Ankete</a>
-<a href="#">Radovi</a>
-<a href="{% url 'profil:obavestenja' %}">OBAVESTENJA!</a>
+
+
+<h3>Obavestenja</h3>
 
 
 
-<p>Ovde mogu da stoje obavestenja od strane Admina, koja nisu poslata na email</p>
+<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
+{% for obavestenje in obavestenja %}
+    <table>
+        <tbody>
+            <tr>
+                <th>{{ forloop.counter }}</th>
+                <td class="text-center" scope="row" ><a href="#">Detaljno</a></td>
+                <td class="text-center">{{ user.obavestenje.naslov }}</td>
+                <td class="text-center">{{ obavestenje.tekst }}</td>
+                <td class="text-center">{{ obavestenje.datum_vreme_kreiranja }}</td>
+                <td class="text-center">{{ profili.user }}</td>
+                <td class="text-center">
+                    {% if user.is_authenticated %}
+                        <p>jbt kru</p>
+                        <td class="text-center">{{ naslov }}</td>
+                    {% endif %}
+                </td>
+              </tr>
+        </tbody>
+    </table>
+{% endfor %}
+
 <p>Nesto slicno kao postovi na profilu na fb-u</p>
 <br>
 <hr>

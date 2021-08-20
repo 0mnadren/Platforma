@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$_=kw$&wjp0^dh2jrym)372%mg=zh6heigu4$%qyt#$v0_vf(-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = False
 DEBUG = True
 
+# ALLOWED_HOSTS = ['127.0.0.1']
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'profil.apps.ProfilConfig',
     'account.apps.AccountConfig',
     'administrator.apps.AdministratorConfig',
+    'crispy_forms',
 
     # Django apps
     'django.contrib.admin',
@@ -58,10 +60,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'recenzentPlatforma.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,3 +171,8 @@ EMAIL_USE_TLS = True
 # Treba da napravimo email od kog ce da se salju poruke
 EMAIL_HOST_USER = 'EMAIL_HOST_USER'
 EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+
+
+
+# Crispy requirements
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

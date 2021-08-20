@@ -1,10 +1,19 @@
+from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .forms import ProfilForm
-from .models import Oblast
+from .models import Oblast, Profil
 from account.models import accepted_check
+from administrator.models import Obavestenje
+from django.views.generic import CreateView
+
+# class PrijavaView(CreateView):
+#     model = ProfilForm
+#     template_name = 'profil/prijava.html'
+#     fields = '__all__'
+
 
 @login_required()
 def prijava(request):
@@ -45,3 +54,12 @@ def profil(request):
         form = ProfilForm(instance=request.user.profil)
 
     return render(request, 'profil/profil.html', {'form': form})
+
+@login_required()
+def obavestenja(request):
+    obavestenja = Obavestenje.objects.all()
+    context = {
+        'obavestenja': obavestenja
+    }
+
+    return render(request, 'profil/obavestenja.html', context)

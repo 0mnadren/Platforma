@@ -11,4 +11,3 @@ class User(AbstractUser):
 
 def accepted_check(user):
     return user.profile_accepted
-
