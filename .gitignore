@@ -103,6 +103,6 @@ db.sqlite3
 
 
 
-# /*/profil/pdfs/*.doc
-# /*/profil/pdfs/*.docx
-# /*/profil/pdfs/*.odt
+/*/profil/pdfs/*.doc
+/*/profil/pdfs/*.docx
+/*/profil/pdfs/*.odt
