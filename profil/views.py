@@ -15,6 +15,7 @@ from django.contrib.auth import authenticate, login, logout
 #     template_name = 'profil/prijava.html'
 #     fields = '__all__'
 
+# Ovo je komentar
 
 @login_required()
 def prijava(request):
