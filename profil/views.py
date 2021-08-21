@@ -1,3 +1,4 @@
+from re import I
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
@@ -6,9 +7,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import ProfilForm
 from .models import Oblast, Profil
 from account.models import accepted_check
-from administrator.models import Obavestenje
+from administrator.models import Anketa, Obavestenje
 from django.views.generic import CreateView
-
+from django.contrib.auth import authenticate, login, logout
 # class PrijavaView(CreateView):
 #     model = ProfilForm
 #     template_name = 'profil/prijava.html'
@@ -57,20 +58,32 @@ def profil(request):
 
 
 
-from django.db.models import Q
-
 @login_required()
 def obavestenja(request):
+
     user = request.user
-    
+
     obavestenja = Obavestenje.objects.filter(
         profil = user.profil
     )
-    print(obavestenja)
+
+    # print(obavestenja)
     # gde je profil == user.profil
-    print('obavestenja su: ' + str(obavestenja))
+    # print('obavestenja su: ' + str(obavestenja))
     context = {
         'obavestenja': obavestenja
     }
 
     return render(request, 'profil/obavestenja.html', context)
+
+
+
+@login_required()
+def ankete(request):
+
+    ankete = Anketa.objects.all()
+    context = {
+        'ankete': ankete
+    }
+
+    return render(request, 'profil/ankete.html', context)

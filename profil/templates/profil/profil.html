@@ -8,7 +8,7 @@
 
 <h1>Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
-<a href="#">Ankete</a>
+<a href="{% url 'profil:ankete' %}">Ankete</a>
 <a href="#">Radovi</a>
 <a href="{% url 'profil:obavestenja' %}">OBAVESTENJA!</a>
 

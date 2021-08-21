@@ -35,7 +35,7 @@ class ProfilForm(forms.ModelForm):
             'naucni_rad_10',
         ]
 
-        widgets = {
+        # widgets = {
             # 'oblasti': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
             # 'ime': forms.CharField(attrs={'class': 'form-control'}),
             # 'prezime': forms.CharField(attrs={'class': 'form-control'}),
@@ -57,4 +57,4 @@ class ProfilForm(forms.ModelForm):
             # 'naucni_rad_8': forms.CharField(attrs={'class': 'form-control'}),
             # 'naucni_rad_9': forms.CharField(attrs={'class': 'form-control'}),
             # 'naucni_rad_10': forms.CharField(attrs={'class': 'form-control'}),
-        }
+        # }

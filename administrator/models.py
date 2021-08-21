@@ -75,8 +75,8 @@ class Anketa(models.Model):
     def __str__(self):
         return self.naziv
 
+RATING_CHOICES = ((0, "Slazem se"), (1, "Ne slazem se"), (2, "Ne znam"),)
 
-RATING_CHOICES = ((0, u"Slazem se"), (1, u"Ne slazem se"), (2, u"Ne znam"),)
 class AnketaPitanje(models.Model):
     anketa = models.ForeignKey(Anketa, on_delete=models.CASCADE)
 
