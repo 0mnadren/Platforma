@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Kreiranje Programski Pitanja</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Kreiraj Pitanja</h1>
+<h3>Pitanja za Programski poziv {{ programski_poziv }}</h3>
+
+<h4>Pitanja</h4>
+<form method="POST">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+    {{ forloop.counter }}{{ form.as_p }}
+    {% endfor %}
+    <button class="btn btn-secondary" type="submit">Snimi</button>
+</form>
+
+{% endblock %}

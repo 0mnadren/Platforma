@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista Radova</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Rad {{ rad.naziv }}</h1>
+Oblasti su:
+<br>
+{% for oblast in rad.oblasti.all %}
+    {{ oblast.naziv }}
+<hr>
+{% endfor %}
+Opis rada: {{ rad.opis }}
+<br>
+Kategorija: {{ rad.kategorija }}
+
+
+{% for pitanje in rad.programski_poziv.programskipozivpitanje_set.all %}
+<hr>
+{{ forloop.counter }}.{{ pitanje.pitanje }}
+<br>
+{{ form }}
+{% endfor %}
+<hr>
+<h4>Kom korisniku zelite da prosledite ovaj Naucni Rad na ocenjivanje?</h4>
+<form method="POST">
+    {% csrf_token %}
+    {% for profil in profili %}
+    <input type="checkbox" id="{{ forloop.counter }}" name="profili[]" value="{{ profil.id }}">
+    <label for="{{ forloop.counter }}">{{ profil.user.username }}</label><br>
+    <br>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Posalji</button>
+</form>
+
+
+{% endblock %}

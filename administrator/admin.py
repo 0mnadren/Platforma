@@ -6,7 +6,8 @@ from .models import (
     Anketa,
     AnketaPitanje,
     ProgramskiPoziv,
-    ProgramskiPozivPitanje
+    ProgramskiPozivPitanje,
+    ProgramskiPozivOdgovor,
 )
 
 admin.site.register(Obavestenje)
@@ -16,3 +17,5 @@ admin.site.register(Anketa)
 admin.site.register(AnketaPitanje)
 admin.site.register(ProgramskiPoziv)
 admin.site.register(ProgramskiPozivPitanje)
+admin.site.register(ProgramskiPozivOdgovor)
+
