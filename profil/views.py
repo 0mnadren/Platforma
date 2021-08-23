@@ -11,7 +11,6 @@ from account.models import accepted_check
 def prijava(request):
     if request.method == 'POST':
         form = ProfilForm(request.POST, request.FILES)
-        print(request.POST)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.user_id = request.user.id

@@ -25,6 +25,9 @@ urlpatterns = [
     path('', include('account.urls', namespace='account')),
     path('profil/', include('profil.urls', namespace='profil')),
     path('administrator/', include('administrator.urls', namespace='administrator')),
+    path('ankete/', include('ankete.urls', namespace='ankete')),
+    path('radovi/', include('radovi.urls', namespace='radovi')),
+    path('programski_pozivi/', include('programski_pozivi.urls', namespace='programski_pozivi')),
 ]
 
 if settings.DEBUG:

@@ -3,10 +3,11 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 
-# Proverava ekstenziju fajla da vidi da li je .pdf
-# Ako nije dize ValidationError
-
 def validate_file_extension(value):
+    """
+    Proverava ekstenziju fajla da vidi da li je .pdf
+    Ako nije dize ValidationError
+    """
     ext = os.path.splitext(value.name)[1]  # [0] returns path+filename
     valid_extensions = '.pdf'
     if not ext.lower() == valid_extensions:

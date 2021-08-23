@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'profil.apps.ProfilConfig',
     'account.apps.AccountConfig',
     'administrator.apps.AdministratorConfig',
+    'ankete.apps.AnketeConfig',
+    'radovi.apps.RadoviConfig',
+    'programski_pozivi.apps.ProgramskiPoziviConfig',
 
     # Django apps
     'django.contrib.admin',
