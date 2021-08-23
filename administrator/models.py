@@ -69,6 +69,8 @@ class Anketa(models.Model):
     ### Treba da se doda relationship
     oblasti = models.ManyToManyField(Oblast)
 
+    # edit profile 
+    # profil = models.ManyToManyField(Profil)
     naziv = models.CharField(max_length=125, unique=True)
     opis = models.TextField(blank=True)
 
