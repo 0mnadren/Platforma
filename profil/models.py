@@ -49,4 +49,4 @@ class Profil(models.Model):
     pregledane_ankete = models.IntegerField(verbose_name='broj pregledanih anketa', default=0)
 
     def __str__(self):
-        return f"Korisnik: {self.user} -- Ime: {self.ime} {self.prezime}"
+        return f"{self.user} - {self.ime} {self.prezime}"

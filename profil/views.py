@@ -1,3 +1,4 @@
+from datetime import datetime
 from re import I
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
@@ -10,6 +11,7 @@ from account.models import accepted_check
 from administrator.models import Anketa, Obavestenje
 from django.views.generic import CreateView
 from django.contrib.auth import authenticate, login, logout
+import datetime
 # class PrijavaView(CreateView):
 #     model = ProfilForm
 #     template_name = 'profil/prijava.html'
@@ -45,7 +47,13 @@ def prijava(request):
 
 @login_required()
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
-def profil(request):    
+def profil(request):
+    user = request.user
+    default_datum = datetime.datetime.today()
+    obavestenja = Obavestenje.objects.filter(
+        profil = user.profil
+    )
+
     if request.method == 'POST':
         form = ProfilForm(request.POST or None, request.FILES, instance=request.user.profil)
         if form.is_valid():
@@ -55,27 +63,33 @@ def profil(request):
     else:
         form = ProfilForm(instance=request.user.profil)
 
-    return render(request, 'profil/profil.html', {'form': form})
-
-
-
-@login_required()
-def obavestenja(request):
-
-    user = request.user
-
-    obavestenja = Obavestenje.objects.filter(
-        profil = user.profil
-    )
-
-    # print(obavestenja)
-    # gde je profil == user.profil
-    # print('obavestenja su: ' + str(obavestenja))
     context = {
-        'obavestenja': obavestenja
+        'obavestenja': obavestenja,
+        'form': form,
+        'default_datum': default_datum
     }
 
-    return render(request, 'profil/obavestenja.html', context)
+    return render(request, 'profil/profil.html', context)
+
+
+
+# @login_required()
+# def obavestenja(request):
+
+#     user = request.user
+
+#     obavestenja = Obavestenje.objects.filter(
+#         profil = user.profil
+#     )
+
+#     # print(obavestenja)
+#     # gde je profil == user.profil
+#     # print('obavestenja su: ' + str(obavestenja))
+#     context = {
+#         'obavestenja': obavestenja
+#     }
+
+#     return render(request, 'profil/obavestenja.html', context)
 
 
 

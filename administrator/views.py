@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
-
+from django.contrib import messages
 from .validators import superuser_check
 from profil.models import Profil
-
+from .forms import ObavestenjeForm
 
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
@@ -44,7 +44,7 @@ def prijava_prihvacena(request, pk):
     user.profile_accepted = True
     user.save()
 
-    return redirect('administrator:prijave')
+    return redirect('administrator:pregled_prijava')
 
 
 @login_required()
@@ -56,7 +56,27 @@ def prijava_odbijena(request, pk):
     user.profile_accepted = False
     user.save()
 
-    return redirect('administrator:prijave')
+    return redirect('administrator:pregled_prijava')
 
 
+
+@login_required()
+@user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
+def kreiraj_obavestenje(request):
+    if request.method == 'POST':
+        form = ObavestenjeForm(request.POST or None)
+        context = {
+        'form': form
+        }
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Uspesno poslano obavestenje!')
+            return redirect('administrator:profil')
+    else:
+        form = ObavestenjeForm()
+        context = {
+        'form': form
+        }
+    
+    return render(request, 'administrator/kreiraj_obavestenje.html', context)
 

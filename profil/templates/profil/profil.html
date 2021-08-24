@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
 {% block title %}
 <title>Profil</title>
 {% endblock %}
@@ -10,22 +13,57 @@
 <h1>Status: Recezent</h1>
 <a href="{% url 'profil:ankete' %}">Ankete</a>
 <a href="#">Radovi</a>
-<a href="{% url 'profil:obavestenja' %}">OBAVESTENJA!</a>
+
+
+<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
 
 
 
-<p>Ovde mogu da stoje obavestenja od strane Admina, koja nisu poslata na email</p>
-<p>Nesto slicno kao postovi na profilu na fb-u</p>
+
+<!-- U PROFILU DA IZBACI OBAVESTENJA -->
+<button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
+    id="btn_obavestenja">Sakrij obavestenja</button>
+<br><br>
+<div id="obavestenja_table">
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naslov</th>
+                <th style="height: 10px;" scope="col">Sadrzaj</th>
+                <th style="width: 200px;" scope="col">Datum slanja</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obavestenje in obavestenja %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ obavestenje.naslov }}</td>
+                <td>{{ obavestenje.tekst }}</td>
+                <td>{{ obavestenje.datum_vreme_kreiranja }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+    <p>Nesto slicno kao postovi na profilu na fb-u</p>
+
+</div>
+<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
+    profil</button>
 <br>
-<hr>
-<br>
-<table class="table table-bordered table-dark">
-<div class="form-group">
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {{ form.as_table }}
-        <!-- {% for field in form %}
+<div id="user_table" style="display: none;">
+    <table class="table table-bordered table-dark">
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_table }}
+                <!-- 
+                   form.as_table 
+                    {% for field in form %}
         <div class="mt-2">
             <label class="form-label">{{ field.label }}:</label>
             <div class="col">{{ field }}</div>
@@ -35,15 +73,39 @@
             </div>
         </div>        
         {% endfor %} -->
-        <br>
+    </table>
 
-</table>
+    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
+    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
 
-<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-<button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
-
-</form>
-
+    </form>
 
 </div>
+</div>
+</div>
+<!-- SKRIPTA JS ZA SAKRIVANJE -->
+<script>
+    window.onload = function () {
+        document.getElementById('close').onclick = function () {
+            this.parentNode.parentNode.parentNode
+                .removeChild(this.parentNode.parentNode);
+            return false;
+        };
+    };
+    function toggler(divId) {
+        $("#" + divId).toggle()
+    }
+    function name_toggler(divId) {
+        if (document.getElementById(divId).innerText == 'Prikazi profil') {
+            document.getElementById(divId).innerText = 'Sakrij profil';
+        } else if (document.getElementById(divId).innerText == 'Sakrij profil') {
+            document.getElementById(divId).innerText = 'Prikazi profil';
+
+        } else if (document.getElementById(divId).innerText == 'Prikazi obavestenja') {
+            document.getElementById(divId).innerText = 'Sakrij obavestenja';
+        } else if (document.getElementById(divId).innerText == 'Sakrij obavestenja') {
+            document.getElementById(divId).innerText = 'Prikazi obavestenja';
+        }
+    }
+</script>
 {% endblock %}

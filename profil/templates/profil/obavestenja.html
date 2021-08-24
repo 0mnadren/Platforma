@@ -14,14 +14,13 @@
 
 
 
-<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
+<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na emailddd</p>
 {% for obavestenje in obavestenja %}
     <table>
-        {{ forloop.counter }}
-        <td class="text-center">{{ obavestenje }}</td>
+        
+        <td class="text-center">OBAVESTENJE {{ forloop.counter }} {{ obavestenje }}</td>
         <td class="text-center">{{ obavestenje.tekst }}</td>
         </tbody>
     </table>
 {% endfor %}
-</div>
 {% endblock %}

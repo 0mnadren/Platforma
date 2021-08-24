@@ -7,7 +7,7 @@
 {% block content %}
 <div class="row ml-2">
   <div class="col mb-2 mt-2">
-    <a href="{% url 'administrator:prijave' %}" class="btn btn-outline-secondary">Lista prijava</a>
+    <a href="{% url 'administrator:pregled_prijava' %}" class="btn btn-outline-secondary">Lista prijava</a>
   </div>
 </div>
 
@@ -131,13 +131,13 @@
   <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
     Odobri prijavu
   </button>
-  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbi_prijavu">
+  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
     Odbij prijavu
   </button>
 </div>
 {% elif prijava.user.profile_accepted == True %}
-<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbi_prijavu">
-  Odbij prijavu
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
+  Odbijaaaaa prijavu
 </button>
 {% else %}
 <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
