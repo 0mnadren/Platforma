@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
 
 from profil.models import Oblast, Profil
+from programski_pozivi.models import ProgramskiPoziv
 
 
 class Rad(models.Model):
@@ -12,6 +13,8 @@ class Rad(models.Model):
         Profil,
         through='ProsledjenRad'
     )
+
+    programski_poziv = models.ForeignKey(ProgramskiPoziv, on_delete=models.CASCADE)
 
     naziv = models.CharField(max_length=125, unique=True)
     kategorija = models.CharField(max_length=60)
@@ -44,8 +47,8 @@ class ProsledjenRad(models.Model):
     profil = models.ForeignKey(Profil, on_delete=models.CASCADE)
     rad = models.ForeignKey(Rad, on_delete=models.CASCADE)
 
-    kada_poslat = models.DateField()
-    konacna_odluka = models.BooleanField()
+    kada_poslat = models.DateField(auto_now_add=True)
+    konacna_odluka = models.BooleanField(null=True, blank=True)
 
     def __str__(self):
         return f"Rad {self.rad} prosledjen {self.kada_poslat} {self.profil}"

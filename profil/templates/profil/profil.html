@@ -9,7 +9,7 @@
 <h1>Profil {{ user.username }} recenzenta</h1>
 
 <a href="#">Ankete</a>
-<a href="#">Radovi</a>
+<a href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
 
 <h3>Obavestenja</h3>
 <p>Ovde mogu da stoje obavestenja od strane Admina, koja nisu poslata na email</p>

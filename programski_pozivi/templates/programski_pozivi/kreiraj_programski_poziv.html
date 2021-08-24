@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Kreiranje Programskog poziva</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Kreiraj Programski poziv</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class='btn btn-secondary' type="submit">Snimi</button>
+
+</form>
+
+<h2>Lista vec postojecih programski poziva</h2>
+<ul>
+    {% for poziv in pozivi reversed %}
+    <li>
+        {{ poziv.naziv }}
+        <a class="btn btn-outline-success" href="{% url 'programski_pozivi:kreiranje_pitanja' poziv.id %}">Kreiraj i Azuriraj Pitanja</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

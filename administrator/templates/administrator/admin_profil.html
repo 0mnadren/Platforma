@@ -18,8 +18,8 @@
 <br>
 <a href="#">Obavestenja</a>
 <br>
-<a href="#">Naucni radovi</a>
+<a href="{% url 'radovi:lista_radova_admin' %}">Naucni radovi</a>
 <br>
-<a href="#">Programski poziv</a>
+<a href="{% url 'programski_pozivi:kreiranje_poziva' %}">Programski poziv</a>
 
 {% endblock %}

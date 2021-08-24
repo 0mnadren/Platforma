@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Naucni rad</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Naucni rad {{ rad.naziv }}</h1>
+
+Oblasti su:
+<br>
+<hr>
+{% for oblast in rad.oblasti.all %}
+    {{ oblast.naziv }}
+<hr>
+{% endfor %}
+Opis rada: {{ rad.opis }}
+<br>
+Kategorija: {{ rad.kategorija }}
+<hr>
+
+<form method="POST">
+  {% csrf_token %}
+  {% for rad in rad.programski_poziv.programskipozivpitanje_set.all %}
+  {{ rad.pitanje }} {{ rad.pitanje.id }}<br>
+  {{ form }}<br>
+  {% endfor %}
+  <button type="submit" class="btn-secondary">Snimi odgovore</button>
+</form>
+
+
+
+{% endblock %}
