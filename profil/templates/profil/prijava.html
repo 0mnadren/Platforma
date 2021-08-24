@@ -2,16 +2,16 @@
 
 {% block title %}
 <title>Prijava</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
-
+{% load crispy_forms_tags %}
 <h1>Prijava za recenzenta {{ user.username }}</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form }}
+    {{ form|crispy }}
     <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
 </form>
 
-{% endblock %}
+{% endblock content %}

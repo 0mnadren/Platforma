@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from .forms import ProfilForm
 from .models import Oblast
 from account.models import accepted_check
+from administrator.models import Obavestenje
+from datetime import datetime
 
 
 @login_required()
@@ -21,7 +23,8 @@ def prijava(request):
                 oblast_obj = Oblast.objects.get(naziv=oblast)
                 obj.oblasti.add(oblast_obj)
 
-            messages.success(request, 'Vasa prijava je poslata na razmatranje!')
+            messages.success(
+                request, 'Vasa prijava je poslata na razmatranje!')
             return redirect('account:status')
         else:
             print("ERROR : Form is invalid")
@@ -35,9 +38,15 @@ def prijava(request):
 @login_required()
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def profil(request):
-    if request.method == 'POST':
-        form = ProfilForm(request.POST, request.FILES, instance=request.user.profil)
+    user = request.user
+    default_datum = datetime.today()
+    obavestenja = Obavestenje.objects.filter(
+        profil=user.profil
+    )
 
+    if request.method == 'POST':
+        form = ProfilForm(request.POST or None, request.FILES,
+                          instance=request.user.profil)
         if form.is_valid():
             form.save()
             messages.success(request, f'Vas nalog je azuriran!')
@@ -45,4 +54,10 @@ def profil(request):
     else:
         form = ProfilForm(instance=request.user.profil)
 
-    return render(request, 'profil/profil.html', {'form': form})
+    context = {
+        'obavestenja': obavestenja,
+        'form': form,
+        'default_datum': default_datum
+    }
+
+    return render(request, 'profil/profil.html', context)

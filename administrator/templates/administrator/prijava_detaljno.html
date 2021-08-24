@@ -1,79 +1,148 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-<title>Prijava</title>
-{% endblock %}
+<title>Prijava detaljno</title>
+{% endblock title %}
 
 {% block content %}
+<div class="row ml-2">
+  <div class="col mb-2 mt-2">
+    <a href="{% url 'administrator:pregled_prijava' %}" class="btn btn-outline-secondary">Lista prijava</a>
+  </div>
+</div>
 
-<a href="{% url 'administrator:prijave' %}" class="btn btn-outline-secondary">Lista prijava</a>
 
-<h1>Prijavu poslao {{ prijava.user.username }}</h1>
-<h2>Licni podaci:</h2>
 
-<h4>Ime i prezime: {{ prijava.ime }} {{ prijava.prezime }}</h4>
+<div class="col mb-2 mt-2">
+  <h3>Prijavu poslao korisnik: {{ prijava.user.username }}</h3>
+  <br>
+</div>
 
-<h4>Oblasti:
-    {% for oblast in prijava.oblasti.all %}
-    {{oblast}},
-    {% endfor %}
-</h4>
-<h4>Nacionalnost: {{ prijava.nacionalnost }}</h4>
-<h4>NIO: {{ prijava.NIO }}</h4>
-<h4>Naucno zvanje: {{ prijava.naucno_zvanje }}</h4>
-<h4>Angazovanje: {{ prijava.angazovanje }}</h4>
-<h4>Adresa: {{ prijava.adresa }}</h4>
-<h4>Broj telefona: {{ prijava.broj_telefona }}</h4>
-<h4>Veb stranica: <a href="{{ prijava.website }}" target="_blank">link</a></h4>
+<div class="row ml-2">
+  <div class="col mb-2 mt-2">
+    <table class="table">
+      <caption style="font-size: 75%;">Podaci o korisniku {{ prijava.user.username }}</caption>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <h4>Ime i prezime:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.ime }} {{ prijava.prezime }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Oblasti:</h4>
+          </th>
+          <td>
+            <h4>{% for oblast in prijava.oblasti.all %}
+              {{ oblast }},
+              {% endfor %}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Nacionalnost:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.nacionalnost }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>NIO:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.NIO }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Naucno zvanje:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.naucno_zvanje }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Angazovanje:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.angazovanje }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Adresa:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.adresa }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Broj telefona:</h4>
+          </th>
+          <td>
+            <h4>{{ prijava.broj_telefona }}</h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Web stranica:</h4>
+          </th>
+          <td>
+            <h4><a href="{{ prijava.website }}" target="_blank">{{ prijava.website }}</a></h4>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <h4>Biografija:</h4>
+          </th>
+          <!--Potrebno je da se napravi Static files i Media files da bi mogli da prikazemo pdf-->
+          <td>
+            <h4><a href="{{ prijava.biografija.url }}">Biografija.pdf</a></h4>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<!--Potrebno je da se napravi Static files i Media files da bi mogli da prikazemo pdf-->
-<h4>Biografija: <a href="{{ prijava.biografija.url }}">Biografija.pdf</a></h4>
-
-<h4>Naucni rad 1: {{ prijava.naucni_rad_1 }}</h4>
-<h4>Naucni rad 2: {{ prijava.naucni_rad_2 }}</h4>
-<h4>Naucni rad 3: {{ prijava.naucni_rad_3 }}</h4>
-<h4>Naucni rad 4: {{ prijava.naucni_rad_4 }}</h4>
-<h4>Naucni rad 5: {{ prijava.naucni_rad_5 }}</h4>
-<h4>Naucni rad 6: {{ prijava.naucni_rad_6 }}</h4>
-<h4>Naucni rad 7: {{ prijava.naucni_rad_7 }}</h4>
-<h4>Naucni rad 8: {{ prijava.naucni_rad_8 }}</h4>
-<h4>Naucni rad 9: {{ prijava.naucni_rad_9 }}</h4>
+<h4>Naucni rad 1: &nbsp;{{ prijava.naucni_rad_1 }}</h4>
+<h4>Naucni rad 2: &nbsp;{{ prijava.naucni_rad_2 }}</h4>
+<h4>Naucni rad 3: &nbsp;{{ prijava.naucni_rad_3 }}</h4>
+<h4>Naucni rad 4: &nbsp;{{ prijava.naucni_rad_4 }}</h4>
+<h4>Naucni rad 5: &nbsp;{{ prijava.naucni_rad_5 }}</h4>
+<h4>Naucni rad 6: &nbsp;{{ prijava.naucni_rad_6 }}</h4>
+<h4>Naucni rad 7: &nbsp;{{ prijava.naucni_rad_7 }}</h4>
+<h4>Naucni rad 8: &nbsp;{{ prijava.naucni_rad_8 }}</h4>
+<h4>Naucni rad 9: &nbsp;{{ prijava.naucni_rad_9 }}</h4>
 <h4>Naucni rad 10: {{ prijava.naucni_rad_10 }}</h4>
 
 
 
 
-{% if prijava.user.profile_accepted == None %}
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
+{% if prijava.user.profile_accepted == None %}
 <div>
-    <button type="button"
-            class="btn btn-outline-primary"
-            data-toggle="modal"
-            data-target="#odobri_prijavu">
-        Odobri prijavu
-    </button>
-    <button type="button"
-            class="btn btn-outline-danger"
-            data-toggle="modal"
-            data-target="#odbij_prijavu">
-        Odbij prijavu
-    </button>
-
-{% elif prijava.user.profile_accepted == False %}
-    <button type="button"
-            class="btn btn-outline-primary"
-            data-toggle="modal"
-            data-target="#odobri_prijavu">
-        Odobri prijavu
-    </button>
-{% else %}
-    <button type="button"
-            class="btn btn-outline-danger"
-            data-toggle="modal"
-            data-target="#odbij_prijavu">
-        Odbij prijavu
-    </button>
+  <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
+    Odobri prijavu
+  </button>
+  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
+    Odbij prijavu
+  </button>
 </div>
+{% elif prijava.user.profile_accepted == True %}
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
+  Odbijaaaaa prijavu
+</button>
+{% else %}
+<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
+  Odobri prijavu
+</button>
 {% endif %}
 
 <div class="modal fade" tabindex="-1" id="odobri_prijavu">
@@ -89,10 +158,10 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
 
-          <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odobrio prijavu!   -->
-          <form action="{% url 'administrator:prijava_prihvacena' prijava.id %}">
-              <input type="submit" value="Odobri" class="btn btn-success">
-          </form>
+        <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odobrio prijavu!   -->
+        <form action="{% url 'administrator:prijava_prihvacena' prijava.id %}">
+          <input type="submit" value="Odobri" class="btn btn-success">
+        </form>
 
       </div>
     </div>
@@ -103,7 +172,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Odbi prijavu?</h5>
+        <h5 class="modal-title">Odbij prijavu?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -112,16 +181,14 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
 
-          <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
-          <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
-              <input type="submit" value="Odbij" class="btn btn-danger">
-          </form>
+        <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
+        <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
+          <input type="submit" value="Odbij" class="btn btn-danger">
+        </form>
 
       </div>
     </div>
   </div>
 </div>
 
-
-
-{% endblock %}
+{% endblock content %}

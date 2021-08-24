@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'ankete.apps.AnketeConfig',
     'radovi.apps.RadoviConfig',
     'programski_pozivi.apps.ProgramskiPoziviConfig',
+    'crispy_forms',
 
     # Django apps
     'django.contrib.admin',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -93,11 +95,11 @@ WSGI_APPLICATION = 'recenzentPlatforma.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'platforma',
+        'NAME': 'platforma2',
         "HOST": "localhost",
         "PORT": "3306",
         "USER": "root",
-        "PASSWORD": "12345678"
+        "PASSWORD": "nemanjasql"
     }
 }
 
@@ -154,6 +156,14 @@ LOGIN_REDIRECT_URL = 'account:home'
 LOGIN_URL = 'account:login'
 
 
+
+### Settings for filetypes and their size - Zile edit ###
+
+CONTENT_TYPES = ['.pdf']
+MAX_UPLOAD_SIZE = "5242880" # 5MB
+
+#### MEDIA
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -164,3 +174,7 @@ EMAIL_USE_TLS = True
 # Treba da napravimo email od kog ce da se salju poruke
 EMAIL_HOST_USER = 'EMAIL_HOST_USER'
 EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
+
+
+# Crispy requirements
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

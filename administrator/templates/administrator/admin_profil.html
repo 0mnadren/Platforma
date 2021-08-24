@@ -2,7 +2,7 @@
 
 {% block title %}
 <title>Admin Profil</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
 
@@ -10,16 +10,16 @@
 
 <a href="{% url 'admin:index' %}">Django Admin</a>
 <br>
-<a href="{% url 'administrator:prijave' %}">Prijave recenzenata</a>
+<a href="{% url 'administrator:pregled_prijava' %}">Prijave recenzenata</a>
 <br>
 <a href="{% url 'admin:profil_oblast_add' %}">Dodaj oblast</a>
 <br>
 <a href="#">Ankete</a>
 <br>
-<a href="#">Obavestenja</a>
+<a href="{% url 'administrator:kreiraj_obavestenje' %}">Obavestenja</a>
 <br>
 <a href="{% url 'radovi:lista_radova_admin' %}">Naucni radovi</a>
 <br>
 <a href="{% url 'programski_pozivi:kreiranje_poziva' %}">Programski poziv</a>
 
-{% endblock %}
+{% endblock content %}

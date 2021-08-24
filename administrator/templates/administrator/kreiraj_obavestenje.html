@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Dodaj obavestenje</title>
+{% endblock title %}
+
+{% block content %}
+
+<h1>Admin {{ user.username }}</h1>
+<p> sada treba da iscrtam sva govna koja imaju unutar govana koja cu da pokupim</p>
+
+
+<form method="POST" enctype="multipart/form-data">
+    <table class="table table-bordered table-dark">
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_table }}
+            </div>
+    </table>
+    <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+</form>
+
+
+
+{% endblock content %}
