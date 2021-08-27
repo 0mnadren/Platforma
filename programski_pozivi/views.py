@@ -2,11 +2,10 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
-from django.forms.models import modelformset_factory
 
 from administrator.validators import superuser_check
-from .models import ProgramskiPoziv, ProgramskiPozivPitanje
-from .forms import ProgramskiPozivForm
+from .models import ProgramskiPoziv, ProgramskiPozivPitanja
+from .forms import ProgramskiPozivForm, ProgramskiPozivPitanjaForm
 
 
 @login_required()
@@ -18,7 +17,7 @@ def kreiraj_programski_poziv(request):
         if form.is_valid():
             form.save()
             messages.success(request, f'Napravili ste programski poziv!')
-            return redirect('programski_pozivi:kreiranje_poziva')
+            return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivForm()
 
@@ -32,38 +31,89 @@ def kreiraj_programski_poziv(request):
     return render(request, 'programski_pozivi/kreiraj_programski_poziv.html', context)
 
 
+def detaljno_programski_poziv(request, pk):
+    programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
+    programski_poziv_pitanja = ProgramskiPozivPitanja.objects.filter(programski_poziv=programski_poziv)
+
+    context = {
+        'programski_poziv': programski_poziv,
+        'programski_poziv_pitanja': programski_poziv_pitanja
+    }
+
+    return render(request, 'programski_pozivi/detaljno_programski_poziv.html', context)
+
+
+def azuriraj_programski_poziv(request, pk):
+    programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
+
+    if request.method == "POST":
+        form = ProgramskiPozivForm(request.POST, instance=programski_poziv)
+        if form.is_valid():
+
+            form.save()
+            messages.success(request, f'Uspesno ste azurirali programski poziv!')
+            return redirect('programski_pozivi:kreiraj_programski_poziv')
+    else:
+        form = ProgramskiPozivForm(instance=programski_poziv)
+
+    context = {
+        'form': form,
+        'programski_poziv': programski_poziv
+    }
+    return render(request, 'programski_pozivi/azuriraj_programski_poziv.html', context)
+
+
+def obrisi_programski_poziv(request, pk):
+    programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
+
+    if request.method == 'POST':
+        programski_poziv.delete()
+        return redirect('programski_pozivi:kreiraj_programski_poziv')
+    return redirect('programski_pozivi:kreiraj_programski_poziv')
+
+
+### PITANJA ###
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def kreiraj_pitanja_programski_poziv(request, pk):
     programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
 
-    queryset = ProgramskiPozivPitanje.objects.filter(programski_poziv=programski_poziv.id)
-
-    ProgramskiPozivPitanjeSet = modelformset_factory(
-        ProgramskiPozivPitanje,
-        fields=('pitanje',),
-        max_num=10,
-        extra=10,
-    )
     if request.method == 'POST':
-        formset = ProgramskiPozivPitanjeSet(
-            data=request.POST,
-            queryset=queryset,
-        )
-
-        if formset.is_valid():
-            objs = formset.save(commit=False)
-            for obj in objs:
-                obj.programski_poziv_id = programski_poziv.id
-                obj.save()
+        form = ProgramskiPozivPitanjaForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.programski_poziv_id = programski_poziv.id
+            obj.save()
             messages.success(request, f'Napravili ste pitanja!')
-            return redirect('programski_pozivi:kreiranje_poziva')
+            return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
-        formset = ProgramskiPozivPitanjeSet(queryset=queryset)
+        form = ProgramskiPozivPitanjaForm()
 
     context = {
-        'programski_poziv': programski_poziv,
-        'formset': formset,
+        'form': form,
+        'programski_poziv': programski_poziv
     }
 
     return render(request, 'programski_pozivi/kreiraj_pitanja.html', context)
+
+
+@login_required()
+@user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
+def detaljno_pitanja_programski_poziv(request, pk):
+    pitanja = get_object_or_404(ProgramskiPozivPitanja, pk=pk)
+
+    if request.method == "POST":
+        form = ProgramskiPozivPitanjaForm(request.POST, instance=pitanja)
+        if form.is_valid():
+
+            form.save()
+            messages.success(request, f'Uspesno ste azurirali pitanja!')
+            return redirect('programski_pozivi:kreiraj_programski_poziv')
+    else:
+        form = ProgramskiPozivPitanjaForm(instance=pitanja)
+
+    context = {
+        'form': form,
+        'pitanja': pitanja
+    }
+    return render(request, 'programski_pozivi/detaljno_pitanja.html', context)

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'ankete.apps.AnketeConfig',
     'radovi.apps.RadoviConfig',
     'programski_pozivi.apps.ProgramskiPoziviConfig',
+
     'crispy_forms',
 
     # Django apps

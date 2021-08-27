@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
 <title>Kreiranje Programski Pitanja</title>
 {% endblock %}
@@ -12,10 +12,7 @@
 <h4>Pitanja</h4>
 <form method="POST">
     {% csrf_token %}
-    {{ formset.management_form }}
-    {% for form in formset %}
-    {{ forloop.counter }}{{ form.as_p }}
-    {% endfor %}
+    {{ form|crispy }}
     <button class="btn btn-secondary" type="submit">Snimi</button>
 </form>
 

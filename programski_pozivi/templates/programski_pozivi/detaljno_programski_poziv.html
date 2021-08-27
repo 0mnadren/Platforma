@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Programski poziv</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Programski poziv {{ programski_poziv.naziv }}</h1>
+<p>Opis: {{ programski_poziv.opis }}</p>
+<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Vrati se na Programske Pozive</a>
+<hr>
+
+{% if not programski_poziv.programskipozivpitanja %}
+<a class="btn btn-outline-success" href="{% url 'programski_pozivi:kreiraj_pitanja' programski_poziv.id %}">Kreiraj Pitanja</a>
+{% else %}
+<p>Vec ste napravili pitanja, mozete da ih izmenite:</p>
+<ul>
+    {% for pitanje in programski_poziv_pitanja %}
+    <li><a href="{% url 'programski_pozivi:detaljno_pitanja' pitanje.id %}">Izmeni {{ pitanje }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

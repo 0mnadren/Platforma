@@ -7,6 +7,8 @@
 {% block content %}
 
 <h1>Radovi na recenziji</h1>
+<h5>Ukupan broj radova na recenziji je {{ broj_radova }}</h5>
+<hr>
 <ul>
     {% for rad in radovi %}
     <li><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}">{{ rad.rad.naziv }}</a></li>

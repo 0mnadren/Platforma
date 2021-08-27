@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-
+{% if prosledjen_rad.profil == user.profil and prosledjen_rad.rad == rad and not prosledjen_rad.zakljucani_odgovori %}
+<a class="btn btn-outline-secondary" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
 <h1>Naucni rad {{ rad.naziv }}</h1>
 
 Oblasti su:
@@ -15,20 +16,53 @@ Oblasti su:
     {{ oblast.naziv }}
 <hr>
 {% endfor %}
-Opis rada: {{ rad.opis }}
+Clanovi: {{ rad.clanovi }}
 <br>
 Kategorija: {{ rad.kategorija }}
 <hr>
 
+
+
 <form method="POST">
   {% csrf_token %}
-  {% for rad in rad.programski_poziv.programskipozivpitanje_set.all %}
-  {{ rad.pitanje }} {{ rad.pitanje.id }}<br>
-  {{ form }}<br>
-  {% endfor %}
-  <button type="submit" class="btn-secondary">Snimi odgovore</button>
+    {% for pitanje, odgovor in pitanja_odgovori %}
+    {{ pitanje }}
+    {{ odgovor }}
+    <hr>
+    {% endfor %}
+  <p>Ukoliko Kliknete na "Sacuvaj odgovore" --> iste mozete kasnije da promenite</p>
+  <p>
+    Ukoliko Kliknete na "Sacuvaj i Zakljucaj odgovore" --> Vasi odgovori se salju na dalju obradu i nemate pravo vise da ih menjate
+  </p>
+  <button type="submit" name="sacuvaj" class="btn btn-secondary">Sacuvaj odgovore</button>
+  <button type="button"
+            class="btn btn-warning"
+            data-toggle="modal"
+            data-target="#zakljucaj_odgovore">
+        Sacuvaj i Zakljucaj odgovore
+    </button>
+
+<div class="modal fade" tabindex="-1" id="zakljucaj_odgovore">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Zakljucaj odgovore?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da zelite da zakljucate vase odgovre?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
+              <input type="submit" name="zakljucaj" value="Zakljucaj" class="btn btn-success">
+      </div>
+    </div>
+  </div>
+</div>
 </form>
-
-
+{% else %}
+<h1>Naucni rad ne postoji</h1>
+<a class="btn btn-outline-secondary" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
+{% endif %}
 
 {% endblock %}

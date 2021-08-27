@@ -1,8 +1,9 @@
 from django.contrib import admin
 from .models import \
     ProgramskiPoziv, \
-    ProgramskiPozivPitanje
-
+    ProgramskiPozivPitanja, \
+    ProgramskiPozivOdgovori
 
 admin.site.register(ProgramskiPoziv)
-admin.site.register(ProgramskiPozivPitanje)
+admin.site.register(ProgramskiPozivPitanja)
+admin.site.register(ProgramskiPozivOdgovori)

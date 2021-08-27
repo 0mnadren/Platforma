@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+
 from .validators import superuser_check
 from profil.models import Profil
 from .forms import ObavestenjeForm
@@ -15,7 +16,7 @@ def profil(request):
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def pregled_prijava(request):
-    prijave = Profil.objects.all()
+    prijave = Profil.objects.all().order_by('-id')
     context = {
         'prijave': prijave
     }

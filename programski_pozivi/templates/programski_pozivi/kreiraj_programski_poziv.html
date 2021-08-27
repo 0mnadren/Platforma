@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block title %}
 <title>Kreiranje Programskog poziva</title>
 {% endblock %}
@@ -9,17 +9,23 @@
 <h1>Kreiraj Programski poziv</h1>
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button class='btn btn-secondary' type="submit">Snimi</button>
 
 </form>
 
-<h2>Lista vec postojecih programski poziva</h2>
+<h2>Lista vec postojecih programskih poziva</h2>
 <ul>
     {% for poziv in pozivi reversed %}
     <li>
         {{ poziv.naziv }}
-        <a class="btn btn-outline-success" href="{% url 'programski_pozivi:kreiranje_pitanja' poziv.id %}">Kreiraj i Azuriraj Pitanja</a>
+        <a class="btn btn-outline-primary" href="{% url 'programski_pozivi:detaljno_programski_poziv' poziv.id %}">Detaljno Programski Poziv</a>
+        <a class="btn btn-outline-success" href="{% url 'programski_pozivi:azuriraj_programski_poziv' poziv.id %}">Azuriraj Programski Poziv</a>
+          <form action="{% url 'programski_pozivi:obrisi_programski_poziv' poziv.id %}" method="POST">
+              {% csrf_token %}
+              <input type="submit" value="Obrisi" class="btn btn-danger">
+          </form>
+
     </li>
     {% endfor %}
 </ul>
