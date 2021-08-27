@@ -114,6 +114,8 @@ db.sqlite3
 
 # trazi profil/pdfs/.pdf u bilo kojem folderu u mainu, te izbacuje *.pdf fajlove
 /*/profil/pdfs/*.pdf
+/*/radovi/biografije/pdfs/*.pdf
+/*/radovi/opis/pdfs/*.pdf
 
 
 
