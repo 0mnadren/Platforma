@@ -16,11 +16,20 @@
             {% csrf_token %}
             {{ form }}
         </div>              
-    </table>    
-    <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
-    <label style="float: right;" for="send_mail">Posalji na mail
-        <input type="checkbox" name="send_mail" id="send_mail">
-    </label>
+    </table>
+    <div class="col">
+        <div class="row">
+            <label style="float: left; color:red" for="send_mail">Posalji i na mail!
+                <input type="checkbox" name="send_mail" id="send_mail">
+            </label>
+        </div>
+        <div class="row">
+            <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+        </div>
+    </div>
+    
+    
+    
     
     
 </form>
