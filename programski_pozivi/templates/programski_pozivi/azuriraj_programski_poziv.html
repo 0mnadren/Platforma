@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Azuriranje Programskog poziva</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Azuriraj Programski poziv</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class='btn btn-secondary' type="submit">Azuriraj</button>
+
+</form>
+
+{% endblock %}

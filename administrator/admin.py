@@ -1,18 +1,5 @@
 from django.contrib import admin
-from .models import (
-    Obavestenje,
-    Rad,
-    ProsledjenRad,
-    Anketa,
-    AnketaPitanje,
-    ProgramskiPoziv,
-    ProgramskiPozivPitanje
-)
+from .models import Obavestenje
 
 admin.site.register(Obavestenje)
-admin.site.register(Rad)
-admin.site.register(ProsledjenRad)
-admin.site.register(Anketa)
-admin.site.register(AnketaPitanje)
-admin.site.register(ProgramskiPoziv)
-admin.site.register(ProgramskiPozivPitanje)
+

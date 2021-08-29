@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,14 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$_=kw$&wjp0^dh2jrym)372%mg=zh6heigu4$%qyt#$v0_vf(-'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = config('DEBUG')
 
-# ALLOWED_HOSTS = ['127.0.0.1']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
+
 
 # Application definition
 
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'profil.apps.ProfilConfig',
     'account.apps.AccountConfig',
     'administrator.apps.AdministratorConfig',
+    'ankete.apps.AnketeConfig',
+    'radovi.apps.RadoviConfig',
+    'programski_pozivi.apps.ProgramskiPoziviConfig',
+
     'crispy_forms',
 
     # Django apps
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
 ]
 
 MIDDLEWARE = [
@@ -59,7 +64,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'recenzentPlatforma.urls'
-
 
 TEMPLATES = [
     {
@@ -93,11 +97,11 @@ WSGI_APPLICATION = 'recenzentPlatforma.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'platforma',
-        "HOST": "localhost",
-        "PORT": "3306",
-        "USER": "root",
-        "PASSWORD": "nemanjasql" #neki dodatak
+        'NAME': config('NAME'),
+        "HOST": config('HOST'),
+        "PORT": config("PORT"),
+        "USER": config('USER'),
+        "PASSWORD": config('PASSWORD')
     }
 }
 
@@ -154,24 +158,26 @@ LOGIN_REDIRECT_URL = 'account:home'
 LOGIN_URL = 'account:login'
 
 
+
 ### Settings for filetypes and their size - Zile edit ###
 
-CONTENT_TYPES = ['.pdf', '.doc', '.docx', '.odt']
-MAX_UPLOAD_SIZE = "5242880" # 5MB
+CONTENT_TYPES = ['.pdf']
+MAX_UPLOAD_SIZE = "5242880"  # 5MB
 
-
+#### MEDIA
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-# Treba da napravimo email od kog ce da se salju poruke
-EMAIL_HOST_USER = 'EMAIL_HOST_USER'
-EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
 
+### MAIL SETTINGS ###
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+PASSWORD_RESET_TIMEOUT = 300  # 5 minuta traje link za resetovanje
 
 
 # Crispy requirements

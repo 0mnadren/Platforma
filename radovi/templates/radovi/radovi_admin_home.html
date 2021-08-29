@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Radovi</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Radovi</h1>
+
+<h5>Na ovoj stranici Admin:</h5>
+<ol>
+    <li>Kreira Radove <a href="{% url 'radovi:kreiraj_rad' %}">Ovde</a></li>
+    <li>Pristupa Radovima i salje Recenzentima <a href="{% url 'radovi:lista_radova_admin' %}">Ovde</a></li>
+    <li>Moze da vidi poslate radove, kom je poslat, kada i konacnu odluku za taj rad
+        <a href="{% url 'radovi:prosledjeni_radovi_admin' %}">Ovde</a>
+    </li>
+    <li>Moze da povuce poslat rad recenzentu</li>
+    <li>Moze da sortira recenzije koje nisu uradjene po broju dana</li>
+    <li>Moze da uporedjuje konacne poene nekog rada</li>
+</ol>
+
+{% endblock %}

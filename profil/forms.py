@@ -1,5 +1,4 @@
 from django import forms
-from django.forms import widgets
 from .models import Profil
 
 
@@ -35,7 +34,8 @@ class ProfilForm(forms.ModelForm):
             'naucni_rad_9',
             'naucni_rad_10',
         ]
-        
+
+    
         # widgets = {
         #     'oblasti': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'}),
         #     'ime': forms.CharField(attrs={'class': 'form-control'}),

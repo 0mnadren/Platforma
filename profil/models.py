@@ -3,7 +3,8 @@ from django.conf import settings
 
 from .validators import validate_file_extension, phone_regex
 
-
+# oblast treba da bude premestena na administratora
+# pa ovde da bude uvezena(COPY THIS): from administrator.views import Oblast
 class Oblast(models.Model):
     naziv = models.CharField(max_length=125, unique=True)
 
@@ -28,7 +29,7 @@ class Profil(models.Model):
 
     website = models.URLField(max_length=225, blank=True, null=True)
 
-    biografija = models.FileField(verbose_name='biografija', upload_to='profil/pdfs', validators=[validate_file_extension]) # Ovde nedostaje upload_to
+    biografija = models.FileField(upload_to='profil/pdfs', validators=[validate_file_extension]) # Ovde nedostaje upload_to
 
     naucni_rad_1 = models.CharField(max_length=125)
     naucni_rad_2 = models.CharField(max_length=125)
@@ -41,12 +42,10 @@ class Profil(models.Model):
     naucni_rad_9 = models.CharField(max_length=125)
     naucni_rad_10 = models.CharField(max_length=125)
 
-    # prosecna_ocena = models.IntField()
-
     # STANJE_PRIJAVE
     pregleda_se = models.BooleanField(default=False)  # Da sluzi za pending kod administratora, otvori prijavu postane True?
 
     pregledane_ankete = models.IntegerField(verbose_name='broj pregledanih anketa', default=0)
 
     def __str__(self):
-        return f"{self.user} - {self.ime} {self.prezime}"
+        return f"Korisnik: {self.user} -- Ime: {self.ime} {self.prezime}"

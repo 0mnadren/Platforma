@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Pitanja</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Azuriraj Pitanja</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class='btn btn-secondary' type="submit">Azuriraj</button>
+
+</form>
+
+{% endblock %}

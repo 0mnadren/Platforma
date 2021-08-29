@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Lista Radova</title>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'radovi:radovi_admin_home' %}" class="btn btn-outline-secondary">Radovi Home</a>
+<a href="{% url 'radovi:prosledjeni_radovi_admin' %}" class="btn btn-outline-secondary">Prosledjeni Radovi</a>
+<h1>Rad {{ rad.naziv }}</h1>
+Oblasti su:
+<br>
+{% for oblast in rad.oblasti.all %}
+    {{ oblast.naziv }}
+<hr>
+{% endfor %}
+Clanovi: {{ rad.clanovi }}
+<br>
+Godina: {{ rad.godina }}
+<br>
+Kategorija: {{ rad.kategorija }}
+<hr>
+<h5>Programski Poziv</h5>
+Pitanja:
+<ol>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje1 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje2 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje3 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje4 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje5 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje6 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje7 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje8 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje9 }}</li>
+    <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje10 }}</li>
+</ol>
+
+<hr>
+{% if rad.prihvacen_rad == None %}
+<h4>Kom korisniku zelite da prosledite ovaj Naucni Rad na ocenjivanje?</h4>
+<form method="POST">
+    {% csrf_token %}
+    {% for profil in profili %}
+    <input type="checkbox" id="{{ forloop.counter }}" name="profili[]" value="{{ profil.id }}">
+    <label for="{{ forloop.counter }}">{{ profil.user.username }}</label><br>
+    <br>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Posalji</button>
+</form>
+<hr>
+<h4>Vasa konacna odluka za ovaj rad?</h4>
+<hr>
+<form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" name="prihvati" class="btn btn-outline-success">Prihvati</button>
+    <button type="submit" name="odbij" class="btn btn-outline-danger">Odbij</button>
+</form>
+{% elif rad.prihvacen_rad == False %}
+<h4 style="color:red;">Ovaj rad je odbijen</h4>
+{% else %}
+<h4 style="color:green;">Ovaj rad je prihvacen</h4>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Kreiraj Rad</title>
+{% endblock %}
+
+{% block content %}
+
+<h1>Kreiraj Rad</h1>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-secondary">Kreiraj</button>
+</form>
+
+{% endblock %}
