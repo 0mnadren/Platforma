@@ -12,7 +12,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <body>
-
     <div id="login">
         <div class="container pt-5">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -28,15 +27,20 @@
                             <div class="form-group">
                                 <label for="password" class="text-info">Password:</label><br>
                                 <input type="password" name="password" id="password" class="form-control">
-                            </div>
+                            </div><br>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input
-                                            id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
+                                <div class="row">
+                                    <div class="col">
+                                        <input style="float: left;" type="submit" name="submit" class="btn btn-info btn-md" value="Submit">
+                                    </div>
+                                    <div class="col">
+                                        <a href="{% url 'account:register' %}" style="float: right;" name="register" class="text-right btn btn-info btn-md" value="Register here">Register here</a>
+                                    </div>
+                                </div>                                
                             </div>
-                            <div id="register-link" class="text-right">
-                                <a href="{% url 'account:register' %}" class="text-info">Register here</a>
-                                <br><br>
+                            <br>
+                            <div id="register-link" class="text-center">
+                                <br><br><br>
                                 <a href="{% url 'password_reset' %}" class="text-info">Zaboravljena lozinka?</a>
                             </div>
                         </form>
@@ -48,3 +52,6 @@
 </body>
 
 {% endblock content %}
+
+
+<a href="{% url 'account:register' %}" name="register" class="text-right btn btn-info btn-md" value="Register here">Register here</a>
