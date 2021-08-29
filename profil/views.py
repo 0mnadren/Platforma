@@ -42,7 +42,7 @@ def profil(request):
     default_datum = datetime.today()
     obavestenja = Obavestenje.objects.filter(
         profil=user.profil
-    )
+    ).order_by('-id')
 
     if request.method == 'POST':
         form = ProfilForm(request.POST or None, request.FILES,

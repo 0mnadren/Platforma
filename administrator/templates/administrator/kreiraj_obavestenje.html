@@ -13,13 +13,16 @@
 <form method="POST" enctype="multipart/form-data">
     <table class="table table-bordered table-dark">
         <div class="form-group">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-
-                {{ form.as_table }}
-            </div>
-    </table>
+            {% csrf_token %}
+            {{ form }}
+        </div>              
+    </table>    
     <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+    <label style="float: right;" for="send_mail">Posalji na mail
+        <input type="checkbox" name="send_mail" id="send_mail">
+    </label>
+    
+    
 </form>
 
 

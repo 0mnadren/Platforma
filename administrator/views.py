@@ -91,9 +91,23 @@ def kreiraj_obavestenje(request):
             'form': form
         }
         if form.is_valid():
-            form.save()
-            messages.success(request, f'Uspesno poslano obavestenje!')
-            return redirect('administrator:profil')
+            if request.POST.get('send_mail'):
+                for profil in form.cleaned_data['profil']:
+                    print(profil.user.email)
+                    send_mail(
+                        subject=f'{form.cleaned_data["naslov"]}',
+                        message=f'{form.cleaned_data["tekst"]} \n \n'
+                        'Portal za ocenjivanje naucnih radova.',
+                        from_email=settings.EMAIL_HOST_USER,
+                        recipient_list=[profil.user.email]
+                    )
+                    form.save()
+                    messages.success(request, f'Uspesno poslano obavestenje i na mail!!!')
+                    return redirect('administrator:profil')
+            else:
+                form.save()
+                messages.success(request, f'Uspesno poslano obavestenje!')
+                return redirect('administrator:profil')
     else:
         form = ObavestenjeForm()
         context = {
