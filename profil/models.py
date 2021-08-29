@@ -3,7 +3,8 @@ from django.conf import settings
 
 from .validators import validate_file_extension, phone_regex
 
-
+# oblast treba da bude premestena na administratora
+# pa ovde da bude uvezena(COPY THIS): from administrator.views import Oblast
 class Oblast(models.Model):
     naziv = models.CharField(max_length=125, unique=True)
 

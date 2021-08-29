@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -42,7 +42,7 @@ def profil(request):
     default_datum = datetime.today()
     obavestenja = Obavestenje.objects.filter(
         profil=user.profil
-    ).order_by('-id')
+    )
 
     if request.method == 'POST':
         form = ProfilForm(request.POST or None, request.FILES,
@@ -61,3 +61,11 @@ def profil(request):
     }
 
     return render(request, 'profil/profil.html', context)
+
+def obrisi_obavestenje(request, pk):
+    obavestenje = get_object_or_404(Obavestenje, pk=pk)
+
+    if request.method == 'POST':
+        obavestenje.delete()
+        return redirect('profil:profil')
+    return redirect('profil:profil')
