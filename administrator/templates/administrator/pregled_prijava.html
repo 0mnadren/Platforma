@@ -14,6 +14,7 @@
             <th class="text-center" scope="col">Korisnik</th>
             <th class="text-center" scope="col">Ime i prezime</th>
             <th class="text-center" scope="col">Stanje prijave</th>
+            <th class="text-center" scope="col">Trenutno na recenziji</th>
         </tr>
     </thead>
 
@@ -34,6 +35,11 @@
                 <span style="color: gray;">Prijava nije pregledana</span>
                 {% endif %}
             </td>
+            {% if prijava.prosledjenrad_set.all %}
+            <td class="text-center">{{ prijava.prosledjenrad_set.all|length }}</td>
+            {% else %}
+            <td class="text-center"></td>
+            {% endif %}
         </tr>
     </tbody>
     {% endfor %}
