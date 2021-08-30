@@ -39,16 +39,15 @@
             {% for obavestenje in obavestenja reversed %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ obavestenje.naslov }}</td>
-                <td>{{ obavestenje.tekst }}</td>
-                <td>{{ obavestenje.datum_vreme_kreiranja }}</td>
+                <td>{{ obavestenje.obavestenje.naslov }}</td>
+                <td>{{ obavestenje.obavestenje.tekst }}</td>
+                <td>{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
                 <td>
-                    <form action="{% url 'profil:obrisi_obavestenje' obavestenje.id %}" method="POST">
+                    <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
                         {% csrf_token %}
                         <input type="submit" value="Obrisi" class="btn btn-danger">
                     </form>
                 </td>
-
             </tr>
             {% endfor %}
         </tbody>
