@@ -62,6 +62,7 @@ def profil(request):
 
     return render(request, 'profil/profil.html', context)
 
+
 def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 

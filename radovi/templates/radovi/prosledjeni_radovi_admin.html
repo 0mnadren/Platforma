@@ -8,10 +8,23 @@
 <a href="{% url 'radovi:radovi_admin_home' %}" class="btn btn-outline-secondary">Radovi Home</a>
 <h1>Prosledjeni Radovi</h1>
 <hr>
-<p>Ovde moze Search Ime Rada, da lakse nadje rad i pregled statistike</p>
-
-<table class="table">
-    <thead>
+<h4>Filter: Ime rada</h4>
+<hr>
+<form method="POST" onkeydown="return event.key != 'Enter';">
+    <div class="form-group">
+        {% csrf_token %}
+        <input
+                onkeyup="imeRadaPretraga('{% url 'radovi:ime_rada_pretraga' %}');"
+                type="text"
+                class="form-control form-control-lg"
+                id="ime_rada"
+                name="ime_rada"
+                placeholder="Upisi ime rada za pretragu">
+    </div>
+</form>
+<div style="height:500px; overflow:scroll;">
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
             <th></th>
             <th>Naziv rada</th>
@@ -21,62 +34,33 @@
             <th>Recezent ocenio?</th>
             <th>Konacna ocena recenzenta</th>
             <th>Konacna odluka</th>
-            <th>Vidi detalje</th>
             <th>Oduzmi rad</th>
         </tr>
     </thead>
-    <tbody>
-    {% for prosledjen_rad in prosledjeni_radovi %}
-        <tr>
-            <th>{{ forloop.counter }}</th>
-            <td><a href="{% url 'radovi:naucni_rad_admin' prosledjen_rad.rad.id %}">{{ prosledjen_rad.rad.naziv }}</a></td>
-            <td>{{ prosledjen_rad.rad.kategorija }}</td>
-            <td>{{ prosledjen_rad.profil }}</td>
-            <td>{{ prosledjen_rad.kada_poslat }}</td>
+    <tbody id="tbody_ime_rada">
+        {% include 'radovi/ime_rada_pretraga.html' with prosledjeni_radovi=prosledjeni_radovi %}
 
-            {% if prosledjen_rad.zakljucani_odgovori %}
-            <td style="color:green;">Recenzent je ocenio rad</td>
-
-            <!-- Da bi dosli do ukupnog broja poena mora da se uporede dve tabele Profil i PrograsmkiPozivPitanja          -->
-                {% for odgovor in prosledjen_rad.profil.programskipozivodgovori_set.all %}
-                    {% if prosledjen_rad.rad.programski_poziv.programskipozivpitanja == odgovor.programski_poziv_pitanja %}
-                        <td>{{ odgovor.ukupan_broj_poena }}</td>
-                    {% else %}
-
-                    {% endif %}
-                {% endfor %}
-
-            {% else %}
-            <td style="color:red;">Recenzent nije ocenio rad</td>
-            <td></td>
-            {% endif %}
-
-            {% if prosledjen_rad.rad.prihvacen_rad == None %}
-            <td>Nije doneta konacna odluka</td>
-            {% elif prosledjen_rad.rad.prihvacen_rad == True %}
-            <td style="color:green;">Rad je prihvacen</td>
-            {% else %}
-            <td style="color:red;">Rad je odbijen</td>
-            {% endif %}
-
-            <td><a href="#" class="btn btn-outline-primary">Ovde</a></td>
-            <td>
-                <form method="POST" action="{% url 'radovi:oduzimanje_rada_admin' prosledjen_rad.id %}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-danger">Oduzmi</button>
-                </form>
-            </td>
-        </tr>
-    {% endfor %}
     </tbody>
 </table>
-
+</div>
 <hr>
 <hr>
-<h5>Ostaje da se vidi --> </h5>
-<p>Mozda ovde moze da se ubaci Search</p>
-<p>Omoguciti Adminu da unese period za izvestaj</p>
-<p>Spisak recenzija koje nisu uradjene odredjeni broj dana</p>
+<h4>Pretraga recenzija po broju dana</h4>
+<hr>
+<p>Unosom broja npr. 2 --> pretraga ce pokazati recenzije koje nisu pregledane, a poslate su 2 ili vise dana.</p>
+<form method="POST" onkeydown="return event.key != 'Enter';">
+    <div class="form-group">
+        {% csrf_token %}
+        <input type="number" class="form-control" id="broj_dana" name="broj dana" placeholder="Upisi broj dana">
+    </div>
+    <button type="button" class="btn btn-outline-info" onclick="recenzijeDaniPretraga('{% url 'radovi:recenzije_dani_pretraga' %}');">Pretrazi</button>
+</form>
+
+<div class="mt-3" id="div_broj_dana" style="height:300px; overflow:scroll;">
+    {% include 'radovi/recenzije_dani_pretraga.html' with prosledjeni_radovi_dani=prosledjeni_radovi_dani %}
+</div>
 
 
+{% load static %}
+    <script src="{% static 'radovi/js/search.js' %}" type="text/javascript"></script>
 {% endblock %}
