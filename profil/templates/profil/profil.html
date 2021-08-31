@@ -25,14 +25,14 @@
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
 <div id="obavestenja_table">
-    <table class="table table-dark">
+    <table class="table table-dark sortable" id="id_obavestenja_table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Naslov</th>
+                <th scope="col" style="width: 50px;">#</th>
+                <th scope="col" style="width: 200px;">Naslov</th>
                 <th style="height: 10px;" scope="col">Sadrzaj</th>
                 <th style="width: 200px;" scope="col">Datum slanja</th>
-                <th style="width: 200px;" scope="col">Delete</th>
+                <th style="width: 100px;" scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -114,4 +114,5 @@
         }
     }
 </script>
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 {% endblock %}
