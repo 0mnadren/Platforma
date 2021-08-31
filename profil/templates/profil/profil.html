@@ -5,7 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
 {% block title %}
 <title>Profil</title>
-{% endblock %}
+{% endblock title %}
 
 {% block content %}
 
@@ -13,7 +13,26 @@
 <h1>Status: Recezent</h1>
 <a href="{% url 'ankete:ankete' %}">Ankete</a>
 <a href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+<!-- SEARCH!!! -->
+<form action="{% url 'profil:search' %}" class="form-inline" method="get">
 
+    <div class="form-group mb-8">
+
+         <h1>{% if type %}{{ type.name }}{% else %} Pretrazi obavestenja {% endif %}</h1>
+
+    </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+
+     <label for="" class="sr-only">search</label>
+
+     <input name="search" type="" class="form-control" id="" placeholder="Keyword">
+
+     </div>
+
+     <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
+
+</form>
 
 <p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
 
@@ -115,4 +134,4 @@
     }
 </script>
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
-{% endblock %}
+{% endblock content %}

@@ -7,6 +7,7 @@ from .models import Oblast, Profil
 from account.models import accepted_check
 from administrator.models import Obavestenje, Obrisanostanje
 from datetime import datetime
+from django.db.models import Q
 
 
 @login_required()
@@ -79,3 +80,14 @@ def obrisi_obavestenje(request, pk):
         obavestenje_stanje.save()
         return redirect('profil:profil')
     return redirect('profil:profil')
+
+def search(request):
+    results = []
+    if request.method == "GET":
+        query = request.GET.get('search')
+        if query == '':
+            query = 'None'
+
+        results = Obavestenje.objects.filter(Q(naslov__icontains=query) | Q(tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
+
+    return render(request, 'profil/search.html', {'query': query, 'results': results})

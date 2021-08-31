@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
+{% block title %}
+<title>Search</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+        {% if query %}
+
+        <h2>
+
+            {% with results.count as total_results %}
+
+            Found {{ total_results }} result{{ total_results|pluralize }}
+
+            {% endwith %}
+
+        </h2>
+
+        {% for obavestenje in results %}
+
+            <a href="{{obavestenje.get_url}}">
+                <h3>{{obavestenje.datum_vreme_kreiranja}}</h3>
+            </a>
+
+            <h3>{{obavestenje.naslov}}</h3>
+
+
+        {% empty %}
+
+            <h3>No results found.</h3>
+
+        {% endfor %}
+
+        {% endif %}
+
+        <form action="{% url 'profil:profil' %}" class="form-inline" method="get">
+
+            <button type="submit" class="btn btn-primary btn-lg mb-2">Back</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock content %}
