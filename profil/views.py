@@ -82,12 +82,13 @@ def obrisi_obavestenje(request, pk):
     return redirect('profil:profil')
 
 def search(request):
+    user = request.user
     results = []
     if request.method == "GET":
         query = request.GET.get('search')
         if query == '':
             query = 'None'
 
-        results = Obavestenje.objects.filter(Q(naslov__icontains=query) | Q(tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
+        results = Obrisanostanje.objects.filter(profil=user.profil, obrisano=False).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
 
     return render(request, 'profil/search.html', {'query': query, 'results': results})
