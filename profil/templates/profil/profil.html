@@ -14,25 +14,7 @@
 <a href="{% url 'ankete:ankete' %}">Ankete</a>
 <a href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
 <!-- SEARCH!!! -->
-<form action="{% url 'profil:search' %}" class="form-inline" method="get">
 
-    <div class="form-group mb-8">
-
-         <h1>{% if type %}{{ type.name }}{% else %} Pretrazi obavestenja {% endif %}</h1>
-
-    </div>
-
-    <div class="form-group mx-sm-3 mb-2">
-
-     <label for="" class="sr-only">search</label>
-
-     <input name="search" type="" class="form-control" id="" placeholder="Keyword">
-
-     </div>
-
-     <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
-
-</form>
 
 <p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
 
@@ -44,7 +26,17 @@
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
 <div id="obavestenja_table">
-    <table class="table table-dark sortable"> <!--sortable omogucava sort sa skripte na dnu-->
+    <form action="{% url 'profil:search' %}" class="form-inline" method="get">
+        <div class="form-group mb-8">
+            <h2>{% if type %}{{ type.name }}{% else %} Pretrazi obavestenja {% endif %}</h2>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="" class="sr-only">search</label>
+            <input name="search" type="" class="form-control" id="" placeholder="Kljucna rec">
+        </div>
+        <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
+    </form>
+    <table class="table table-dark sortable">        <!--sortable omogucava sort sa skripte na dnu-->
         <thead>
             <tr>
                 <th scope="col" style="width: 50px;">#</th>

@@ -70,6 +70,7 @@ def profil(request):
 
     return render(request, 'profil/profil.html', context)
 
+
 def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
@@ -80,6 +81,7 @@ def obrisi_obavestenje(request, pk):
         obavestenje_stanje.save()
         return redirect('profil:profil')
     return redirect('profil:profil')
+
 
 def search(request):
     user = request.user

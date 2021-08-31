@@ -24,11 +24,11 @@
 
         {% for obavestenje in results %}
 
-            <a href="{{obavestenje.get_url}}">
-                <h3>{{obavestenje.obavestenje.datum_vreme_kreiranja}}</h3>
+            <a href="{{obavestenje.obavestenje.get_url}}">
+                <h3>{{obavestenje.obavestenje.naslov}}</h3>
             </a>
 
-            <h3>{{obavestenje.obavestenje.naslov}}</h3>
+            <h3>{{obavestenje.obavestenje.tekst}}</h3>
 
 
         {% empty %}
