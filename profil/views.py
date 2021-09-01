@@ -70,7 +70,8 @@ def profil(request):
 
     return render(request, 'profil/profil.html', context)
 
-
+@login_required()
+@user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
@@ -83,6 +84,8 @@ def obrisi_obavestenje(request, pk):
     return redirect('profil:profil')
 
 
+@login_required()
+@user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def search(request):
     user = request.user
     results = []

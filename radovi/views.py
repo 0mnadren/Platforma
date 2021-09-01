@@ -1,9 +1,13 @@
+import datetime
+
 from django.contrib import messages
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.http.response import HttpResponse
+from django.template.loader import render_to_string
 
 from administrator.validators import superuser_check
 from account.models import accepted_check
@@ -92,12 +96,56 @@ def naucni_rad_admin(request, pk):
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def prosledjeni_radovi_admin(request):
-    prosledjeni_radovi = ProsledjenRad.objects.all().order_by('rad')
+    ime_rada = request.POST.get('ime_rada')
+    broj_dana = request.POST.get('broj_dana')
+
+    if ime_rada:
+        prosledjeni_radovi = ProsledjenRad.objects.filter(rad__naziv__icontains=ime_rada).order_by('rad')
+    elif broj_dana:
+        prosledjeni_radovi_dani = ProsledjenRad.objects.filter(
+            kada_poslat__lte=datetime.datetime.now() - datetime.timedelta(broj_dana)
+        ).filter(zakljucani_odgovori=False)
+    else:
+        prosledjeni_radovi = ProsledjenRad.objects.all().order_by('rad')
+        prosledjeni_radovi_dani = None
 
     context = {
-        'prosledjeni_radovi': prosledjeni_radovi
+        'prosledjeni_radovi': prosledjeni_radovi,
+        'prosledjeni_radovi_dani': prosledjeni_radovi_dani
     }
     return render(request, 'radovi/prosledjeni_radovi_admin.html', context)
+
+
+def ime_rada_pretraga(request):
+
+    if request.method == 'POST':
+        ime_rada = request.POST.get('ime_rada')
+        prosledjeni_radovi = ProsledjenRad.objects.filter(rad__naziv__icontains=ime_rada).order_by('rad')
+        context = {
+            'prosledjeni_radovi': prosledjeni_radovi
+        }
+
+        result = render_to_string('radovi/ime_rada_pretraga.html', context, request)
+        return HttpResponse(result)
+
+
+def recenzije_dani_pretraga(request):
+
+    if request.method == 'POST':
+        try:
+            broj_dana = int(request.POST.get('broj_dana'))
+        except ValueError as e:
+            print('Error je ', e)
+        prosledjeni_radovi_dani = ProsledjenRad.objects.filter(
+            kada_poslat__lte=datetime.datetime.now()-datetime.timedelta(broj_dana)
+        ).filter(zakljucani_odgovori=False)
+        print(prosledjeni_radovi_dani)
+        context = {
+            'prosledjeni_radovi_dani': prosledjeni_radovi_dani
+        }
+        result = render_to_string('radovi/recenzije_dani_pretraga.html', context, request)
+        return HttpResponse(result)
+
 
 
 @login_required()
