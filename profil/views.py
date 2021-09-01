@@ -3,10 +3,11 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .forms import ProfilForm
-from .models import Oblast
+from .models import Oblast, Profil
 from account.models import accepted_check
-from administrator.models import Obavestenje
+from administrator.models import Obavestenje, Obrisanostanje
 from datetime import datetime
+from django.db.models import Q
 
 
 @login_required()
@@ -40,10 +41,17 @@ def prijava(request):
 def profil(request):
     user = request.user
     default_datum = datetime.today()
-    obavestenja = Obavestenje.objects.filter(
-        profil=user.profil
-    )
+    # obavestenja = Obavestenje.objects.filter(
+    #     profil=user.profil,
+    #     obavest=True
+    # )
+    # print(obavestenja)
 
+    obavestenja = Obrisanostanje.objects.filter(
+        profil=user.profil,
+        obrisano=False
+    )
+    
     if request.method == 'POST':
         form = ProfilForm(request.POST or None, request.FILES,
                           instance=request.user.profil)
@@ -66,7 +74,26 @@ def profil(request):
 def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
+    obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
+    print(obavestenje_stanje)
     if request.method == 'POST':
-        obavestenje.delete()
+        obavestenje_stanje.obrisano = True
+        obavestenje_stanje.save()
         return redirect('profil:profil')
     return redirect('profil:profil')
+<<<<<<< Updated upstream
+=======
+
+
+def search(request):
+    user = request.user
+    results = []
+    if request.method == "GET":
+        query = request.GET.get('search')
+        if query == '':
+            query = 'None'
+
+        results = Obrisanostanje.objects.filter(profil=user.profil, obrisano=False).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
+
+    return render(request, 'profil/search.html', {'query': query, 'results': results})
+>>>>>>> Stashed changes
