@@ -5,28 +5,28 @@
 {% endblock title %}
 
 {% block content %}
+{% load static %}
 <br>
-<table class="table">
-    <thead class="thead-dark">
+<table class="table table-dark sortable">        <!--sortable omogucava sort sa skripte na dnu-->
+    <thead>
         <tr>
-            <th scope="col-1">#</th>
-            <th class="text-center" scope="col">Pregled prijave</th>
-            <th class="text-center" scope="col">Korisnik</th>
-            <th class="text-center" scope="col">Ime i prezime</th>
-            <th class="text-center" scope="col">Stanje prijave</th>
-            <th class="text-center" scope="col">Trenutno na recenziji</th>
+            <th scope="col" style="width: 50px;">#</th>
+            <th scope="col" style="width: 200px;">Pregled prijave</th>
+            <th style="height: 10px;" scope="col">Korisnik</th>
+            <th style="height: 10px;" scope="col">Ime i prezime</th>
+            <th scope="col">Stanje prijave</th>
+            <th scope="col">Trenutno na recenziji</th>
         </tr>
     </thead>
-
-    {% for prijava in prijave %}
     <tbody>
+        {% for prijava in prijave %}
         <tr>
-            <th>{{ forloop.counter }}</th>
-            <td class="text-center" scope="row"><a
-                    href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">Detaljno</a></td>
-            <td class="text-center">{{ prijava.user.username }}</td>
-            <td class="text-center">{{ prijava.ime }} {{ prijava.prezime }}</td>
-            <td class="text-center">
+            <th scope="row">{{ forloop.counter }}</th>
+            <td scope="row"><a
+                href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">Detaljno</a></td>
+            <td>{{ prijava.user.username }}</td>
+            <td>{{ prijava.ime }} {{ prijava.prezime }}</td>
+            <td>
                 {% if prijava.user.profile_accepted %}
                 <span style="color: green;">Prijava je odobrena</span>
                 {% elif prijava.user.profile_accepted == False %}
@@ -36,15 +36,14 @@
                 {% endif %}
             </td>
             {% if prijava.prosledjenrad_set.all %}
-            <td class="text-center">{{ prijava.prosledjenrad_set.all|length }}</td>
+            <td>{{ prijava.prosledjenrad_set.all|length }}</td>
             {% else %}
-            <td class="text-center"></td>
+            <td></td>
             {% endif %}
         </tr>
+        {% endfor %}
     </tbody>
-    {% endfor %}
 </table>
 
-
-
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 {% endblock content %}
