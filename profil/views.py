@@ -70,7 +70,8 @@ def profil(request):
 
     return render(request, 'profil/profil.html', context)
 
-
+@login_required()
+@user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
@@ -81,10 +82,10 @@ def obrisi_obavestenje(request, pk):
         obavestenje_stanje.save()
         return redirect('profil:profil')
     return redirect('profil:profil')
-<<<<<<< Updated upstream
-=======
 
 
+@login_required()
+@user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def search(request):
     user = request.user
     results = []
@@ -96,4 +97,3 @@ def search(request):
         results = Obrisanostanje.objects.filter(profil=user.profil, obrisano=False).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
 
     return render(request, 'profil/search.html', {'query': query, 'results': results})
->>>>>>> Stashed changes
