@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Admin Oblasti</title>
+{% endblock title %}
+
+{% block content %}
+
+<h1>Lista Oblasti</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit"  class="btn btn-outline-info">Napravi Oblast</button>
+</form>
+
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+<table class="table mt-3">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Naziv</th>
+            <th>Izmeni Oblast</th>
+            <th>Obrisi Oblast</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    {% for oblast in oblasti %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ oblast.naziv }}</td>
+            <td> <a class="btn btn-info" href="{% url 'administrator:izmeni_oblast_admin' oblast.id %}">Izmeni</a></td>
+            <td> <a class="btn btn-danger" href="{% url 'administrator:obrisi_oblast_admin' oblast.id %}">Obrisi</a></td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+
+{% endblock content %}

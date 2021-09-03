@@ -3,11 +3,15 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.urls import reverse
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .validators import superuser_check
-from profil.models import Profil
-from .forms import ObavestenjeForm
+from profil.models import Profil, Oblast
+from .forms import ObavestenjeForm, OblastForm
 from django.conf import settings
+
 
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
@@ -115,4 +119,43 @@ def kreiraj_obavestenje(request):
         }
     
     return render(request, 'administrator/kreiraj_obavestenje.html', context)
+
+
+### OBLASTI ###
+class ListaOblastiAdmin(LoginRequiredMixin, UserPassesTestMixin, generic.CreateView):
+    form_class = OblastForm
+    template_name = 'administrator/lista_oblasti_admin.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get_context_data(self, **kwargs):
+        kwargs['oblasti'] = Oblast.objects.order_by('-id')
+        return super(ListaOblastiAdmin, self).get_context_data(**kwargs)
+
+    def get_success_url(self):
+        return reverse('administrator:lista_oblasti_admin')
+
+
+class IzmeniOblastAdmin(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Oblast
+    template_name = 'administrator/izmeni_oblast_admin.html'
+    fields = ['naziv']
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get_success_url(self):
+        return reverse('administrator:lista_oblasti_admin')
+
+
+class ObrisiOblastAdmin(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Oblast
+    template_name = 'administrator/obrisi_oblast_admin.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+    def get_success_url(self):
+        return reverse('administrator:lista_oblasti_admin')
 

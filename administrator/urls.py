@@ -11,4 +11,8 @@ urlpatterns = [
     path('pregled_prijava/<int:pk>/odbijena', views.prijava_odbijena, name='prijava_odbijena'),
 
     path('kreiraj_obavestenje/', views.kreiraj_obavestenje, name='kreiraj_obavestenje'),
+
+    path('lista_oblasti_admin/', views.ListaOblastiAdmin.as_view(), name='lista_oblasti_admin'),
+    path('<int:pk>/izmeni_oblast_admin', views.IzmeniOblastAdmin.as_view(), name='izmeni_oblast_admin'),
+    path('<int:pk>/obrisi_oblast_admin', views.ObrisiOblastAdmin.as_view(), name='obrisi_oblast_admin'),
 ]

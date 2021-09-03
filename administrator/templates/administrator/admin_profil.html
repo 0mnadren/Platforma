@@ -12,14 +12,14 @@
 <br>
 <a href="{% url 'administrator:pregled_prijava' %}">Prijave recenzenata</a>
 <br>
-<a href="{% url 'admin:profil_oblast_add' %}">Dodaj oblast</a>
+<a href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a>
 <br>
 <a href="#">Ankete</a>
 <br>
 <a href="{% url 'administrator:kreiraj_obavestenje' %}">Obavestenja</a>
 <br>
-<a href="{% url 'radovi:radovi_admin_home' %}">Naucni radovi</a>
-<br>
 <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski poziv</a>
+<br>
+<a href="{% url 'radovi:radovi_admin_home' %}">Naucni radovi</a>
 
 {% endblock content %}

@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import widgets
 from .models import Obavestenje
+from profil.models import Oblast
 
 
 class ObavestenjeForm(forms.ModelForm):
@@ -17,3 +18,9 @@ class ObavestenjeForm(forms.ModelForm):
             'tekst',
             'potpis',
         ]
+
+
+class OblastForm(forms.ModelForm):
+    class Meta:
+        model = Oblast
+        fields = ['naziv']
