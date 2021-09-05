@@ -36,7 +36,8 @@
         </div>
         <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
     </form>
-    <table class="table table-dark sortable">        <!--sortable omogucava sort sa skripte na dnu-->
+    <table class="table table-dark sortable">
+        <!--sortable omogucava sort sa skripte na dnu-->
         <thead>
             <tr>
                 <th scope="col" style="width: 50px;">#</th>
@@ -50,8 +51,8 @@
             {% for obavestenje in obavestenja reversed %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ obavestenje.obavestenje.naslov }}</td>
-                <td>{{ obavestenje.obavestenje.tekst }}</td>
+                <td scope="row"><a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">{{ obavestenje.obavestenje.naslov }}</a></td>
+                <td data-bind="text: text()" class="text-truncate" style="max-width: 200px">{{ obavestenje.obavestenje.tekst }}</td>
                 <td>{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
                 <td>
                     <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
