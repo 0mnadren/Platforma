@@ -149,7 +149,7 @@ def glasaj_anketa(request, pk):
                     pitanje.save()
         user = request.user
         profil = Profil.objects.filter(id=user.profil.id).first()
-        profil.popunjene_ankete += 1
+        profil.pregledane_ankete += 1
         profil.save()
 
         popunjena_anketa = get_object_or_404(
