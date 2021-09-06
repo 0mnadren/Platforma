@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'programski_pozivi.apps.ProgramskiPoziviConfig',
 
     'crispy_forms',
+    'widget_tweaks',
 
     # Django apps
     'django.contrib.admin',
