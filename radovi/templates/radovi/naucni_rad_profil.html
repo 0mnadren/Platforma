@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-{% if prosledjen_rad.profil == user.profil and prosledjen_rad.rad == rad and not prosledjen_rad.zakljucani_odgovori %}
+
 <a class="btn btn-outline-secondary" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
 <h1>Naucni rad {{ rad.naziv }}</h1>
 
@@ -20,8 +20,6 @@ Clanovi: {{ rad.clanovi }}
 <br>
 Kategorija: {{ rad.kategorija }}
 <hr>
-
-
 
 <form method="POST">
   {% csrf_token %}
@@ -60,9 +58,5 @@ Kategorija: {{ rad.kategorija }}
   </div>
 </div>
 </form>
-{% else %}
-<h1>Naucni rad ne postoji</h1>
-<a class="btn btn-outline-secondary" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
-{% endif %}
 
 {% endblock %}

@@ -139,7 +139,6 @@ def recenzije_dani_pretraga(request):
         prosledjeni_radovi_dani = ProsledjenRad.objects.filter(
             kada_poslat__lte=datetime.datetime.now()-datetime.timedelta(broj_dana)
         ).filter(zakljucani_odgovori=False)
-        print(prosledjeni_radovi_dani)
         context = {
             'prosledjeni_radovi_dani': prosledjeni_radovi_dani
         }
@@ -181,7 +180,6 @@ def lista_radova_profil(request):
     user = request.user
     radovi = ProsledjenRad.objects.filter(profil=user.profil).filter(zakljucani_odgovori=False)
 
-    print(len(radovi))  # Moze da se iskoristi kao notifikacija na profilu za radove
     broj_radova = len(radovi)
 
     context = {
@@ -196,48 +194,53 @@ def lista_radova_profil(request):
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def naucni_rad_profil(request, pk):
     rad = get_object_or_404(Rad, pk=pk)
-    pitanja = rad.programski_poziv.programskipozivpitanja
     user = request.user
-
-    odgovori = ProgramskiPozivOdgovori.objects.filter(programski_poziv_pitanja_id=pitanja.id).filter(profil_id=user.profil.id).first()
-
     prosledjen_rad = ProsledjenRad.objects.filter(profil=user.profil, rad=rad).first()
 
-    if request.method == 'POST' and 'sacuvaj' in request.POST:
-        form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.programski_poziv_pitanja_id = pitanja.id
-            obj.profil_id = user.profil.id
-            obj.izracunaj_ukupan_broj_poena()
-            obj.save()
-            messages.success(request, f'Napravili ste pitanja!')
-            return redirect('radovi:lista_radova_profil')
-    elif request.method == 'POST' and 'zakljucaj' in request.POST:
-        form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
-        if form.is_valid():
-            obj = form.save(commit=False)
-            obj.programski_poziv_pitanja_id = pitanja.id
-            obj.profil_id = user.profil.id
-            obj.izracunaj_ukupan_broj_poena()
-            obj.save()
-            messages.success(request, f'Napravili ste pitanja!')
+    if prosledjen_rad and not prosledjen_rad.zakljucani_odgovori:
+        pitanja = rad.programski_poziv.programskipozivpitanja
+        odgovori = ProgramskiPozivOdgovori.objects.filter(programski_poziv_pitanja_id=pitanja.id).filter(
+            profil_id=user.profil.id).first()
 
-            prosledjen_rad.zakljucani_odgovori = True
-            prosledjen_rad.save()
-            return redirect('radovi:lista_radova_profil')
+        if request.method == 'POST' and 'sacuvaj' in request.POST:
+            form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.programski_poziv_pitanja_id = pitanja.id
+                obj.profil_id = user.profil.id
+                obj.izracunaj_ukupan_broj_poena()
+                obj.save()
+                messages.success(request, f'Napravili ste pitanja!')
+                return redirect('radovi:lista_radova_profil')
+        elif request.method == 'POST' and 'zakljucaj' in request.POST:
+            form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                obj.programski_poziv_pitanja_id = pitanja.id
+                obj.profil_id = user.profil.id
+                obj.izracunaj_ukupan_broj_poena()
+                obj.save()
+                messages.success(request, f'Napravili ste pitanja!')
+
+                prosledjen_rad.zakljucani_odgovori = True
+                prosledjen_rad.save()
+                return redirect('radovi:lista_radova_profil')
+        else:
+            form = ProgramskiPozivOdgovoriForm(instance=odgovori)
+
+        # zipuju se pitanja i form(odgovori) da bi mogli zajedno da ih pokazemo
+        lista_pitanja = ProgramskiPozivPitanjaForm(data=model_to_dict(ProgramskiPozivPitanja.objects.get(pk=pitanja.id)))
+        pitanja_odgovori = zip(lista_pitanja, form)
+
+        context = {
+            'rad': rad,
+            'pitanja_odgovori': pitanja_odgovori,
+            'prosledjen_rad': prosledjen_rad,
+            'form': form,
+        }
+
+        return render(request, 'radovi/naucni_rad_profil.html', context)
+
     else:
-        form = ProgramskiPozivOdgovoriForm(instance=odgovori)
+        return redirect('radovi:lista_radova_profil')
 
-    # zipuju se pitanja i form(odgovori) da bi mogli zajedno da ih pokazemo
-    lista_pitanja = ProgramskiPozivPitanjaForm(data=model_to_dict(ProgramskiPozivPitanja.objects.get(pk=pitanja.id)))
-    pitanja_odgovori = zip(lista_pitanja, form)
-
-    context = {
-        'rad': rad,
-        'pitanja_odgovori': pitanja_odgovori,
-        'prosledjen_rad': prosledjen_rad,
-        'form': form,
-    }
-
-    return render(request, 'radovi/naucni_rad_profil.html', context)

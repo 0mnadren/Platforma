@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ankete.apps.AnketeConfig',
     'radovi.apps.RadoviConfig',
     'programski_pozivi.apps.ProgramskiPoziviConfig',
+    'error_handlers.apps.ErrorHandlersConfig',
 
     'crispy_forms',
     'widget_tweaks',

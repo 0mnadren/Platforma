@@ -47,6 +47,13 @@ urlpatterns = [
          name="password_reset_complete")
 ]
 
+
+handler400 = 'error_handlers.views.custom_bad_request_view'
+handler403 = 'error_handlers.views.custom_permission_denied_view'
+handler404 = 'error_handlers.views.custom_page_not_found_view'
+handler500 = 'error_handlers.views.custom_error_view'
+
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
