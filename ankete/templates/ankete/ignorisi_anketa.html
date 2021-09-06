@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Ignore Ankete</title>
+{% endblock %} {% block content %}
+
+<p>Da li ste sigurni da zelite da ignorise Anketu "{{item}}"?</p>
+
+<form action="" method="post">
+  {%csrf_token%}
+  <a href="{%url 'ankete:ankete'%}" class="btn btn-primary">Ne zelim</a>
+  <button type="submit" class="btn btn-danger">Ignorisi</button>
+</form>
+
+{% endblock %}

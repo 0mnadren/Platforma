@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Create Ankete</title>
+{% endblock %} {% block content %}
+
+<h1>Zdravo: {{ user.username }}</h1>
+<br /><br />
+
+<h3>Slanje ankete '{{ anketa.naziv }}'</h3>
+<p>{{ anketa.opis }}</p>
+<br />
+<hr />
+<br />
+
+<p>Svaki recenzent ima oblast ili oblasti strucnosti</p>
+<p>
+  Odabirom oblasti anketa se salje samo recenzentima iz tih oblasti strucnosti
+</p>
+<h4>Izaberi oblasti:</h4>
+<form method="POST">
+  {%csrf_token%} {% for oblast in oblasti %}
+  <input
+    type="checkbox"
+    id="{{ forloop.counter }}"
+    name="oblasti[]"
+    value="{{ oblast }}"
+  />
+  <label for="{{ forloop.counter }}">{{ oblast.naziv }}</label><br />
+  {% endfor %}
+  <input
+    class="btn btn-outline-success"
+    type="submit"
+    name="posalji_oblast"
+    value="Posalji anketu po oblastima"
+  />
+  <button class="btn btn-outline-info" type="submit" name="posalji_svima">
+    Posalji svima
+  </button>
+</form>
+
+{% endblock %}

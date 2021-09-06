@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Rezultat</title>
+{% endblock %} {% block content %}
+<br>
+<a href="{% url 'ankete:admin_ankete' %}" class="btn btn-outline-secondary">Nazad na ankete</a>
+<div class="container">
+      <div class="row">
+        <div class="col-md-8 m-auto">
+<div class="text-center m-4">
+  <h2>Rezultat Ankete "{{anketa.naziv}}"</h2>
+</div>
+              
+{% for pitanje in pitanja %}  
+        <h3 class="mb-2">{{pitanje.pitanje_text}}</h3>
+        <ul class="list-group mb-3">
+            <li class="list-group-item">
+              {{ pitanje.opcija_one }} <span class="badge badge-success float-right">{{ pitanje.opcija_one_count }} vote{{ pitanje.opcija_one_count  | pluralize }}</span>
+            </li>
+            <li class="list-group-item">
+              {{ pitanje.opcija_two }}  <span class="badge badge-success float-right">{{ pitanje.opcija_two_count }} vote{{ pitanje.opcija_two_count | pluralize }}</span>
+            </li>
+            <li class="list-group-item">
+              {{ pitanje.opcija_three }} <span class="badge badge-success float-right">{{ pitanje.opcija_three_count }} vote{{ pitanje.opcija_three_count  | pluralize }}</span>
+            </li>
+        </ul>
+  {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

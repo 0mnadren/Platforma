@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% load static %} {% block title %}
+<title>Profil</title>
+
+{% endblock %} {% block content %}
+
+<h1>Zdravo: {{ user.username }}</h1>
+<br /><br />
+
+<h3>PREGLED ANKETA</h3>
+
+<p>Ovde se uredjuju Ankete od strane Admina</p>
+
+<a class="btn btn-warning" href="{% url 'ankete:create_anketa' %}"
+  >Napravi anketu</a
+><br /><br />
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Naslov</th>
+      <th style="height: 10px" scope="col">Opis</th>
+      <th style="width: 200px" scope="col">Detalji</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for anketa in ankete reversed%}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td class="text-center">{{ anketa }}</td>
+      <td class="text-center">{{ anketa.opis }}</td>
+      <td>
+        <a
+          class="btn btn-sm btn-primary"
+          href="{% url 'ankete:create_pitanje' anketa.id %}"
+          >Napravi pitanje</a
+        >
+      </td>
+      <td>
+        <a
+          class="btn btn-sm btn-primary"
+          href="{% url 'ankete:rezultat_anketa' anketa.id %}"
+          >Rezultat ankete</a
+        >
+      </td>
+      <td>
+        <a
+          class="btn btn-sm btn-success"
+          href="{% url 'ankete:posalji_anketa' anketa.id %}"
+          >Posalji anketu</a
+        >
+      </td>
+      <td>
+        <a
+          class="btn btn-sm btn-danger"
+          href="{% url 'ankete:delete_anketa' anketa.id %}"
+          >Obrisi</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

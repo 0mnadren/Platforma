@@ -1,7 +1,17 @@
 from django.contrib import admin
 from .models import \
     Anketa, \
-    AnketaPitanje
+    AnketaPitanje,\
+    AnketaPopunjena
 
-admin.site.register(Anketa)
-admin.site.register(AnketaPitanje)
+
+class AnketaPitanjeAdmin(admin.TabularInline):
+    model = AnketaPitanje
+
+
+class AnketaAdmin(admin.ModelAdmin):
+    inlines = [AnketaPitanjeAdmin, ]
+
+
+admin.site.register(Anketa, AnketaAdmin)
+admin.site.register(AnketaPopunjena)
