@@ -76,7 +76,6 @@ def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
     obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
-    print(obavestenje_stanje)
     if request.method == 'POST':
         obavestenje_stanje.obrisano = True
         obavestenje_stanje.save()
@@ -98,3 +97,16 @@ def search(request):
 
     return render(request, 'profil/search.html', {'query': query, 'results': results})
 
+
+@login_required()
+@user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
+def obavestenje_detaljno(request, pk):
+    obavestenje = get_object_or_404(Obavestenje, pk=pk)
+    obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
+    if obavestenje_stanje.obrisano == False:
+        context = {
+            'obavestenje': obavestenje,
+        }
+        return render(request, 'profil/obavestenje_detaljno.html', context)
+    else:
+        return redirect('profil:profil')

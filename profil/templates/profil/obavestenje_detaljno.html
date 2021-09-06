@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>obavestenje detaljno</title>
+{% endblock title %}
+
+{% block content %}
+TELO
+
+<h2>
+    OBAVESTENJE DETALJNO!!!
+</h2>
+<h3>
+    Naslov obavestenja:
+    {{ obavestenje.naslov }}
+</h3>
+<br><br><br><br><br>
+<h2>
+    Obavestenje tekst: <br>
+    <h3>
+        {{ obavestenje.tekst }}
+    </h3>
+</h2>
+
+
+{% endblock content %}
