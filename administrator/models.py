@@ -19,7 +19,7 @@ class Obavestenje(models.Model):
 class Obrisanostanje(models.Model):
     profil = models.ForeignKey(Profil, on_delete=models.CASCADE, related_name='korisnik')
     obavestenje = models.ForeignKey(Obavestenje, on_delete=models.CASCADE, related_name='obavest')
-    obrisano = models.BooleanField(default=False)
+    
     
 
     def __str__(self):

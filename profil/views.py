@@ -48,8 +48,7 @@ def profil(request):
     # print(obavestenja)
 
     obavestenja = Obrisanostanje.objects.filter(
-        profil=user.profil,
-        obrisano=False
+        profil=user.profil
     )
     
     if request.method == 'POST':
@@ -77,8 +76,7 @@ def obrisi_obavestenje(request, pk):
 
     obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
     if request.method == 'POST':
-        obavestenje_stanje.obrisano = True
-        obavestenje_stanje.save()
+        obavestenje_stanje.delete()
         return redirect('profil:profil')
     return redirect('profil:profil')
 
@@ -92,8 +90,7 @@ def search(request):
         query = request.GET.get('search')
         if query == '':
             query = 'None'
-
-        results = Obrisanostanje.objects.filter(profil=user.profil, obrisano=False).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
+        results = Obrisanostanje.objects.filter(profil=user.profil).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
 
     return render(request, 'profil/search.html', {'query': query, 'results': results})
 
@@ -103,7 +100,8 @@ def search(request):
 def obavestenje_detaljno(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
     obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
-    if obavestenje_stanje.obrisano == False:
+    
+    if obavestenje_stanje:
         context = {
             'obavestenje': obavestenje,
         }
