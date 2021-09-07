@@ -1,0 +1,17 @@
+.admin-ul > li {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--card-color);
+}
+
+.radovi-link-admin {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+}
+
+.radovi-link-admin:hover {
+    color: #FFF !important;
+    background-color: var(--link-color);
+    border-radius: 20px;
+    padding: 0.4rem;
+}

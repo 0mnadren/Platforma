@@ -3,9 +3,64 @@
 <head>
     <meta charset="UTF-8">
     {% block title %}
-    {% endblock %}
+    {% endblock title %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-</head>
+  </head>
+<style>
+:root {
+    --cta-color: #6A994E;
+    --link-color: #386641;
+    --background-color:  #F2E8CF;
+    --background-shadow:rgba(242, 232, 207, 0.8);
+    --card-color: #A7C957;
+    --accent-color: #BC4749;
+    --dark-accent-color: #9c383a;
+    --tertiary-text: rgb(59, 99, 64);
+    --secondary-text: rgb(27, 44, 29);
+    --primary-text: #0f1a11;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    transition: 0.3s;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  color: var(--primary-text);
+  font-weight: 500;
+}
+
+p, li, label, input, textarea {
+  color: var(--secondary-text);
+}
+
+ul{
+	list-style: none;
+	margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-text);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--link-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'account:home' %}">Home</a>
@@ -57,7 +112,7 @@
 
               {% block content %}
 
-                {% endblock %}
+              {% endblock content %}
             </div>
       </div>
     </div>

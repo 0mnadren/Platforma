@@ -1,0 +1,40 @@
+.admin-ul > li {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--card-color);
+}
+
+a:hover {
+    color: #FFF !important;
+}
+
+.admin-ul > li:hover {
+    background-color: var(--link-color);
+    transform: scaleX(1.05);
+    border-radius: 20px;
+}
+
+
+.admin-btn-lightgreen { 
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+.admin-btn-green {
+    background-color: var(--cta-color); /* Green */
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
