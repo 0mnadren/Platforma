@@ -71,15 +71,19 @@ def posalji_anketa(request, pk):
 
     if request.POST and 'posalji_oblast' in request.POST:
         izabrane_oblasti = request.POST.getlist('oblasti[]')
-        for profil in profili:
-            for oblast_profila in profil.oblasti.all():
-                if oblast_profila.naziv in izabrane_oblasti:
-                    profil.save()
-                    profil.anketa_set.add(anketa)
-            else:
-                print('Nema takvih profila')
-        messages.success(request, f'Poslali ste anketu po oblastima!')
-        return redirect('ankete:admin_ankete')
+        if izabrane_oblasti:
+            for profil in profili:
+                for oblast_profila in profil.oblasti.all():
+                    if oblast_profila.naziv in izabrane_oblasti:
+                        profil.save()
+                        profil.anketa_set.add(anketa)
+                else:
+                    print('Nema takvih profila')
+            messages.success(request, f'Poslali ste anketu po oblastima!')
+            return redirect('ankete:admin_ankete')
+        else:
+            messages.success(request, f'Niste izabrali oblast!')
+            return redirect('ankete:posalji_anketa', pk=pk)
     elif request.POST and 'posalji_svima' in request.POST:
         for profil in profili:
             profil.save()

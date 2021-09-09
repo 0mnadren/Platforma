@@ -6,7 +6,25 @@
 {% endblock %} 
 
 {% block content %}
-
+<style>
+    .admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+</style>
 <div class="row mt-3">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="">
@@ -41,11 +59,14 @@
     </div>-->
     <div class="row">
       <div class="col-lg-6">
-          <button type="submit" class="btn btn-outline-success">Sacuvaj anketu</button>
+          <button type="submit" class="admin-btn-lightgreen">Sačuvaj anketu</button>
       </div>
   </div>
   </div>
-  </div>
 </form>
+</div>
+</div>
+
+
 
 {% endblock %}

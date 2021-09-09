@@ -1,14 +1,17 @@
 {% extends 'base_admin.html' %}
-
+{% load static %}
 {% block title %}
 <title>Lista Radova</title>
+<link rel="stylesheet" href="{% static 'radovi/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'radovi:radovi_admin_home' %}" class="btn btn-outline-secondary">Radovi Home</a>
-<h1>Radovi</h1>
+
+<h1 class="mt-4">Lista Radova</h1>
+<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen mt-2 mb-2">Radovi</a>
+<hr>
 {% for rad in radovi %}
-<a href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || Programski poziv --> {{ rad.programski_poziv }}</a>
+<h5 class="mt-4 mb-4"><a href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || Programski poziv --> {{ rad.programski_poziv }}</a></h5>
 <hr>
 {% endfor %}
 

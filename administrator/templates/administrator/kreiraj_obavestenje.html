@@ -3,28 +3,46 @@
 {% block title %}
 <title>Dodaj obavestenje</title>
 {% endblock title %}
-
+{% load crispy_forms_tags %}
 {% block content %}
+<style>
+    .admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+</style>
 
-<h1>Admin {{ user.username }}</h1>
-<p> sada treba da iscrtam sva govna koja imaju unutar govana koja cu da pokupim</p>
 
+<h1 class="mt-4 mb-4">Obaveštenje</h1>
 
 <form method="POST" enctype="multipart/form-data">
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered">
         <div class="form-group">
             {% csrf_token %}
-            {{ form }}
+            {{ form|crispy}}
         </div>              
     </table>
     <div class="col">
         <div class="row">
-            <label style="float: left; color:red" for="send_mail">Posalji i na mail!
+            <label style="float: left; color:var(--primary-text)" for="send_mail">Pošalji i na mail!
                 <input type="checkbox" name="send_mail" id="send_mail">
             </label>
         </div>
-        <div class="row">
-            <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+        <div class="row mt-3">
+            <button class="admin-btn-lightgreen" type="submit">Pošalji</button>
         </div>
     </div>
     

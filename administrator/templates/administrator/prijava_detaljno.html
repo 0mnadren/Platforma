@@ -2,145 +2,124 @@
 {% load static %}
 {% block title %}
 <title>Prijava detaljno</title>
+<link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 
 {% block content %}
-<div class="row ml-2">
-  <div class="col mb-2 mt-2">
-    <a href="{% url 'administrator:pregled_prijava' %}" class="btn btn-outline-secondary">Lista prijava</a>
-  </div>
-</div>
 
+<h2 class="mt-4 mb-4">Prijavu poslao korisnik: {{ prijava.user.username }}</h2>
 
+<a href="{% url 'administrator:pregled_prijava' %}" class="admin-btn-lightgreen mb-4">Lista prijava</a>
 
-<div class="col mb-2 mt-2">
-  <h3>Prijavu poslao korisnik: {{ prijava.user.username }}</h3>
-  <br>
-</div>
-
-<div class="row ml-2">
-  <div class="col mb-2 mt-2">
-    <table class="table">
-      <caption style="font-size: 75%;">Podaci o korisniku {{ prijava.user.username }}</caption>
-      <tbody>
-        <tr>
-          <th scope="row">
-            <h4>Ime i prezime:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.ime }} {{ prijava.prezime }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Oblasti:</h4>
-          </th>
-          <td>
-            <h4>{% for oblast in prijava.oblasti.all %}
-              {{ oblast }},
-              {% endfor %}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Nacionalnost:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.nacionalnost }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>NIO:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.NIO }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Naucno zvanje:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.naucno_zvanje }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Angazovanje:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.angazovanje }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Adresa:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.adresa }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Broj telefona:</h4>
-          </th>
-          <td>
-            <h4>{{ prijava.broj_telefona }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Web stranica:</h4>
-          </th>
-          <td>
-            <h4><a href="{{ prijava.website }}" target="_blank">{{ prijava.website }}</a></h4>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <h4>Biografija:</h4>
-          </th>
-          <!--Potrebno je da se napravi Static files i Media files da bi mogli da prikazemo pdf-->
-          <td>
-            <h4><a href="{{ prijava.biografija.url }}" target="_blank">Biografija.pdf</a></h4>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<h4>Naucni rad 1: &nbsp;{{ prijava.naucni_rad_1 }}</h4>
-<h4>Naucni rad 2: &nbsp;{{ prijava.naucni_rad_2 }}</h4>
-<h4>Naucni rad 3: &nbsp;{{ prijava.naucni_rad_3 }}</h4>
-<h4>Naucni rad 4: &nbsp;{{ prijava.naucni_rad_4 }}</h4>
-<h4>Naucni rad 5: &nbsp;{{ prijava.naucni_rad_5 }}</h4>
-<h4>Naucni rad 6: &nbsp;{{ prijava.naucni_rad_6 }}</h4>
-<h4>Naucni rad 7: &nbsp;{{ prijava.naucni_rad_7 }}</h4>
-<h4>Naucni rad 8: &nbsp;{{ prijava.naucni_rad_8 }}</h4>
-<h4>Naucni rad 9: &nbsp;{{ prijava.naucni_rad_9 }}</h4>
-<h4>Naucni rad 10: {{ prijava.naucni_rad_10 }}</h4>
-
-
-
+<hr>
+<table class="naucni_rad_admin-table mt-5 mb-5">
+    <tr>
+        <th>Ime i prezime</th>
+        <td>{{ prijava.ime }} {{ prijava.prezime }}</td>
+    </tr>
+    <tr>
+        <th>Oblasti</th>
+        <td>
+          {% for oblast in prijava.oblasti.all %}
+            {{ oblast.naziv }}
+          {% endfor %}
+        </td>
+    </tr>
+    <tr>
+        <th>Nacionalnost</th>
+        <td>{{ prijava.nacionalnost }}</td>
+    </tr>
+    <tr>
+        <th>NIO (naučna istraživačka organizacija)</th>
+        <td>{{ prijava.NIO }}</td>
+    </tr>
+    <tr>
+        <th>Naučno zvanje</th>
+        <td>{{ prijava.naucno_zvanje }}</td>
+    </tr>
+    <tr>
+        <th>Angažovanje</th>
+        <td>{{ prijava.angazovanje }}</td>
+    </tr>
+    <tr>
+        <th>Adresa</th>
+        <td>{{ prijava.adresa }}</td>
+    </tr>
+    <tr>
+        <th>Broj telefona</th>
+        <td>{{ prijava.broj_telefona }}</td>
+    </tr>
+    <tr>
+        <th>Veb-stranica</th>
+      {% if prijava.website %}
+        <td><a href="{{ prijava.website.url }}" target="_blank"><u>{{ prijava.website }}</u></a></td>
+      {% else %}
+        <td>-</td>
+      {% endif %}
+    </tr>
+    <tr>
+        <th>Biografija</th>
+        <td><a href="{{ prijava.biografija.url }}" target="_blank"><u>Biografija.pdf</u></a></td>
+    </tr>
+    <tr>
+      <th>Naučni rad 1</th>
+      <td>{{ prijava.naucni_rad_1 }}</td>
+    </tr>
+    <tr>
+      <th>Naučni rad 2</th>
+      <td>{{ prijava.naucni_rad_2 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 3</th>
+      <td>{{ prijava.naucni_rad_3 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 4</th>
+      <td>{{ prijava.naucni_rad_4 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 5</th>
+      <td>{{ prijava.naucni_rad_5 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 6</th>
+      <td>{{ prijava.naucni_rad_6 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 7</th>
+      <td>{{ prijava.naucni_rad_7 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 8</th>
+      <td>{{ prijava.naucni_rad_8 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 9</th>
+      <td>{{ prijava.naucni_rad_9 }}</td>
+    </tr>
+      <tr>
+      <th>Naučni rad 10</th>
+      <td>{{ prijava.naucni_rad_10 }}</td>
+    </tr>
+</table>
+<hr>
 
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->
 {% if prijava.user.profile_accepted == None %}
-<div>
-  <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
+<div class="mt-3 mb-3">
+  <button type="button" class="admin-btn-green" data-toggle="modal" data-target="#odobri_prijavu">
     Odobri prijavu
   </button>
-  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
+  <button type="button" class="admin-btn-red ml-2" data-toggle="modal" data-target="#odbij_prijavu">
     Odbij prijavu
   </button>
 </div>
 {% elif prijava.user.profile_accepted == True %}
-<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#odbij_prijavu">
-  Odbijaaaaa prijavu
+<button type="button" class="admin-btn-red mt-3 mb-3" data-toggle="modal" data-target="#odbij_prijavu">
+  Odbij prijavu
 </button>
 {% else %}
-<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#odobri_prijavu">
+<button type="button" class="admin-btn-green mt-3 mb-3" data-toggle="modal" data-target="#odobri_prijavu">
   Odobri prijavu
 </button>
 {% endif %}

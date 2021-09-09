@@ -5,20 +5,64 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .admin-btn-green {
+        background-color: var(--cta-color); /* Green */
+        border: none;
+        color: #fff;
+        padding: 0.6rem 0.8rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .admin-btn-green:hover {
+        background-color: var(--link-color); /* Dark Green */
+        color: #fff;
+    }
 
-<h1>Programski poziv {{ programski_poziv.naziv }}</h1>
-<p>Opis: {{ programski_poziv.opis }}</p>
-<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Vrati se na Programske Pozive</a>
+    .admin-btn-outline-lightgreen { 
+        background-color: var(--background-color); 
+        border: 1px solid var(--card-color);
+        color: var(--primary-text);
+        padding: 0.6rem 0.8rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .admin-btn-outline-lightgreen:hover {
+        background-color: var(--card-color);
+        color: var(--primary-text);
+    }
+
+    hr {
+        height: 3px !important;
+        border:none !important;
+        background-color: var(--card-color);
+    }
+</style>
+
+<h1 class="mt-4">Programski poziv {{ programski_poziv.naziv }}</h1>
+<p class="mt-3 mb-4">Opis: {{ programski_poziv.opis }}</p>
+
 <hr>
 
 {% if not programski_poziv.programskipozivpitanja %}
-<a class="btn btn-outline-success" href="{% url 'programski_pozivi:kreiraj_pitanja' programski_poziv.id %}">Kreiraj Pitanja</a>
+<a class="admin-btn-green" href="{% url 'programski_pozivi:kreiraj_pitanja' programski_poziv.id %}">Kreiraj Pitanja</a>
+<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">Nazad</a>
 {% else %}
-<p>Vec ste napravili pitanja, mozete da ih izmenite:</p>
-<ul>
-    {% for pitanje in programski_poziv_pitanja %}
-    <li><a href="{% url 'programski_pozivi:detaljno_pitanja' pitanje.id %}">Izmeni {{ pitanje }}</a></li>
-    {% endfor %}
-</ul>
+<h4>Već ste napravili pitanja, možete da ih izmenite:</h4>
+{% for pitanje in programski_poziv_pitanja %}
+<a href="{% url 'programski_pozivi:detaljno_pitanja' pitanje.id %}" class="admin-btn-green">Izmeni {{ pitanje }}</a>
+<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">Nazad</a>
+{% endfor %}
+
 {% endif %}
 {% endblock %}

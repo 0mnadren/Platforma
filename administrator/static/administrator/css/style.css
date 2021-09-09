@@ -15,26 +15,89 @@ a:hover {
 }
 
 
-.admin-btn-lightgreen { 
+.admin-btn-lightgreen {
     background-color: var(--card-color); /* Light Green */
     border: none;
     color: var(--primary-text);
-    padding: 15px 32px;
+    padding: 0.6rem 0.8rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
 }
-
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
 
 .admin-btn-green {
     background-color: var(--cta-color); /* Green */
     border: none;
     color: #fff;
-    padding: 15px 32px;
+    padding: 0.6rem 0.8rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
 }
+.admin-btn-green:hover {
+    background-color: var(--link-color); /* Dark Green */
+    color: #fff;
+}
+
+
+.admin-btn-red {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-red:hover {
+    background-color: var(--dark-accent-color);
+}
+
+hr {
+    height: 3px !important;
+    border:none !important;
+    background-color: var(--card-color);
+}
+
+
+.naucni_rad_admin-table {
+    width: 100%;
+    border-top: 1px solid var(--cta-color);
+    font-size: 1.2rem;
+}
+
+.naucni_rad_admin-table, th, td {
+    padding: 15px;
+    border-collapse: collapse;
+}
+
+.naucni_rad_admin-table td {
+    font-weight: 400;
+}
+
+.naucni_rad_admin-table tr:nth-child(even){
+    background-color: #dacfb3;
+}
+
+.naucni_rad_admin-table tr:hover {
+    background-color: var(--cta-color);
+    transition: none !important;
+}
+
 

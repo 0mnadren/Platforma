@@ -1,39 +1,32 @@
-.admin-btn-lightgreen { 
-    background-color: var(--card-color); /* Light Green */
-    border: none;
-    color: var(--primary-text);
-    padding: 0.6rem 0.8rem;
+.table  td, .table th {
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.admin-btn-lightgreen:hover {
-    background-color: var(--cta-color);
-    color: #fff;
 }
 
 
-.admin-btn-outline-lightgreen { 
-    background-color: var(--background-color); 
-    border: 3px solid var(--card-color);
-    color: var(--primary-text);
-    padding: 0.6rem 0.8rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.admin-btn-outline-lightgreen:hover {
+hr {
+    height: 3px !important;
+    border:none !important;
     background-color: var(--card-color);
 }
 
+
+.admin-btn-red {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-red:hover {
+    background-color: var(--dark-accent-color);
+    color: #fff;
+}
 
 .admin-btn-green {
     background-color: var(--cta-color); /* Green */
@@ -53,10 +46,9 @@
     color: #fff;
 }
 
-
-.admin-btn-outline-green {
-    background-color: var(--background-color);
-    border: 3px solid var(--cta-color);
+.admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
     color: var(--primary-text);
     padding: 0.6rem 0.8rem;
     text-align: center;
@@ -67,14 +59,12 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.admin-btn-outline-green:hover {
+.admin-btn-lightgreen:hover {
     background-color: var(--cta-color);
     color: #fff;
 }
-
-
-.admin-btn-red {
-    background-color: var(--accent-color);
+.admin-btn-darkgreen {
+    background-color: var(--link-color);
     border: none;
     color: #fff;
     padding: 0.6rem 0.8rem;
@@ -86,14 +76,13 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.admin-btn-red:hover {
-    background-color: var(--dark-accent-color);
+.admin-btn-darkgreen:hover {
+    color: #fff;
 }
-
 
 .admin-btn-outline-red {
     background-color: var(--background-color);
-    border: 3px solid var(--accent-color);
+    border: 1px solid var(--accent-color);
     color: var(--accent-color);
     padding: 0.6rem 0.8rem;
     text-align: center;
@@ -108,4 +97,3 @@
     background-color: var(--accent-color);
     color: #fff;
 }
-

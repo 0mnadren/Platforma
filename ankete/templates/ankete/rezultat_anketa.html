@@ -1,8 +1,27 @@
 {% extends 'base_admin.html' %} {% load static %} {% block title %}
 <title>Rezultat</title>
 {% endblock %} {% block content %}
+<style>
+    .admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+</style>
 <br>
-<a href="{% url 'ankete:admin_ankete' %}" class="btn btn-outline-secondary">Nazad na ankete</a>
+<a href="{% url 'ankete:admin_ankete' %}" class="admin-btn-lightgreen">Nazad na ankete</a>
 <div class="container">
       <div class="row">
         <div class="col-md-8 m-auto">

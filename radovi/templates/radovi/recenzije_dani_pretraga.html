@@ -1,4 +1,3 @@
-
 <table class="table table-striped"> <!-- ubaci overflow -->
     <thead class="thead-dark">
         <tr>
@@ -15,21 +14,21 @@
         {% for prosledjen_rad in prosledjeni_radovi_dani %}
     <tr>
         <td>{{ forloop.counter }}</td>
-        <td><a href="{% url 'radovi:naucni_rad_admin' prosledjen_rad.rad.id %}">{{ prosledjen_rad.rad.naziv }}</a></td>
+        <td><a href="{% url 'radovi:naucni_rad_admin' prosledjen_rad.rad.id %}"><u>{{ prosledjen_rad.rad.naziv }}</u></a></td>
         <td>{{ prosledjen_rad.rad.kategorija }}</td>
         <td>{{ prosledjen_rad.profil }}</td>
         <td>{{ prosledjen_rad.kada_poslat }}</td>
 
         {% if prosledjen_rad.zakljucani_odgovori %}
-        <td style="color:green;">Recenzent je ocenio rad</td>
+        <td style="color:green">Recenzent je ocenio rad</td>
         {% else %}
-        <td style="color:red;">Recenzent nije ocenio rad</td>
+        <td style="color:var(--dark-accent-color);">Recenzent nije ocenio rad</td>
         {% endif %}
 
         <td>
             <form method="POST" action="{% url 'radovi:oduzimanje_rada_admin' prosledjen_rad.id %}">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-outline-danger">Oduzmi</button>
+                <button type="submit" class="admin-btn-red">Oduzmi</button>
             </form>
         </td>
     </tr>
