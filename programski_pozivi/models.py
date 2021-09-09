@@ -37,44 +37,34 @@ class ProgramskiPozivOdgovori(models.Model):
     profil = models.ForeignKey(Profil, on_delete=models.CASCADE)
 
     odgovor1 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor2 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor3 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor4 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor5 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor6 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor7 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor8 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor9 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     odgovor10 = models.SmallIntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(10)],
-        blank=True, null=True,
+        validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
 
     ukupan_broj_poena = models.SmallIntegerField(

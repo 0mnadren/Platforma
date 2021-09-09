@@ -33,10 +33,10 @@
         <a
           href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}"
           class="btn btn-primary"
-          >Glasaj</a
+          >Želim da popunim</a
         >
       </td>
-      <td><a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-warning">Ignorisi</a></td>
+      <td><a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-warning">Ne želim da popunim</a></td>
     </tr>
     {% endfor %} {% for popunjena_anketa in popunjene_ankete %}
     <tr>
@@ -45,7 +45,7 @@
       <td>{{ popunjena_anketa.anketa.opis }}</td>
       <td>{{ popunjena_anketa.anketa.created_at }}</td>
 
-      <td><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="btn btn-success">Rezultat</a></td>
+      <td><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="btn btn-success">Statistika ankete</a></td>
     </tr>
     {% endfor %}
   </tbody>

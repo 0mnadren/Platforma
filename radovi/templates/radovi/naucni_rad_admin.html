@@ -91,8 +91,8 @@
     <button type="submit" name="odbij" class="admin-btn-red mt-3 ml-2 mb-5">Odbij</button>
 </form>
 {% elif rad.prihvacen_rad == False %}
-<h4 class="mt-4 mb-4" style="color:var(--dark-accent-color);">Ovaj rad je odbijen</h4>
+<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--dark-accent-color);">Ovaj rad je odbijen</h3>
 {% else %}
-<h4 class="mt-4 mb-4" style="color:green;">Ovaj rad je prihvacen</h4>
+<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--link-color);">Ovaj rad je prihvaćen</h3>
 {% endif %}
 {% endblock %}

@@ -210,7 +210,7 @@ def naucni_rad_profil(request, pk):
                 obj.profil_id = user.profil.id
                 obj.izracunaj_ukupan_broj_poena()
                 obj.save()
-                messages.success(request, f'Napravili ste pitanja!')
+                messages.success(request, f'Sačuvali ste odgovre!')
                 return redirect('radovi:lista_radova_profil')
         elif request.method == 'POST' and 'zakljucaj' in request.POST:
             form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
@@ -220,7 +220,7 @@ def naucni_rad_profil(request, pk):
                 obj.profil_id = user.profil.id
                 obj.izracunaj_ukupan_broj_poena()
                 obj.save()
-                messages.success(request, f'Napravili ste pitanja!')
+                messages.success(request, f'Vaši odgovori su sačuvani i poslati na obradu!')
 
                 prosledjen_rad.zakljucani_odgovori = True
                 prosledjen_rad.save()
