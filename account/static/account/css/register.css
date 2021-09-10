@@ -1,15 +1,16 @@
 body {
-    margin: 0;
     padding: 0;
-    background-color: #8ECAE6;;
-    height: 100vh;
+    background-color: #8ECAE6;
   }
   #register .container #register-row #register-column #register-box {
-    max-width: 600px;
-    height: 760px;
     border: 1px solid #9C9C9C;
     background-color: #EAEAEA;
+    padding: auto;
   }
   #register .container #register-row #register-column #register-box #register-form {
     padding: 20px;
+  }
+  
+  #register .container #register-row #register-column #register-box #register-form #login-link {
+    margin-right: -15px;
   }

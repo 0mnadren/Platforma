@@ -23,7 +23,7 @@
               {% csrf_token %}
               {{ form|crispy }}
               <div class="col"><br>
-                <a href="{% url 'account:login' %}" style="float: right;" name="login" class="text-right btn btn-info btn-md" value="Login">Uloguj se</a>
+                <a href="{% url 'account:login' %}" id="login-link" style="float: right;" name="login" class="text-right btn btn-info btn-md" value="Login">Prijavi se</a>
               </div>
               <button type="submit" class="btn btn-info">Registruj se</button>              
             </form>
