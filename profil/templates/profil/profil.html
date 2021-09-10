@@ -9,6 +9,14 @@
 
 {% block content %}
 
+<style>
+    .table, th, td {
+        border-color: var(--accent-color) !important;
+    }
+</style>
+
+
+
 <h1 class="text-truncate">Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
 <a href="{% url 'ankete:ankete' %}">Ankete</a>
@@ -36,7 +44,7 @@
         </div>
         <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
     </form>
-    <table class="table table-dark sortable">
+    <table class="table border sortable">
         <!--sortable omogucava sort sa skripte na dnu-->
         
 <thead>
