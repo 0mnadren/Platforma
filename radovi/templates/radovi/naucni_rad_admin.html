@@ -55,9 +55,11 @@
     </tr>
 </table>
 <hr>
-<h4 class="mt-4">Programski Poziv</h4>
-<h5 class="mt-3">Pitanja:</h5>
-<ol class="mb-5">
+<h4 class="mt-4">Programski Poziv i pitanja</h4>
+<button id="btn_prikazi" class="admin-btn-lightgreen mt-3 mb-5">Prikaži pitanja</button>
+<button id="btn_sakrij" class="admin-btn-green mt-3">Sakrij pitanja</button>
+<div id="programski_poziv_pitanja">
+    <ol class="mb-5">
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje1 }}</li>
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje2 }}</li>
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje3 }}</li>
@@ -69,10 +71,12 @@
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje9 }}</li>
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje10 }}</li>
 </ol>
+</div>
+
 
 <hr>
 {% if rad.prihvacen_rad == None %}
-<h4 class="mt-4 mb-4">Kom korisniku želite da prosledite ovaj Naučni Rad na ocenjivanje?</h4>
+<h4 class="mt-4 mb-4">Kom korisniku želite da prosledite naučni rad na ocenjivanje?</h4>
 <form method="POST">
     {% csrf_token %}
     {% for profil in profili %}
@@ -95,4 +99,7 @@
 {% else %}
 <h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--link-color);">Ovaj rad je prihvaćen</h3>
 {% endif %}
+
+
+<script src="{% static 'radovi/js/script.js' %}"></script>
 {% endblock %}

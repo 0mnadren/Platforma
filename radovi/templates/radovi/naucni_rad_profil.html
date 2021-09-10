@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  .table td, .table th {
+        text-align: center;
+    }
+</style>
 
 <a class="btn btn-outline-secondary" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
 <h1>Naucni rad {{ rad.naziv }}</h1>
@@ -23,11 +28,23 @@ Kategorija: {{ rad.kategorija }}
 
 <form method="POST">
   {% csrf_token %}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Pitanja</th>
+        <th>Odgovori (Ocena od 1 do 10)</th>
+      </tr>
+    </thead>
+    <tbody>
     {% for pitanje, odgovor in pitanja_odgovori %}
-    {{ pitanje }}
-    {{ odgovor }}
-    <hr>
+      <tr>
+        <td><strong>{{ pitanje.value }}</strong></td>
+        <td>{{ odgovor }}</td>
+      </tr>
     {% endfor %}
+    </tbody>
+  </table>
+
   <p>Ukoliko Kliknete na "Sacuvaj odgovore" --> iste mozete kasnije da promenite</p>
   <p>
     Ukoliko Kliknete na "Sacuvaj i Zakljucaj odgovore" --> Vasi odgovori se salju na dalju obradu i nemate pravo vise da ih menjate
