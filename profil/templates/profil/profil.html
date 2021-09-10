@@ -2,7 +2,6 @@
 
 {% load crispy_forms_tags %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
 {% block title %}
 <title>Profil</title>
 {% endblock title %}
@@ -11,26 +10,41 @@
 
 <style>
     .table, th, td {
-        border-color: var(--accent-color) !important;
+        border-color: var(--background-shadow) !important;
     }
 </style>
 
+<style>
+.btn-grad {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   display: block;
+ }
 
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+</style>
 
 <h1 class="text-truncate">Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
-<a href="{% url 'ankete:ankete' %}">Ankete</a>
-<a href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+
+<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block">Pregledaj ankete</a>
+<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block">Pregledaj RADOVe</a>
+<br><br><br>
 <!-- SEARCH!!! -->
-
-
-<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
-
-
-
-
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
-<button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
+<button class="btn btn-grad btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
 <div id="obavestenja_table">
@@ -78,16 +92,15 @@
     <p>Nesto slicno kao postovi na profilu na fb-u</p>
 
 </div>
-<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
+<button class="btn btn-grad btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
     profil</button>
 <br>
 <div id="user_table" style="display: none;">
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered">
         <div class="form-group">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-
-                {{ form.as_table }}
+                {{ form|crispy }}
                 <!-- 
                    form.as_table 
                     {% for field in form %}
@@ -102,8 +115,8 @@
         {% endfor %} -->
     </table>
 
-    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
 
     </form>
 

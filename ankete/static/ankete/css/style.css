@@ -2,13 +2,11 @@
     text-align: center;
 }
 
-
 hr {
     height: 3px !important;
     border:none !important;
     background-color: var(--card-color);
 }
-
 
 .admin-btn-red {
     background-color: var(--accent-color);

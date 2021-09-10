@@ -30,13 +30,9 @@
       <td>{{ nepopunjena_anketa.anketa.opis }}</td>
       <td>{{ nepopunjena_anketa.anketa.created_at }}</td>
       <td>
-        <a
-          href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}"
-          class="btn btn-primary"
-          >Želim da popunim</a
-        >
+        <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-primary">Želim da popunim</a>
+          <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-warning">Ne želim da popunim</a>
       </td>
-      <td><a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-warning">Ne želim da popunim</a></td>
     </tr>
     {% endfor %} {% for popunjena_anketa in popunjene_ankete %}
     <tr>
