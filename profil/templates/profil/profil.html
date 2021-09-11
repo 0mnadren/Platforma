@@ -1,39 +1,24 @@
 {% extends 'base_profil.html' %}
-
+{% block title %}
 {% load crispy_forms_tags %}
 {% load static %}
-{% block title %}
+<link rel="stylesheet" href="{% static 'profil/css/style.css' %}">
+
 <title>Profil</title>
 {% endblock title %}
-
 {% block content %}
 
+<!-- TRIK SA TRANSITION, ne radi ako nije na stranici, takodje i VAR ne hvata u .css -->
 <style>
-    .table, th, td {
-        border-color: var(--background-shadow) !important;
-    }
-</style>
-
-<style>
-.btn-grad {background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%)}
 .btn-grad {
-   margin: 10px;
-   padding: 15px 45px;
-   text-align: center;
-   text-transform: uppercase;
    transition: 0.5s;
-   background-size: 200% auto;
-   color: white;            
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   display: block;
- }
-
- .btn-grad:hover {
-   background-position: right center; /* change the direction of the change here */
-   color: #fff;
-   text-decoration: none;
- }
+}
+.btn-grad:hover {
+   color: rgb(255, 255, 255);
+}
+.table, th, td {
+    border-color: var(--background-shadow) !important;
+}
 </style>
 
 <h1 class="text-truncate">Profil korisnika: {{ user.username }}</h1>
@@ -44,7 +29,8 @@
 <br><br><br>
 <!-- SEARCH!!! -->
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
-<button class="btn btn-grad btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
+
+<button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
 <div id="obavestenja_table">
@@ -59,42 +45,45 @@
         <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
     </form>
     <table class="table table-striped border sortable">
-        <!--sortable omogucava sort sa skripte na dnu-->
-        
-<thead>
-    <tr>
-        <th scope="col"></th>
-        <th scope="col" style="max-width: 55px">Naslov</th>
-        <th style="max-width: 65px;" scope="col">Sadrzaj</th>
-        <th style="max-width: 65px;" scope="col">Datum</th>
-        <th style="max-width: 55px; text-align: center;" scope="col">Akcija</th>
-    </tr>
-</thead>
-<tbody>
-    {% for obavestenje in obavestenja reversed %}
-    <tr>
-        <th scope="row" style="max-width: 20px;">{{ forloop.counter }}</th>
-        <td scope="row" class="text-truncate" style="max-width: 55px"><a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">{{ obavestenje.obavestenje.naslov }}</a></td>
-        <td data-bind="text: text()" class="text-truncate" style="max-width: 55px">{{ obavestenje.obavestenje.tekst }}</td>
-        <td class="text-truncate" style="max-width: 85px">{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
-        <td style="text-align: center;">
-            <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="Obrisi" class="btn btn-danger" style="padding: 2px;">
-            </form>
-        </td>
-    </tr>
-    {% endfor %}
-</tbody>
+        <!--sortable omogucava sort sa skripte na dnu-->        
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" style="max-width: 55px">Naslov</th>
+                <th style="max-width: 65px;" scope="col">Sadrzaj</th>
+                <th style="max-width: 65px;" scope="col">Datum</th>
+                <th style="max-width: 55px; text-align: center;" scope="col">Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obavestenje in obavestenja reversed %}
+            <tr>
+                <th scope="row" style="max-width: 20px;">{{ forloop.counter }}</th>
+                <td scope="row" class="text-truncate" style="max-width: 55px"><a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">{{ obavestenje.obavestenje.naslov }}</a></td>
+                <td data-bind="text: text()" class="text-truncate" style="max-width: 55px">{{ obavestenje.obavestenje.tekst }}</td>
+                <td class="text-truncate" style="max-width: 85px">{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
+                <td style="text-align: center;">
+                    <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Obrisi" class="btn btn-danger" style="padding: 2px;">
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-
     <hr>
     <p>Nesto slicno kao postovi na profilu na fb-u</p>
-
 </div>
-<button class="btn btn-grad btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
+<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
     profil</button>
 <br>
+<!-- za edit nemanja zivkovic
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+</div> -->
+
 <div id="user_table" style="display: none;">
     <table class="table table-bordered">
         <div class="form-group">
@@ -120,8 +109,6 @@
 
     </form>
 
-</div>
-</div>
 </div>
 <!-- SKRIPTA JS ZA SAKRIVANJE -->
 <script>

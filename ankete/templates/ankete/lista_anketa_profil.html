@@ -2,63 +2,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% block title %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'ankete/css/ankete_profil.css' %}">
+<link rel="stylesheet" href="{% static 'ankete/css/style.css' %}">
 
-<title>Profil</title>
+<title>Ankete</title>
 {% endblock %}
 {% block content %}
 
-<style>  
-  .btn-grad-accept {
-     text-align: center;
-     background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
-     transition: 0.5s;
-     background-size: 200% auto;
-     color: white;            
-     box-shadow: 0 0 20px #eee;
-     border-radius: 10px;
-   }
-  
-   .btn-grad-accept:hover {
-     background-position: right center; /* change the direction of the change here */
-     color: #fff;
-     text-decoration: none;
-   }
-  
-   .btn-grad-decline {
-    text-align: center;
-    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+<!-- TRIK SA TRANSITION i hover color, ne radi ako nije na stranici, takodje i VAR ne hvata u .css -->
+<style>
+  .grad-btn-decline {
     transition: 0.5s;
-    background-size: 200% auto;
-    color: white;            
-    box-shadow: 0 0 20px #eee;
-    border-radius: 10px;
   }
-  
-  .btn-grad-decline:hover {
-    background-position: right center; /* change the direction of the change here */
+  .grad-btn-accept {
+    transition: 0.5s;
+  }
+  .grad-btn-stats {
+    transition: 0.5s;
+  }
+  .grad-btn-decline:hover {
     color: #fff;
-    text-decoration: none;
   }
-  
-  .btn-grad-stats {
-     text-align: center;
-     background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
-     transition: 0.5s;
-     background-size: 200% auto;
-     color: white;            
-     box-shadow: 0 0 20px #eee;
-     border-radius: 10px;
-   }
-  
-   .btn-grad-stats:hover {
-     background-position: right center; /* change the direction of the change here */
-     color: #fff;
-     text-decoration: none;
-   }
+  .grad-btn-accept:hover {
+    color: #fff;
+  }
+  .grad-btn-stats:hover {
+    color: #fff;
+  }
+  .table, th, td {
+    border-color: var(--background-shadow) !important;
+  }
 </style>
-
-
 <h1>Profil korisnika: {{ user.username }}</h1>
 <br /><br />
 <h3>ANKETE</h3>
@@ -86,8 +59,8 @@
       <td>{{ nepopunjena_anketa.anketa.opis }}</td>
       <td>{{ nepopunjena_anketa.anketa.created_at }}</td>
       <td>
-        <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="btn btn-grad-accept">Želim da popunim</a>
-        <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" style="float: right;" class="btn btn-grad-decline">Ne želim da popunim</a>
+        <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="btn grad-btn-accept">Želim da popunim</a>
+        <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" style="float: right;" class="btn grad-btn-decline">Ne želim da popunim</a>
       </td>
     </tr>
     {% endfor %}
@@ -99,7 +72,7 @@
       <td>{{ popunjena_anketa.anketa.opis }}</td>
       <td>{{ popunjena_anketa.anketa.created_at }}</td>
 
-      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="btn btn-grad-stats">Statistika ankete</a></td>
+      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="btn grad-btn-stats">Statistika ankete</a></td>
     </tr>
     {% endfor %}
   </tbody>

@@ -1,4 +1,4 @@
-.table  td, .table th {
+.table td, .table th {
     text-align: center;
 }
 
@@ -94,4 +94,52 @@ hr {
 .admin-btn-outline-red:hover {
     background-color: var(--accent-color);
     color: #fff;
+}
+
+.grad-btn-accept {
+    text-align: center;
+    background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.grad-btn-accept:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+ 
+.grad-btn-decline {
+    text-align: center;
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.grad-btn-decline:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+
+.grad-btn-stats {
+    text-align: center;
+    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.grad-btn-stats:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
 }
