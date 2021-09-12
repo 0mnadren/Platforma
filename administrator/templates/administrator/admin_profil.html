@@ -1,25 +1,22 @@
-{% extends 'base.html' %}
-
+{% extends 'base_admin.html' %}
+{% load static %}
 {% block title %}
 <title>Admin Profil</title>
+<link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 
 {% block content %}
 
-<h1>Admin {{ user.username }}</h1>
+<h1 class="mt-4">Dobrodošao Admin {{ user.username|title }}!</h1>
 
-<a href="{% url 'admin:index' %}">Django Admin</a>
-<br>
-<a href="{% url 'administrator:pregled_prijava' %}">Prijave recenzenata</a>
-<br>
-<a href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a>
-<br>
-<a href="{% url 'ankete:admin_ankete' %}">Ankete</a>
-<br>
-<a href="{% url 'administrator:kreiraj_obavestenje' %}">Obavestenja</a>
-<br>
-<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski poziv</a>
-<br>
-<a href="{% url 'radovi:radovi_admin_home' %}">Naucni radovi</a>
+<ul class="admin-ul mt-5">
+    <li><a href="{% url 'admin:index' %}">Django Admin</a></li>
+    <li><a href="{% url 'administrator:pregled_prijava' %}">Prijave recenzenata</a></li>
+    <li><a href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a></li>
+    <li><a href="{% url 'ankete:admin_ankete' %}">Ankete</a></li>
+    <li><a href="{% url 'administrator:kreiraj_obavestenje' %}">Obaveštenja</a></li>
+    <li><a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski poziv</a></li>
+    <li><a href="{% url 'radovi:radovi_admin_home' %}">Naučni radovi</a></li>
+</ul>
 
 {% endblock content %}

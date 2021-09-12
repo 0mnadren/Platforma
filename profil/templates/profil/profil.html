@@ -1,27 +1,35 @@
-{% extends 'base.html' %}
-
+{% extends 'base_profil.html' %}
+{% block title %}
 {% load crispy_forms_tags %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
-{% block title %}
+<link rel="stylesheet" href="{% static 'profil/css/style.css' %}">
+
 <title>Profil</title>
 {% endblock title %}
-
 {% block content %}
 
-<h1>Profil korisnika: {{ user.username }}</h1>
+<!-- TRIK SA TRANSITION, ne radi ako nije na stranici, takodje i VAR ne hvata u .css -->
+<style>
+.btn-grad {
+   transition: 0.5s;
+}
+.btn-grad:hover {
+   color: rgb(255, 255, 255);
+}
+.table, th, td {
+    border-color: var(--background-shadow) !important;
+}
+</style>
+
+<h1 class="text-truncate">Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
-<a href="{% url 'ankete:ankete' %}">Ankete</a>
-<a href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+
+<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block">Pregledaj ankete</a>
+<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block">Pregledaj RADOVe</a>
+<br><br><br>
 <!-- SEARCH!!! -->
-
-
-<p>Ovde stoje obavestenja od strane Admina, koja nisu poslata na email</p>
-
-
-
-
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
+
 <button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
@@ -36,49 +44,52 @@
         </div>
         <button type="submit" class="btn btn-success btn-md mb-2">Search</button>
     </form>
-    <table class="table table-dark sortable">
-        <!--sortable omogucava sort sa skripte na dnu-->
+    <table class="table table-striped border sortable">
+        <!--sortable omogucava sort sa skripte na dnu-->        
         <thead>
             <tr>
-                <th scope="col" style="width: 50px;">#</th>
-                <th scope="col" style="width: 200px;">Naslov</th>
-                <th style="height: 10px;" scope="col">Sadrzaj</th>
-                <th style="width: 200px;" scope="col">Datum slanja</th>
-                <th style="width: 100px;" scope="col">Delete</th>
+                <th scope="col"></th>
+                <th scope="col" style="max-width: 55px">Naslov</th>
+                <th style="max-width: 65px;" scope="col">Sadrzaj</th>
+                <th style="max-width: 65px;" scope="col">Datum</th>
+                <th style="max-width: 55px; text-align: center;" scope="col">Akcija</th>
             </tr>
         </thead>
         <tbody>
             {% for obavestenje in obavestenja reversed %}
             <tr>
-                <th scope="row">{{ forloop.counter }}</th>
-                <td scope="row"><a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">{{ obavestenje.obavestenje.naslov }}</a></td>
-                <td data-bind="text: text()" class="text-truncate" style="max-width: 200px">{{ obavestenje.obavestenje.tekst }}</td>
-                <td>{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
-                <td>
+                <th scope="row" style="max-width: 20px;">{{ forloop.counter }}</th>
+                <td scope="row" class="text-truncate" style="max-width: 55px"><a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">{{ obavestenje.obavestenje.naslov }}</a></td>
+                <td data-bind="text: text()" class="text-truncate" style="max-width: 55px">{{ obavestenje.obavestenje.tekst }}</td>
+                <td class="text-truncate" style="max-width: 85px">{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
+                <td style="text-align: center;">
                     <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="Obrisi" class="btn btn-danger">
+                        <input type="submit" value="Obrisi" class="btn btn-danger" style="padding: 2px;">
                     </form>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-
     <hr>
     <p>Nesto slicno kao postovi na profilu na fb-u</p>
-
 </div>
 <button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
     profil</button>
 <br>
+<!-- za edit nemanja zivkovic
+<div class="row">
+    <div class="col"></div>
+    <div class="col"></div>
+</div> -->
+
 <div id="user_table" style="display: none;">
-    <table class="table table-bordered table-dark">
+    <table class="table table-bordered">
         <div class="form-group">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-
-                {{ form.as_table }}
+                {{ form|crispy }}
                 <!-- 
                    form.as_table 
                     {% for field in form %}
@@ -93,13 +104,11 @@
         {% endfor %} -->
     </table>
 
-    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-    <button class="btn btn-secondary mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
 
     </form>
 
-</div>
-</div>
 </div>
 <!-- SKRIPTA JS ZA SAKRIVANJE -->
 <script>
@@ -112,7 +121,7 @@
     };
     function toggler(divId) {
         $("#" + divId).toggle()
-    }
+    };
     function name_toggler(divId) {
         if (document.getElementById(divId).innerText == 'Prikazi profil') {
             document.getElementById(divId).innerText = 'Sakrij profil';
@@ -124,7 +133,7 @@
         } else if (document.getElementById(divId).innerText == 'Sakrij obavestenja') {
             document.getElementById(divId).innerText = 'Prikazi obavestenja';
         }
-    }
+    };
 </script>
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 {% endblock content %}

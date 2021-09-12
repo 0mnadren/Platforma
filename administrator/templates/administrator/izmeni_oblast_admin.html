@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
 <title>Admin Oblasti</title>
@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<h1>Oblast {{ oblast.naziv }}</h1>
+<h1 class="mt-4">Oblast {{ oblast.naziv }}</h1>
 {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
 {% endif %}

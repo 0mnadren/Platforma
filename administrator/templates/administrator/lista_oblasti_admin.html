@@ -1,14 +1,19 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
 <title>Admin Oblasti</title>
 {% endblock title %}
 
 {% block content %}
+<style>
+    .table td, .table th {
+        text-align: center;
+    }
+</style>
 
-<h1>Lista Oblasti</h1>
+<h1 class="mt-4">Lista Oblasti</h1>
 
-<form method="POST">
+<form method="POST" class="mt-3">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit"  class="btn btn-outline-info">Napravi Oblast</button>
@@ -17,13 +22,13 @@
 {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
 {% endif %}
-<table class="table mt-3">
-    <thead>
+<table class="table table-striped mt-4">
+    <thead class="thead-dark">
         <tr>
             <th></th>
             <th>Naziv</th>
             <th>Izmeni Oblast</th>
-            <th>Obrisi Oblast</th>
+            <th>Obriši Oblast</th>
         </tr>
     </thead>
     <tbody>
@@ -33,7 +38,7 @@
             <td>{{ forloop.counter }}</td>
             <td>{{ oblast.naziv }}</td>
             <td> <a class="btn btn-info" href="{% url 'administrator:izmeni_oblast_admin' oblast.id %}">Izmeni</a></td>
-            <td> <a class="btn btn-danger" href="{% url 'administrator:obrisi_oblast_admin' oblast.id %}">Obrisi</a></td>
+            <td> <a class="btn btn-danger" href="{% url 'administrator:obrisi_oblast_admin' oblast.id %}">Obriši</a></td>
         </tr>
     {% endfor %}
 

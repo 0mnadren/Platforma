@@ -1,15 +1,46 @@
-{% extends 'base.html' %}
-
 {% block title %}
 <title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 {% endblock title %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'account/css/register.css' %}">
+
+
+<body>
+  <div id="register">
+    <div class="container pt-5">
+      <div id="register-row" class="row justify-content-center align-items-center">
+        <div id="register-column" class="col-md-6">
+          <div id="register-box" class="col-md-12">
+            <form id="register-form" class="form" action="" method="post">
+              <h3 class="text-center text-info">Registracija</h3><br><br><br>
+              {% csrf_token %}
+              {{ form|crispy }}
+              <div class="col"><br>
+                <a href="{% url 'account:login' %}" id="login-link" style="float: right;" name="login" class="text-right btn btn-info btn-md" value="Login">Prijavi se</a>
+              </div>
+              <button type="submit" class="btn btn-info">Registruj se</button>              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+{% endblock content %}
+
+<!-- <div class="container">
   <form method="POST" class="pt-3">
     {% csrf_token %}
       {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Sign Up</button>
   </form>
-</div>
-{% endblock content %}
+</div> -->

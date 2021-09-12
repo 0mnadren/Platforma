@@ -1,17 +1,54 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
 <title>Pitanja</title>
 {% endblock %}
 
 {% block content %}
+<style>
+    .admin-btn-green {
+        background-color: var(--cta-color); /* Green */
+        border: none;
+        color: #fff;
+        padding: 0.6rem 0.8rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .admin-btn-green:hover {
+        background-color: var(--link-color); /* Dark Green */
+        color: #fff;
+    }
 
-<h1>Azuriraj Pitanja</h1>
+    .admin-btn-outline-lightgreen { 
+        background-color: var(--background-color); 
+        border: 1px solid var(--card-color);
+        color: var(--primary-text);
+        padding: 0.6rem 0.8rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .admin-btn-outline-lightgreen:hover {
+        background-color: var(--card-color);
+        color: var(--primary-text);
+    }
+</style>
+
+<h1 class="mt-4 mb-4">Ažuriraj Pitanja</h1>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class='btn btn-secondary' type="submit">Azuriraj</button>
-
+    <button class='admin-btn-green' type="submit">Ažuriraj</button>
+    <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">Nazad</a>
 </form>
 
 {% endblock %}

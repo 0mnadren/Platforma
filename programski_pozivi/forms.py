@@ -27,6 +27,11 @@ class ProgramskiPozivPitanjaForm(forms.ModelForm):
 
 
 class ProgramskiPozivOdgovoriForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProgramskiPozivOdgovoriForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control-sm'
+
     class Meta:
         model = ProgramskiPozivOdgovori
         fields = [
@@ -41,3 +46,5 @@ class ProgramskiPozivOdgovoriForm(forms.ModelForm):
             'odgovor9',
             'odgovor10',
         ]
+
+

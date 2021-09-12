@@ -1,21 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block title %}
+{% extends 'base_admin.html' %} {% load static %} {% block title %}
 <title>Create Ankete</title>
+<link rel="stylesheet" href="{% static 'ankete/css/style.css' %}">
 {% endblock %} {% block content %}
 
-<h1>Zdravo: {{ user.username }}</h1>
-<br /><br />
+<h1 class="mt-4 mb-4">Slanje ankete '{{ anketa.naziv }}'</h1>
+<a href="{% url 'ankete:admin_ankete' %}" class="admin-btn-lightgreen">Nazad na ankete</a>
+<h4 class="mt-3">Opis ankete</h4>
+<p class="mt-3">{{ anketa.opis }}</p>
+<hr>
 
-<h3>Slanje ankete '{{ anketa.naziv }}'</h3>
-<p>{{ anketa.opis }}</p>
-<br />
-<hr />
-<br />
-
-<p>Svaki recenzent ima oblast ili oblasti strucnosti</p>
+<h4 class="mb-3">Izaberi oblasti</h4>
+<hr>
+<p>Svaki recenzent ima oblast ili oblasti stručnosti</p>
 <p>
-  Odabirom oblasti anketa se salje samo recenzentima iz tih oblasti strucnosti
+  Odabirom oblasti anketa se šalje samo recenzentima iz tih oblasti stručnosti
 </p>
-<h4>Izaberi oblasti:</h4>
+<hr>
 <form method="POST">
   {%csrf_token%} {% for oblast in oblasti %}
   <input
@@ -27,13 +27,13 @@
   <label for="{{ forloop.counter }}">{{ oblast.naziv }}</label><br />
   {% endfor %}
   <input
-    class="btn btn-outline-success"
+    class="admin-btn-green mt-2 mr-2"
     type="submit"
     name="posalji_oblast"
-    value="Posalji anketu po oblastima"
+    value="Pošalji anketu po oblastima"
   />
-  <button class="btn btn-outline-info" type="submit" name="posalji_svima">
-    Posalji svima
+  <button class="admin-btn-outline-red" type="submit" name="posalji_svima">
+    Pošalji svima
   </button>
 </form>
 

@@ -1,0 +1,111 @@
+.admin-btn-lightgreen { 
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+
+
+.admin-btn-outline-lightgreen { 
+    background-color: var(--background-color); 
+    border: 3px solid var(--card-color);
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-outline-lightgreen:hover {
+    background-color: var(--card-color);
+}
+
+
+.admin-btn-green {
+    background-color: var(--cta-color); /* Green */
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-green:hover {
+    background-color: var(--link-color); /* Dark Green */
+    color: #fff;
+}
+
+
+.admin-btn-outline-green {
+    background-color: var(--background-color);
+    border: 3px solid var(--cta-color);
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-outline-green:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+
+
+.admin-btn-red {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-red:hover {
+    background-color: var(--dark-accent-color);
+}
+
+
+.admin-btn-outline-red {
+    background-color: var(--background-color);
+    border: 3px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-outline-red:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+

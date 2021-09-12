@@ -1,0 +1,116 @@
+.admin-ul > li {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--card-color);
+}
+
+.radovi-link-admin {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+}
+
+.radovi-link-admin:hover {
+    color: #FFF !important;
+    background-color: var(--link-color);
+    border-radius: 20px;
+    padding: 0.4rem;
+}
+
+
+hr {
+    height: 3px !important;
+    border:none !important;
+    background-color: var(--card-color);
+}
+
+
+.admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+
+
+.admin-btn-green {
+    background-color: var(--cta-color); /* Green */
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-green:hover {
+    background-color: var(--link-color); /* Dark Green */
+    color: #fff;
+}
+
+
+.admin-btn-red {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-red:hover {
+    background-color: var(--dark-accent-color);
+}
+
+.table td, .table th {
+    text-align: center;
+}
+
+
+.naucni_rad_admin-table {
+    width: 100%;
+    border-top: 1px solid var(--cta-color);
+    font-size: 1.2rem;
+}
+
+.naucni_rad_admin-table, th, td {
+    padding: 15px;
+    border-collapse: collapse;
+}
+
+.naucni_rad_admin-table td {
+    font-weight: 400;
+}
+
+.naucni_rad_admin-table tr:nth-child(even){
+    background-color: #dacfb3;
+} 
+
+.naucni_rad_admin-table tr:hover {
+    background-color: var(--cta-color);
+    transition: none !important;
+}
+
+ol > li {
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    font-weight: bold;
+}

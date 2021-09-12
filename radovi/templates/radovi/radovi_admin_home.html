@@ -1,23 +1,21 @@
-{% extends 'base.html' %}
-
+{% extends 'base_admin.html' %}
+{% load static %}
 {% block title %}
 <title>Radovi</title>
+<link rel="stylesheet" href="{% static 'radovi/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1>Radovi</h1>
+<h1 class="mt-4">Radovi</h1>
 
-<h5>Na ovoj stranici Admin:</h5>
-<ol>
-    <li>Kreira Radove <a href="{% url 'radovi:kreiraj_rad' %}">Ovde</a></li>
-    <li>Pristupa Radovima i salje Recenzentima <a href="{% url 'radovi:lista_radova_admin' %}">Ovde</a></li>
-    <li>Moze da vidi poslate radove, kom je poslat, kada i konacnu odluku za taj rad
-        <a href="{% url 'radovi:prosledjeni_radovi_admin' %}">Ovde</a>
+<h5 class="mt-3">Na ovoj stranici možete pristupiti:</h5>
+<ul class="admin-ul mt-3">
+    <li><strong>Kreiranju Radova <a class="radovi-link-admin" href="{% url 'radovi:kreiraj_rad' %}">Ovde</a></strong></li>
+    <li><strong>Kreiranim Radovima i slanju Recenzentima <a class="radovi-link-admin" href="{% url 'radovi:lista_radova_admin' %}">Ovde</a></strong></li>
+    <li><strong> Poslatim radovima - Pregledu ocena i konačne odluke
+        <a class="radovi-link-admin" href="{% url 'radovi:prosledjeni_radovi_admin' %}">Ovde</a></strong>
     </li>
-    <li>Moze da povuce poslat rad recenzentu</li>
-    <li>Moze da sortira recenzije koje nisu uradjene po broju dana</li>
-    <li>Moze da uporedjuje konacne poene nekog rada</li>
-</ol>
+</ul>
 
 {% endblock %}

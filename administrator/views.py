@@ -97,7 +97,7 @@ def kreiraj_obavestenje(request):
         if form.is_valid():
             if request.POST.get('send_mail'):
                 for profil in form.cleaned_data['profil']:
-                    print(profil.user.email)
+                    # print(profil.user.email)
                     send_mail(
                         subject=f'{form.cleaned_data["naslov"]}',
                         message=f'{form.cleaned_data["tekst"]} \n \n'

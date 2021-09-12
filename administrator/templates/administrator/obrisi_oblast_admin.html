@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_admin.html' %}
 
 {% block title %}
 <title>Admin Oblasti</title>
@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form method="POST" class="mt-2">
+<form method="POST" class="mt-4">
   {% csrf_token %}
 
   <p>Da li ste sigurni da zelite da obrisete "{{ object }}" oblast?</p>

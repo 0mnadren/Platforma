@@ -24,12 +24,12 @@ class Rad(models.Model):
         validators=[
                 MinValueValidator(1900),
                 MaxValueValidator(datetime.now().year)],
-        help_text="Use the following format: YYYY")
+        help_text="Koristi sledeći format: GGGG")
 
     opis = models.FileField(upload_to='radovi/opis/pdfs', validators=[validate_file_extension])
     biografije = models.FileField(upload_to='radovi/biografije/pdfs', validators=[validate_file_extension])
 
-    datum_podnosenja = models.DateField(help_text='Use the following format: YYYY-MM-DD')
+    datum_podnosenja = models.DateField(help_text='Koristi sledeći format: GGGG-MM-DD')
 
     prihvacen_rad = models.BooleanField(default=None, null=True)
 
