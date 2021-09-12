@@ -74,14 +74,6 @@ a:hover {
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'administrator:profil' %}">Admin Profil</a>
             </li>
-            {% elif user.profile_accepted %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profil:profil' %}">Profil</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:status' %}">Status</a>
-            </li>
             {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>

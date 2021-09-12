@@ -1,3 +1,4 @@
+// naucni_rad_admin
 const btnPrikazi = document.getElementById('btn_prikazi');
 const btnSakrij = document.getElementById('btn_sakrij');
 const divPitanja = document.getElementById('programski_poziv_pitanja');
