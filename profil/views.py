@@ -3,11 +3,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .forms import ProfilForm
-from .models import Oblast, Profil
+from .models import Oblast
 from account.models import accepted_check
 from administrator.models import Obavestenje, Obrisanostanje
 from datetime import datetime
 from django.db.models import Q
+from radovi.models import ProsledjenRad
+from ankete.models import AnketaPopunjena
 
 
 @login_required()
@@ -41,11 +43,8 @@ def prijava(request):
 def profil(request):
     user = request.user
     default_datum = datetime.today()
-    # obavestenja = Obavestenje.objects.filter(
-    #     profil=user.profil,
-    #     obavest=True
-    # )
-    # print(obavestenja)
+    prosledjeni_radovi = ProsledjenRad.objects.filter(profil=user.profil, zakljucani_odgovori=False)
+    nepopunjene_ankete = AnketaPopunjena.objects.filter(profil=user.profil, popunjena_anketa=False)
 
     obavestenja = Obrisanostanje.objects.filter(
         profil=user.profil
@@ -64,7 +63,9 @@ def profil(request):
     context = {
         'obavestenja': obavestenja,
         'form': form,
-        'default_datum': default_datum
+        'default_datum': default_datum,
+        'prosledjeni_radovi': prosledjeni_radovi,
+        'nepopunjene_ankete': nepopunjene_ankete
     }
 
     return render(request, 'profil/profil.html', context)
