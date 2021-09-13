@@ -12,12 +12,15 @@
     .table {
         border: 2px solid var(--cta-color);
     }
+    .table th {
+        cursor: pointer;
+    }
 </style>
 {% load static %}
 <h1 class="mt-4">Pregled prijava recezenata</h1>
 <h4 class="mt-4">Klikom na jedan od naslova kolona u tabeli, moguće je sortirati tabelu.</h4>
 <br>
-<table class="table table-striped sortable mt-1">
+<table class="table sortable mt-1">
     <thead class="thead-dark">
         <tr>
             <th scope="col" style="width: 50px;">#</th>
@@ -45,11 +48,11 @@
                 <span style="color: gray;">Prijava nije pregledana</span>
                 {% endif %}
             </td>
-            {% if prijava.prosledjenrad_set.all %}
-            <td>{{ prijava.prosledjenrad_set.all|length }}</td>
-            {% else %}
-            <td></td>
-            {% endif %}
+            {% for key, value in broj_radova_na_recenziji.items %}
+                {% if key == prijava  %}
+                    <td>{{ value }}</td>
+                {% endif %}
+            {% endfor %}
         </tr>
         {% endfor %}
     </tbody>

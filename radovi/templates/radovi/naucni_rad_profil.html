@@ -47,30 +47,30 @@
       text-align: center;
   }
 
-  .naucni_rad_profil-table {
+  .naucni-rad-profil-tabela {
       width: 100%;
       border-top: 1px solid var(--cta-color);
       font-size: 1.2rem;
   }
 
-  .naucni_rad_profil-table, th, td {
+  .naucni-rad-profil-tabela, th, td {
       padding: 15px;
       border-collapse: collapse;
   }
 
-  .naucni_rad_profil-table td {
+  .naucni-rad-profil-tabela td {
       font-weight: 400;
   }
 
-  .naucni_rad_profil-table td > a:hover {
+  .naucni-rad-profil-tabela td > a:hover {
       color: #fff;
   }
 
-  .naucni_rad_profil-table tr:nth-child(even){
+  .naucni-rad-profil-tabela tr:nth-child(even){
       background-color: var(--background-shadow);
   }
 
-  .naucni_rad_profil-table tr:hover {
+  .naucni-rad-profil-tabela tr:hover {
       background-color: var(--link-color);
       transition: none !important;
       color: #fff;
@@ -88,7 +88,7 @@
 
 <hr>
 
-<table class="naucni_rad_profil-table mt-5 mb-5">
+<table class="naucni-rad-profil-tabela mt-5 mb-5">
     <tr>
         <th>Naziv rada</th>
         <td>{{ rad.naziv }}</td>
@@ -152,9 +152,10 @@
     </tbody>
   </table>
   <hr>
-  <p>Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.</p>
-  <p>
+    <p><strong>Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.</strong></p>
+  <p><strong>
     Ukoliko Kliknete na "Sačuvaj i Zaključaj odgovore" --> Vaši odgovori se šalju na dalju obradu i nemate pravo više da ih menjate!
+  </strong>
   </p>
   <hr>
   <button type="submit" name="sacuvaj" class="profil-btn-orange mt-2 mr-2">Sačuvaj odgovore</button>
@@ -173,11 +174,11 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da zaključate vaše odgovre?</p>
+        <p>Da li ste sigurni da želite da zaključate vaše odgovore?</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
-              <input type="submit" name="zakljucaj" value="Zaključaj" class="btn btn-success">
+              <input type="submit" name="zakljucaj" value="Zaključaj" class="btn btn-warning">
       </div>
     </div>
   </div>

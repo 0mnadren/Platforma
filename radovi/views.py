@@ -180,11 +180,8 @@ def lista_radova_profil(request):
     user = request.user
     radovi = ProsledjenRad.objects.filter(profil=user.profil).filter(zakljucani_odgovori=False)
 
-    broj_radova = len(radovi)
-
     context = {
         'radovi': radovi,
-        'broj_radova': broj_radova,
     }
 
     return render(request, 'radovi/lista_radova_profil.html', context)

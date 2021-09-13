@@ -6,11 +6,13 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.conf import settings
 
 from .validators import superuser_check
 from profil.models import Profil, Oblast
 from .forms import ObavestenjeForm, OblastForm
-from django.conf import settings
+from radovi.models import ProsledjenRad
+
 
 
 @login_required()
@@ -23,8 +25,20 @@ def profil(request):
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def pregled_prijava(request):
     prijave = Profil.objects.all().order_by('-id')
+    prosledjen_radovi = ProsledjenRad.objects.filter(zakljucani_odgovori=False)
+
+    broj_radova_na_recenziji = {}
+    for prijava in prijave:
+        for prosledjen_rad in prosledjen_radovi:
+            if prijava == prosledjen_rad.profil:
+                try:
+                    broj_radova_na_recenziji[prijava] += 1
+                except KeyError:
+                    broj_radova_na_recenziji[prijava] = 1
+
     context = {
-        'prijave': prijave
+        'prijave': prijave,
+        'broj_radova_na_recenziji': broj_radova_na_recenziji
     }
     return render(request, 'administrator/pregled_prijava.html', context)
 

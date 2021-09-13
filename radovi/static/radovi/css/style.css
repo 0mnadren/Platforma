@@ -83,6 +83,9 @@ hr {
     text-align: center;
 }
 
+.table th {
+        cursor: pointer;
+}
 
 .naucni_rad_admin-table {
     width: 100%;

@@ -5,15 +5,78 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .table td, .table th {
+        text-align: center;
+    }
+    .table {
+        border: 2px solid var(--cta-color);
+    }
 
-<h1>Radovi na recenziji</h1>
-<h5>Ukupan broj radova na recenziji je {{ broj_radova }}</h5>
+    .table th {
+        cursor: pointer;
+    }
+
+    hr {
+    height: 3px !important;
+    border:none !important;
+    background-color: var(--card-color);
+    }
+
+  .profil-btn-yellow {
+    background-color: var(--card-color);
+    border: none;
+    color: var(--accent-color);
+    padding: 0.3rem 0.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  .profil-btn-yellow:hover {
+    background-color: var(--dark-card-color);
+    color: #fff;
+}
+</style>
+
+<h1 class="mt-4 mb-4">Radovi na recenziji</h1>
 <hr>
-<ul>
-    {% for rad in radovi %}
-    <li><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}">{{ rad.rad.naziv }}</a></li>
-    {% endfor %}
-</ul>
+{% if radovi %}
+<table class="table table-striped sortable mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" style="width: 50px;">#</th>
+            <th scope="col" style="width: 200px;">Naziv rada</th>
+            <th style="height: 10px;" scope="col">Kategorija rada</th>
+            <th style="height: 10px;" scope="col">Oblasti</th>
+            <th scope="col">Kada je prosleđen</th>
+            <th scope="col">Pregled rada</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rad in radovi %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td scope="row"><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}">{{ rad.rad.naziv }}</a></td>
+            <td>{{ rad.rad.kategorija }}</td>
+            {% for oblast in rad.rad.oblasti.all %}
+            <td>{{ oblast.naziv }}</td>
+            {% endfor %}
+            <td>{{ rad.kada_poslat }}</td>
+            <td><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}" class="profil-btn-yellow">Oceni rad</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h3>Trenutno nemate radove na recenziji</h3>
+<a href="{% url 'profil:profil' %}" class="profil-btn-yellow mt-2">Nazad na profil</a>
+{% endif %}
+
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
 
 {% endblock %}
