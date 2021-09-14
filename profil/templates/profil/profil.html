@@ -24,8 +24,8 @@
 <h1 class="text-truncate">Profil korisnika: {{ user.username }}</h1>
 <h1>Status: Recezent</h1>
 
-<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block">Pregledaj ankete <span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
-<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block">Pregledaj Radove <span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
+<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block">Pregledaj ankete&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
+<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block">Pregledaj Radove&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
 <br><br><br>
 <!-- SEARCH!!! -->
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->

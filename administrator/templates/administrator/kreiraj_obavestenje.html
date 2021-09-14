@@ -1,10 +1,14 @@
 {% extends 'base_admin.html' %}
 
+
 {% block title %}
+
 <title>Dodaj obavestenje</title>
+{% load static %}
 {% endblock title %}
 {% load crispy_forms_tags %}
 {% block content %}
+
 <style>
     .admin-btn-lightgreen {
     background-color: var(--card-color); /* Light Green */
@@ -27,13 +31,24 @@
 
 
 <h1 class="mt-4 mb-4">Obaveštenje</h1>
-
+<a href="javascript:;" onclick="selectAll();">Select All</a> | <a href="javascript:;" onclick="deSelectAll();">De-Select All</a>
 <form method="POST" enctype="multipart/form-data">
     <table class="table table-bordered">
-        <div class="form-group">
+        
+        <div class="form-group">            
             {% csrf_token %}
-            {{ form|crispy }}
-        </div>              
+            {{ form | crispy }}
+            <!-- <select id="myselect" multiple="multiple" name="myselect">
+                {% for korisnik in form.profil %}
+                <option value="{{ korisnik }}" name='osoba'></option>
+                {% endfor %}
+            </select>
+            <br />
+        
+        </div>
+        <div class=""></div>Naslov{{ form.naslov }}</div>           
+        <div class="">Tekst{{ form.tekst }}</div>  
+        <div class="">Potpis{{ form.potpis }}</div>   -->
     </table>
     <div class="col">
         <div class="row">
@@ -45,13 +60,8 @@
             <button class="admin-btn-lightgreen" type="submit">Pošalji</button>
         </div>
     </div>
-    
-    
-    
-    
-    
 </form>
 
 
-
+<script src="{% static 'administrator/js/app.js'%}" async></script>
 {% endblock content %}

@@ -184,3 +184,4 @@ PASSWORD_RESET_TIMEOUT = 300  # 5 minuta traje link za resetovanje
 
 # Crispy requirements
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_FAIL_SILENTLY = not DEBUG
