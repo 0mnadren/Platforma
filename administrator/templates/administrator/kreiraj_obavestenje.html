@@ -36,29 +36,44 @@
     <table class="table table-bordered">
         
         <div class="form-group">
-            <a href="javascript:;" onclick="selectAll();">Select All</a> | <a href="javascript:;" onclick="deSelectAll();">De-Select All</a>            
-            {% csrf_token %}
-            {{ form | crispy }}
+            <div class="container">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        {{ form.naslov | as_crispy_field }}
+                        {{ form.profil | as_crispy_field }}
+                        <a href="javascript:;" onclick="selectAll();">Select All</a> | <a href="javascript:;" onclick="deSelectAll();">De-Select All</a>
+                        <br><br><br>
+                        {{ form.potpis | as_crispy_field }}
+                    </div>
+                    <div class="col">
+                        {{ form.tekst | as_crispy_field }}                        
+                    </div>
+                </div>
+            </div>
+        </div>
             <!-- <select id="myselect" multiple="multiple" name="myselect">
                 {% for korisnik in form.profil %}
                 <option value="{{ korisnik }}" name='osoba'></option>
                 {% endfor %}
             </select>
             <br />
-        
+            
         </div>
         <div class=""></div>Naslov{{ form.naslov }}</div>           
         <div class="">Tekst{{ form.tekst }}</div>  
         <div class="">Potpis{{ form.potpis }}</div>   -->
     </table>
-    <div class="col">
-        <div class="row">
-            <label style="float: left; color:var(--primary-text)" for="send_mail">Pošalji i na mail!
-                <input type="checkbox" name="send_mail" id="send_mail">
-            </label>
-        </div>
-        <div class="row mt-3">
-            <button class="admin-btn-lightgreen" type="submit">Pošalji</button>
+    <div class="container">
+        <div class="col">
+            <div class="row">
+                <label style="float: left; color:var(--primary-text)" for="send_mail">Pošalji i na mail!
+                    <input type="checkbox" name="send_mail" id="send_mail">
+                </label>
+            </div>
+            <div class="row mt-3">
+                <button class="admin-btn-lightgreen" type="submit">Pošalji</button>
+            </div>
         </div>
     </div>
 </form>
