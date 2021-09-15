@@ -53,7 +53,7 @@ def kreiraj_rad(request):
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def lista_radova_admin(request):
-    radovi = Rad.objects.all().order_by('programski_poziv')
+    radovi = Rad.objects.all().order_by('programski_poziv').order_by('prihvacen_rad')
 
     return render(request, 'radovi/lista_radova_admin.html', {'radovi': radovi})
 
@@ -127,6 +127,8 @@ def ime_rada_pretraga(request):
 
         result = render_to_string('radovi/ime_rada_pretraga.html', context, request)
         return HttpResponse(result)
+    else:
+        return redirect('radovi:radovi_admin_home')
 
 
 def recenzije_dani_pretraga(request):
@@ -144,7 +146,8 @@ def recenzije_dani_pretraga(request):
         }
         result = render_to_string('radovi/recenzije_dani_pretraga.html', context, request)
         return HttpResponse(result)
-
+    else:
+        return redirect('radovi:radovi_admin_home')
 
 
 @login_required()

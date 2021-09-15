@@ -21,8 +21,6 @@ function imeRadaPretraga(url) {
 function recenzijeDaniPretraga(url) {
     const broj_dana_input = $('#broj_dana').val();
     const csrfToken = $( "input[name=\"csrfmiddlewaretoken\"]" ).val ( );
-    console.log(broj_dana_input)
-    console.log(csrfToken)
 
     $.ajax({
         url: url,

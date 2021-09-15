@@ -60,6 +60,36 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.dropdown-menu {
+  background-color: #343a40;
+  border: 1px solid #1e1e1e;
+}
+
+.dropdown-menu .dropdown-item {
+display: inline-block; 
+width: 100%; 
+padding: 10px 15px;
+color:  #f0f0f0;
+font-weight: bold;
+}
+
+.dropdown-menu .dropdown-item:hover
+{
+color: #fff;
+background-color: #1e1e1e;
+border-color: #fff;
+}
+
+.nav-link {
+  color: #f7f9fac0 !important;
+  padding-right: 12px !important;
+  padding-left: 12px !important;
+}
+
+.nav-link:hover {
+color: #f0f0f0 !important;
+}
 </style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -71,8 +101,19 @@ a:hover {
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
             {% if user.is_superuser %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'administrator:profil' %}">Admin Profil</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin Profil {{ user.username|title }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'administrator:profil' %}">Profil</a>
+                <a class="dropdown-item" href="{% url 'administrator:pregled_prijava' %}">Pregled prijava</a>
+                <a class="dropdown-item" href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a>
+                <a class="dropdown-item" href="{% url 'ankete:admin_ankete' %}">Ankete</a>
+                <a class="dropdown-item" href="{% url 'administrator:kreiraj_obavestenje' %}">Obaveštenja</a>
+                <a class="dropdown-item" href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski pozivi</a>
+                <a class="dropdown-item" href="{% url 'radovi:radovi_admin_home' %}">Naučni radovi</a>
+              </div>
             </li>
             {% endif %}
             <li class="nav-item">

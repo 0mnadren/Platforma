@@ -11,7 +11,7 @@ urlpatterns = [
     path('konacna_odluka_rad_admin/<int:pk>/', views.konacna_odluka_rad_admin, name='konacna_odluka_rad_admin'),
 
     path('prosledjeni_radovi_admin/', views.prosledjeni_radovi_admin, name='prosledjeni_radovi_admin'),
-    path('prosledjeni_radovi_admin/<int:pk>/oduzimanje', views.oduzimanje_rada_admin, name='oduzimanje_rada_admin'),
+    path('prosledjeni_radovi_admin/<int:pk>/oduzimanje/', views.oduzimanje_rada_admin, name='oduzimanje_rada_admin'),
 
     path('ime_rada_pretraga/', views.ime_rada_pretraga, name='ime_rada_pretraga'),
     path('recenzije_dani_pretraga/', views.recenzije_dani_pretraga, name='recenzije_dani_pretraga'),

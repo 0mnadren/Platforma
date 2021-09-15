@@ -61,6 +61,36 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.dropdown-menu {
+    background-color: #343a40;
+    border: 1px solid #1e1e1e;
+}
+
+.dropdown-menu .dropdown-item {
+  display: inline-block; 
+  width: 100%; 
+  padding: 10px 15px;
+  color:  #f0f0f0;
+  font-weight: bold;
+}
+
+.dropdown-menu .dropdown-item:hover
+{
+  color: #fff;
+  background-color: #1e1e1e;
+  border-color: #fff;
+}
+
+.nav-link {
+    color: #f7f9fac0 !important;
+    padding-right: 12px !important;
+    padding-left: 12px !important;
+}
+
+.nav-link:hover {
+  color: #f0f0f0 !important;
+}
 </style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -76,9 +106,16 @@ a:hover {
                 <a class="nav-link" href="{% url 'administrator:profil' %}">Admin Profil</a>
             </li>
             {% elif user.profile_accepted %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profil:profil' %}">Profil</a>
-            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profil {{ user.username|title }}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'profil:profil' %}">Profil</a>
+                  <a class="dropdown-item" href="{% url 'ankete:ankete' %}">Ankete</a>
+                  <a class="dropdown-item" href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+                </div>
+              </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'account:status' %}">Status</a>
