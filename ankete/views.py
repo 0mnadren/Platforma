@@ -119,13 +119,11 @@ def ankete(request):
     user = request.user
     nepopunjene_ankete = AnketaPopunjena.objects.filter(
         profil=user.profil,  popunjena_anketa=False)
-    broj_nepopunjenih = len(nepopunjene_ankete)
     popunjene_ankete = AnketaPopunjena.objects.filter(
         profil=user.profil,  popunjena_anketa=True)
     context = {
         'nepopunjene_ankete': nepopunjene_ankete,
-        'popunjene_ankete': popunjene_ankete,
-        'broj_nepopunjenih': broj_nepopunjenih
+        'popunjene_ankete': popunjene_ankete
     }
 
     return render(request, 'ankete/lista_anketa_profil.html', context)

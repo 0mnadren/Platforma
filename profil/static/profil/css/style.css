@@ -16,3 +16,40 @@
     background-position: right center;
     text-decoration: none;
 }
+
+.btn-grad-search {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    padding: 7px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+}
+ 
+.btn-grad-search:hover {
+    background-position: right center;
+    text-decoration: none;
+}
+ 
+.btn-grad-delete {
+    text-align: center;
+    background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    border: 0px;
+    padding: 5px !important;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.btn-grad-delete:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}

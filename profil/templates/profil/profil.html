@@ -10,12 +10,6 @@
 
 <!-- TRIK SA TRANSITION, ne radi ako nije na stranici, takodje i VAR ne hvata u .css -->
 <style>
-.btn-grad {
-   transition: 0.5s;
-}
-.btn-grad:hover {
-   color: rgb(255, 255, 255);
-}
 .table, th, td {
     border-color: var(--background-shadow) !important;
 }
@@ -34,6 +28,16 @@
     id="btn_obavestenja">Sakrij obavestenja</button>
 <br><br>
 <div id="obavestenja_table">
+    <form action="{% url 'profil:search' %}" class="form-inline" method="get">
+        <div class="form-group mb-8">
+            <h2>{% if type %}{{ type.name }}{% else %} Pretrazi obavestenja {% endif %}</h2>
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="" class="sr-only">search</label>
+            <input name="search" type="" class="form-control" id="" placeholder="Kljucna rec">
+        </div>
+        <button type="submit" class="btn-grad-search mb-2">Pretrazi</button>
+    </form>
     <table class="table table-striped border sortable">
         <!--sortable omogucava sort sa skripte na dnu-->        
         <thead>
@@ -55,7 +59,7 @@
                 <td style="text-align: center;">
                     <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
                         {% csrf_token %}
-                        <input type="submit" value="Obrisi" class="btn btn-danger" style="padding: 2px;">
+                        <input type="submit" value="Obrisi" class="btn-grad-delete" style="padding: 2px;">
                     </form>
                 </td>
             </tr>

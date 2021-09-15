@@ -6,8 +6,8 @@ class ProfilForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['biografija'].widget.initial_text = "currently"
-        self.fields['biografija'].widget.input_text = "NE DIRAJ"
+        self.fields['biografija'].widget.initial_text = "Trenutno"
+        self.fields['biografija'].widget.input_text = "Izaberi"
 
     class Meta:
         model = Profil
