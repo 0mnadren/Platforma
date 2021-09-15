@@ -12,6 +12,7 @@
 <a href="{% url 'administrator:pregled_prijava' %}" class="admin-btn-lightgreen mb-4">Lista prijava</a>
 
 <hr>
+<div class="table-overflow">
 <table class="naucni_rad_admin-table mt-5 mb-5">
     <tr>
         <th>Ime i prezime</th>
@@ -102,6 +103,7 @@
       <td>{{ prijava.naucni_rad_10 }}</td>
     </tr>
 </table>
+</div>
 <hr>
 
 <!-- Ovde moze da se ubaci logika da ako je prijava odbijena ili prihvacena da se ne prikazuju ova 2 dugmeta -->

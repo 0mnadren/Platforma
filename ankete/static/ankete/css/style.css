@@ -143,3 +143,18 @@ hr {
     color: #fff;
     text-decoration: none;
 }
+
+
+@media (max-width: 580px) {
+    h1 {
+        text-align: center;
+    }
+
+    .table-overflow {
+        overflow-x: auto;
+    }
+
+    .admin-btn-outline-red {
+        margin-top: 1rem;
+    }
+}
