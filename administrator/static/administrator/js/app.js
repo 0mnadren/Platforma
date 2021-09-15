@@ -7,7 +7,7 @@ $(document).ready(function(e) {
 
 function selectAll()
 {
-	$('select#myselect').val();
+	$('select#myselect').val(select_ids);
 }
 
 function deSelectAll()
