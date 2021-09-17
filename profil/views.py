@@ -46,9 +46,7 @@ def profil(request):
     prosledjeni_radovi = ProsledjenRad.objects.filter(profil=user.profil, zakljucani_odgovori=False)
     nepopunjene_ankete = AnketaPopunjena.objects.filter(profil=user.profil, popunjena_anketa=False)
 
-    obavestenja = Obrisanostanje.objects.filter(
-        profil=user.profil
-    )
+    obavestenja = Obrisanostanje.objects.filter(profil=user.profil)
     
     if request.method == 'POST':
         form = ProfilForm(request.POST or None, request.FILES,

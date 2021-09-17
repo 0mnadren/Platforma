@@ -36,8 +36,8 @@
 <h4>Broj popunjenih anketa je --> {{ user.profil.pregledane_ankete }}</h4>
 <br />
 <br />
-<table class="table">
-  <thead>
+<table class="table table-striped border sortable">
+  <thead class="thead-dark">
     <tr>
       <th></th>
       <th>Naziv</th>
@@ -48,7 +48,7 @@
   </thead>
   <tbody>
     {% for nepopunjena_anketa in nepopunjene_ankete %}
-    <tr>
+    <tr class="table-danger">
       <td>{{ forloop.counter }}</td>
       <td>{{ nepopunjena_anketa.anketa.naziv }}</td>
       <td>{{ nepopunjena_anketa.anketa.opis }}</td>
@@ -72,6 +72,6 @@
     {% endfor %}
   </tbody>
 </table>
-
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 {% endblock %}
 

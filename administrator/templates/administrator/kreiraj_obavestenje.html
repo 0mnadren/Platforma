@@ -5,30 +5,10 @@
 
 <title>Dodaj obavestenje</title>
 {% load static %}
+<link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 {% load crispy_forms_tags %}
 {% block content %}
-
-<style>
-    .admin-btn-lightgreen {
-    background-color: var(--card-color); /* Light Green */
-    border: none;
-    color: var(--primary-text);
-    padding: 0.6rem 0.8rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.admin-btn-lightgreen:hover {
-    background-color: var(--cta-color);
-    color: #fff;
-}
-</style>
-
 
 <h1 class="mt-4 mb-4">Obaveštenje</h1>
 
