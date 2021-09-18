@@ -5,7 +5,10 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'account/home.html')
+    if request.user.is_superuser:
+        return render(request, 'administrator/admin_profil.html')
+    else:
+        return render(request, 'account/home.html')
 
 
 def register(request):

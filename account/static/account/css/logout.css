@@ -62,6 +62,7 @@ span {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 1.5rem;
 }
 .btn-logout:hover {
     background-color: #148c9e;

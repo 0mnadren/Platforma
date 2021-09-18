@@ -118,9 +118,9 @@ def rezultat_anketa(request, pk):
 def ankete(request):
     user = request.user
     nepopunjene_ankete = AnketaPopunjena.objects.filter(
-        profil=user.profil,  popunjena_anketa=False)
+        profil=user.profil,  popunjena_anketa=False).order_by('-id')
     popunjene_ankete = AnketaPopunjena.objects.filter(
-        profil=user.profil,  popunjena_anketa=True)
+        profil=user.profil,  popunjena_anketa=True).order_by('-id')
     context = {
         'nepopunjene_ankete': nepopunjene_ankete,
         'popunjene_ankete': popunjene_ankete
@@ -205,7 +205,6 @@ def rezultat_anketa_profil(request, pk):
         context = {
             'anketa': anketa,
             'pitanja': pitanja
-
         }
         return render(request, 'ankete/rezultat_anketa_profil.html', context)
     else:
