@@ -36,7 +36,7 @@ class ProfilForm(forms.ModelForm):
         ]
         labels = {
             'NIO': 'NIO (naučno istraživačka organizacija)',
-            'naucno_zvanje': 'Naucčno zvanje',
+            'naucno_zvanje': 'Naučno zvanje',
             'angazovanje': 'Angažovanje',
             'website': 'Lična veb stranica',
             'naucni_rad_1': 'Naučni rad 1',
