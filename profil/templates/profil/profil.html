@@ -24,18 +24,18 @@
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
 
 <button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
-    id="btn_obavestenja">Sakrij obavestenja</button>
+    id="btn_obavestenja">Sakrij obaveštenja</button>
 <br><br>
 <div id="obavestenja_table">
     <form action="{% url 'profil:search' %}" class="form-inline" method="get">
         <div class="form-group mb-8">
-            <h2>{% if type %}{{ type.name }}{% else %} Pretrazi obavestenja {% endif %}</h2>
+            <h2>{% if type %}{{ type.name }}{% else %} Pretraži obaveštenja {% endif %}</h2>
         </div>
         <div class="form-group mx-sm-3 mb-2">
             <label for="" class="sr-only">search</label>
-            <input name="search" type="" class="form-control" id="" placeholder="Kljucna rec">
+            <input name="search" type="" class="form-control" id="" placeholder="Ključna reč">
         </div>
-        <button type="submit" class="btn-grad-search mb-2">Pretrazi</button>
+        <button type="submit" class="btn-grad-search mb-2">Pretraži</button>
     </form>
     <table class="table table-striped border sortable">
         <!--sortable omogucava sort sa skripte na dnu-->        
@@ -56,10 +56,7 @@
                 <td data-bind="text: text()" class="text-truncate" style="max-width: 55px">{{ obavestenje.obavestenje.tekst }}</td>
                 <td class="text-truncate" style="max-width: 85px">{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
                 <td style="text-align: center;">
-                    <form action="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" method="POST">
-                        {% csrf_token %}
-                        <input type="submit" value="Obrisi" class="btn-grad-delete" style="padding: 2px;">
-                    </form>
+                    <a href="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" class="btn-grad-delete">Obriši</a>
                 </td>
             </tr>
             {% endfor %}
@@ -67,7 +64,7 @@
     </table>
     <hr>
 </div>
-<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikazi
+<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikaži
     profil</button>
 <br>
 <!-- za edit nemanja zivkovic
@@ -97,7 +94,7 @@
     </table>
 
     <button class="btn btn-info mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>Reset izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>Restartuj izmene</button>
 
     </form>
 
@@ -115,15 +112,15 @@
         $("#" + divId).toggle()
     };
     function name_toggler(divId) {
-        if (document.getElementById(divId).innerText == 'Prikazi profil') {
+        if (document.getElementById(divId).innerText == 'Prikaži profil') {
             document.getElementById(divId).innerText = 'Sakrij profil';
         } else if (document.getElementById(divId).innerText == 'Sakrij profil') {
-            document.getElementById(divId).innerText = 'Prikazi profil';
+            document.getElementById(divId).innerText = 'Prikaži profil';
 
-        } else if (document.getElementById(divId).innerText == 'Prikazi obavestenja') {
-            document.getElementById(divId).innerText = 'Sakrij obavestenja';
-        } else if (document.getElementById(divId).innerText == 'Sakrij obavestenja') {
-            document.getElementById(divId).innerText = 'Prikazi obavestenja';
+        } else if (document.getElementById(divId).innerText == 'Prikaži obaveštenja') {
+            document.getElementById(divId).innerText = 'Sakrij obaveštenja';
+        } else if (document.getElementById(divId).innerText == 'Sakrij obaveštenja') {
+            document.getElementById(divId).innerText = 'Prikaži obaveštenja';
         }
     };
 </script>

@@ -1,14 +1,38 @@
-{% extends 'base_profil.html' %} {% load static %} {% block title %}
+{% extends 'base_profil.html' %} 
+{% load static %} 
+{% block title %}
 <title>Rezultat</title>
-{% endblock %} {% block content %}
-<br>
-<a href="{% url 'ankete:ankete' %}" class="btn btn-outline-secondary">Nazad na ankete</a>
+{% endblock %} 
+{% block content %}
+
+<style>
+  .grad-btn-stats {
+    text-align: center;
+    padding: 0.5rem 0.7rem;
+    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+}
+
+.grad-btn-stats:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+</style>
+
 <div class="container">
-      <div class="row">
-        <div class="col-md-8 m-auto">
-<div class="text-center m-4">
-  <h2>Rezultat Ankete "{{anketa.naziv}}"</h2>
-</div>
+  <div class="row">
+    <div class="col-md-8 m-auto">
+      <div class="mt-5">
+        <a href="{% url 'ankete:ankete' %}" class="grad-btn-stats mt-5">Nazad na ankete</a>
+      </div>
+    <div class="text-center m-4">
+      <h1 class="mt-4 mb-4">Rezultat Ankete "{{anketa.naziv}}"</h1>
+    </div>
               
 {% for pitanje in pitanja %}  
         <h3 class="mb-2">{{pitanje.pitanje_text}}</h3>

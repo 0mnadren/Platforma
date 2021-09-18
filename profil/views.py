@@ -74,9 +74,9 @@ def obrisi_obavestenje(request, pk):
     obavestenje = get_object_or_404(Obavestenje, pk=pk)
 
     obavestenje_stanje = get_object_or_404(Obrisanostanje, profil=request.user.profil, obavestenje=obavestenje)
-    if request.method == 'POST':
+    if request.method == 'GET':
         obavestenje_stanje.delete()
-        return redirect('profil:profil')
+
     return redirect('profil:profil')
 
 #ukloniti, i ukloniti URL

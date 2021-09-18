@@ -31,35 +31,59 @@
   .table, th, td {
     border-color: var(--background-shadow) !important;
   }
+
 </style>
 <h1 class="mt-4 mb-4">ANKETE</h1>
-<h4>Broj popunjenih anketa je --> {{ user.profil.pregledane_ankete }}</h4>
 <br />
 <br />
-<table class="table table-striped border sortable">
-  <thead class="thead-dark">
-    <tr>
-      <th></th>
-      <th>Naziv</th>
-      <th>Opis</th>
-      <th>Napravljena</th>
-      <th style="text-align: center;">Akcija</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for nepopunjena_anketa in nepopunjene_ankete %}
-    <tr class="table-danger">
-      <td>{{ forloop.counter }}</td>
-      <td>{{ nepopunjena_anketa.anketa.naziv }}</td>
-      <td>{{ nepopunjena_anketa.anketa.opis }}</td>
-      <td>{{ nepopunjena_anketa.anketa.created_at }}</td>
-      <td>
-        <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="btn grad-btn-accept">Želim da popunim</a>
-        <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" style="float: right;" class="btn grad-btn-decline">Ne želim da popunim</a>
-      </td>
-    </tr>
-    {% endfor %}
-    
+{% if nepopunjene_ankete %}
+<h4>Nepopunjene ankete</h4>
+<div class="table-overflow">
+  <table class="table table-striped border sortable mb-5">
+    <thead class="thead-yellow">
+      <tr>
+        <th></th>
+        <th>Naziv</th>
+        <th>Opis</th>
+        <th>Napravljena</th>
+        <th style="text-align: center;">Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nepopunjena_anketa in nepopunjene_ankete %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ nepopunjena_anketa.anketa.naziv }}</td>
+        <td>{{ nepopunjena_anketa.anketa.opis }}</td>
+        <td>{{ nepopunjena_anketa.anketa.created_at }}</td>
+        <td style="max-width: 320px;">
+          <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-accept mr-4">Želim da popunim</a>
+          <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-decline">Ne želim da popunim</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<h4 class="mb-5">Trenutno nemate nepopunjene ankete!</h4>
+{% endif %}
+
+<hr>
+
+<h4 class="mt-5">Popunjene ankete <span class="badge badge-light">{{ user.profil.pregledane_ankete }}</span></h4>
+<div class="table-overflow">
+  <table class="table table-striped border sortable">
+    <thead class="thead-dark">
+      <tr>
+        <th></th>
+        <th>Naziv</th>
+        <th>Opis</th>
+        <th>Napravljena</th>
+        <th style="text-align: center;">Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
     {% for popunjena_anketa in popunjene_ankete %}
     <tr>
       <td>{{ forloop.counter }}</td>
@@ -67,11 +91,13 @@
       <td>{{ popunjena_anketa.anketa.opis }}</td>
       <td>{{ popunjena_anketa.anketa.created_at }}</td>
 
-      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="btn grad-btn-stats">Statistika ankete</a></td>
+      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="grad-btn-stats">Statistika ankete</a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
+</div>  
+
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 {% endblock %}
 

@@ -48,8 +48,8 @@
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="admin-btn-green">Kreiraj</button>
-    <a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-outline-lightgreen mb-4 ml-2">Nazad</a>
+    <button type="submit" class="admin-btn-green mt-3">Kreiraj</button>
+    <a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-outline-lightgreen mb-4 ml-3 mt-3">Nazad</a>
 </form>
 
 {% endblock %}

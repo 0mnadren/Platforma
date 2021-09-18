@@ -1,5 +1,7 @@
 .table td, .table th {
     text-align: center;
+    padding: 15px !important;
+    font-weight: bold;
 }
 
 hr {
@@ -99,6 +101,7 @@ hr {
 .grad-btn-accept {
     text-align: center;
     background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    padding: 0.4rem 0.6rem;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
@@ -115,6 +118,7 @@ hr {
 .grad-btn-decline {
     text-align: center;
     background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    padding: 0.4rem 0.6rem;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;            
@@ -130,6 +134,7 @@ hr {
 
 .grad-btn-stats {
     text-align: center;
+    padding: 0.4rem 0.6rem;
     background-image: linear-gradient(to right, #56ab2f 0%, #a8e063  51%, #56ab2f  100%);
     transition: 0.5s;
     background-size: 200% auto;
@@ -142,6 +147,10 @@ hr {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
+}
+
+.thead-yellow {
+    background-color: var(--dark-card-color);
 }
 
 

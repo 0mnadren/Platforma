@@ -81,6 +81,20 @@
     border:none !important;
     background-color: var(--card-color);
 }
+
+
+@media (max-width: 1200px) {
+
+  .table-overflow {
+      overflow-x: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    text-align: center;
+  }
+}
 </style>
 
 <h1 class="mt-4 mb-3">Naučni rad {{ rad.naziv }}</h1>
@@ -135,22 +149,25 @@
 <button id="btn_sakrij_profil_pitanja" class="profil-btn-yellow mt-4 mb-4">Sakrij pitanja</button>
 <form method="POST" id="profil_form_pitanja" >
   {% csrf_token %}
-  <table class="table table-striped mb-4">
-    <thead class="thead-dark">
-      <tr>
-        <th>Pitanja</th>
-        <th>Odgovori (Ocena od 1 do 10)</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for pitanje, odgovor in pitanja_odgovori %}
-      <tr>
-        <td><strong>{{ pitanje.value }}</strong></td>
-        <td>{{ odgovor }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+  <div class="table-overflow">
+    <table class="table table-striped mb-4">
+      <thead class="thead-dark">
+        <tr>
+          <th>Pitanja</th>
+          <th style="width: 300px !important;">Odgovori (Ocena od 1 do 10)</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for pitanje, odgovor in pitanja_odgovori %}
+        <tr>
+          <td><strong>{{ pitanje.value }}</strong></td>
+          <td style="width: 300px !important;">{{ odgovor }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  
   <hr>
     <p><strong>Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.</strong></p>
   <p><strong>
@@ -160,7 +177,7 @@
   <hr>
   <button type="submit" name="sacuvaj" class="profil-btn-orange mt-2 mr-2">Sačuvaj odgovore</button>
   <button type="button"
-            class="profil-btn-yellow"
+            class="profil-btn-yellow mt-2"
             data-toggle="modal"
             data-target="#zakljucaj_odgovore">
         Sačuvaj i Zaključaj odgovore

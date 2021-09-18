@@ -13,11 +13,14 @@ class RadForm(forms.ModelForm):
             'oblasti',
             'programski_poziv',
             'clanovi',
+            'datum_podnosenja',
             'godina',
             'opis',
             'biografije',
-            'datum_podnosenja',
         ]
+        labels = {
+            'clanovi': 'Članovi',
+        }
 
     def clean_programski_poziv(self):
         data = self.cleaned_data['programski_poziv']
