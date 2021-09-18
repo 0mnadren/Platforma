@@ -1,14 +1,38 @@
-{% extends 'base_profil.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odjava</title>
+    <link rel="stylesheet" href="{% static 'account/css/logout.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="logout-div">
+                    <div class="row">
+                        <h1>Uspešno ste se odjavili</h1>
+                    </div>
+                    <div class="row">
+                        <h3>Hvala Vam što koristite naš portal</h3>
+                    </div>
+                    <div class="row row-span">
+                        <span>Ovde možete opet da se prijavite</span>
+                    </div>
+                    <div>
+                        <a class="btn-logout" href="{% url 'account:login' %}">Prijavite se</a>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 
-{% block title %}
-<title>Logout</title>
-{% endblock %}
 
-{% block content %}
-  <h2 class="pt-3">You have been logged out!</h2>
-  <div class="border-top mt-3 pt-4">
-        <small class="pt-3 mt-1">
-            <a class="btn btn-dark mt-2" href="{% url 'account:login' %}">Log In Again</a>
-        </small>
-  </div>
-{% endblock %}
+

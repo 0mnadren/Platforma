@@ -5,13 +5,14 @@
 {% endblock title %}
 
 {% block content %}
+
 {% load crispy_forms_tags %}
-<h1>Prijava za recenzenta {{ user.username }}</h1>
+<h1 class='mt-4 mb-4'>Prijava za recenzenta {{ user.username|title }}</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class="btn btn-secondary mt-1" type="submit">Posalji</button>
+    <button class="btn btn-info mt-1" type="submit">Pošalji</button>
 </form>
 
 {% endblock content %}
