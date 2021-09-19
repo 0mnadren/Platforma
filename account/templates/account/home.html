@@ -5,7 +5,44 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .wrapper{
+        margin-top: 150px;
+        position: absolute;
+        width: 90%;
+        transform: translate(0,-50%);
+        top: 50%;
+        font-family:'Times New Roman', serif;
+    }
+    .vertical{
+        writing-mode: vertical-lr;
+        display: inline;
+        background-color: #ffb703;
+        color: white;
+        padding: 15px;
+        word-spacing: 2px;
+        letter-spacing: 1.2px;
+        transform: rotate(180deg);
+    }
+    .text{
+        display: inline;
+        position: absolute;
+        top: 0;
+        margin: 0;
+        text-align: justify;
+        letter-spacing: 0.6px;
+        font-size: 29px;
+    }
+</style>
+        <div class="wrapper">
+            <h2 class="vertical">Platforma</h2>
+            <p class="text">
+                Ova aplikacija omogućava jednostavno i pouzdano ocenjivanje naučnih rezultata
+                od strane recezenara. Osim ove mogućnosti recezenti takođe mogu 
+                učestvovati u anketama koje su deo istraživačkog rada.
+                Kako bi ste pristupili sadržaju prijavite se i postanite nas recezent.
 
-<h1>Welcome to our Platform Project!</h1>
-
+            </p>
+        </div>
+  
 {% endblock %}
