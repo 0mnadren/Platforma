@@ -1,26 +1,43 @@
 {% extends 'base_profil.html' %}
 {% load static %}
 {% block title %}
-<title>obavestenje detaljno</title>
+<title>Obaveštenje detaljno</title>
 {% endblock title %}
 
 {% block content %}
-TELO
+<style>
+    hr {
+    height: 3px !important;
+    border:none !important;
+    background-color: var(--card-color);
+}
 
-<h2>
-    OBAVESTENJE DETALJNO!!!
-</h2>
-<h3>
-    Naslov obavestenja:
+    .div-tekst {
+        padding: 2.5rem;
+        background-color: var(--link-color);
+        border-radius: 15px;
+    }
+
+    .div-tekst h4, .div-tekst p {
+        color: #fff;
+    }
+</style>
+
+
+<h2 class="mt-4 mb-4">
+    Naslov obaveštenja:
     {{ obavestenje.naslov }}
-</h3>
-<br><br><br><br><br>
-<h2>
-    Obavestenje tekst: <br>
-    <h3>
-        {{ obavestenje.tekst }}
-    </h3>
 </h2>
+<hr>
+<div class="div-tekst mt-4 mb-4">
+    <h4>{{ obavestenje.tekst }}</h4>
+    <br>
+    <p>Datum: {{ obavestenje.datum_vreme_kreiranja }}</p>
+</div>
+<hr>
+<h4 class="mt-4">Autor: <strong>{{ obavestenje.potpis }}</strong></h4>
+
+
 
 
 {% endblock content %}

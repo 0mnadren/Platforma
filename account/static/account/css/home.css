@@ -1,0 +1,403 @@
+/* BASE */
+:root {
+  --cta-color: #219EBC;
+  --link-color: #023047;
+  --background-color: #8ECAE6;
+  --background-shadow:rgba(33, 158, 188 , 0.7);
+  --card-color: #FFB703;
+  --dark-card-color: #e0a306;
+  --accent-color: #FB8500;
+  --dark-accent-color: #e07903;
+  --tertiary-text: #023652;
+  --secondary-text: #011c2b;
+  --primary-text: #01131d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  transition: 0.3s;
+  
+  font-family: sans-serif;
+}
+
+body {
+width: 100%;
+height: 100vh;
+background-color: var(--background-color);
+}
+
+h1,h2,h3,h4,h5,h6 {
+color: var(--primary-text);
+font-weight: 500;
+}
+
+p, li, label, input, textarea {
+color: var(--secondary-text);
+}
+
+ul{
+list-style: none;
+margin: 0;
+}
+
+a {
+text-decoration: none;
+color: var(--primary-text);
+font-weight: bold;
+}
+
+a:hover {
+color: var(--link-color);
+text-decoration: none;
+cursor: pointer;
+}
+
+.dropdown-menu {
+  background-color: #343a40;
+  border: 1px solid #1e1e1e;
+}
+
+.dropdown-menu .dropdown-item {
+display: inline-block; 
+width: 100%; 
+padding: 10px 15px;
+color:  #f0f0f0;
+font-weight: bold;
+}
+
+.dropdown-menu .dropdown-item:hover
+{
+color: #fff;
+background-color: #1e1e1e;
+border-color: #fff;
+}
+
+.nav-link {
+  color: #f7f9fac0 !important;
+  padding-right: 12px !important;
+  padding-left: 12px !important;
+}
+
+.nav-link:hover {
+color: #f0f0f0 !important;
+}
+
+/* h1 i carousel */
+.main-header {
+  min-height: 59.5rem;
+  background-color: var(--background-color);
+}
+
+.h1-div {
+  padding: 0.6rem;
+  margin: 4rem 0;
+  background-color: var(--background-shadow);
+  text-align: center;
+}
+
+.h-naslov {
+  color: #edf8fc !important;
+}
+
+.carousel-item {
+  height: 37rem;
+  min-height: 37rem;
+}
+
+.carousel-item a:hover {
+  color: var(--cta-color);
+}
+
+.carousel-indicators li {
+  background-color: var(--primary-text) !important;
+}
+
+.carousel-control-prev-icon { 
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2301131d' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%2301131d' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5L3.75 4l-2.5 2.5L2.75 8l4-4-4-4z'/%3e%3c/svg%3e") !important;
+}
+
+
+/* O projektu section */
+.o-projektu {
+  min-height: 48rem;
+  background-color: #edf8fc;
+}
+
+.tekst-o-projektu {
+  padding: 8.5rem;
+
+  text-align: center;
+
+  background-color: var(--link-color);
+
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 6px 23px 3px rgba(33,158,188,1);
+  -moz-box-shadow: 0px 6px 23px 3px rgba(33,158,188,1);
+  box-shadow: 0px 6px 23px 3px rgba(33,158,188,1);
+}
+
+.tekst-o-projektu h4 {
+  color: #edf8fc;
+}
+
+.tekst-o-projektu a {
+  color: #edf8fc;
+  text-decoration: underline;
+}
+
+.tekst-o-projektu a:hover {
+  color: var(--cta-color);
+}
+
+
+
+/* O nama section */
+.o-nama {
+  min-height: 43rem;
+  background-color: var(--background-color);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+
+  gap: 2rem;
+}
+
+.card-body {
+  background-color: var(--link-color);
+  border-radius: 15px;
+
+  -webkit-box-shadow: 0px 12px 18px 0px rgba(237,248,252,1);
+  -moz-box-shadow: 0px 12px 18px 0px rgba(237,248,252,1);
+  box-shadow: 0px 12px 18px 0px rgba(237,248,252,1);
+}
+
+.card-body p, .card-body h5, .card-body a {
+  color:#edf8fc !important;
+}
+
+.card-body:hover h5, .card-body:hover p, .card-body:hover a {
+  color: var(--primary-text) !important;
+}
+
+.card-body:hover {
+  transform: scale(1.1);
+  background-color: #edf8fc;
+}
+
+.card-body a:hover {
+  padding: 0.4rem;
+
+  border-radius: 15px;
+
+  background-color: var(--background-color);
+
+  cursor: pointer;
+}
+
+
+/* FOOTER */
+footer {
+  background-color: #343a40 !important;
+  color: #f0f0f0;
+}
+
+footer a {
+  color: #f7f9fac0;
+}
+
+footer a:hover {
+  transition: none;
+  color: #f0f0f0;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: row;
+
+  align-content: center;
+  justify-content: center;
+}
+
+
+
+@media (max-width: 1200px) {
+  .o-nama {
+    min-height: 47rem;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .main-header {
+    min-height: 55.5rem;
+  }
+
+  .carousel-item {
+    height: auto;
+    min-height: auto;
+  }
+
+  .o-projektu {
+    min-height: 55rem;
+  }
+}
+
+
+@media (max-width: 769px) {
+  .main-header {
+    min-height: auto;
+    height: 48rem;
+    max-height: 48rem;
+  }
+
+  .h1-div {
+    padding: 0.6rem;
+    margin: 3rem 0;
+  }
+
+  .o-projektu {
+    min-height: auto;
+    height: 50rem;
+    max-height: 50rem;
+  }
+
+  .tekst-o-projektu {
+    padding: 5rem;
+  }
+
+  .o-nama {
+    min-height: auto;
+    height: 55rem;
+    max-height: 55rem;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .main-header {
+    height: 44rem;
+    max-height: 44rem;
+  }
+
+  .o-nama {
+    min-height: auto;
+    height: 66rem;
+    max-height: 66rem;
+  }
+
+  .d-md-block {
+    display: block !important;
+}
+}
+
+
+@media (max-width: 577px) {
+  .h1-div {
+    margin: 2.5rem 0;
+  }
+
+  .o-nama {
+    height: 52rem;
+    max-height: 52rem;
+  }
+}
+
+
+@media (max-width: 543px) {
+  .main-header {
+    height: 40rem;
+    max-height: 40rem;
+  }
+
+  .d-md-block h2 {
+    font-size: 1.5rem;
+  }
+
+  .d-md-block h4 {
+    font-size: 1.1rem;
+  }
+
+  .o-projektu {
+    height: 40rem;
+    max-height: 40rem;
+  }
+
+  .tekst-o-projektu {
+    padding: 3rem;
+  }
+
+  .o-nama {
+    height: 60rem;
+    max-height: 60rem;
+  }
+
+  .h1-div h1, .h1-div h2 {
+    margin: 1.2rem 0 !important;
+  }
+}
+
+
+@media (max-width: 443px) {
+  .main-header {
+    height: 35rem;
+    max-height: 35rem;
+  }
+
+  .tekst-o-projektu {
+    padding: 1.5rem;
+  }
+
+  .h1-div h1, .h1-div h2 {
+     font-size: 2rem;
+  }
+
+  .o-nama {
+    height: 66rem;
+    max-height: 66rem;
+  }
+}
+
+
+@media (max-width: 370px) {
+  .o-projektu {
+    height: 46rem;
+    max-height: 46rem;
+  }
+
+  
+  .tekst-o-projektu {
+    text-align: left;
+  }
+}
+
+
+@media (max-width: 322px) {
+  .tekst-o-projektu h4{
+    font-size: 1.3rem;
+  }
+
+  .d-md-block h2 {
+    font-size: 1.2rem;
+  }
+
+  .d-md-block h4 {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 290px) {
+  .o-nama {
+    height: 73rem;
+    max-height: 73rem;
+  }
+}
