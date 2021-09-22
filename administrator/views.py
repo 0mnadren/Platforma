@@ -66,10 +66,10 @@ def prijava_prihvacena(request, pk):
     user.save()
 
     send_mail(
-        subject='Prihvacena Prijava',
-        message='Postovani/a, \n \n'
-                'Vasa prijava je prihvacena! \n \n'
-                'Uzivajte u koriscenju naseg Portala za ocenjivanje naucnih radova.',
+        subject='Prihvaćena Prijava',
+        message='Poštovani/a, \n \n'
+                'Vaša prijava je prihvaćena! \n \n'
+                'Uživajte u korišćenju našeg Portala za ocenjivanje naučnih radova.',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[user.email]
     )
@@ -88,9 +88,9 @@ def prijava_odbijena(request, pk):
 
     send_mail(
         subject='Odbijena Prijava',
-        message='Postovani/a, \n \n'
-                'Vasa prijava je odbijena! \n \n'
-                'Portal za ocenjivanje naucnih radova.',
+        message='Poštovani/a, \n \n'
+                'Vaša prijava je odbijena! \n \n'
+                'Portal za ocenjivanje naučnih radova.',
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[user.email]
     )
@@ -111,20 +111,19 @@ def kreiraj_obavestenje(request):
         if form.is_valid():
             if request.POST.get('send_mail'):
                 for profil in form.cleaned_data['profil']:
-                    # print(profil.user.email)
                     send_mail(
                         subject=f'{form.cleaned_data["naslov"]}',
                         message=f'{form.cleaned_data["tekst"]} \n \n'
-                        'Portal za ocenjivanje naucnih radova.',
+                        'Portal za ocenjivanje naučnih radova.',
                         from_email=settings.EMAIL_HOST_USER,
                         recipient_list=[profil.user.email]
                     )
                     form.save()
-                    messages.success(request, f'Uspesno poslano obavestenje i na mail!!!')
+                    messages.success(request, f'Uspešno poslano obaveštenje i preko mail-a!')
                     return redirect('administrator:profil')
             else:
                 form.save()
-                messages.success(request, f'Uspesno poslano obavestenje!')
+                messages.success(request, f'Uspešno poslano obaveštenje!')
                 return redirect('administrator:profil')
     else:
         form = ObavestenjeForm()

@@ -25,7 +25,7 @@ class Profil(models.Model):
     angazovanje = models.CharField(max_length=125)
     adresa = models.CharField(max_length=125)
 
-    broj_telefona = models.CharField(validators=[phone_regex], max_length=17)
+    broj_telefona = models.CharField(validators=[phone_regex], max_length=17, help_text="Koristi sledeći format: '+999999999'")
 
     website = models.URLField(max_length=225, blank=True, null=True)
 

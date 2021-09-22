@@ -16,7 +16,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Uspesno ste se registrovali!')
+            messages.success(request, 'Uspešno ste se registrovali!')
             return redirect('account:login')
     else:
         form = UserRegisterForm()

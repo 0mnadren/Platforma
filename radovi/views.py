@@ -32,13 +32,12 @@ def kreiraj_rad(request):
         form = RadForm(request.POST, request.FILES)
         if form.is_valid():
             obj = form.save()
-            print(form)
             oblasti = form.cleaned_data.get('oblasti')
             for oblast in oblasti:
                 oblast_obj = Oblast.objects.get(naziv=oblast)
                 obj.oblasti.add(oblast_obj)
 
-            messages.success(request, 'Uspesno ste kreirali naucni rad!')
+            messages.success(request, 'Uspešno ste kreirali naučni rad!')
             return redirect('radovi:radovi_admin_home')
     else:
         form = RadForm()
@@ -76,7 +75,7 @@ def naucni_rad_admin(request, pk):
         for id in korisnici:
             profil = Profil.objects.get(id=id)
             if rad in profil.rad_set.all():
-                print('Ne radi nista, profil ima vec taj rad')
+                print('Ne radi ništa, profil ima već taj rad')
             else:
                 prosledjen_rad = ProsledjenRad(
                     profil=profil,
@@ -210,7 +209,7 @@ def naucni_rad_profil(request, pk):
                 obj.profil_id = user.profil.id
                 obj.izracunaj_ukupan_broj_poena()
                 obj.save()
-                messages.success(request, f'Sačuvali ste odgovre!')
+                messages.success(request, f'Sačuvali ste odgovore!')
                 return redirect('radovi:lista_radova_profil')
         elif request.method == 'POST' and 'zakljucaj' in request.POST:
             form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)

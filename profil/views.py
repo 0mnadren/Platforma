@@ -27,7 +27,7 @@ def prijava(request):
                 obj.oblasti.add(oblast_obj)
 
             messages.success(
-                request, 'Vasa prijava je poslata na razmatranje!')
+                request, 'Vaša prijava je poslata na razmatranje!')
             return redirect('account:status')
         else:
             print("ERROR : Form is invalid")
@@ -53,7 +53,7 @@ def profil(request):
                           instance=request.user.profil)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Vas nalog je azuriran!')
+            messages.success(request, f'Vaš nalog je ažuriran!')
             return redirect('profil:profil')
     else:
         form = ProfilForm(instance=request.user.profil)

@@ -144,7 +144,10 @@ a:hover {
             <div class="col mb-2">
                 {% if messages %}
                 {% for message in messages %}
-                  <div class="alert alert-{{ message.tags }} mt-3">
+                  <div class="alert alert-{{ message.tags }} mt-3" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                        </button>
                     {{ message }}
                   </div>
                 {% endfor %}

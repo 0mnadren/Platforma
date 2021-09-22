@@ -51,7 +51,7 @@ def azuriraj_programski_poziv(request, pk):
         if form.is_valid():
 
             form.save()
-            messages.success(request, f'Uspesno ste azurirali programski poziv!')
+            messages.success(request, f'Uspešno ste ažurirali programski poziv!')
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivForm(instance=programski_poziv)
@@ -107,7 +107,7 @@ def detaljno_pitanja_programski_poziv(request, pk):
         if form.is_valid():
 
             form.save()
-            messages.success(request, f'Uspesno ste azurirali pitanja!')
+            messages.success(request, f'Uspešno ste ažurirali pitanja!')
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivPitanjaForm(instance=pitanja)

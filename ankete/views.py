@@ -40,7 +40,7 @@ def delete_anketa(request, pk):
     anketa = get_object_or_404(Anketa, pk=pk)
     if request.method == "POST":
         anketa.delete()
-        messages.success(request, f'Uspesno ste izbrisali anketu {anketa}!')
+        messages.success(request, f'Uspešno ste izbrisali anketu {anketa}!')
         return redirect('ankete:admin_ankete')
     context = {'item': anketa}
     return render(request, 'ankete/delete_anketa.html', context)
@@ -163,7 +163,7 @@ def glasaj_anketa(request, pk):
                 AnketaPopunjena, profil=request.user.profil, anketa=anketa)
             popunjena_anketa.popunjena_anketa = True
             popunjena_anketa.save()
-            messages.success(request, f'Hvala, Uspesno ste glasali!')
+            messages.success(request, f'Hvala, Uspešno ste glasali!')
             return redirect('ankete:rezultat_anketa_profil', pk)
 
         context = {
@@ -187,7 +187,7 @@ def ignorisi_anketa(request, pk):
                                         profil=user.profil.id, anketa=anketa.id, popunjena_anketa=False)
     if request.method == "POST":
         anketa_ignorisi.delete()
-        messages.success(request, f'Uspesno ste ignorisali anketu {anketa}!')
+        # messages.success(request, f'Uspešno ste ignorisali anketu {anketa}!')
         return redirect('ankete:ankete')
     context = {'item': anketa}
     return render(request, 'ankete/ignorisi_anketa.html', context)

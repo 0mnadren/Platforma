@@ -8,10 +8,21 @@
 {% endblock title %}
 
 {% block content %}
+<style>
+    a h3 {
+        font-weight: bold;
+    }
+
+    a h3:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
 <div class="container">
     <div class="col-md-12 offset-md-2">
         {% if query %}
-        <h2>
+        <h2 class="mt-4 mb-4">
             {% with results.count as total_results %}
             Found {{ total_results }} result{{ total_results|pluralize }}
             {% endwith %}
@@ -22,9 +33,9 @@
             <a href="{% url 'profil:obavestenje_detaljno' pk=obavestenje.obavestenje.id %}">
                 <h3>{{ obavestenje.obavestenje.naslov }}</h3>
             </a>
-            <span class="d-inline-block text-truncate" style="max-width: 450px;">
+            <span class="d-inline-block text-truncate mt-2 mb-2" style="max-width: 450px;">
                 {{obavestenje.obavestenje.tekst}}
-        </span>
+            </span>
             
 
 
@@ -35,12 +46,9 @@
         {% endfor %}
 
         {% endif %}
+        <br>
+        <a href="{% url 'profil:profil' %}" class="btn btn-primary mt-2 mb-2">Nazad</a>
 
-        <form action="{% url 'profil:profil' %}" class="form-inline" method="get">
-
-            <button type="submit" class="btn btn-primary btn-lg mb-2">Back</button>
-
-        </form>
 
     </div>
 
