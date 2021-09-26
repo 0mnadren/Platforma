@@ -15,10 +15,10 @@
 }
 </style>
 
-<h1 class="text-truncate mt-4 mb-4">Profil korisnika: {{ user.username }}</h1>
+<h1 class="text-truncate mt-4 mb-5">Profil korisnika: {{ user.username|title }}</h1>
 
-<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block">Pregledaj ankete&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
-<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block">Pregledaj Radove&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
+<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block mt-3">Pregledaj ankete&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
+<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block mt-3">Pregledaj Radove&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
 <br><br><br>
 <!-- SEARCH!!! -->
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
@@ -28,16 +28,16 @@
 <br><br>
 <div id="obavestenja_table">
     <form action="{% url 'profil:search' %}" class="form-inline" method="get">
-        <div class="form-group mb-8">
+        <div class="form-group mb-3">
             <h2>{% if type %}{{ type.name }}{% else %} Pretraži obaveštenja {% endif %}</h2>
         </div>
-        <div class="form-group mx-sm-3 mb-2">
+        <div class="form-group mx-sm-3 mb-3">
             <label for="" class="sr-only">search</label>
             <input name="search" type="" class="form-control" id="" placeholder="Ključna reč">
         </div>
-        <button type="submit" class="btn-grad-search mb-2">Pretraži</button>
+        <button type="submit" class="btn-grad-search mb-3">Pretraži</button>
     </form>
-    <table class="table table-striped border sortable">
+    <table class="table table-striped border sortable mb-4">
         <!--sortable omogucava sort sa skripte na dnu-->        
         <thead class="thead-dark">
             <tr>
@@ -64,7 +64,7 @@
     </table>
     <hr>
 </div>
-<button class="btn btn-info btn-block" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikaži
+<button class="btn btn-info btn-block mt-4" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikaži
     profil</button>
 <br>
 <!-- za edit nemanja zivkovic

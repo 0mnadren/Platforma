@@ -47,10 +47,7 @@
             <td><a class="admin-btn-green" href="{% url 'programski_pozivi:azuriraj_programski_poziv' poziv.id %}">Ažuriraj</a></td>
             <td><a class="admin-btn-outline-green" href="{% url 'programski_pozivi:detaljno_programski_poziv' poziv.id %}">Pregled i Pitanja</a></td>
             <td>
-                <form action="{% url 'programski_pozivi:obrisi_programski_poziv' poziv.id %}" method="POST">
-                    {% csrf_token %}
-                    <input type="submit" value="Obriši" class="admin-btn-outline-red">
-                </form>
+                <a href="{% url 'programski_pozivi:obrisi_programski_poziv' poziv.id %}" class="admin-btn-outline-red">Obriši</a>
             </td>
         </tr>
     {% endfor %}

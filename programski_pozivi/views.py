@@ -31,6 +31,8 @@ def kreiraj_programski_poziv(request):
     return render(request, 'programski_pozivi/kreiraj_programski_poziv.html', context)
 
 
+@login_required()
+@user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def detaljno_programski_poziv(request, pk):
     programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
     programski_poziv_pitanja = ProgramskiPozivPitanja.objects.filter(programski_poziv=programski_poziv)
@@ -43,6 +45,8 @@ def detaljno_programski_poziv(request, pk):
     return render(request, 'programski_pozivi/detaljno_programski_poziv.html', context)
 
 
+@login_required()
+@user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def azuriraj_programski_poziv(request, pk):
     programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
 
@@ -63,13 +67,19 @@ def azuriraj_programski_poziv(request, pk):
     return render(request, 'programski_pozivi/azuriraj_programski_poziv.html', context)
 
 
+@login_required()
+@user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def obrisi_programski_poziv(request, pk):
     programski_poziv = get_object_or_404(ProgramskiPoziv, pk=pk)
 
     if request.method == 'POST':
         programski_poziv.delete()
         return redirect('programski_pozivi:kreiraj_programski_poziv')
-    return redirect('programski_pozivi:kreiraj_programski_poziv')
+
+    context = {
+        'programski_poziv': programski_poziv
+    }
+    return render(request, 'programski_pozivi/obrisi_programski_poziv.html', context)
 
 
 ### PITANJA ###

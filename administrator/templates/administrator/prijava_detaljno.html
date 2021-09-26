@@ -134,10 +134,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da zelite da odobrite ovu prijavu?</p>
+        <p>Da li ste sigurni da želite da odobrite ovu prijavu?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
 
         <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odobrio prijavu!   -->
         <form action="{% url 'administrator:prijava_prihvacena' prijava.id %}">
@@ -157,10 +157,10 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da zelite da odbijete ovu prijavu?</p>
+        <p>Da li ste sigurni da želite da odbijete ovu prijavu?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Ponisti</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
 
         <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
         <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">

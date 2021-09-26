@@ -2,101 +2,11 @@
 {% load static %}
 {% block title %}
 <title>Naučni rad</title>
+<link rel="stylesheet" href="{% static 'radovi/css/naucni_rad_profil.css' %}">
 <script src="{% static 'radovi/js/naucni_rad_profil.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
-<style>
-  .profil-btn-yellow {
-    background-color: var(--card-color);
-    border: none;
-    color: var(--accent-color);
-    padding: 0.6rem 0.8rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-  .profil-btn-yellow:hover {
-    background-color: var(--dark-card-color);
-    color: #fff;
-}
-
-  .profil-btn-orange {
-    background-color: var(--accent-color);
-    border: none;
-    color: #fff;
-    padding: 0.6rem 0.8rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-}
-  .profil-btn-orange:hover {
-    background-color: var(--dark-accent-color);
-    color: #fff;
-}
-
-  .table td, .table th {
-      text-align: center;
-  }
-
-  .naucni-rad-profil-tabela {
-      width: 100%;
-      border-top: 1px solid var(--cta-color);
-      font-size: 1.2rem;
-  }
-
-  .naucni-rad-profil-tabela, th, td {
-      padding: 15px;
-      border-collapse: collapse;
-  }
-
-  .naucni-rad-profil-tabela td {
-      font-weight: 400;
-  }
-
-  .naucni-rad-profil-tabela td > a:hover {
-      color: #fff;
-  }
-
-  .naucni-rad-profil-tabela tr:nth-child(even){
-      background-color: var(--background-shadow);
-  }
-
-  .naucni-rad-profil-tabela tr:hover {
-      background-color: var(--link-color);
-      transition: none !important;
-      color: #fff;
-  }
-
-  hr {
-    height: 3px !important;
-    border:none !important;
-    background-color: var(--card-color);
-}
-
-
-@media (max-width: 1200px) {
-
-  .table-overflow {
-      overflow-x: auto;
-  }
-}
-
-@media (max-width: 500px) {
-  h1 {
-    text-align: center;
-  }
-}
-</style>
-
 <h1 class="mt-4 mb-3">Naučni rad {{ rad.naziv }}</h1>
 <a class="profil-btn-orange mb-3" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
 
@@ -149,24 +59,28 @@
 <button id="btn_sakrij_profil_pitanja" class="profil-btn-yellow mt-4 mb-4">Sakrij pitanja</button>
 <form method="POST" id="profil_form_pitanja" >
   {% csrf_token %}
-  <div class="table-overflow">
-    <table class="table table-striped mb-4">
-      <thead class="thead-dark">
-        <tr>
-          <th>Pitanja</th>
-          <th style="width: 300px !important;">Odgovori (Ocena od 1 do 10)</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for pitanje, odgovor in pitanja_odgovori %}
-        <tr>
-          <td><strong>{{ pitanje.value }}</strong></td>
-          <td style="width: 300px !important;">{{ odgovor }}</td>
-        </tr>
+    <div class="form-container mb-4">
+      <div class="form-container-header">
+        <h5>Pitanja</h5>
+      </div>
+      <div class="form-container-header">
+        <h5>Odgovori (Ocena od 1 do 10)</h5>
+      </div>
+        {% for pitanje, odgovor in pitanja_odgovori %}
+        <div class="div-pitanje">
+            {{ pitanje.value }}
+        </div>
+        <div class="div-odgovor">
+            {{ odgovor }}
+            {% if odgovor.errors %}
+            <ul>
+                <li>{{ odgovor.errors }}</li>
+            </ul>
+
+        {% endif %}
+        </div>
       {% endfor %}
-      </tbody>
-    </table>
-  </div>
+    </div>
   
   <hr>
     <p><strong>Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.</strong></p>

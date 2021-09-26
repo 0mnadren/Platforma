@@ -29,7 +29,7 @@ class Profil(models.Model):
 
     website = models.URLField(max_length=225, blank=True, null=True)
 
-    biografija = models.FileField(upload_to='profil/pdfs', validators=[validate_file_extension]) # Ovde nedostaje upload_to
+    biografija = models.FileField(upload_to='profil/pdfs', validators=[validate_file_extension])
 
     naucni_rad_1 = models.CharField(max_length=125)
     naucni_rad_2 = models.CharField(max_length=125)

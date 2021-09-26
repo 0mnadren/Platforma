@@ -90,15 +90,65 @@
 <h4 class="mt-4 mb-4" id="konacna-odluka-rad">Vasa konačna odluka za ovaj rad?</h4>
 <hr>
 <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit" name="prihvati" class="admin-btn-green">Prihvati</button>
-    <button type="submit" name="odbij" class="admin-btn-red mt-3 ml-2 mb-5">Odbij</button>
+    <button type="button" class="admin-btn-green" data-toggle="modal" data-target="#prihvati_rad">
+        Prihvati
+    </button>
+    <button type="button" class="admin-btn-red mt-3 ml-2 mb-5" data-toggle="modal" data-target="#odbij_rad">
+        Odbij
+    </button>
 </form>
 {% elif rad.prihvacen_rad == False %}
 <h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--dark-accent-color);">Ovaj rad je odbijen</h3>
 {% else %}
 <h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--link-color);">Ovaj rad je prihvaćen</h3>
 {% endif %}
+
+
+<div class="modal fade" tabindex="-1" id="prihvati_rad">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Prihvati rad?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da želite da prihvatite ovaj rad?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+
+        <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
+            {% csrf_token %}
+          <button type="submit" name="prihvati" class="btn btn-success">Prihvati</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="-1" id="odbij_rad">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Odbij rad?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Da li ste sigurni da želite da odbijete ovaj rad?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+
+        <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
+            {% csrf_token %}
+          <button type="submit" name="odbij" class="btn btn-danger">Odbij</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="{% static 'radovi/js/naucni_rad_admin.js' %}"></script>

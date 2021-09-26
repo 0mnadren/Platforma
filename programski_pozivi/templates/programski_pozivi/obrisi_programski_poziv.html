@@ -1,0 +1,54 @@
+{% extends 'base_admin.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Obriši Programski poziv</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    .admin-btn-red {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-red:hover {
+    background-color: var(--dark-accent-color);
+}
+
+.admin-btn-lightgreen {
+    background-color: var(--card-color); /* Light Green */
+    border: none;
+    color: var(--primary-text);
+    padding: 0.5rem 0.7rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.admin-btn-lightgreen:hover {
+    background-color: var(--cta-color);
+    color: #fff;
+}
+</style>
+
+<h2 class="mt-4">Da li ste sigurni da želite da obrišete programski poziv "{{ programski_poziv.naziv }}"?</h2>
+<form method="POST">
+    <form action="{% url 'programski_pozivi:obrisi_programski_poziv' programski_poziv.id %}" method="POST">
+        {% csrf_token %}
+        <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-lightgreen mt-2 mr-2">Nazad</a>
+        <input type="submit" value="Obriši" class="admin-btn-red mt-2">
+    </form>
+</form>
+
+{% endblock %}

@@ -31,7 +31,6 @@ def prijava(request):
             return redirect('account:status')
         else:
             print("ERROR : Form is invalid")
-            print(form.errors)
     else:
         form = ProfilForm()
 

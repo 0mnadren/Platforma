@@ -119,8 +119,8 @@ def kreiraj_obavestenje(request):
                         recipient_list=[profil.user.email]
                     )
                     form.save()
-                    messages.success(request, f'Uspešno poslano obaveštenje i preko mail-a!')
-                    return redirect('administrator:profil')
+                messages.success(request, f'Uspešno poslano obaveštenje i preko mail-a!')
+                return redirect('administrator:profil')
             else:
                 form.save()
                 messages.success(request, f'Uspešno poslano obaveštenje!')

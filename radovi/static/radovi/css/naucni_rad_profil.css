@@ -1,0 +1,167 @@
+.profil-btn-yellow {
+    background-color: var(--card-color);
+    border: none;
+    color: var(--accent-color);
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profil-btn-yellow:hover {
+    background-color: var(--dark-card-color);
+    color: #fff;
+}
+
+.profil-btn-orange {
+    background-color: var(--accent-color);
+    border: none;
+    color: #fff;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profil-btn-orange:hover {
+    background-color: var(--dark-accent-color);
+    color: #fff;
+}
+
+.table td, .table th {
+      text-align: center;
+  }
+
+.naucni-rad-profil-tabela {
+      width: 100%;
+      border-top: 1px solid var(--cta-color);
+      font-size: 1.2rem;
+  }
+
+.naucni-rad-profil-tabela, th, td {
+      padding: 15px;
+      border-collapse: collapse;
+  }
+
+.naucni-rad-profil-tabela td {
+      font-weight: 400;
+  }
+
+.naucni-rad-profil-tabela td > a:hover {
+      color: #fff;
+  }
+
+.naucni-rad-profil-tabela tr:nth-child(even){
+      background-color: var(--background-shadow);
+  }
+
+.naucni-rad-profil-tabela tr:hover {
+      background-color: var(--link-color);
+      transition: none !important;
+      color: #fff;
+  }
+
+hr {
+    height: 3px !important;
+    border:none !important;
+    background-color: var(--card-color);
+}
+
+/* PITANJA */
+.form-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+
+  gap: 20px;
+
+  padding: 1rem;
+
+  border: 3px solid var(--card-color);
+  border-radius: 15px;
+}
+
+.form-container-header {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  background-color: var(--link-color);
+  border-radius: 15px;
+}
+
+.form-container-header h5 {
+  color: #fff;
+  font-weight: bold;
+}
+
+.div-pitanje {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+
+  border-top: 1px solid var(--dark-card-color);
+  border-bottom: 1px solid var(--dark-card-color);
+  border-radius: 15px;
+
+  background-color: var(--card-color);
+  font-weight: bold;
+}
+
+.div-odgovor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.div-odgovor li {
+  padding-top: 2px;
+  text-align: center;
+  color: rgb(224, 5, 5);
+  font-weight: bold;
+}
+
+.div-odgovor input {
+  max-width: 200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 400px) {
+  .form-container {
+    padding: 4px;
+    gap: 10px;
+  }
+  .form-container-header {
+    padding: 4px;
+  }
+
+  .form-container-header h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 370px) {
+  .form-container {
+    overflow-x: scroll;
+  }
+
+  .div-pitanje {
+    padding: 4px;
+  }
+}

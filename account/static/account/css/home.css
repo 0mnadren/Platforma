@@ -87,13 +87,15 @@ color: #f0f0f0 !important;
 
 /* h1 i carousel */
 .main-header {
-  min-height: 59.5rem;
+/*  min-height: 59.5rem; */
+  padding-bottom: 4rem;
+  padding-top: 4rem;
   background-color: var(--background-color);
 }
 
 .h1-div {
   padding: 0.6rem;
-  margin: 4rem 0;
+  margin-bottom: 4rem;
   background-color: var(--background-shadow);
   text-align: center;
 }
@@ -126,7 +128,9 @@ color: #f0f0f0 !important;
 
 /* O projektu section */
 .o-projektu {
-  min-height: 48rem;
+/*  min-height: 48rem; */
+  padding-bottom: 4rem;
+  padding-top: 4rem;
   background-color: #edf8fc;
 }
 
@@ -160,7 +164,9 @@ color: #f0f0f0 !important;
 
 /* O nama section */
 .o-nama {
-  min-height: 43rem;
+/*  min-height: 43rem; */
+  padding-bottom: 4rem;
+  padding-top: 4rem;
   background-color: var(--background-color);
 }
 
@@ -229,94 +235,33 @@ footer a:hover {
 
 
 
-@media (max-width: 1200px) {
-  .o-nama {
-    min-height: 47rem;
-  }
-}
-
-
 @media (max-width: 992px) {
-  .main-header {
-    min-height: 55.5rem;
-  }
-
   .carousel-item {
     height: auto;
     min-height: auto;
-  }
-
-  .o-projektu {
-    min-height: 55rem;
   }
 }
 
 
 @media (max-width: 769px) {
-  .main-header {
-    min-height: auto;
-    height: 48rem;
-    max-height: 48rem;
-  }
-
   .h1-div {
     padding: 0.6rem;
-    margin: 3rem 0;
-  }
-
-  .o-projektu {
-    min-height: auto;
-    height: 50rem;
-    max-height: 50rem;
   }
 
   .tekst-o-projektu {
     padding: 5rem;
   }
-
-  .o-nama {
-    min-height: auto;
-    height: 55rem;
-    max-height: 55rem;
-  }
 }
 
 
 @media (max-width: 767px) {
-  .main-header {
-    height: 44rem;
-    max-height: 44rem;
-  }
-
-  .o-nama {
-    min-height: auto;
-    height: 66rem;
-    max-height: 66rem;
-  }
-
   .d-md-block {
     display: block !important;
 }
 }
 
 
-@media (max-width: 577px) {
-  .h1-div {
-    margin: 2.5rem 0;
-  }
-
-  .o-nama {
-    height: 52rem;
-    max-height: 52rem;
-  }
-}
-
-
 @media (max-width: 543px) {
-  .main-header {
-    height: 40rem;
-    max-height: 40rem;
-  }
 
   .d-md-block h2 {
     font-size: 1.5rem;
@@ -326,18 +271,8 @@ footer a:hover {
     font-size: 1.1rem;
   }
 
-  .o-projektu {
-    height: 40rem;
-    max-height: 40rem;
-  }
-
   .tekst-o-projektu {
     padding: 3rem;
-  }
-
-  .o-nama {
-    height: 60rem;
-    max-height: 60rem;
   }
 
   .h1-div h1, .h1-div h2 {
@@ -347,11 +282,6 @@ footer a:hover {
 
 
 @media (max-width: 443px) {
-  .main-header {
-    height: 35rem;
-    max-height: 35rem;
-  }
-
   .tekst-o-projektu {
     padding: 1.5rem;
   }
@@ -359,21 +289,10 @@ footer a:hover {
   .h1-div h1, .h1-div h2 {
      font-size: 2rem;
   }
-
-  .o-nama {
-    height: 66rem;
-    max-height: 66rem;
-  }
 }
 
 
 @media (max-width: 370px) {
-  .o-projektu {
-    height: 46rem;
-    max-height: 46rem;
-  }
-
-  
   .tekst-o-projektu {
     text-align: left;
   }
@@ -394,10 +313,3 @@ footer a:hover {
   }
 }
 
-
-@media (max-width: 290px) {
-  .o-nama {
-    height: 73rem;
-    max-height: 73rem;
-  }
-}

@@ -52,9 +52,15 @@ def kreiraj_rad(request):
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def lista_radova_admin(request):
-    radovi = Rad.objects.all().order_by('programski_poziv').order_by('prihvacen_rad')
+    radovi_nema_odluka = Rad.objects.filter(prihvacen_rad=None).order_by('programski_poziv')
+    radovi_ima_odluka = Rad.objects.filter(~Q(prihvacen_rad=None)).order_by('programski_poziv').order_by('-prihvacen_rad')
 
-    return render(request, 'radovi/lista_radova_admin.html', {'radovi': radovi})
+    context = {
+        'radovi_nema_odluka': radovi_nema_odluka,
+        'radovi_ima_odluka': radovi_ima_odluka
+    }
+
+    return render(request, 'radovi/lista_radova_admin.html', context)
 
 
 @login_required()
@@ -72,17 +78,22 @@ def naucni_rad_admin(request, pk):
 
     if request.POST:
         korisnici = request.POST.getlist('profili[]')
-        for id in korisnici:
-            profil = Profil.objects.get(id=id)
-            if rad in profil.rad_set.all():
-                print('Ne radi ništa, profil ima već taj rad')
-            else:
-                prosledjen_rad = ProsledjenRad(
-                    profil=profil,
-                    rad=rad,
-                )
-                prosledjen_rad.save()
-        return redirect('radovi:lista_radova_admin')
+        if korisnici:
+            for id in korisnici:
+                profil = Profil.objects.get(id=id)
+                if rad in profil.rad_set.all():
+                    print('Ne radi ništa, profil ima već taj rad')
+                else:
+                    prosledjen_rad = ProsledjenRad(
+                        profil=profil,
+                        rad=rad,
+                    )
+                    prosledjen_rad.save()
+            messages.success(request, 'Uspešno ste prosledili rad!')
+            return redirect('radovi:lista_radova_admin')
+        else:
+            messages.success(request, 'Niste izabrali korisnika kome želite da prosledite rad!')
+            return redirect('radovi:naucni_rad_admin', pk=pk)
 
     context = {
         'rad': rad,
@@ -211,6 +222,9 @@ def naucni_rad_profil(request, pk):
                 obj.save()
                 messages.success(request, f'Sačuvali ste odgovore!')
                 return redirect('radovi:lista_radova_profil')
+            else:
+                messages.warning(request, 'Ocena nije validna, mora da bude od 1 do 10!')
+
         elif request.method == 'POST' and 'zakljucaj' in request.POST:
             form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
             if form.is_valid():
@@ -224,6 +238,9 @@ def naucni_rad_profil(request, pk):
                 prosledjen_rad.zakljucani_odgovori = True
                 prosledjen_rad.save()
                 return redirect('radovi:lista_radova_profil')
+            else:
+                messages.warning(request, 'Ocena nije validna, mora da bude od 1 do 10!')
+
         else:
             form = ProgramskiPozivOdgovoriForm(instance=odgovori)
 

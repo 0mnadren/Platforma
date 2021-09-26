@@ -14,9 +14,11 @@ def validate_file_extension(self):
     extension = os.path.splitext(self.name)[1]  # [0] returns path+filename
     if extension.lower() in settings.CONTENT_TYPES:
         if self.size > int(settings.MAX_UPLOAD_SIZE):
-            raise ValidationError(_(f'Please keep filesize under {filesizeformat(settings.MAX_UPLOAD_SIZE)}. Current filesize {filesizeformat(self.size)}'))
+            raise ValidationError(_(f'Veličina fajl-a mora da bude ispod'
+                                    f' {filesizeformat(settings.MAX_UPLOAD_SIZE)}.'
+                                    f' Trenutna veličina je {filesizeformat(self.size)}'))
     else:
-        raise ValidationError('Unsupported file extension.')
+        raise ValidationError('Nije podržan ovaj tip fajl-a. Mora biti .pdf formata!')
 
 
 phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
