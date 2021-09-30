@@ -67,6 +67,7 @@ def profil(request):
 
     return render(request, 'profil/profil.html', context)
 
+
 @login_required()
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
 def obrisi_obavestenje(request, pk):
@@ -77,6 +78,7 @@ def obrisi_obavestenje(request, pk):
         obavestenje_stanje.delete()
 
     return redirect('profil:profil')
+
 
 #ukloniti, i ukloniti URL
 @login_required()

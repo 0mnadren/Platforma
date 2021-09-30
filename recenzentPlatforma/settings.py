@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = False
 
 ALLOWED_HOSTS = [config('ALLOWED_HOSTS')]
 
@@ -179,6 +180,7 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 PASSWORD_RESET_TIMEOUT = 300  # 5 minuta traje link za resetovanje
 
 

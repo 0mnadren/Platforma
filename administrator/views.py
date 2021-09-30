@@ -14,7 +14,6 @@ from .forms import ObavestenjeForm, OblastForm
 from radovi.models import ProsledjenRad
 
 
-
 @login_required()
 @user_passes_test(superuser_check, login_url='account:home', redirect_field_name=None)
 def profil(request):

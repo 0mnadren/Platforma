@@ -7,6 +7,7 @@ from profil.models import Oblast
 # from crispy_forms.layout import Div, Layout, Submit
 # from crispy_forms.templatetags import crispy_forms_filters
 
+
 class ObavestenjeForm(forms.ModelForm):
     class Meta:
         model = Obavestenje
@@ -17,7 +18,7 @@ class ObavestenjeForm(forms.ModelForm):
             'potpis',
         ]
         widgets = {
-            'profil': forms.SelectMultiple(attrs={'id':'myselect'})
+            'profil': forms.SelectMultiple(attrs={'id': 'myselect'})
         }
     
 

@@ -76,6 +76,7 @@
 
 <hr>
 {% if rad.prihvacen_rad == None %}
+{% if profili %}
 <h4 class="mt-4 mb-4">Kom korisniku želite da prosledite naučni rad na ocenjivanje?</h4>
 <form method="POST">
     {% csrf_token %}
@@ -87,6 +88,7 @@
     <button type="submit" class="admin-btn-green mb-5">Pošalji</button>
 </form>
 <hr>
+{% endif %}
 <h4 class="mt-4 mb-4" id="konacna-odluka-rad">Vasa konačna odluka za ovaj rad?</h4>
 <hr>
 <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">

@@ -147,7 +147,9 @@ def recenzije_dani_pretraga(request):
         try:
             broj_dana = int(request.POST.get('broj_dana'))
         except ValueError as e:
+            broj_dana = 0
             print('Error je ', e)
+
         prosledjeni_radovi_dani = ProsledjenRad.objects.filter(
             kada_poslat__lte=datetime.datetime.now()-datetime.timedelta(broj_dana)
         ).filter(zakljucani_odgovori=False)
