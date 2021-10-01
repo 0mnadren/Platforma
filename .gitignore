@@ -22,6 +22,14 @@ Icon
 .idea/**/gradle.xml
 .idea/**/libraries
 *.iws /out/
+# Added by Omna
+.idea/aws.xml
+.idea/.gitignore
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/ZavrsniProjekatETF.iml
 
 # Thumbnails
 ._*

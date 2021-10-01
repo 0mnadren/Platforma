@@ -5,5 +5,9 @@ from .models import \
     ProsledjenRad
 
 
-admin.site.register(Rad)
+class RadAdmin(admin.ModelAdmin):
+    list_display = ['naziv', 'kategorija', 'programski_poziv', 'prihvacen_rad']
+
+
+admin.site.register(Rad, RadAdmin)
 admin.site.register(ProsledjenRad)
