@@ -5,6 +5,13 @@ from recenzentPlatforma import settings
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
+import random
+import string
+
+def my_hash():
+    source = string.ascii_letters + string.digits
+    return ''.join(random.choice(source) for i in range(64))
+
 
 def validate_file_extension(self):
     """

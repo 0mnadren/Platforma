@@ -27,7 +27,7 @@
     id="btn_obavestenja">Sakrij obaveštenja</button>
 <br><br>
 <div id="obavestenja_table">
-    <form action="{% url 'profil:search' %}" class="form-inline" method="get">
+    <form action="{% url 'profil:search' %}" class="form-inline" method="get" style="margin-bottom: 20px;">
         <div class="form-group mb-3">
             <h2>{% if type %}{{ type.name }}{% else %} Pretraži obaveštenja {% endif %}</h2>
         </div>

@@ -10,6 +10,7 @@ from datetime import datetime
 from django.db.models import Q
 from radovi.models import ProsledjenRad
 from ankete.models import AnketaPopunjena
+from .validators import my_hash
 
 
 @login_required()
@@ -80,6 +81,7 @@ def obrisi_obavestenje(request, pk):
     return redirect('profil:profil')
 
 
+
 #ukloniti, i ukloniti URL
 @login_required()
 @user_passes_test(accepted_check, login_url='account:home', redirect_field_name=None)
@@ -89,9 +91,12 @@ def search(request):
     if request.method == "GET":
         query = request.GET.get('search')
         if query == '':
-            query = 'None'
+            query = my_hash() # na ovaj nacin sam resio da ne prikazuje pri unosenju nicega sve rezultate ( it's a fun way :D )
+            print(query)
         results = Obrisanostanje.objects.filter(profil=user.profil).filter(Q(obavestenje__naslov__icontains=query) | Q(obavestenje__tekst__icontains=query))# | Q(datum_vreme_kreiranja__icontains=query) )
-
+        
+        # for res in results:
+        #     print(res)
     return render(request, 'profil/search.html', {'query': query, 'results': results})
 
 

@@ -4,7 +4,7 @@ from profil.models import Profil
 
 
 class Obavestenje(models.Model):
-    profil = models.ManyToManyField(Profil, through='ObrisanoStanje')
+    profil = models.ManyToManyField(Profil, through='ObrisanoStanje')#ObavestenjeStanje
 
     naslov = models.CharField(max_length=60)
     tekst = models.TextField()
@@ -14,10 +14,10 @@ class Obavestenje(models.Model):
     def __str__(self):
         return self.naslov
 
-
+#ObavestenjeStanje
 class Obrisanostanje(models.Model):
     profil = models.ForeignKey(Profil, on_delete=models.CASCADE, related_name='korisnik')
     obavestenje = models.ForeignKey(Obavestenje, on_delete=models.CASCADE, related_name='obavest')
 
     def __str__(self):
-        return f'{self.profil} + {self.obrisano}'
+        return f'{self.profil} + {self.obavestenje}'
