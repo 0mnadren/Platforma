@@ -22,9 +22,9 @@ Technologies used in this project are:
 ## In Detail
 <br>
 
-This platform has two type of users --> _reviewer_ and _admin_. <br>
+This platform has two types of users --> _reviewer_ and _admin_. <br>
 ### The Admin job is:
-* To add/modify or delete scientific fields, which reviewer selects when he is registring to the platform;
+* To add/modify or delete scientific fields, which reviewer selects when he is registering to the platform;
 * To evaluate reviewer applications and then rejects or accepts them;
 * To create and send surveys, also has access to statistics of them;
 * To create group of questions, which will be part of scientific paper to which the reviewer should respond, when he receives the paper;
@@ -34,7 +34,7 @@ This platform has two type of users --> _reviewer_ and _admin_. <br>
 If his application is accepted, he gets access to his profile, where he can:
 * Modify his data;
 * Receive surveys from Admin, and get access to statistics of ones that he filled;
-* Evaluate scientific papers and send them back Admin for further evaluation;
+* Evaluate scientific papers and send them back to Admin for further evaluation;
 * Receive notices from Admin
 
 <br>
@@ -51,6 +51,6 @@ On this project worked team of 4 members:
 ## Link to the site
 [Platformfor evaluation of scientific papers](https://portalnaucnihradova.pythonanywhere.com/)
 
-#### © 2021 Platformfor evaluation of scientific papers. All Rights Reserved.
+#### © 2021 Platform for evaluation of scientific papers. All Rights Reserved.
 
 
