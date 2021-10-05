@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<h1 class="mt-4">Dobrodošao Admin {{ user.username|title }}!</h1>
+<h1 class="mt-4">Dobrodošao Admin {{ user.username }}!</h1>
 
 <ul class="admin-ul mt-5">
     <li><a href="{% url 'admin:index' %}">Django Admin</a></li>

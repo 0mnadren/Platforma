@@ -105,7 +105,7 @@ color: #f0f0f0 !important;
             {% if user.is_superuser %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Admin Profil {{ user.username|title }}
+                Admin Profil {{ user.username }}
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'administrator:profil' %}">Profil</a>
