@@ -1,0 +1,1657 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-09 18:58+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: .\account\admin.py:10
+msgid "Portal za ocenjivanje naučnih radova Django Admin"
+msgstr ""
+
+#: .\account\forms.py:11
+msgid "Dva polja za lozinku se ne poklapaju."
+msgstr ""
+
+#: .\account\templates\account\home.html:25
+#: .\account\templates\account\home.html:69 .\templates\base_admin.html:109
+#: .\templates\base_admin.html:148 .\templates\base_profil.html:114
+msgid "Jezik"
+msgstr ""
+
+#: .\account\templates\account\home.html:44
+#: .\administrator\templates\administrator\admin_profil.html:5
+#: .\templates\base_admin.html:128 .\templates\base_profil.html:109
+msgid "Admin Profil"
+msgstr ""
+
+#: .\account\templates\account\home.html:49
+#: .\account\templates\account\home.html:52 .\administrator\forms.py:19
+#: .\ankete\templates\ankete\admin_ankete.html:5
+#: .\profil\templates\profil\profil.html:8 .\templates\base_admin.html:131
+#: .\templates\base_profil.html:133 .\templates\base_profil.html:136
+msgid "Profil"
+msgstr ""
+
+#: .\account\templates\account\home.html:53
+#: .\account\templates\account\home.html:130
+#: .\administrator\templates\administrator\admin_profil.html:17
+#: .\ankete\templates\ankete\lista_anketa_profil.html:8
+#: .\templates\base_admin.html:134 .\templates\base_profil.html:137
+msgid "Ankete"
+msgstr ""
+
+#: .\account\templates\account\home.html:54
+#: .\radovi\templates\radovi\lista_radova_admin.html:12
+#: .\radovi\templates\radovi\naucni_rad_admin.html:12
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:11
+#: .\radovi\templates\radovi\radovi_admin_home.html:11
+#: .\templates\base_profil.html:138
+msgid "Radovi"
+msgstr ""
+
+#: .\account\templates\account\home.html:63 .\templates\base_admin.html:142
+#: .\templates\base_profil.html:147
+msgid "Odjavi se"
+msgstr ""
+
+#: .\account\templates\account\home.html:87
+#: .\account\templates\account\login.html:38
+#: .\account\templates\account\register.html:3
+#: .\account\templates\account\register.html:23
+#: .\account\templates\account\register.html:29 .\templates\base_admin.html:166
+#: .\templates\base_profil.html:152
+msgid "Registruj se"
+msgstr ""
+
+#: .\account\templates\account\home.html:90
+#: .\account\templates\account\login.html:4
+#: .\account\templates\account\login.html:23
+#: .\account\templates\account\login.html:35
+#: .\account\templates\account\logout.html:27
+#: .\account\templates\account\register.html:27 .\templates\base_admin.html:169
+#: .\templates\base_profil.html:155
+msgid "Prijavi se"
+msgstr ""
+
+#: .\account\templates\account\home.html:103
+msgid "Dobrodošli na portal za ocenjivanje naučnih radova!"
+msgstr ""
+
+#: .\account\templates\account\home.html:116
+msgid "Budi deo tima"
+msgstr ""
+
+#: .\account\templates\account\home.html:117
+msgid "Postani recenzent"
+msgstr ""
+
+#: .\account\templates\account\home.html:117
+msgid "registruj se"
+msgstr ""
+
+#: .\account\templates\account\home.html:123
+#: .\administrator\templates\administrator\admin_profil.html:20
+#: .\templates\base_admin.html:137
+msgid "Naučni radovi"
+msgstr ""
+
+#: .\account\templates\account\home.html:124
+msgid "Vrši pregled i ocenjivanje naučnih radova!"
+msgstr ""
+
+#: .\account\templates\account\home.html:131
+msgid "Učestvuj u anketama koje su deo istraživačkog rada!"
+msgstr ""
+
+#: .\account\templates\account\home.html:137
+msgid "Prethodna"
+msgstr ""
+
+#: .\account\templates\account\home.html:141
+msgid "Sledeća"
+msgstr ""
+
+#: .\account\templates\account\home.html:155
+msgid "O portalu"
+msgstr ""
+
+#: .\account\templates\account\home.html:164
+msgid ""
+"\n"
+"                Ovaj portal je namenjen ocenjivanju naučnih radova od strane "
+"recenzenata.\n"
+"                Portal pruža jednostavan i prost proces pristupa radovima i "
+"njihovo ocenjivanje. \n"
+"                Osim ove mogućnosti možete\n"
+"                učestvovati u anketama koje su deo istraživačkog rada.\n"
+"                Kako bi ste pristupili sadržaju "
+msgstr ""
+
+#: .\account\templates\account\home.html:169
+msgid "prijavite se"
+msgstr ""
+
+#: .\account\templates\account\home.html:169
+msgid ""
+"i postanite deo našeg naučnog tima!\n"
+"                "
+msgstr ""
+
+#: .\account\templates\account\home.html:183
+msgid "O nama"
+msgstr ""
+
+#: .\account\templates\account\home.html:194
+msgid ""
+"\n"
+"                  Verujem da postoji rešenje za svaki problem, samo ga treba "
+"naći, a to je moj posao.\n"
+"                  Funkcionalnost koju mogu da donesem aplikaciji mi je uvek "
+"bila bitnija nego dizajn\n"
+"                  i izgled iste.\n"
+"                  "
+msgstr ""
+
+#: .\account\templates\account\home.html:205
+msgid ""
+"\n"
+"                  Od kad sam krenuo sa programiranjem prešao sam veliki put, "
+"napravio nekoliko aplikacija, naučio\n"
+"                  mnogo i jedva čekam šta sutra donosi, jer ovo je samo "
+"početak!\n"
+"                  "
+msgstr ""
+
+#: .\account\templates\account\home.html:215
+msgid ""
+"\n"
+"                  Veoma sam strastven i entuzijastičan u programiranju\n"
+"                  , takođe volim da radim i eksperimentišem sa novim "
+"tehnologijama.\n"
+"                  "
+msgstr ""
+
+#: .\account\templates\account\home.html:225
+msgid ""
+"\n"
+"                  Timski sam orjentisan, volim da saslušam druga mišljenja, "
+"a preuzmem odgovornost za svoje stavove.\n"
+"                  Spreman sam za izvršavanje više zadataka u isto vreme.\n"
+"                  "
+msgstr ""
+
+#: .\account\templates\account\home.html:272
+#: .\templates\password_reset_email.html:26
+msgid "Portal za ocenjivanje naučnih radova"
+msgstr ""
+
+#: .\account\templates\account\login.html:25
+msgid "Korisničko ime:"
+msgstr ""
+
+#: .\account\templates\account\login.html:29
+msgid "Lozinka:"
+msgstr ""
+
+#: .\account\templates\account\login.html:45
+msgid "Zaboravljena lozinka?"
+msgstr ""
+
+#: .\account\templates\account\logout.html:9
+msgid "Odjava"
+msgstr ""
+
+#: .\account\templates\account\logout.html:18
+msgid "Uspešno ste se odjavili"
+msgstr ""
+
+#: .\account\templates\account\logout.html:21
+msgid "Hvala Vam što koristite naš portal"
+msgstr ""
+
+#: .\account\templates\account\logout.html:24
+msgid "Ovde možete opet da se prijavite"
+msgstr ""
+
+#: .\account\templates\account\status.html:13
+msgid "Trenutni status prijave"
+msgstr ""
+
+#: .\account\templates\account\status.html:19
+msgid "Prijavi se za recenzenta"
+msgstr ""
+
+#: .\account\templates\account\status.html:23
+msgid "Vaša prijava je stigla!"
+msgstr ""
+
+#: .\account\templates\account\status.html:27
+msgid "Vaša prijava se razmatra!"
+msgstr ""
+
+#: .\account\templates\account\status.html:33
+msgid "Vaša prijava je prihvaćena!"
+msgstr ""
+
+#: .\account\templates\account\status.html:37
+msgid "Vaša prijava je odbijena!"
+msgstr ""
+
+#: .\account\templates\account\status.html:40
+msgid "Žalbu možete upitit na mail"
+msgstr ""
+
+#: .\account\views.py:20
+msgid "Uspešno ste se registrovali!"
+msgstr ""
+
+#: .\administrator\forms.py:20 .\ankete\templates\ankete\admin_ankete.html:21
+#: .\profil\templates\profil\profil.html:46
+#: .\profil\templates\profil\search.html:44
+msgid "Naslov"
+msgstr ""
+
+#: .\administrator\forms.py:21
+msgid "Tekst"
+msgstr ""
+
+#: .\administrator\forms.py:22
+msgid "Potpis"
+msgstr ""
+
+#: .\administrator\forms.py:35
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:41
+#: .\ankete\forms.py:11 .\ankete\templates\ankete\lista_anketa_profil.html:47
+#: .\ankete\templates\ankete\lista_anketa_profil.html:81
+#: .\programski_pozivi\forms.py:12
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:36
+#: .\radovi\forms.py:23
+msgid "Naziv"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:11
+msgid "Dobrodošao Admin"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:14
+msgid "Django Admin"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:15
+#: .\administrator\templates\administrator\pregled_prijava.html:33
+#: .\templates\base_admin.html:132
+msgid "Pregled prijava recezenata"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:16
+#: .\templates\base_admin.html:133
+msgid "Dodaj oblast"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:18
+#: .\templates\base_admin.html:135
+msgid "Obaveštenja"
+msgstr ""
+
+#: .\administrator\templates\administrator\admin_profil.html:19
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:4
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:52
+#: .\radovi\forms.py:26 .\radovi\templates\radovi\lista_radova_admin.html:16
+#: .\radovi\templates\radovi\lista_radova_admin.html:24
+#: .\radovi\templates\radovi\lista_radova_admin.html:27
+#: .\radovi\templates\radovi\naucni_rad_admin.html:34
+#: .\radovi\templates\radovi\naucni_rad_profil.html:34
+#: .\templates\base_admin.html:136
+msgid "Programski poziv"
+msgstr ""
+
+#: .\administrator\templates\administrator\izmeni_oblast_admin.html:5
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:5
+#: .\administrator\templates\administrator\obrisi_oblast_admin.html:5
+msgid "Admin Oblasti"
+msgstr ""
+
+#: .\administrator\templates\administrator\izmeni_oblast_admin.html:10
+msgid "Oblast"
+msgstr ""
+
+#: .\administrator\templates\administrator\izmeni_oblast_admin.html:18
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:52
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:63
+msgid "Izmeni"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:6
+msgid "Dodaj obaveštenje"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:13
+msgid "Obaveštenje"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:24
+msgid "Označi sve"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:24
+msgid "Ne označi"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:38
+msgid "Pošalji i na mail!"
+msgstr ""
+
+#: .\administrator\templates\administrator\kreiraj_obavestenje.html:43
+#: .\profil\templates\profil\prijava.html:15
+#: .\radovi\templates\radovi\naucni_rad_admin.html:89
+msgid "Pošalji"
+msgstr ""
+
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:25
+msgid "Lista Oblasti"
+msgstr ""
+
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:30
+msgid "Napravi Oblast"
+msgstr ""
+
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:42
+msgid "Izmeni Oblast"
+msgstr ""
+
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:43
+msgid "Obriši Oblast"
+msgstr ""
+
+#: .\administrator\templates\administrator\lista_oblasti_admin.html:53
+#: .\administrator\templates\administrator\obrisi_oblast_admin.html:15
+#: .\ankete\templates\ankete\admin_ankete.html:57
+#: .\ankete\templates\ankete\delete_anketa.html:49
+#: .\profil\templates\profil\profil.html:60
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:51
+#: .\programski_pozivi\templates\programski_pozivi\obrisi_programski_poziv.html:51
+msgid "Obriši"
+msgstr ""
+
+#: .\administrator\templates\administrator\obrisi_oblast_admin.html:13
+#, python-format
+msgid "Da li ste sigurni da želite da obrišete \"%(object)s\" oblast?"
+msgstr ""
+
+#: .\administrator\templates\administrator\obrisi_oblast_admin.html:14
+msgid "Ne"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:5
+msgid "Prijave"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:34
+msgid "Klikom na jedan od naslova kolona u tabeli, moguće je sortirati tabelu."
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:41
+msgid "Pregled prijave"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:42
+msgid "Korisnik"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:43
+#: .\administrator\templates\administrator\prijava_detaljno.html:19
+msgid "Ime i prezime"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:44
+msgid "Stanje prijave"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:45
+msgid "Trenutno na recenziji"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:53
+msgid "Detaljno"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:58
+msgid "Prijava je odobrena"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:60
+msgid "Prijava je odbijena"
+msgstr ""
+
+#: .\administrator\templates\administrator\pregled_prijava.html:62
+msgid "Prijava nije pregledana"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:5
+msgid "Prijava detaljno"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:11
+msgid "Prijavu poslao korisnik:"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:13
+msgid "Lista prijava"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:23
+#: .\profil\forms.py:39 .\radovi\forms.py:25
+#: .\radovi\templates\radovi\lista_radova_profil.html:66
+#: .\radovi\templates\radovi\naucni_rad_admin.html:26
+#: .\radovi\templates\radovi\naucni_rad_profil.html:26
+msgid "Oblasti"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:31
+#: .\profil\forms.py:42
+msgid "Nacionalnost"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:35
+msgid "NIO (naučna istraživačka organizacija)"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:39
+#: .\profil\forms.py:44
+msgid "Naučno zvanje"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:43
+#: .\profil\forms.py:45
+msgid "Angažovanje"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:47
+#: .\profil\forms.py:46
+msgid "Adresa"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:51
+#: .\profil\forms.py:47
+msgid "Broj telefona"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:55
+msgid "Veb-stranica"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:63
+msgid "Biografija"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:64
+msgid "Biografija.pdf"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:67
+#: .\profil\forms.py:50
+msgid "Naučni rad 1"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:71
+#: .\profil\forms.py:51
+msgid "Naučni rad 2"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:75
+#: .\profil\forms.py:52
+msgid "Naučni rad 3"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:79
+#: .\profil\forms.py:53
+msgid "Naučni rad 4"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:83
+#: .\profil\forms.py:54
+msgid "Naučni rad 5"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:87
+#: .\profil\forms.py:55
+msgid "Naučni rad 6"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:91
+#: .\profil\forms.py:56
+msgid "Naučni rad 7"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:95
+#: .\profil\forms.py:57
+msgid "Naučni rad 8"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:99
+#: .\profil\forms.py:58
+msgid "Naučni rad 9"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:103
+#: .\profil\forms.py:59
+msgid "Naučni rad 10"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:114
+#: .\administrator\templates\administrator\prijava_detaljno.html:126
+#: .\administrator\templates\administrator\prijava_detaljno.html:134
+msgid "Odobri prijavu"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:117
+#: .\administrator\templates\administrator\prijava_detaljno.html:122
+#: .\administrator\templates\administrator\prijava_detaljno.html:157
+msgid "Odbij prijavu"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:138
+msgid "Da li ste sigurni da želite da odobrite ovu prijavu?"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:141
+#: .\administrator\templates\administrator\prijava_detaljno.html:164
+#: .\ankete\templates\ankete\ignorisi_anketa.html:11
+#: .\radovi\templates\radovi\naucni_rad_admin.html:121
+#: .\radovi\templates\radovi\naucni_rad_admin.html:144
+#: .\radovi\templates\radovi\naucni_rad_profil.html:112
+msgid "Poništi"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:145
+msgid "Odobri"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:161
+msgid "Da li ste sigurni da želite da odbijete ovu prijavu?"
+msgstr ""
+
+#: .\administrator\templates\administrator\prijava_detaljno.html:168
+#: .\radovi\templates\radovi\naucni_rad_admin.html:100
+#: .\radovi\templates\radovi\naucni_rad_admin.html:148
+msgid "Odbij"
+msgstr ""
+
+#: .\administrator\views.py:69
+msgid "Prihvaćena Prijava"
+msgstr ""
+
+#: .\administrator\views.py:71
+msgid ""
+"Poštovani/a, \n"
+" \n"
+"Vaša prijava je prihvaćena! \n"
+" \n"
+"Uživajte u korišćenju našeg Portala za ocenjivanje naučnih radova."
+msgstr ""
+
+#: .\administrator\views.py:92
+msgid "Odbijena Prijava"
+msgstr ""
+
+#: .\administrator\views.py:94
+msgid ""
+"Poštovani/a, \n"
+" \n"
+"Vaša prijava je odbijena! \n"
+" \n"
+"Portal za ocenjivanje naučnih radova."
+msgstr ""
+
+#: .\administrator\views.py:126
+msgid "Uspešno poslano obaveštenje i preko mail-a!"
+msgstr ""
+
+#: .\administrator\views.py:130
+msgid "Uspešno poslano obaveštenje!"
+msgstr ""
+
+#: .\ankete\forms.py:12 .\ankete\templates\ankete\admin_ankete.html:22
+#: .\ankete\templates\ankete\lista_anketa_profil.html:48
+#: .\ankete\templates\ankete\lista_anketa_profil.html:82
+#: .\programski_pozivi\forms.py:13
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:53
+#: .\radovi\forms.py:30
+msgid "Opis"
+msgstr ""
+
+#: .\ankete\forms.py:22
+msgid "Pitanje tekst"
+msgstr ""
+
+#: .\ankete\forms.py:23
+msgid "Opcija jedan"
+msgstr ""
+
+#: .\ankete\forms.py:24
+msgid "Opcija dva"
+msgstr ""
+
+#: .\ankete\forms.py:25
+msgid "Opcija tri"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:10
+msgid "PREGLED ANKETA"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:12
+msgid "Ovde se uređuju Ankete od strane Admina"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:14
+msgid "Napravi anketu"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:23
+msgid "Detalji"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:36
+#: .\ankete\templates\ankete\create_pitanje_form.html:95
+msgid "Napravi pitanje"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:43
+msgid "Rezultat ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\admin_ankete.html:50
+msgid "Pošalji anketu"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_ankete_form.html:6
+#: .\ankete\templates\ankete\create_pitanje_form.html:6
+#: .\ankete\templates\ankete\posalji_anketa_form.html:4
+msgid "Napravi Ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_ankete_form.html:32
+msgid "Napravi Anketu"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_ankete_form.html:40
+msgid "Naziv ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_ankete_form.html:48
+msgid "Opis anketa"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_ankete_form.html:63
+msgid "Sačuvaj anketu"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_pitanje_form.html:56
+msgid "Napravi novo pitanje"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_pitanje_form.html:65
+msgid "Unesite pitanje"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_pitanje_form.html:74
+#: .\ankete\templates\ankete\create_pitanje_form.html:80
+#: .\ankete\templates\ankete\create_pitanje_form.html:86
+msgid "Opcija"
+msgstr ""
+
+#: .\ankete\templates\ankete\create_pitanje_form.html:99
+msgid "Nema više pitanja"
+msgstr ""
+
+#: .\ankete\templates\ankete\delete_anketa.html:4
+msgid "Napravi ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\delete_anketa.html:44
+#, python-format
+msgid "Da li ste sigurni da želite da obrišete Anketu \"%(item)s\"?"
+msgstr ""
+
+#: .\ankete\templates\ankete\delete_anketa.html:48
+#: .\ankete\templates\ankete\ignorisi_anketa.html:12
+msgid "Ne želim"
+msgstr ""
+
+#: .\ankete\templates\ankete\glasaj_anketa.html:4
+#: .\ankete\templates\ankete\rezultat_anketa.html:4
+#: .\ankete\templates\ankete\rezultat_anketa_profil.html:5
+msgid "Rezultat"
+msgstr ""
+
+#: .\ankete\templates\ankete\glasaj_anketa.html:14
+msgid "Glasanje Anketa "
+msgstr ""
+
+#: .\ankete\templates\ankete\glasaj_anketa.html:64
+msgid "Popuni"
+msgstr ""
+
+#: .\ankete\templates\ankete\ignorisi_anketa.html:4
+msgid "Ignoriši Ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\ignorisi_anketa.html:7
+#, python-format
+msgid "Da li ste sigurni da ne želite da popunite Anketu \"%(item)s\"?"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:37
+msgid "ANKETE"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:41
+msgid "Nepopunjene ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:49
+#: .\ankete\templates\ankete\lista_anketa_profil.html:83
+msgid "Napravljena"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:50
+#: .\ankete\templates\ankete\lista_anketa_profil.html:84
+#: .\profil\templates\profil\profil.html:49
+msgid "Akcija"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:61
+msgid "Želim da popunim"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:62
+msgid "Ne želim da popunim"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:70
+msgid "Trenutno nemate nepopunjene ankete!"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:75
+msgid "Popunjene ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\lista_anketa_profil.html:95
+msgid "Statistika ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:8
+msgid "Slanje ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:9
+#: .\ankete\templates\ankete\rezultat_anketa.html:26
+#: .\ankete\templates\ankete\rezultat_anketa_profil.html:32
+msgid "Nazad na ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:10
+msgid "Opis ankete"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:14
+msgid "Izaberi oblasti"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:16
+msgid "Svaki recenzent ima oblast ili oblasti stručnosti"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:18
+msgid ""
+"Odabirom oblasti anketa se šalje samo recenzentima iz tih oblasti stručnosti"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:35
+msgid "Pošalji anketu po oblastima"
+msgstr ""
+
+#: .\ankete\templates\ankete\posalji_anketa_form.html:38
+msgid "Pošalji svima"
+msgstr ""
+
+#: .\ankete\templates\ankete\rezultat_anketa.html:31
+#: .\ankete\templates\ankete\rezultat_anketa_profil.html:35
+msgid "Rezultat Ankete"
+msgstr ""
+
+#: .\ankete\views.py:32
+msgid "Napravili ste anketu!"
+msgstr ""
+
+#: .\ankete\views.py:44
+#, python-brace-format
+msgid "Uspešno ste izbrisali anketu {anketa}!"
+msgstr ""
+
+#: .\ankete\views.py:60
+msgid "Napravili ste pitanje!"
+msgstr ""
+
+#: .\ankete\views.py:84
+msgid "Poslali ste anketu po oblastima!"
+msgstr ""
+
+#: .\ankete\views.py:87
+msgid "Niste izabrali oblast!"
+msgstr ""
+
+#: .\ankete\views.py:93
+msgid "Poslali ste anketu svima!"
+msgstr ""
+
+#: .\ankete\views.py:96
+msgid ""
+"Nije moguće poslati korisnicima, jer niste napravili pitanja za ovu anketu!"
+msgstr ""
+
+#: .\ankete\views.py:171
+msgid "Hvala, Uspešno ste glasali!"
+msgstr ""
+
+#: .\error_handlers\templates\error_handlers\400.html:5
+#: .\error_handlers\templates\error_handlers\403.html:4
+#: .\error_handlers\templates\error_handlers\404.html:4
+#: .\error_handlers\templates\error_handlers\500.html:4
+msgid "Stranica"
+msgstr ""
+
+#: .\error_handlers\templates\error_handlers\400.html:10
+msgid "LOŠ ZAHTEV"
+msgstr ""
+
+#: .\error_handlers\templates\error_handlers\403.html:9
+msgid "ZABRANJEN PRISTUP"
+msgstr ""
+
+#: .\error_handlers\templates\error_handlers\404.html:9
+msgid "STRANICA NE POSTOJI"
+msgstr ""
+
+#: .\error_handlers\templates\error_handlers\500.html:9
+msgid "OOPS!!! DESILA SE GREŠKA"
+msgstr ""
+
+#: .\profil\forms.py:10
+msgid "Trenutno"
+msgstr ""
+
+#: .\profil\forms.py:11
+msgid "Izaberi"
+msgstr ""
+
+#: .\profil\forms.py:40
+msgid "Ime"
+msgstr ""
+
+#: .\profil\forms.py:41
+msgid "Prezime"
+msgstr ""
+
+#: .\profil\forms.py:43
+msgid "NIO (naučno istraživačka organizacija)"
+msgstr ""
+
+#: .\profil\forms.py:48
+msgid "Lična veb stranica"
+msgstr ""
+
+#: .\profil\forms.py:49
+msgid "biografija"
+msgstr ""
+
+#: .\profil\models.py:29
+msgid "Koristi sledeći format: '+999999999'"
+msgstr ""
+
+#: .\profil\templates\profil\obavestenje_detaljno.html:5
+msgid "Obaveštenje detaljno"
+msgstr ""
+
+#: .\profil\templates\profil\obavestenje_detaljno.html:29
+msgid "Naslov obaveštenja"
+msgstr ""
+
+#: .\profil\templates\profil\obavestenje_detaljno.html:36
+#: .\profil\templates\profil\profil.html:48
+msgid "Datum"
+msgstr ""
+
+#: .\profil\templates\profil\obavestenje_detaljno.html:39
+msgid "Autor"
+msgstr ""
+
+#: .\profil\templates\profil\prijava.html:4
+msgid "Prijava"
+msgstr ""
+
+#: .\profil\templates\profil\prijava.html:10
+msgid "Prijava za recenzenta"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:19
+msgid "Profil korisnika"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:21
+msgid "Pregledaj ankete"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:22
+msgid "Pregledaj Radove"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:28
+msgid "Sakrij obaveštenja"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:33
+msgid "Pretraži obaveštenja"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:37
+msgid "Ključna reč"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:39
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:57
+msgid "Pretraži"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:47
+#: .\profil\templates\profil\search.html:45
+msgid "Sadržaj"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:69
+msgid "Prikaži profil"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:98
+msgid "Sačuvaj izmene"
+msgstr ""
+
+#: .\profil\templates\profil\profil.html:99
+msgid "Restartuj izmene"
+msgstr ""
+
+#: .\profil\templates\profil\search.html:7
+msgid "Pretraga"
+msgstr ""
+
+#: .\profil\templates\profil\search.html:34
+#, python-format
+msgid "Nađeno %(total_results)s rezultata"
+msgstr ""
+
+#: .\profil\templates\profil\search.html:36
+#, python-format
+msgid "Nađen %(results.count)s rezultat"
+msgstr ""
+
+#: .\profil\templates\profil\search.html:60
+msgid "Nema nađenih rezultata"
+msgstr ""
+
+#: .\profil\templates\profil\search.html:66
+#: .\programski_pozivi\templates\programski_pozivi\azuriraj_programski_poziv.html:52
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_pitanja.html:52
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:59
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:64
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_pitanja.html:53
+#: .\programski_pozivi\templates\programski_pozivi\obrisi_programski_poziv.html:50
+#: .\radovi\templates\radovi\kreiraj_rad.html:53
+msgid "Nazad"
+msgstr ""
+
+#: .\profil\validators.py:24
+msgid "Veličina fajl-a mora da bude ispod"
+msgstr ""
+
+#: .\profil\views.py:32
+msgid "Vaša prijava je poslata na razmatranje!"
+msgstr ""
+
+#: .\profil\views.py:57
+msgid "Vaš nalog je ažuriran!"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:33
+msgid "Pitanje 1"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:34
+msgid "Pitanje 2"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:35
+msgid "Pitanje 3"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:36
+msgid "Pitanje 4"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:37
+msgid "Pitanje 5"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:38
+msgid "Pitanje 6"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:39
+msgid "Pitanje 7"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:40
+msgid "Pitanje 8"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:41
+msgid "Pitanje 9"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:42
+msgid "Pitanje 10"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:63
+msgid "Odgovor 1"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:64
+msgid "Odgovor 2"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:65
+msgid "Odgovor 3"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:66
+msgid "Odgovor 4"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:67
+msgid "Odgovor 5"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:68
+msgid "Odgovor 6"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:69
+msgid "Odgovor 7"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:70
+msgid "Odgovor 8"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:71
+msgid "Odgovor 9"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:72
+msgid "Odgovor 10"
+msgstr ""
+
+#: .\programski_pozivi\forms.py:79 .\programski_pozivi\forms.py:85
+#: .\programski_pozivi\forms.py:91 .\programski_pozivi\forms.py:97
+#: .\programski_pozivi\forms.py:103 .\programski_pozivi\forms.py:109
+#: .\programski_pozivi\forms.py:115 .\programski_pozivi\forms.py:121
+#: .\programski_pozivi\forms.py:127 .\programski_pozivi\forms.py:133
+msgid "Ocena mora da bude od 1 do 10!"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\azuriraj_programski_poziv.html:5
+msgid "Ažuriranje Programskog poziva"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\azuriraj_programski_poziv.html:47
+msgid "Ažuriraj Programski poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\azuriraj_programski_poziv.html:51
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_pitanja.html:51
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:48
+msgid "Ažuriraj"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_pitanja.html:5
+#: .\radovi\templates\radovi\naucni_rad_profil.html:65
+msgid "Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_pitanja.html:47
+msgid "Ažuriraj Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:58
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_pitanja.html:47
+msgid "Kreiraj Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\detaljno_programski_poziv.html:61
+msgid "Već ste napravili pitanja, možete da ih izmenite"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_pitanja.html:5
+msgid "Kreiranje Programski Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_pitanja.html:48
+msgid "Pitanja za Programski poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_pitanja.html:52
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:25
+msgid "Snimi"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:6
+msgid "Kreiranje Programskog poziva"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:21
+msgid "Kreiraj Programski poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:29
+msgid "Lista već postojećih programskih poziva"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:37
+msgid "Ažuriraj Programski Poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:38
+msgid "Pregled Poziva i Kreiranje Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:39
+msgid "Obriši Programski Poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\kreiraj_programski_poziv.html:49
+msgid "Pregled i Pitanja"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\obrisi_programski_poziv.html:5
+msgid "Obriši Programski poziv"
+msgstr ""
+
+#: .\programski_pozivi\templates\programski_pozivi\obrisi_programski_poziv.html:46
+#, python-format
+msgid ""
+"Da li ste sigurni da želite da obrišete programski poziv "
+"\"%(programski_poziv.naziv)s\"?"
+msgstr ""
+
+#: .\programski_pozivi\views.py:20
+msgid "Napravili ste programski poziv!"
+msgstr ""
+
+#: .\programski_pozivi\views.py:59
+msgid "Uspešno ste ažurirali programski poziv!"
+msgstr ""
+
+#: .\programski_pozivi\views.py:98
+msgid "Napravili ste pitanja!"
+msgstr ""
+
+#: .\programski_pozivi\views.py:121
+msgid "Uspešno ste ažurirali pitanja!"
+msgstr ""
+
+#: .\radovi\forms.py:24 .\radovi\templates\radovi\naucni_rad_admin.html:22
+#: .\radovi\templates\radovi\naucni_rad_profil.html:22
+msgid "Kategorija"
+msgstr ""
+
+#: .\radovi\forms.py:27 .\radovi\templates\radovi\naucni_rad_admin.html:38
+#: .\radovi\templates\radovi\naucni_rad_profil.html:38
+msgid "Članovi"
+msgstr ""
+
+#: .\radovi\forms.py:28
+msgid "Datum podnošenja"
+msgstr ""
+
+#: .\radovi\forms.py:29 .\radovi\templates\radovi\naucni_rad_admin.html:46
+#: .\radovi\templates\radovi\naucni_rad_profil.html:46
+msgid "Godina"
+msgstr ""
+
+#: .\radovi\forms.py:31
+msgid "Biografije"
+msgstr ""
+
+#: .\radovi\forms.py:40 .\radovi\forms.py:42
+msgid "Ovaj programski poziv nema pitanja!"
+msgstr ""
+
+#: .\radovi\models.py:28
+msgid "Koristi sledeći format: GGGG"
+msgstr ""
+
+#: .\radovi\models.py:33
+msgid "Koristi sledeći format: GGGG-MM-DD"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:11
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:24
+msgid "Recenzent je ocenio rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:23
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:26
+msgid "Recenzent nije ocenio rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:28
+msgid "Nije doneta konacna odluka"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:30
+msgid "Rad je prihvacen"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:32
+msgid "Rad je odbijen"
+msgstr ""
+
+#: .\radovi\templates\radovi\ime_rada_pretraga.html:38
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:32
+msgid "Oduzmi"
+msgstr ""
+
+#: .\radovi\templates\radovi\kreiraj_rad.html:5
+#: .\radovi\templates\radovi\kreiraj_rad.html:47
+msgid "Kreiraj Rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\kreiraj_rad.html:52
+msgid "Kreiraj"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_admin.html:5
+#: .\radovi\templates\radovi\lista_radova_admin.html:11
+#: .\radovi\templates\radovi\naucni_rad_admin.html:5
+msgid "Lista Radova"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_admin.html:13
+msgid "Neocenjeni radovi"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_admin.html:20
+msgid "Ocenjeni radovi"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:5
+#: .\radovi\templates\radovi\naucni_rad_profil.html:12
+msgid "Lista radova"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:56
+msgid "Radovi na recenziji"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:64
+#: .\radovi\templates\radovi\naucni_rad_admin.html:18
+#: .\radovi\templates\radovi\naucni_rad_profil.html:18
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:32
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:6
+msgid "Naziv rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:65
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:33
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:7
+msgid "Kategorija rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:67
+msgid "Kada je prosleđen"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:68
+msgid "Pregled rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:83
+msgid "Oceni rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:91
+msgid "Trenutno nemate radove na recenziji"
+msgstr ""
+
+#: .\radovi\templates\radovi\lista_radova_profil.html:92
+msgid "Nazad na profil"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:11
+msgid "Rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:13
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:5
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:10
+msgid "Prosleđeni Radovi"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:14
+msgid "Konačna odluka za rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:42
+#: .\radovi\templates\radovi\naucni_rad_profil.html:42
+msgid "Datum podnošenja rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:50
+#: .\radovi\templates\radovi\naucni_rad_admin.html:51
+#: .\radovi\templates\radovi\naucni_rad_profil.html:50
+#: .\radovi\templates\radovi\naucni_rad_profil.html:51
+msgid "Opis rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:54
+#: .\radovi\templates\radovi\naucni_rad_admin.html:55
+#: .\radovi\templates\radovi\naucni_rad_profil.html:54
+#: .\radovi\templates\radovi\naucni_rad_profil.html:55
+msgid "Biografije članova"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:59
+msgid "Programski Poziv i pitanja"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:60
+#: .\radovi\templates\radovi\naucni_rad_profil.html:59
+msgid "Prikaži pitanja"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:61
+#: .\radovi\templates\radovi\naucni_rad_profil.html:60
+msgid "Sakrij pitanja"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:81
+msgid "Kom korisniku želite da prosledite naučni rad na ocenjivanje"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:93
+msgid "Vaša konačna odluka za ovaj rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:97
+#: .\radovi\templates\radovi\naucni_rad_admin.html:125
+msgid "Prihvati"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:104
+msgid "Ovaj rad je odbijen"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:106
+msgid "Ovaj rad je prihvaćen"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:114
+msgid "Prihvati rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:118
+msgid "Da li ste sigurni da želite da prihvatite ovaj rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:137
+msgid "Odbij rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_admin.html:141
+msgid "Da li ste sigurni da želite da odbijete ovaj rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:5
+#: .\radovi\templates\radovi\naucni_rad_profil.html:11
+msgid "Naučni rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:68
+msgid "Odgovori (Ocena od 1 do 10)"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:87
+msgid ""
+"Ukoliko Kliknete na \"Sačuvaj odgovore\" --> iste možete kasnije da "
+"promenite."
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:89
+msgid ""
+"Ukoliko Kliknete na \"Sačuvaj i Zaključaj odgovore\" --> Vaši odgovori se "
+"šalju na dalju obradu i nemate pravo više da ih menjate!"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:93
+msgid "Sačuvaj odgovore"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:98
+msgid "Sačuvaj i Zaključaj odgovore"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:105
+msgid "Zaključaj odgovore"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:109
+msgid "Da li ste sigurni da želite da zaključate vaše odgovore"
+msgstr ""
+
+#: .\radovi\templates\radovi\naucni_rad_profil.html:113
+msgid "Zaključaj"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:13
+msgid "Filter: Ime rada"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:24
+msgid "Upiši ime rada za pretragu"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:34
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:8
+msgid "Korisnik - Ime"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:35
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:9
+msgid "Kada je poslat rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:36
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:10
+msgid "Recezent ocenio"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:37
+msgid "Konačna ocena recenzenta"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:38
+msgid "Konačna odluka"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:39
+#: .\radovi\templates\radovi\recenzije_dani_pretraga.html:11
+msgid "Oduzmi rad"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:49
+msgid "Pretraga recenzija po broju dana"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:51
+msgid "Unosom broja npr. 2 --> pretraga će pokazati recenzije koje "
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:51
+msgid "nisu pregledane"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:51
+msgid "a poslate su 2 ili više dana"
+msgstr ""
+
+#: .\radovi\templates\radovi\prosledjeni_radovi_admin.html:55
+msgid "Upiši broj dana"
+msgstr ""
+
+#: .\radovi\templates\radovi\radovi_admin_home.html:13
+msgid "Na ovoj stranici možete pristupiti"
+msgstr ""
+
+#: .\radovi\templates\radovi\radovi_admin_home.html:15
+msgid "Kreiranju Radova"
+msgstr ""
+
+#: .\radovi\templates\radovi\radovi_admin_home.html:15
+#: .\radovi\templates\radovi\radovi_admin_home.html:16
+#: .\radovi\templates\radovi\radovi_admin_home.html:18
+msgid "Ovde"
+msgstr ""
+
+#: .\radovi\templates\radovi\radovi_admin_home.html:16
+msgid "Kreiranim Radovima i slanju Recenzentima"
+msgstr ""
+
+#: .\radovi\templates\radovi\radovi_admin_home.html:17
+msgid "Poslatim radovima - Pregledu ocena i konačne odluke"
+msgstr ""
+
+#: .\radovi\views.py:40
+msgid "Uspešno ste kreirali naučni rad!"
+msgstr ""
+
+#: .\radovi\views.py:92
+msgid "Uspešno ste prosledili rad!"
+msgstr ""
+
+#: .\radovi\views.py:95
+msgid "Niste izabrali korisnika kome želite da prosledite rad!"
+msgstr ""
+
+#: .\radovi\views.py:225
+msgid "Sačuvali ste odgovore!"
+msgstr ""
+
+#: .\radovi\views.py:228 .\radovi\views.py:244
+msgid "Ocena nije validna, mora da bude od 1 do 10!"
+msgstr ""
+
+#: .\radovi\views.py:238
+msgid "Vaši odgovori su sačuvani i poslati na obradu!"
+msgstr ""
+
+#: .\recenzentPlatforma\settings.py:147
+msgid "Srpski"
+msgstr ""
+
+#: .\recenzentPlatforma\settings.py:148
+msgid "Engleski"
+msgstr ""
+
+#: .\templates\password_reset.html:6 .\templates\password_reset_done.html:6
+msgid "Promena lozinke"
+msgstr ""
+
+#: .\templates\password_reset.html:14 .\templates\password_reset.html:18
+#: .\templates\password_reset_confirm.html:16
+#: .\templates\password_reset_confirm.html:20
+msgid "Promeni lozinku"
+msgstr ""
+
+#: .\templates\password_reset_complete.html:6
+msgid "Promena lozinke kompletna"
+msgstr ""
+
+#: .\templates\password_reset_complete.html:11
+msgid "Vaša Lozinka je uspešno promenjena"
+msgstr ""
+
+#: .\templates\password_reset_complete.html:13
+msgid "Prijavite se ovde"
+msgstr ""
+
+#: .\templates\password_reset_confirm.html:6
+msgid "Potvrđena promena lozinke"
+msgstr ""
+
+#: .\templates\password_reset_confirm.html:26
+msgid "Vaš link za resetovanje lozinke je istekao! Prijavite se"
+msgstr ""
+
+#: .\templates\password_reset_confirm.html:26
+msgid "ovde"
+msgstr ""
+
+#: .\templates\password_reset_done.html:11
+msgid "Poslat Vam je email sa instrukcijama oko promene Vaše lozinke!"
+msgstr ""
+
+#: .\templates\password_reset_email.html:3
+msgid "Poštovani/a"
+msgstr ""
+
+#: .\templates\password_reset_email.html:6
+#, python-format
+msgid ""
+"\n"
+"Primili ste ovaj email, jer ste Vi (ili neko ko se pretvara da ste Vi), "
+"zatražio\n"
+"promenu lozinke na %(domain)s sajtu. Ako ne želite da menjate lozinku, molim "
+"Vas\n"
+"zanemarite ovu poruku.\n"
+msgstr ""
+
+#: .\templates\password_reset_email.html:13
+msgid ""
+"\n"
+"Da bi promenili lozinku, pratite dole navedeni link, ili kopirajte link u "
+"Vašem browser-u:\n"
+msgstr ""
+
+#: .\templates\password_reset_email.html:22
+msgid "Vaše korisničko ime, u slučaju da ste zaboravili je: "
+msgstr ""
+
+#: .\templates\password_reset_email.html:25
+msgid "S poštovanjem"
+msgstr ""

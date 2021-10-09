@@ -1,15 +1,16 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Prosleđeni Radovi</title>
+<title>{% trans "Prosleđeni Radovi" %}</title>
 <link rel="stylesheet" href="{% static 'radovi/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<h1 class="mt-4">Prosleđeni Radovi</h1>
-<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen mt-2">Radovi</a>
+<h1 class="mt-4">{% trans "Prosleđeni Radovi" %}</h1>
+<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen mt-2">{% trans "Radovi" %}</a>
 <hr>
-<h4>Filter: Ime rada</h4>
+<h4>{% trans "Filter: Ime rada" %}</h4>
 <hr>
 <form method="POST" onkeydown="return event.key != 'Enter';">
     <div class="form-group">
@@ -20,7 +21,7 @@
                 class="form-control form-control-lg"
                 id="ime_rada"
                 name="ime_rada"
-                placeholder="Upiši ime rada za pretragu">
+                placeholder="{% trans 'Upiši ime rada za pretragu' %}">
     </div>
 </form>
 <div style="height:500px; overflow:scroll;">
@@ -28,14 +29,14 @@
     <thead class="thead-dark">
         <tr>
             <th></th>
-            <th>Naziv rada</th>
-            <th>Kategorija rada</th>
-            <th>Korisnik - Ime</th>
-            <th>Kada je poslat rad</th>
-            <th>Recezent ocenio?</th>
-            <th>Konačna ocena recenzenta</th>
-            <th>Konačna odluka</th>
-            <th>Oduzmi rad</th>
+            <th>{% trans "Naziv rada" %}</th>
+            <th>{% trans "Kategorija rada" %}</th>
+            <th>{% trans "Korisnik - Ime" %}</th>
+            <th>{% trans "Kada je poslat rad" %}</th>
+            <th>{% trans "Recezent ocenio" %}?</th>
+            <th>{% trans "Konačna ocena recenzenta" %}</th>
+            <th>{% trans "Konačna odluka" %}</th>
+            <th>{% trans "Oduzmi rad" %}</th>
         </tr>
     </thead>
     <tbody id="tbody_ime_rada">
@@ -45,18 +46,18 @@
 </table>
 </div>
 <hr class="mt-5">
-<h4>Pretraga recenzija po broju dana</h4>
+<h4>{% trans "Pretraga recenzija po broju dana" %}</h4>
 <hr>
-<p>Unosom broja npr. 2 --> pretraga će pokazati recenzije koje <strong>nisu pregledane</strong>, a poslate su 2 ili više dana.</p>
+<p>{% blocktrans %}Unosom broja npr. 2 --> pretraga će pokazati recenzije koje {% endblocktrans %}<strong> {% trans "nisu pregledane" %}</strong>, {% trans "a poslate su 2 ili više dana" %}.</p>
 <form method="POST" onkeydown="return event.key != 'Enter';">
     <div class="form-group">
         {% csrf_token %}
-        <input type="number" class="form-control" id="broj_dana" name="broj dana" placeholder="Upiši broj dana">
+        <input type="number" class="form-control" id="broj_dana" name="broj dana" placeholder="{% trans 'Upiši broj dana' %}">
     </div>
-    <button type="button" class="admin-btn-lightgreen" onclick="recenzijeDaniPretraga('{% url 'radovi:recenzije_dani_pretraga' %}');">Pretraži</button>
+    <button type="button" class="admin-btn-lightgreen" onclick="recenzijeDaniPretraga('{% url 'radovi:recenzije_dani_pretraga' %}');">{% trans 'Pretraži' %}</button>
 </form>
 
-<div class="mt-3" id="div_broj_dana" style="height:300px; overflow:scroll;">
+<div class="mt-3" id="div_broj_dana" style="height:400px; overflow:scroll;">
     {% include 'radovi/recenzije_dani_pretraga.html' with prosledjeni_radovi_dani=prosledjeni_radovi_dani %}
 </div>
 

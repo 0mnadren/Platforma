@@ -1,4 +1,5 @@
-{% extends 'base_profil.html' %}
+{% extends 'base_profil.html' %}\
+{% load i18n %}
 {% load static %}
 {% block title %}
 <title>Status</title>
@@ -9,34 +10,34 @@
 
 <div class="status-div">
     <div class="row">
-        <h1>Trenutni status prijave</h1>
+        <h1>{% blocktrans %}Trenutni status prijave{% endblocktrans %}</h1>
     </div>
 
 {% if user.profile_accepted == None %}
     {% if not user.profil %}
     <div class="row">
-        <a href="{% url 'profil:prijava' %}" class="btn-logout mt-5">Prijavi se za recenzenta</a>
+        <a href="{% url 'profil:prijava' %}" class="btn-logout mt-5">{% blocktrans %}Prijavi se za recenzenta{% endblocktrans %}</a>
     </div>
     {% elif user.profile_accepted == None and not user.profil.pregleda_se %}
     <div class="row">
-        <h2>Vaša prijava je stigla!</h2>
+        <h2>{% blocktrans %}Vaša prijava je stigla!{% endblocktrans %}</h2>
     </div>    
     {% elif user.profile_accepted == None and user.profil.pregleda_se %}
     <div class="row">
-        <h2>Vaša prijava se razmatra!</h2>
+        <h2>{% blocktrans %}Vaša prijava se razmatra!{% endblocktrans %}</h2>
     </div>
     {% endif %}
 
 {% elif user.profile_accepted %}
     <div class="row">
-        <h2>Vaša prijava je prihvaćena!</h2>
+        <h2>{% blocktrans %}Vaša prijava je prihvaćena!{% endblocktrans %}</h2>
     </div>
 {% elif not user.profile_accepted %}
     <div class="row">
-        <h2>Vaša prijava je odbijena!</h2>
+        <h2>{% blocktrans %}Vaša prijava je odbijena!{% endblocktrans %}</h2>
     </div>
     <div class="row row-span">
-        <span>Žalbu možete upitit na mail <u>portal.naucnih.radova@gmail.com</u></span>
+        <span>{% blocktrans %}Žalbu možete upitit na mail{% endblocktrans %} <u>portal.naucnih.radova@gmail.com</u></span>
     </div>
 {% endif %}
 </div>

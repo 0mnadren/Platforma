@@ -1,5 +1,7 @@
-{% extends 'base_admin.html' %} {% load static %} {% block title %}
-<title>Rezultat</title>
+{% extends 'base_admin.html' %}
+{% load i18n %}
+{% load static %} {% block title %}
+<title>{% trans "Rezultat" %}</title>
 {% endblock %} {% block content %}
 <style>
     .admin-btn-lightgreen {
@@ -21,12 +23,12 @@
 }
 </style>
 <br>
-<a href="{% url 'ankete:admin_ankete' %}" class="admin-btn-lightgreen">Nazad na ankete</a>
+<a href="{% url 'ankete:admin_ankete' %}" class="admin-btn-lightgreen">{% trans "Nazad na ankete" %}</a>
 <div class="container">
       <div class="row">
         <div class="col-md-8 m-auto">
 <div class="text-center m-4">
-  <h2>Rezultat Ankete "{{anketa.naziv}}"</h2>
+  <h2>{% trans "Rezultat Ankete" %} "{{anketa.naziv}}"</h2>
 </div>
               
 {% for pitanje in pitanja %}  

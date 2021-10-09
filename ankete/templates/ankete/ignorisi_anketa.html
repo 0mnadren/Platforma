@@ -1,13 +1,15 @@
-{% extends 'base_profil.html' %} {% load static %} {% block title %}
-<title>Ignore Ankete</title>
+{% extends 'base_profil.html' %}
+{% load i18n %}
+{% load static %} {% block title %}
+<title>{% trans "Ignoriši Ankete" %}</title>
 {% endblock %} {% block content %}
 
-<h3 class="mt-4 mb-4">Da li ste sigurni da ne želite da popunite Anketu "{{item}}"?</h3>
+<h3 class="mt-4 mb-4">{% blocktrans %}Da li ste sigurni da ne želite da popunite Anketu "{{item}}"?{% endblocktrans %}</h3>
 
 <form action="" method="post">
   {%csrf_token%}
-  <a href="{%url 'ankete:ankete'%}" class="btn btn-primary mr-3">Poništi</a>
-  <button type="submit" class="btn btn-warning">Ne želim</button>
+  <a href="{%url 'ankete:ankete'%}" class="btn btn-primary mr-3">{% trans "Poništi" %}</a>
+  <button type="submit" class="btn btn-warning">{% trans "Ne želim" %}</button>
 </form>
 
 {% endblock %}

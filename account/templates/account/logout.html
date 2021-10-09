@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+{% load i18n %}
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odjava</title>
+    <title>{% blocktrans %}Odjava{% endblocktrans %}</title>
     <link rel="stylesheet" href="{% static 'account/css/logout.css' %}">
 </head>
 <body>
@@ -14,16 +15,16 @@
             <div class="col">
                 <div class="logout-div">
                     <div class="row">
-                        <h1>Uspešno ste se odjavili</h1>
+                        <h1>{% blocktrans %}Uspešno ste se odjavili{% endblocktrans %}</h1>
                     </div>
                     <div class="row">
-                        <h3>Hvala Vam što koristite naš portal</h3>
+                        <h3>{% blocktrans %}Hvala Vam što koristite naš portal{% endblocktrans %}</h3>
                     </div>
                     <div class="row row-span">
-                        <span>Ovde možete opet da se prijavite</span>
+                        <span>{% blocktrans %}Ovde možete opet da se prijavite{% endblocktrans %}</span>
                     </div>
                     <div>
-                        <a class="btn-logout" href="{% url 'account:login' %}">Prijavite se</a>
+                        <a class="btn-logout" href="{% url 'account:login' %}">{% trans "Prijavi se" %}</a>
                     </div>
                     
                 </div>

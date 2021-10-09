@@ -134,3 +134,4 @@ db.sqlite3
 /*/profil/pdfs/*.doc
 /*/profil/pdfs/*.docx
 /*/profil/pdfs/*.odt
+.idea/ZileNemanjaMain.iml

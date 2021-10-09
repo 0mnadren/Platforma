@@ -18,11 +18,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-
+from django.conf.urls.i18n import i18n_patterns
+from django.utils.translation import gettext_lazy as _
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+]
 
+urlpatterns += i18n_patterns(
     path('', include('account.urls', namespace='account')),
     path('profil/', include('profil.urls', namespace='profil')),
     path('administrator/', include('administrator.urls', namespace='administrator')),
@@ -30,6 +33,7 @@ urlpatterns = [
     path('radovi/', include('radovi.urls', namespace='radovi')),
     path('programski_pozivi/', include('programski_pozivi.urls', namespace='programski_pozivi')),
 
+    path('rosetta/', include('rosetta.urls')),
 
     ### Views za resetovanje lozinke ###
     path("password-reset", auth_views.PasswordResetView.as_view(
@@ -45,7 +49,7 @@ urlpatterns = [
     path("password-reset-complete/",
          auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
          name="password_reset_complete")
-]
+)
 
 
 handler400 = 'error_handlers.views.custom_bad_request_view'

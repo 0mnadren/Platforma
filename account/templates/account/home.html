@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+<html lang="sr">
 {% load static %}
 <head>
   <meta charset="UTF-8">
@@ -19,19 +20,38 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% blocktrans %}Jezik{% endblocktrans %}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="languageDropdown">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for lang in languages %}
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                      {% if lang.name_local == 'српски' %}
+                        Srpski
+                      {% else %}
+                        {{ lang.name_local }}
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
             {% if user.is_superuser %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'administrator:profil' %}">Admin Profil</a>
+                <a class="nav-link" href="{% url 'administrator:profil' %}">{% blocktrans %}Admin Profil{% endblocktrans %}</a>
             </li>
             {% elif user.profile_accepted %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Profil {{ user.username|title }}
+                  {% trans "Profil" %} {{ user.username|title }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'profil:profil' %}">Profil</a>
-                  <a class="dropdown-item" href="{% url 'ankete:ankete' %}">Ankete</a>
-                  <a class="dropdown-item" href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+                  <a class="dropdown-item" href="{% url 'profil:profil' %}">{% trans "Profil" %}</a>
+                  <a class="dropdown-item" href="{% url 'ankete:ankete' %}">{% trans "Ankete" %}</a>
+                  <a class="dropdown-item" href="{% url 'radovi:lista_radova_profil' %}">{% trans "Radovi" %}</a>
                 </div>
               </li>
             {% else %}
@@ -40,15 +60,34 @@
             </li>
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'account:logout' %}">{% trans "Odjavi se" %}</a>
             </li>
 
           {% else %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% blocktrans %}Jezik{% endblocktrans %}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="languageDropdown">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for lang in languages %}
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                      {% if lang.name_local == 'српски' %}
+                        Srpski
+                      {% else %}
+                        {{ lang.name_local }}
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">Register</a>
+                <a class="nav-link" href="{% url 'account:register' %}">{% trans "Registruj se" %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'account:login' %}">{% trans "Prijavi se" %}</a>
             </li>
           {% endif %}
         </ul>
@@ -61,7 +100,7 @@
             <div class="col">
               <header>
                 <div class="h1-div">
-                  <h1 class="mt-5 mb-5 h-naslov">Dobrodošli na portal za ocenjivanje naučnih radova!</h1>
+                  <h1 class="mt-5 mb-5 h-naslov">{% blocktrans %}Dobrodošli na portal za ocenjivanje naučnih radova!{% endblocktrans %}</h1>
                 </div>
                 
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -74,32 +113,32 @@
                     <div class="carousel-item active">
                       <img src="{% static 'account/images/recenzent-medium.jpg' %}" class="d-block w-100" alt="recenzent">
                       <div class="carousel-caption d-none d-md-block">
-                        <h2><strong>Budi deo tima</strong></h2>
-                        <h4>Postani recenzent - <a href="{% url 'account:register' %}"><u>registruj se!</u></a></h4>
+                        <h2><strong>{% blocktrans %}Budi deo tima{% endblocktrans %}</strong></h2>
+                        <h4>{% blocktrans %}Postani recenzent{% endblocktrans %} - <a href="{% url 'account:register' %}"><u>{% blocktrans %}registruj se{% endblocktrans %}!</u></a></h4>
                       </div>
                     </div>
                     <div class="carousel-item">
                       <img src="{% static 'account/images/rad-medium.jpg' %}" class="d-block w-100" alt="radovi">
                       <div class="carousel-caption d-none d-md-block">
-                        <h2><strong>Naučni radovi</strong></h2>
-                        <h4>Vrši pregled i ocenjivanje naučnih radova!</h4>
+                        <h2><strong>{% blocktrans %}Naučni radovi{% endblocktrans %}</strong></h2>
+                        <h4>{% blocktrans %}Vrši pregled i ocenjivanje naučnih radova!{% endblocktrans %}</h4>
                       </div>
                     </div>
                     <div class="carousel-item">
                       <img src="{% static 'account/images/ankete-medium.jpg' %}" class="d-block w-100" alt="ankete">
                       <div class="carousel-caption d-none d-md-block">
-                        <h2><strong>Ankete</strong></h2>
-                        <h4>Učestvuj u anketama koje su deo istraživačkog rada!</h4>
+                        <h2><strong>{% trans "Ankete" %}</strong></h2>
+                        <h4>{% blocktrans %}Učestvuj u anketama koje su deo istraživačkog rada!{% endblocktrans %}</h4>
                       </div>
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Prethodna</span>
+                    <span class="sr-only">{% blocktrans %}Prethodna{% endblocktrans %}</span>
                   </a>
                   <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Sledeća</span>
+                    <span class="sr-only">{% blocktrans %}Sledeća{% endblocktrans %}</span>
                   </a>
                 </div>
               </header>
@@ -113,7 +152,7 @@
         <div class="row">
           <div class="col">
             <div class="h1-div">
-              <h2 class="mt-5 mb-5 h-naslov">O portalu</h2>
+              <h2 class="mt-5 mb-5 h-naslov">{% blocktrans %}O portalu{% endblocktrans %}</h2>
             </div>
           </div>
         </div>
@@ -122,11 +161,13 @@
           <div class="col">
             <div class="tekst-o-projektu">
               <h4>
+                {% blocktrans %}
                 Ovaj portal je namenjen ocenjivanju naučnih radova od strane recenzenata.
                 Portal pruža jednostavan i prost proces pristupa radovima i njihovo ocenjivanje. 
                 Osim ove mogućnosti možete
                 učestvovati u anketama koje su deo istraživačkog rada.
-                Kako bi ste pristupili sadržaju <a href="{% url 'account:login' %}">prijavite se</a> i postanite deo našeg naučnog tima!
+                Kako bi ste pristupili sadržaju {% endblocktrans %}<a href="{% url 'account:login' %}">{% blocktrans %}prijavite se{% endblocktrans %}</a> {% blocktrans %}i postanite deo našeg naučnog tima!
+                {% endblocktrans %}
               </h4>
             </div>
           </div>
@@ -139,7 +180,7 @@
         <div class="row">
           <div class="col">
             <div class="h1-div">
-              <h2 class="mt-5 mb-5 h-naslov">O nama</h2>
+              <h2 class="mt-5 mb-5 h-naslov">{% blocktrans %}O nama{% endblocktrans %}</h2>
             </div>
           </div>
         </div>
@@ -150,30 +191,41 @@
               <div class="card-body">
                 <h5 class="card-title">Vukašin Kurandić</h5>
                 <p class="card-text">
+                  {% blocktrans %}
                   Verujem da postoji rešenje za svaki problem, samo ga treba naći, a to je moj posao.
                   Funkcionalnost koju mogu da donesem aplikaciji mi je uvek bila bitnija nego dizajn
                   i izgled iste.
+                  {% endblocktrans %}
                 </p>
                 <a href="https://github.com/vukasinkurandic" class="card-link" target="_blank">GitHub link</a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Nemanja Davidović</h5>
                 <p class="card-text">
+                  {% blocktrans %}
                   Od kad sam krenuo sa programiranjem prešao sam veliki put, napravio nekoliko aplikacija, naučio
                   mnogo i jedva čekam šta sutra donosi, jer ovo je samo početak!
+                  {% endblocktrans %}
                 </p>
                 <a href="https://github.com/0mnadren" class="card-link" target="_blank">GitHub link</a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Nemanja Živković</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">
+                  {% blocktrans %}
+                  Veoma sam strastven i entuzijastičan u programiranju
+                  , takođe volim da radim i eksperimentišem sa novim tehnologijama.
+                  {% endblocktrans %}
+                </p>
                 <a href="https://github.com/zyle47" class="card-link" target="_blank">GitHub link</a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Jugoslav Nešković</h5>
                 <p class="card-text">
+                  {% blocktrans %}
                   Timski sam orjentisan, volim da saslušam druga mišljenja, a preuzmem odgovornost za svoje stavove.
                   Spreman sam za izvršavanje više zadataka u isto vreme.
+                  {% endblocktrans %}
                 </p>
                 <a href="https://github.com/cikajuga" class="card-link" target="_blank">GitHub link</a>
               </div>
@@ -217,7 +269,7 @@
   </div> -->
 
   <div class="footer-copyright text-center py-3">© 2021 Copyright:
-    <a href="{% url 'account:home' %}"> Portal za ocenjivanje naučnih radova</a>
+    <a href="{% url 'account:home' %}"> {% blocktrans %}Portal za ocenjivanje naučnih radova{% endblocktrans %}</a>
   </div>
 </footer>
 <!-- Footer -->

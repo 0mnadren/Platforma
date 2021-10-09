@@ -1,13 +1,14 @@
+{% load i18n %}
 <table class="table table-striped"> <!-- ubaci overflow -->
     <thead class="thead-dark">
         <tr>
             <th></th>
-            <th>Naziv rada</th>
-            <th>Kategorija rada</th>
-            <th>Korisnik - Ime</th>
-            <th>Kada je poslat rad</th>
-            <th>Recezent ocenio?</th>
-            <th>Oduzmi rad</th>
+            <th>{% trans "Naziv rada" %}</th>
+            <th>{% trans "Kategorija rada" %}</th>
+            <th>{% trans "Korisnik - Ime" %}</th>
+            <th>{% trans "Kada je poslat rad" %}</th>
+            <th>{% trans "Recezent ocenio" %}?</th>
+            <th>{% trans "Oduzmi rad" %}</th>
         </tr>
     </thead>
     <tbody>
@@ -20,15 +21,15 @@
         <td>{{ prosledjen_rad.kada_poslat }}</td>
 
         {% if prosledjen_rad.zakljucani_odgovori %}
-        <td style="color:green">Recenzent je ocenio rad</td>
+        <td style="color:green">{% trans "Recenzent je ocenio rad" %}</td>
         {% else %}
-        <td style="color:var(--dark-accent-color);">Recenzent nije ocenio rad</td>
+        <td style="color:var(--dark-accent-color);">{% trans "Recenzent nije ocenio rad" %}</td>
         {% endif %}
 
         <td>
             <form method="POST" action="{% url 'radovi:oduzimanje_rada_admin' prosledjen_rad.id %}">
                 {% csrf_token %}
-                <button type="submit" class="admin-btn-red">Oduzmi</button>
+                <button type="submit" class="admin-btn-red">{% trans "Oduzmi" %}</button>
             </form>
         </td>
     </tr>

@@ -1,28 +1,29 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Lista Radova</title>
+<title>{% trans "Lista Radova" %}</title>
 <link rel="stylesheet" href="{% static 'radovi/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1 class="mt-4 mb-3">Rad {{ rad.naziv }}</h1>
-<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen">Radovi</a>
-<a href="{% url 'radovi:prosledjeni_radovi_admin' %}" class="admin-btn-lightgreen mb-3 ml-2 mr-2">Prosleđeni Radovi</a>
-<a href="#konacna-odluka-rad" class="admin-btn-green">Konačna odluka za rad</a>
+<h1 class="mt-4 mb-3">{% trans "Rad" %} {{ rad.naziv }}</h1>
+<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen">{% trans "Radovi" %}</a>
+<a href="{% url 'radovi:prosledjeni_radovi_admin' %}" class="admin-btn-lightgreen mb-3 ml-2 mr-2">{% trans "Prosleđeni Radovi" %}</a>
+<a href="#konacna-odluka-rad" class="admin-btn-green">{% trans "Konačna odluka za rad" %}</a>
 <hr>
 <table class="naucni_rad_admin-table mt-5 mb-5">
     <tr>
-        <th>Naziv rada</th>
+        <th>{% trans "Naziv rada" %}</th>
         <td>{{ rad.naziv }}</td>
     </tr>
     <tr>
-        <th>Kategorija</th>
+        <th>{% trans "Kategorija" %}</th>
         <td>{{ rad.kategorija }}</td>
     </tr>
     <tr>
-        <th>Oblasti</th>
+        <th>{% trans "Oblasti" %}</th>
         <td>
             {% for oblast in rad.oblasti.all %}
             {{ oblast.naziv }}
@@ -30,34 +31,34 @@
         </td>
     </tr>
     <tr>
-        <th>Programski poziv</th>
+        <th>{% trans "Programski poziv" %}</th>
         <td>{{ rad.programski_poziv }}</td>
     </tr>
     <tr>
-        <th>Članovi</th>
+        <th>{% trans "Članovi" %}</th>
         <td>{{ rad.clanovi }}</td>
     </tr>
     <tr>
-        <th>Datum podnošenja rada</th>
+        <th>{% trans "Datum podnošenja rada" %}</th>
         <td>{{ rad.datum_podnosenja }}</td>
     </tr>
     <tr>
-        <th>Godina</th>
+        <th>{% trans "Godina" %}</th>
         <td>{{ rad.godina }}</td>
     </tr>
     <tr>
-        <th>Opis rada</th>
-        <td><a href="{{ rad.opis.url }}" target="_blank"><u>Opis rada</u></a></td>
+        <th>{% trans "Opis rada" %}</th>
+        <td><a href="{{ rad.opis.url }}" target="_blank"><u>{% trans "Opis rada" %}</u></a></td>
     </tr>
     <tr>
-        <th>Biografije članova</th>  
-        <td><a href="{{ rad.biografije.url }}" target="_blank"><u>Biografije članova</u></a></td>
+        <th>{% trans "Biografije članova" %}</th>
+        <td><a href="{{ rad.biografije.url }}" target="_blank"><u>{% trans "Biografije članova" %}</u></a></td>
     </tr>
 </table>
 <hr>
-<h4 class="mt-4">Programski Poziv i pitanja</h4>
-<button id="btn_prikazi" class="admin-btn-lightgreen mt-3 mb-5">Prikaži pitanja</button>
-<button id="btn_sakrij" class="admin-btn-green mt-3">Sakrij pitanja</button>
+<h4 class="mt-4">{% trans "Programski Poziv i pitanja" %}</h4>
+<button id="btn_prikazi" class="admin-btn-lightgreen mt-3 mb-5">{% trans "Prikaži pitanja" %}</button>
+<button id="btn_sakrij" class="admin-btn-green mt-3">{% trans "Sakrij pitanja" %}</button>
 <div id="programski_poziv_pitanja">
     <ol class="mb-5">
     <li>{{ rad.programski_poziv.programskipozivpitanja.pitanje1 }}</li>
@@ -77,7 +78,7 @@
 <hr>
 {% if rad.prihvacen_rad == None %}
 {% if profili %}
-<h4 class="mt-4 mb-4">Kom korisniku želite da prosledite naučni rad na ocenjivanje?</h4>
+<h4 class="mt-4 mb-4">{% trans "Kom korisniku želite da prosledite naučni rad na ocenjivanje" %}?</h4>
 <form method="POST">
     {% csrf_token %}
     {% for profil in profili %}
@@ -85,24 +86,24 @@
     <label for="{{ forloop.counter }}">{{ profil.user.username }}</label><br>
     <br>
     {% endfor %}
-    <button type="submit" class="admin-btn-green mb-5">Pošalji</button>
+    <button type="submit" class="admin-btn-green mb-5">{% trans "Pošalji" %}</button>
 </form>
 <hr>
 {% endif %}
-<h4 class="mt-4 mb-4" id="konacna-odluka-rad">Vasa konačna odluka za ovaj rad?</h4>
+<h4 class="mt-4 mb-4" id="konacna-odluka-rad">{% trans "Vaša konačna odluka za ovaj rad" %}?</h4>
 <hr>
 <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
     <button type="button" class="admin-btn-green" data-toggle="modal" data-target="#prihvati_rad">
-        Prihvati
+        {% trans "Prihvati" %}
     </button>
     <button type="button" class="admin-btn-red mt-3 ml-2 mb-5" data-toggle="modal" data-target="#odbij_rad">
-        Odbij
+        {% trans "Odbij" %}
     </button>
 </form>
 {% elif rad.prihvacen_rad == False %}
-<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--dark-accent-color);">Ovaj rad je odbijen</h3>
+<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--dark-accent-color);">{% trans "Ovaj rad je odbijen" %}</h3>
 {% else %}
-<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--link-color);">Ovaj rad je prihvaćen</h3>
+<h3 class="mt-4 mb-4" id="konacna-odluka-rad" style="color:var(--link-color);">{% trans "Ovaj rad je prihvaćen" %}</h3>
 {% endif %}
 
 
@@ -110,18 +111,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Prihvati rad?</h5>
+        <h5 class="modal-title">{% trans "Prihvati rad" %}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da prihvatite ovaj rad?</p>
+        <p>{% trans "Da li ste sigurni da želite da prihvatite ovaj rad" %}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans "Poništi" %}</button>
 
         <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
             {% csrf_token %}
-          <button type="submit" name="prihvati" class="btn btn-success">Prihvati</button>
+          <button type="submit" name="prihvati" class="btn btn-success">{% trans "Prihvati" %}</button>
         </form>
 
       </div>
@@ -133,18 +134,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Odbij rad?</h5>
+        <h5 class="modal-title">{% trans "Odbij rad" %}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da odbijete ovaj rad?</p>
+        <p>{% trans "Da li ste sigurni da želite da odbijete ovaj rad" %}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans "Poništi" %}</button>
 
         <form action="{% url 'radovi:konacna_odluka_rad_admin' rad.id %}" method="POST">
             {% csrf_token %}
-          <button type="submit" name="odbij" class="btn btn-danger">Odbij</button>
+          <button type="submit" name="odbij" class="btn btn-danger">{% trans "Odbij" %}</button>
         </form>
 
       </div>

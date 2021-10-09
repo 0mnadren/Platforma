@@ -18,6 +18,7 @@
 }
 
 .btn-grad-search {
+    display: inline-block;
     background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
     padding: 7px 20px;
     text-align: center;
@@ -37,6 +38,7 @@
 }
  
 .btn-grad-delete {
+    display: inline-block;
     text-align: center;
     background-image: linear-gradient(to right, #FF512F 0%, #F09819  51%, #FF512F  100%);
     border: 0px;
@@ -52,4 +54,11 @@
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
+}
+
+
+@media (max-width: 334px) {
+    #obavestenja_table {
+        overflow: scroll;
+    }
 }

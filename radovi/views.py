@@ -1,5 +1,4 @@
 import datetime
-
 from django.contrib import messages
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect
@@ -8,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from django.http.response import HttpResponse
 from django.template.loader import render_to_string
+from django.utils.translation import gettext_lazy as _
 
 from administrator.validators import superuser_check
 from account.models import accepted_check
@@ -37,7 +37,7 @@ def kreiraj_rad(request):
                 oblast_obj = Oblast.objects.get(naziv=oblast)
                 obj.oblasti.add(oblast_obj)
 
-            messages.success(request, 'Uspešno ste kreirali naučni rad!')
+            messages.success(request, _('Uspešno ste kreirali naučni rad!'))
             return redirect('radovi:radovi_admin_home')
     else:
         form = RadForm()
@@ -89,10 +89,10 @@ def naucni_rad_admin(request, pk):
                         rad=rad,
                     )
                     prosledjen_rad.save()
-            messages.success(request, 'Uspešno ste prosledili rad!')
+            messages.success(request, _('Uspešno ste prosledili rad!'))
             return redirect('radovi:lista_radova_admin')
         else:
-            messages.success(request, 'Niste izabrali korisnika kome želite da prosledite rad!')
+            messages.success(request, _('Niste izabrali korisnika kome želite da prosledite rad!'))
             return redirect('radovi:naucni_rad_admin', pk=pk)
 
     context = {
@@ -222,10 +222,10 @@ def naucni_rad_profil(request, pk):
                 obj.profil_id = user.profil.id
                 obj.izracunaj_ukupan_broj_poena()
                 obj.save()
-                messages.success(request, f'Sačuvali ste odgovore!')
+                messages.success(request, _(f'Sačuvali ste odgovore!'))
                 return redirect('radovi:lista_radova_profil')
             else:
-                messages.warning(request, 'Ocena nije validna, mora da bude od 1 do 10!')
+                messages.warning(request, _('Ocena nije validna, mora da bude od 1 do 10!'))
 
         elif request.method == 'POST' and 'zakljucaj' in request.POST:
             form = ProgramskiPozivOdgovoriForm(request.POST, instance=odgovori)
@@ -235,13 +235,13 @@ def naucni_rad_profil(request, pk):
                 obj.profil_id = user.profil.id
                 obj.izracunaj_ukupan_broj_poena()
                 obj.save()
-                messages.success(request, f'Vaši odgovori su sačuvani i poslati na obradu!')
+                messages.success(request, _(f'Vaši odgovori su sačuvani i poslati na obradu!'))
 
                 prosledjen_rad.zakljucani_odgovori = True
                 prosledjen_rad.save()
                 return redirect('radovi:lista_radova_profil')
             else:
-                messages.warning(request, 'Ocena nije validna, mora da bude od 1 do 10!')
+                messages.warning(request, _('Ocena nije validna, mora da bude od 1 do 10!'))
 
         else:
             form = ProgramskiPozivOdgovoriForm(instance=odgovori)

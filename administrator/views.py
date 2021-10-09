@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 
 from .validators import superuser_check
 from profil.models import Profil, Oblast
@@ -65,10 +66,12 @@ def prijava_prihvacena(request, pk):
     user.save()
 
     send_mail(
-        subject='Prihvaćena Prijava',
-        message='Poštovani/a, \n \n'
-                'Vaša prijava je prihvaćena! \n \n'
-                'Uživajte u korišćenju našeg Portala za ocenjivanje naučnih radova.',
+        subject=_('Prihvaćena Prijava'),
+        message=_(
+            'Poštovani/a, \n \n'
+            'Vaša prijava je prihvaćena! \n \n'
+            'Uživajte u korišćenju našeg Portala za ocenjivanje naučnih radova.'
+        ),
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[user.email]
     )
@@ -86,10 +89,12 @@ def prijava_odbijena(request, pk):
     user.save()
 
     send_mail(
-        subject='Odbijena Prijava',
-        message='Poštovani/a, \n \n'
-                'Vaša prijava je odbijena! \n \n'
-                'Portal za ocenjivanje naučnih radova.',
+        subject=_('Odbijena Prijava'),
+        message=_(
+            'Poštovani/a, \n \n'
+            'Vaša prijava je odbijena! \n \n'
+            'Portal za ocenjivanje naučnih radova.'
+        ),
         from_email=settings.EMAIL_HOST_USER,
         recipient_list=[user.email]
     )
@@ -118,11 +123,11 @@ def kreiraj_obavestenje(request):
                         recipient_list=[profil.user.email]
                     )
                     form.save()
-                messages.success(request, f'Uspešno poslano obaveštenje i preko mail-a!')
+                messages.success(request, _(f'Uspešno poslano obaveštenje i preko mail-a!'))
                 return redirect('administrator:profil')
             else:
                 form.save()
-                messages.success(request, f'Uspešno poslano obaveštenje!')
+                messages.success(request, _(f'Uspešno poslano obaveštenje!'))
                 return redirect('administrator:profil')
     else:
         form = ObavestenjeForm()

@@ -1,7 +1,8 @@
-{% extends 'base_profil.html' %} 
+{% extends 'base_profil.html' %}
+{% load i18n %}
 {% load static %} 
 {% block title %}
-<title>Rezultat</title>
+<title>{% trans "Rezultat" %}</title>
 {% endblock %} 
 {% block content %}
 
@@ -28,10 +29,10 @@
   <div class="row">
     <div class="col-md-8 m-auto">
       <div class="mt-5">
-        <a href="{% url 'ankete:ankete' %}" class="grad-btn-stats mt-5">Nazad na ankete</a>
+        <a href="{% url 'ankete:ankete' %}" class="grad-btn-stats mt-5">{% trans "Nazad na ankete" %}</a>
       </div>
     <div class="text-center m-4">
-      <h1 class="mt-4 mb-4">Rezultat Ankete "{{anketa.naziv}}"</h1>
+      <h1 class="mt-4 mb-4">{% trans "Rezultat Ankete" %} "{{anketa.naziv}}"</h1>
     </div>
               
 {% for pitanje in pitanja %}  

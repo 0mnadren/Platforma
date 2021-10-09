@@ -1,12 +1,13 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-<title>Admin Oblasti</title>
+<title>{% trans 'Admin Oblasti' %}</title>
 {% endblock title %}
 
 {% block content %}
 
-<h1 class="mt-4">Oblast {{ oblast.naziv }}</h1>
+<h1 class="mt-4">{% blocktrans %}Oblast{% endblocktrans %} {{ oblast.naziv }}</h1>
 {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
 {% endif %}
@@ -14,7 +15,7 @@
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
-    <input class="btn btn-outline-info" type="submit" value="Izmeni">
+    <input class="btn btn-outline-info" type="submit" value="{% trans 'Izmeni' %}">
 </form>
 
 {% endblock content %}

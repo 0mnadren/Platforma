@@ -3,6 +3,10 @@ body {
     height: 100vh;
 }
 
+.row > h2 {
+    text-align: center;
+}
+
 .col {
     display: flex;
     flex-direction: column;

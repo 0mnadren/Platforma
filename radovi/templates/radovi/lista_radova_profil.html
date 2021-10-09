@@ -1,7 +1,8 @@
 {% extends 'base_profil.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Lista radova</title>
+<title>{% trans "Lista radova" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -52,7 +53,7 @@
 }
 </style>
 
-<h1 class="mt-4 mb-4">Radovi na recenziji</h1>
+<h1 class="mt-4 mb-4">{% trans "Radovi na recenziji" %}</h1>
 <hr>
 {% if radovi %}
 <div class="table-overflow">
@@ -60,11 +61,11 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col" style="width: 50px;">#</th>
-                <th scope="col" style="width: 200px;">Naziv rada</th>
-                <th style="height: 10px;" scope="col">Kategorija rada</th>
-                <th style="height: 10px;" scope="col">Oblasti</th>
-                <th scope="col">Kada je prosleđen</th>
-                <th scope="col">Pregled rada</th>
+                <th scope="col" style="width: 200px;">{% trans "Naziv rada" %}</th>
+                <th style="height: 10px;" scope="col">{% trans "Kategorija rada" %}</th>
+                <th style="height: 10px;" scope="col">{% trans "Oblasti" %}</th>
+                <th scope="col">{% trans "Kada je prosleđen" %}</th>
+                <th scope="col">{% trans "Pregled rada" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -79,7 +80,7 @@
                 {% endfor %}
                 </td>
                 <td>{{ rad.kada_poslat }}</td>
-                <td><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}" class="profil-btn-yellow">Oceni rad</a></td>
+                <td><a href="{% url 'radovi:naucni_rad_profil' rad.rad.id %}" class="profil-btn-yellow">{% trans "Oceni rad" %}</a></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -87,8 +88,8 @@
 </div>
 
 {% else %}
-<h3>Trenutno nemate radove na recenziji</h3>
-<a href="{% url 'profil:profil' %}" class="profil-btn-yellow mt-2">Nazad na profil</a>
+<h3>{% trans "Trenutno nemate radove na recenziji" %}</h3>
+<a href="{% url 'profil:profil' %}" class="profil-btn-yellow mt-2">{% trans "Nazad na profil" %}</a>
 {% endif %}
 
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>

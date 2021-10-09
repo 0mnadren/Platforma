@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.utils.translation import gettext_lazy as _
 
 from .forms import ProfilForm
 from .models import Oblast
@@ -28,7 +29,7 @@ def prijava(request):
                 obj.oblasti.add(oblast_obj)
 
             messages.success(
-                request, 'Vaša prijava je poslata na razmatranje!')
+                request, _('Vaša prijava je poslata na razmatranje!'))
             return redirect('account:status')
         else:
             print("ERROR : Form is invalid")
@@ -53,7 +54,7 @@ def profil(request):
                           instance=request.user.profil)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Vaš nalog je ažuriran!')
+            messages.success(request, _(f'Vaš nalog je ažuriran!'))
             return redirect('profil:profil')
     else:
         form = ProfilForm(instance=request.user.profil)

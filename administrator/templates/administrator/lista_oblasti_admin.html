@@ -1,7 +1,8 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-<title>Admin Oblasti</title>
+<title>{% trans 'Admin Oblasti' %}</title>
 {% endblock title %}
 
 {% block content %}
@@ -21,12 +22,12 @@
     }
 </style>
 
-<h1 class="mt-4">Lista Oblasti</h1>
+<h1 class="mt-4">{% trans 'Lista Oblasti' %}</h1>
 
 <form method="POST" class="mt-3">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit"  class="btn btn-outline-info">Napravi Oblast</button>
+    <button type="submit"  class="btn btn-outline-info">{% trans 'Napravi Oblast' %}</button>
 </form>
 
 {% if error_message %}
@@ -37,9 +38,9 @@
     <thead class="thead-dark">
         <tr>
             <th></th>
-            <th>Naziv</th>
-            <th>Izmeni Oblast</th>
-            <th>Obriši Oblast</th>
+            <th>{% trans 'Naziv' %}</th>
+            <th>{% trans 'Izmeni Oblast' %}</th>
+            <th>{% trans 'Obriši Oblast' %}</th>
         </tr>
     </thead>
     <tbody>
@@ -48,8 +49,8 @@
         <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{ oblast.naziv }}</td>
-            <td> <a class="btn btn-info" href="{% url 'administrator:izmeni_oblast_admin' oblast.id %}">Izmeni</a></td>
-            <td> <a class="btn btn-danger" href="{% url 'administrator:obrisi_oblast_admin' oblast.id %}">Obriši</a></td>
+            <td> <a class="btn btn-info" href="{% url 'administrator:izmeni_oblast_admin' oblast.id %}">{% trans 'Izmeni' %}</a></td>
+            <td> <a class="btn btn-danger" href="{% url 'administrator:obrisi_oblast_admin' oblast.id %}">{% trans 'Obriši' %}</a></td>
         </tr>
     {% endfor %}
 

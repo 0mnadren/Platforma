@@ -1,7 +1,8 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-<title>Kreiraj Rad</title>
+<title>{% trans "Kreiraj Rad" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -43,13 +44,13 @@
     }
 </style>
 
-<h1 class="mt-4 mb-3">Kreiraj Rad</h1>
+<h1 class="mt-4 mb-3">{% trans "Kreiraj Rad" %}</h1>
 
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="admin-btn-green mt-3">Kreiraj</button>
-    <a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-outline-lightgreen mb-4 ml-3 mt-3">Nazad</a>
+    <button type="submit" class="admin-btn-green mt-3">{% trans "Kreiraj" %}</button>
+    <a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-outline-lightgreen mb-4 ml-3 mt-3">{% trans "Nazad" %}</a>
 </form>
 
 {% endblock %}

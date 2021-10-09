@@ -1,28 +1,29 @@
 {% extends 'base_profil.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Naučni rad</title>
+<title>{% trans "Naučni rad" %}</title>
 <link rel="stylesheet" href="{% static 'radovi/css/naucni_rad_profil.css' %}">
 <script src="{% static 'radovi/js/naucni_rad_profil.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
-<h1 class="mt-4 mb-3">Naučni rad {{ rad.naziv }}</h1>
-<a class="profil-btn-orange mb-3" href="{% url 'radovi:lista_radova_profil' %}">Lista radova</a>
+<h1 class="mt-4 mb-3">{% trans "Naučni rad" %} {{ rad.naziv }}</h1>
+<a class="profil-btn-orange mb-3" href="{% url 'radovi:lista_radova_profil' %}">{% trans "Lista radova" %}</a>
 
 <hr>
 
 <table class="naucni-rad-profil-tabela mt-5 mb-5">
     <tr>
-        <th>Naziv rada</th>
+        <th>{% trans "Naziv rada" %}</th>
         <td>{{ rad.naziv }}</td>
     </tr>
     <tr>
-        <th>Kategorija</th>
+        <th>{% trans "Kategorija" %}</th>
         <td>{{ rad.kategorija }}</td>
     </tr>
     <tr>
-        <th>Oblasti</th>
+        <th>{% trans "Oblasti" %}</th>
         <td>
             {% for oblast in rad.oblasti.all %}
             {{ oblast.naziv }}
@@ -30,41 +31,41 @@
         </td>
     </tr>
     <tr>
-        <th>Programski poziv</th>
+        <th>{% trans "Programski poziv" %}</th>
         <td>{{ rad.programski_poziv }}</td>
     </tr>
     <tr>
-        <th>Članovi</th>
+        <th>{% trans "Članovi" %}</th>
         <td>{{ rad.clanovi }}</td>
     </tr>
     <tr>
-        <th>Datum podnošenja rada</th>
+        <th>{% trans "Datum podnošenja rada" %}</th>
         <td>{{ rad.datum_podnosenja }}</td>
     </tr>
     <tr>
-        <th>Godina</th>
+        <th>{% trans "Godina" %}</th>
         <td>{{ rad.godina }}</td>
     </tr>
     <tr>
-        <th>Opis rada</th>
-        <td><a href="{{ rad.opis.url }}" target="_blank"><u>Opis rada</u></a></td>
+        <th>{% trans "Opis rada" %}</th>
+        <td><a href="{{ rad.opis.url }}" target="_blank"><u>{% trans "Opis rada" %}</u></a></td>
     </tr>
     <tr>
-        <th>Biografije članova</th>
-        <td><a href="{{ rad.biografije.url }}" target="_blank"><u>Biografije članova</u></a></td>
+        <th>{% trans "Biografije članova" %}</th>
+        <td><a href="{{ rad.biografije.url }}" target="_blank"><u>{% trans "Biografije članova" %}</u></a></td>
     </tr>
 </table>
 <hr>
-<button id="btn_prikazi_profil_pitanja" class="profil-btn-yellow mt-4 mb-5">Prikaži pitanja</button>
-<button id="btn_sakrij_profil_pitanja" class="profil-btn-yellow mt-4 mb-4">Sakrij pitanja</button>
+<button id="btn_prikazi_profil_pitanja" class="profil-btn-yellow mt-4 mb-5">{% trans "Prikaži pitanja" %}</button>
+<button id="btn_sakrij_profil_pitanja" class="profil-btn-yellow mt-4 mb-4">{% trans "Sakrij pitanja" %}</button>
 <form method="POST" id="profil_form_pitanja" >
   {% csrf_token %}
     <div class="form-container mb-4">
       <div class="form-container-header">
-        <h5>Pitanja</h5>
+        <h5>{% trans "Pitanja" %}</h5>
       </div>
       <div class="form-container-header">
-        <h5>Odgovori (Ocena od 1 do 10)</h5>
+        <h5>{% trans "Odgovori (Ocena od 1 do 10)" %}</h5>
       </div>
         {% for pitanje, odgovor in pitanja_odgovori %}
         <div class="div-pitanje">
@@ -83,33 +84,33 @@
     </div>
   
   <hr>
-    <p><strong>Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.</strong></p>
+    <p><strong>{% blocktrans %}Ukoliko Kliknete na "Sačuvaj odgovore" --> iste možete kasnije da promenite.{% endblocktrans %}</strong></p>
   <p><strong>
-    Ukoliko Kliknete na "Sačuvaj i Zaključaj odgovore" --> Vaši odgovori se šalju na dalju obradu i nemate pravo više da ih menjate!
+    {% blocktrans %}Ukoliko Kliknete na "Sačuvaj i Zaključaj odgovore" --> Vaši odgovori se šalju na dalju obradu i nemate pravo više da ih menjate!{% endblocktrans %}
   </strong>
   </p>
   <hr>
-  <button type="submit" name="sacuvaj" class="profil-btn-orange mt-2 mr-2">Sačuvaj odgovore</button>
+  <button type="submit" name="sacuvaj" class="profil-btn-orange mt-2 mr-2">{% trans "Sačuvaj odgovore" %}</button>
   <button type="button"
             class="profil-btn-yellow mt-2"
             data-toggle="modal"
             data-target="#zakljucaj_odgovore">
-        Sačuvaj i Zaključaj odgovore
+        {% trans "Sačuvaj i Zaključaj odgovore" %}
     </button>
 
 <div class="modal fade" tabindex="-1" id="zakljucaj_odgovore">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Zaključaj odgovore?</h5>
+        <h5 class="modal-title">{% trans "Zaključaj odgovore" %}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da zaključate vaše odgovore?</p>
+        <p>{% trans "Da li ste sigurni da želite da zaključate vaše odgovore" %}?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
-              <input type="submit" name="zakljucaj" value="Zaključaj" class="btn btn-warning">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans "Poništi" %}</button>
+              <input type="submit" name="zakljucaj" value="{% trans 'Zaključaj' %}" class="btn btn-warning">
       </div>
     </div>
   </div>

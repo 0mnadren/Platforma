@@ -1,16 +1,16 @@
 {% extends 'base_admin.html' %}
-
+{% load i18n %}
 
 {% block title %}
 
-<title>Dodaj obavestenje</title>
+<title>{% trans 'Dodaj obaveštenje' %}</title>
 {% load static %}
 <link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 {% load crispy_forms_tags %}
 {% block content %}
 
-<h1 class="mt-4 mb-4">Obaveštenje</h1>
+<h1 class="mt-4 mb-4">{% trans 'Obaveštenje' %}</h1>
 
 <form method="POST" enctype="multipart/form-data">
     <table class="table table-bordered">
@@ -21,7 +21,7 @@
                     <div class="col">
                         {{ form.naslov | as_crispy_field }}
                         {{ form.profil | as_crispy_field }}
-                        <a href="javascript:;" onclick="selectAll();">Select All</a> | <a href="javascript:;" onclick="deSelectAll();">De-Select All</a>
+                        <a href="javascript:;" onclick="selectAll();">{% trans 'Označi sve' %}</a> | <a href="javascript:;" onclick="deSelectAll();">{% trans 'Ne označi' %}</a>
                         <br><br><br>
                         {{ form.potpis | as_crispy_field }}
                     </div>
@@ -35,12 +35,12 @@
     <div class="container">
         <div class="col">
             <div class="row">
-                <label style="float: left; color:var(--primary-text)" for="send_mail">Pošalji i na mail!
+                <label style="float: left; color:var(--primary-text)" for="send_mail">{% blocktrans %}Pošalji i na mail!{% endblocktrans %}
                     <input type="checkbox" name="send_mail" id="send_mail">
                 </label>
             </div>
             <div class="row mt-3">
-                <button class="admin-btn-lightgreen" type="submit">Pošalji</button>
+                <button class="admin-btn-lightgreen" type="submit">{% trans 'Pošalji' %}</button>
             </div>
         </div>
     </div>

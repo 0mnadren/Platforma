@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     {% block title %}
@@ -105,17 +106,36 @@ a:hover {
           {% if user.is_authenticated %}
             {% if user.is_superuser %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'administrator:profil' %}">Admin Profil</a>
+                <a class="nav-link" href="{% url 'administrator:profil' %}">{% blocktrans %}Admin Profil{% endblocktrans %}</a>
             </li>
             {% elif user.profile_accepted %}
             <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% blocktrans %}Jezik{% endblocktrans %}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="languageDropdown">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for lang in languages %}
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                      {% if lang.name_local == 'српски' %}
+                        Srpski
+                      {% else %}
+                        {{ lang.name_local }}
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Profil {{ user.username|title }}
+                  {% trans "Profil" %} {{ user.username|title }}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'profil:profil' %}">Profil</a>
-                  <a class="dropdown-item" href="{% url 'ankete:ankete' %}">Ankete</a>
-                  <a class="dropdown-item" href="{% url 'radovi:lista_radova_profil' %}">Radovi</a>
+                  <a class="dropdown-item" href="{% url 'profil:profil' %}">{% trans "Profil" %}</a>
+                  <a class="dropdown-item" href="{% url 'ankete:ankete' %}">{% trans "Ankete" %}</a>
+                  <a class="dropdown-item" href="{% url 'radovi:lista_radova_profil' %}">{% trans "Radovi" %}</a>
                 </div>
               </li>
             {% else %}
@@ -124,15 +144,15 @@ a:hover {
             </li>
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'account:logout' %}">{% trans "Odjavi se" %}</a>
             </li>
 
           {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">Register</a>
+                <a class="nav-link" href="{% url 'account:register' %}">{% trans "Registruj se" %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'account:login' %}">{% trans "Prijavi se" %}</a>
             </li>
           {% endif %}
         </ul>

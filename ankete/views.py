@@ -1,5 +1,6 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext_lazy as _
 
 from account.models import accepted_check
 from administrator.validators import superuser_check
@@ -28,7 +29,7 @@ def create_anketa(request):
         form = CreateAnketaForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Napravili ste anketu!')
+            messages.success(request, _(f'Napravili ste anketu!'))
         return redirect('ankete:admin_ankete')
     context = {'form': form}
     return render(request, 'ankete/create_ankete_form.html', context)
@@ -40,7 +41,7 @@ def delete_anketa(request, pk):
     anketa = get_object_or_404(Anketa, pk=pk)
     if request.method == "POST":
         anketa.delete()
-        messages.success(request, f'Uspešno ste izbrisali anketu {anketa}!')
+        messages.success(request, _(f'Uspešno ste izbrisali anketu {anketa}!'))
         return redirect('ankete:admin_ankete')
     context = {'item': anketa}
     return render(request, 'ankete/delete_anketa.html', context)
@@ -56,7 +57,7 @@ def create_pitanje(request, pk):
             obj = form.save(commit=False)
             obj.anketa_id = pk
             obj.save()
-            messages.success(request, f'Napravili ste pitanje!')
+            messages.success(request, _(f'Napravili ste pitanje!'))
         return redirect('ankete:create_pitanje', pk)
     context = {'form': form}
     return render(request, 'ankete/create_pitanje_form.html', context)
@@ -80,19 +81,19 @@ def posalji_anketa(request, pk):
                             profil.anketa_set.add(anketa)
                     else:
                         print('Nema takvih profila')
-                messages.success(request, f'Poslali ste anketu po oblastima!')
+                messages.success(request, _(f'Poslali ste anketu po oblastima!'))
                 return redirect('ankete:admin_ankete')
             else:
-                messages.success(request, f'Niste izabrali oblast!')
+                messages.success(request, _(f'Niste izabrali oblast!'))
                 return redirect('ankete:posalji_anketa', pk=pk)
         elif request.POST and 'posalji_svima' in request.POST:
             for profil in profili:
                 profil.save()
                 profil.anketa_set.add(anketa)
-            messages.success(request, f'Poslali ste anketu svima!')
+            messages.success(request, _(f'Poslali ste anketu svima!'))
             return redirect('ankete:admin_ankete')
     else:
-        messages.success(request, f'Nije moguće poslati korisnicima, jer niste napravili pitanja za ovu anketu!')
+        messages.success(request, _(f'Nije moguće poslati korisnicima, jer niste napravili pitanja za ovu anketu!'))
         return redirect('ankete:create_pitanje', pk=pk)
 
     context = {
@@ -167,7 +168,7 @@ def glasaj_anketa(request, pk):
                 AnketaPopunjena, profil=request.user.profil, anketa=anketa)
             popunjena_anketa.popunjena_anketa = True
             popunjena_anketa.save()
-            messages.success(request, f'Hvala, Uspešno ste glasali!')
+            messages.success(request, _(f'Hvala, Uspešno ste glasali!'))
             return redirect('ankete:rezultat_anketa_profil', pk)
 
         context = {

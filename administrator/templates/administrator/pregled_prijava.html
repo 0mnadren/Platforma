@@ -1,7 +1,8 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 
 {% block title %}
-<title>Prijave</title>
+<title>{% trans 'Prijave' %}</title>
 {% endblock title %}
 
 {% block content %}
@@ -29,19 +30,19 @@
 
 </style>
 {% load static %}
-<h1 class="mt-4">Pregled prijava recezenata</h1>
-<h4 class="mt-4">Klikom na jedan od naslova kolona u tabeli, moguće je sortirati tabelu.</h4>
+<h1 class="mt-4">{% trans 'Pregled prijava recezenata' %}</h1>
+<h4 class="mt-4">{% blocktrans %}Klikom na jedan od naslova kolona u tabeli, moguće je sortirati tabelu.{% endblocktrans %}</h4>
 <br>
 <div class="table-overflow">
 <table class="table sortable mt-1">
     <thead class="thead-dark">
         <tr>
             <th scope="col" style="width: 50px;">#</th>
-            <th scope="col" style="width: 200px;">Pregled prijave</th>
-            <th style="height: 10px;" scope="col">Korisnik</th>
-            <th style="height: 10px;" scope="col">Ime i prezime</th>
-            <th scope="col">Stanje prijave</th>
-            <th scope="col">Trenutno na recenziji</th>
+            <th scope="col" style="width: 200px;">{% trans 'Pregled prijave' %}</th>
+            <th style="height: 10px;" scope="col">{% trans 'Korisnik' %}</th>
+            <th style="height: 10px;" scope="col">{% trans 'Ime i prezime' %}</th>
+            <th scope="col">{% trans 'Stanje prijave' %}</th>
+            <th scope="col">{% trans 'Trenutno na recenziji' %}</th>
         </tr>
     </thead>
     <tbody>
@@ -49,16 +50,16 @@
         <tr>
             <th scope="row">{{ forloop.counter }}</th>
             <td scope="row"><a
-                href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">Detaljno</a></td>
+                href="{% url 'administrator:prijava_detaljno' pk=prijava.id %}">{% trans 'Detaljno' %}</a></td>
             <td>{{ prijava.user.username }}</td>
             <td>{{ prijava.ime }} {{ prijava.prezime }}</td>
             <td>
                 {% if prijava.user.profile_accepted %}
-                <span style="color: green;">Prijava je odobrena</span>
+                <span style="color: green;">{% blocktrans %}Prijava je odobrena{% endblocktrans %}</span>
                 {% elif prijava.user.profile_accepted == False %}
-                <span style="color: red;">Prijava je odbijena</span>
+                <span style="color: red;">{% blocktrans %}Prijava je odbijena{% endblocktrans %}</span>
                 {% else %}
-                <span style="color: gray;">Prijava nije pregledana</span>
+                <span style="color: gray;">{% blocktrans %}Prijava nije pregledana{% endblocktrans %}</span>
                 {% endif %}
             </td>
             {% for key, value in broj_radova_na_recenziji.items %}

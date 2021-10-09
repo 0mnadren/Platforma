@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils.translation import gettext_lazy as _
 
 
 def home(request):
@@ -16,7 +17,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Uspešno ste se registrovali!')
+            messages.success(request, _('Uspešno ste se registrovali!'))
             return redirect('account:login')
     else:
         form = UserRegisterForm()

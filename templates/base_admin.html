@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+<html lang="sr">
 <head>
     <meta charset="UTF-8">
     {% block title %}
@@ -103,31 +104,69 @@ color: #f0f0f0 !important;
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
             {% if user.is_superuser %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% blocktrans %}Jezik{% endblocktrans %}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="languageDropdown">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for lang in languages %}
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                      {% if lang.name_local == 'српски' %}
+                        Srpski
+                      {% else %}
+                        {{ lang.name_local }}
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Admin Profil {{ user.username }}
+                {% trans "Admin Profil" %} {{ user.username }}
               </a>
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'administrator:profil' %}">Profil</a>
-                <a class="dropdown-item" href="{% url 'administrator:pregled_prijava' %}">Pregled prijava</a>
-                <a class="dropdown-item" href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a>
-                <a class="dropdown-item" href="{% url 'ankete:admin_ankete' %}">Ankete</a>
-                <a class="dropdown-item" href="{% url 'administrator:kreiraj_obavestenje' %}">Obaveštenja</a>
-                <a class="dropdown-item" href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski pozivi</a>
-                <a class="dropdown-item" href="{% url 'radovi:radovi_admin_home' %}">Naučni radovi</a>
+                <a class="dropdown-item" href="{% url 'administrator:profil' %}">{% trans "Profil" %}</a>
+                <a class="dropdown-item" href="{% url 'administrator:pregled_prijava' %}">{% trans 'Pregled prijava recezenata' %}</a>
+                <a class="dropdown-item" href="{% url 'administrator:lista_oblasti_admin' %}">{% trans "Dodaj oblast" %}</a>
+                <a class="dropdown-item" href="{% url 'ankete:admin_ankete' %}">{% trans "Ankete" %}</a>
+                <a class="dropdown-item" href="{% url 'administrator:kreiraj_obavestenje' %}">{% trans "Obaveštenja" %}</a>
+                <a class="dropdown-item" href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">{% blocktrans %}Programski poziv{% endblocktrans %}</a>
+                <a class="dropdown-item" href="{% url 'radovi:radovi_admin_home' %}">{% trans "Naučni radovi" %}</a>
               </div>
             </li>
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+                <a class="nav-link" href="{% url 'account:logout' %}">{% trans "Odjavi se" %}</a>
             </li>
 
           {% else %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {% blocktrans %}Jezik{% endblocktrans %}
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left" aria-labelledby="languageDropdown">
+                  {% get_current_language as LANGUAGE_CODE %}
+                  {% get_available_languages as LANGUAGES %}
+                  {% get_language_info_list for LANGUAGES as languages %}
+                  {% for lang in languages %}
+                    <a class="dropdown-item" href="/{{ lang.code }}/">
+                      {% if lang.name_local == 'српски' %}
+                        Srpski
+                      {% else %}
+                        {{ lang.name_local }}
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                </div>
+              </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:register' %}">Register</a>
+                <a class="nav-link" href="{% url 'account:register' %}">{% trans "Registruj se" %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'account:login' %}">Login</a>
+                <a class="nav-link" href="{% url 'account:login' %}">{% trans "Prijavi se" %}</a>
             </li>
           {% endif %}
         </ul>

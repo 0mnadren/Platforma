@@ -1,7 +1,7 @@
 {% extends 'base_admin.html' %}
-
+{% load i18n %}
 {% block title %}
-<title>Programski poziv</title>
+<title>{% trans "Programski poziv" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -49,19 +49,19 @@
     }
 </style>
 
-<h1 class="mt-4">Programski poziv {{ programski_poziv.naziv }}</h1>
-<p class="mt-3 mb-4">Opis: {{ programski_poziv.opis }}</p>
+<h1 class="mt-4">{% trans "Programski poziv" %} {{ programski_poziv.naziv }}</h1>
+<p class="mt-3 mb-4">{% trans "Opis" %}: {{ programski_poziv.opis }}</p>
 
 <hr>
 
 {% if not programski_poziv.programskipozivpitanja %}
-<a class="admin-btn-green" href="{% url 'programski_pozivi:kreiraj_pitanja' programski_poziv.id %}">Kreiraj Pitanja</a>
-<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">Nazad</a>
+<a class="admin-btn-green" href="{% url 'programski_pozivi:kreiraj_pitanja' programski_poziv.id %}">{% trans "Kreiraj Pitanja" %}</a>
+<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">{% trans "Nazad" %}</a>
 {% else %}
-<h4>Već ste napravili pitanja, možete da ih izmenite:</h4>
+<h4>{% trans "Već ste napravili pitanja, možete da ih izmenite" %}:</h4>
 {% for pitanje in programski_poziv_pitanja %}
-<a href="{% url 'programski_pozivi:detaljno_pitanja' pitanje.id %}" class="admin-btn-green">Izmeni {{ pitanje }}</a>
-<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">Nazad</a>
+<a href="{% url 'programski_pozivi:detaljno_pitanja' pitanje.id %}" class="admin-btn-green">{% trans "Izmeni" %} {{ pitanje }}</a>
+<a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen mt-3 ml-2">{% trans "Nazad" %}</a>
 {% endfor %}
 
 {% endif %}

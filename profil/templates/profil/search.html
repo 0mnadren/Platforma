@@ -1,10 +1,10 @@
 {% extends 'base_profil.html' %}
-
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'profil/style.css' %}">
 {% block title %}
-<title>Search</title>
+<title>{% trans "Pretraga" %}</title>
 {% endblock title %}
 
 {% block content %}
@@ -31,9 +31,9 @@
             <h2 class="mt-4">
                 {% with results.count as total_results %}
                 {% if results.count > 1 %}
-                    Nađeno {{ total_results }} rezultata!
+                    {% blocktrans %}Nađeno {{ total_results }} rezultata{% endblocktrans %}!
                 {% else %}
-                    Nađen {{ results.count }} rezultat!
+                    {% blocktrans %}Nađen {{ results.count }} rezultat{% endblocktrans %}!
                 {% endif %}
                 
                 {% endwith %}
@@ -41,8 +41,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col"></th>
-                    <th scope="col" style="max-width: 155px; text-align: left;">Naslov</th>
-                    <th style="text-align: center; max-width: 65px; " scope="col">Sadržaj</th>
+                    <th scope="col" style="max-width: 155px; text-align: left;">{% trans "Naslov" %}</th>
+                    <th style="text-align: center; max-width: 65px; " scope="col">{% trans "Sadržaj" %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,13 +57,13 @@
                 </tr>
             {% endfor %}
             {% else %}
-                <h2 class="mt-4">Nema nađenih rezultata.</h2>            
+                <h2 class="mt-4">{% trans "Nema nađenih rezultata" %}.</h2>
             {% endif %}
 
             </tbody>
     </table>
 
-    <a class="btn btn-primary btn-lg mb-2" href="{% url 'profil:profil' %}">Nazad</a>
+    <a class="btn btn-primary btn-lg mb-2" href="{% url 'profil:profil' %}">{% trans "Nazad" %}</a>
 
 
 </div>

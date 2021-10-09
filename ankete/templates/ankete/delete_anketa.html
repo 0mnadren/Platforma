@@ -1,5 +1,7 @@
-{% extends 'base_admin.html' %} {% load static %} {% block title %}
-<title>Create Ankete</title>
+{% extends 'base_admin.html' %}
+{% load i18n %}
+{% load static %} {% block title %}
+<title>{% trans "Napravi ankete" %}</title>
 {% endblock %} {% block content %}
 <style>
   .admin-btn-green {
@@ -39,12 +41,12 @@
 </style>
 
 
-<h3 class="mt-4">Da li ste sigurni da želite da obrišete Anketu "{{item}}"?</h3>
+<h3 class="mt-4">{% blocktrans %}Da li ste sigurni da želite da obrišete Anketu "{{item}}"?{% endblocktrans %}</h3>
 
 <form action="" method="post">
   {%csrf_token%}
-  <a href="{%url 'ankete:admin_ankete'%}" class="admin-btn-green">Ne želim</a>
-  <button type="submit" class="admin-btn-red mt-2 ml-2">Obriši</button>
+  <a href="{%url 'ankete:admin_ankete'%}" class="admin-btn-green">{% trans "Ne želim" %}</a>
+  <button type="submit" class="admin-btn-red mt-2 ml-2">{% trans "Obriši" %}</button>
 </form>
 
 {% endblock %}

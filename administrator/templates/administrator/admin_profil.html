@@ -1,22 +1,23 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Admin Profil</title>
+<title>{% trans "Admin Profil" %}</title>
 <link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 
 {% block content %}
 
-<h1 class="mt-4">Dobrodošao Admin {{ user.username }}!</h1>
+<h1 class="mt-4">{% blocktrans %}Dobrodošao Admin{% endblocktrans %} {{ user.username }}!</h1>
 
 <ul class="admin-ul mt-5">
-    <li><a href="{% url 'admin:index' %}">Django Admin</a></li>
-    <li><a href="{% url 'administrator:pregled_prijava' %}">Prijave recenzenata</a></li>
-    <li><a href="{% url 'administrator:lista_oblasti_admin' %}">Dodaj oblast</a></li>
-    <li><a href="{% url 'ankete:admin_ankete' %}">Ankete</a></li>
-    <li><a href="{% url 'administrator:kreiraj_obavestenje' %}">Obaveštenja</a></li>
-    <li><a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">Programski poziv</a></li>
-    <li><a href="{% url 'radovi:radovi_admin_home' %}">Naučni radovi</a></li>
+    <li><a href="{% url 'admin:index' %}">{% trans "Django Admin" %}</a></li>
+    <li><a href="{% url 'administrator:pregled_prijava' %}">{% trans 'Pregled prijava recezenata' %}</a></li>
+    <li><a href="{% url 'administrator:lista_oblasti_admin' %}">{% trans "Dodaj oblast" %}</a></li>
+    <li><a href="{% url 'ankete:admin_ankete' %}">{% trans "Ankete" %}</a></li>
+    <li><a href="{% url 'administrator:kreiraj_obavestenje' %}">{% trans "Obaveštenja" %}</a></li>
+    <li><a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">{% blocktrans %}Programski poziv{% endblocktrans %}</a></li>
+    <li><a href="{% url 'radovi:radovi_admin_home' %}">{% trans "Naučni radovi" %}</a></li>
 </ul>
 
 {% endblock content %}

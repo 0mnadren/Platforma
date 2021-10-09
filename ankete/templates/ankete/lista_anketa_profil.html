@@ -1,10 +1,11 @@
 {% extends 'base_profil.html' %}
+{% load i18n %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% block title %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'ankete/css/style.css' %}">
 
-<title>Ankete</title>
+<title>{% trans "Ankete" %}</title>
 {% endblock %}
 {% block content %}
 
@@ -33,20 +34,20 @@
   }
 
 </style>
-<h1 class="mt-4 mb-4">ANKETE</h1>
+<h1 class="mt-4 mb-4">{% trans "ANKETE" %}</h1>
 <br />
 <br />
 {% if nepopunjene_ankete %}
-<h4>Nepopunjene ankete</h4>
+<h4>{% trans "Nepopunjene ankete" %}</h4>
 <div class="table-overflow">
   <table class="table table-striped border sortable mb-5">
     <thead class="thead-dark">
       <tr>
         <th></th>
-        <th>Naziv</th>
-        <th>Opis</th>
-        <th>Napravljena</th>
-        <th style="text-align: center;">Akcija</th>
+        <th>{% trans "Naziv" %}</th>
+        <th>{% trans "Opis" %}</th>
+        <th>{% trans "Napravljena" %}</th>
+        <th style="text-align: center;">{% trans "Akcija" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -57,8 +58,8 @@
         <td>{{ nepopunjena_anketa.anketa.opis }}</td>
         <td>{{ nepopunjena_anketa.anketa.created_at }}</td>
         <td style="max-width: 320px;">
-          <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-accept mr-4">Želim da popunim</a>
-          <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-decline">Ne želim da popunim</a>
+          <a href="{% url 'ankete:glasaj_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-accept mr-4">{% trans "Želim da popunim" %}</a>
+          <a href="{% url 'ankete:ignorisi_anketa' nepopunjena_anketa.anketa.id %}" class="grad-btn-decline">{% trans "Ne želim da popunim" %}</a>
         </td>
       </tr>
       {% endfor %}
@@ -66,21 +67,21 @@
   </table>
 </div>
 {% else %}
-<h4 class="mb-5">Trenutno nemate nepopunjene ankete!</h4>
+<h4 class="mb-5">{% trans "Trenutno nemate nepopunjene ankete!" %}</h4>
 {% endif %}
 
 <hr>
 
-<h4 class="mt-5">Popunjene ankete <span class="badge badge-light">{{ user.profil.pregledane_ankete }}</span></h4>
+<h4 class="mt-5">{% trans "Popunjene ankete" %} <span class="badge badge-light">{{ user.profil.pregledane_ankete }}</span></h4>
 <div class="table-overflow">
   <table class="table table-striped border sortable">
     <thead class="thead-dark">
       <tr>
         <th></th>
-        <th>Naziv</th>
-        <th>Opis</th>
-        <th>Napravljena</th>
-        <th style="text-align: center;">Akcija</th>
+        <th>{% trans "Naziv" %}</th>
+        <th>{% trans "Opis" %}</th>
+        <th>{% trans "Napravljena" %}</th>
+        <th style="text-align: center;">{% trans "Akcija" %}</th>
       </tr>
     </thead>
     <tbody>
@@ -91,7 +92,7 @@
       <td>{{ popunjena_anketa.anketa.opis }}</td>
       <td>{{ popunjena_anketa.anketa.created_at }}</td>
 
-      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="grad-btn-stats">Statistika ankete</a></td>
+      <td style="text-align: center;"><a href="{% url 'ankete:rezultat_anketa_profil' popunjena_anketa.anketa.id %}" class="grad-btn-stats">{% trans "Statistika ankete" %}</a></td>
     </tr>
     {% endfor %}
   </tbody>

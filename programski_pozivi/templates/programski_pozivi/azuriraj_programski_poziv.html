@@ -1,7 +1,8 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 {% block title %}
-<title>Azuriranje Programskog poziva</title>
+<title>{% trans "Ažuriranje Programskog poziva" %}</title>
 {% endblock %}
 
 {% block content %}
@@ -43,12 +44,12 @@
     }
 </style>
 
-<h1 class="mt-4">Azuriraj Programski poziv</h1>
+<h1 class="mt-4">{% trans "Ažuriraj Programski poziv" %}</h1>
 <form method="POST">
     {% csrf_token %}
     {{ form|crispy }}
-    <button class='admin-btn-green' type="submit">Ažuriraj</button>
-    <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen ml-2">Nazad</a>
+    <button class='admin-btn-green' type="submit">{% trans "Ažuriraj" %}</button>
+    <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}" class="admin-btn-outline-lightgreen ml-2">{% trans "Nazad" %}</a>
 
 </form>
 

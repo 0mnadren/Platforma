@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import get_object_or_404
+from django.utils.translation import gettext_lazy as _
 
 from administrator.validators import superuser_check
 from .models import ProgramskiPoziv, ProgramskiPozivPitanja
@@ -16,7 +17,7 @@ def kreiraj_programski_poziv(request):
 
         if form.is_valid():
             form.save()
-            messages.success(request, f'Napravili ste programski poziv!')
+            messages.success(request, _(f'Napravili ste programski poziv!'))
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivForm()
@@ -55,7 +56,7 @@ def azuriraj_programski_poziv(request, pk):
         if form.is_valid():
 
             form.save()
-            messages.success(request, f'Uspešno ste ažurirali programski poziv!')
+            messages.success(request, _(f'Uspešno ste ažurirali programski poziv!'))
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivForm(instance=programski_poziv)
@@ -94,7 +95,7 @@ def kreiraj_pitanja_programski_poziv(request, pk):
             obj = form.save(commit=False)
             obj.programski_poziv_id = programski_poziv.id
             obj.save()
-            messages.success(request, f'Napravili ste pitanja!')
+            messages.success(request, _(f'Napravili ste pitanja!'))
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivPitanjaForm()
@@ -117,7 +118,7 @@ def detaljno_pitanja_programski_poziv(request, pk):
         if form.is_valid():
 
             form.save()
-            messages.success(request, f'Uspešno ste ažurirali pitanja!')
+            messages.success(request, _(f'Uspešno ste ažurirali pitanja!'))
             return redirect('programski_pozivi:kreiraj_programski_poziv')
     else:
         form = ProgramskiPozivPitanjaForm(instance=pitanja)

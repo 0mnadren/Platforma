@@ -1,10 +1,11 @@
 {% extends 'base_profil.html' %}
+{% load i18n %}
 {% block title %}
 {% load crispy_forms_tags %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'profil/css/style.css' %}">
 
-<title>Profil</title>
+<title>{% trans "Profil" %}</title>
 {% endblock title %}
 {% block content %}
 
@@ -15,37 +16,37 @@
 }
 </style>
 
-<h1 class="text-truncate mt-4 mb-5">Profil korisnika: {{ user.username|title }}</h1>
+<h1 class="text-truncate mt-4 mb-5">{% trans "Profil korisnika" %}: {{ user.username|title }}</h1>
 
-<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block mt-3">Pregledaj ankete&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
-<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block mt-3">Pregledaj Radove&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
+<a href="{% url 'ankete:ankete' %}" class="btn-grad btn-block mt-3">{% trans "Pregledaj ankete" %} &nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ nepopunjene_ankete|length }}</span></a>
+<a href="{% url 'radovi:lista_radova_profil' %}" class="btn-grad btn-block mt-3">{% trans "Pregledaj Radove" %}&nbsp;&nbsp;&nbsp;&nbsp;<span class="badge badge-light">{{ prosledjeni_radovi|length }}</span></a>
 <br><br><br>
 <!-- SEARCH!!! -->
 <!-- U PROFILU DA IZBACI OBAVESTENJA -->
 
 <button class="btn btn-info btn-block" onclick="toggler('obavestenja_table');name_toggler('btn_obavestenja')"
-    id="btn_obavestenja">Sakrij obaveštenja</button>
+    id="btn_obavestenja">{% trans "Sakrij obaveštenja" %}</button>
 <br><br>
 <div id="obavestenja_table">
     <form action="{% url 'profil:search' %}" class="form-inline" method="get" style="margin-bottom: 20px;">
         <div class="form-group mb-3">
-            <h2>{% if type %}{{ type.name }}{% else %} Pretraži obaveštenja {% endif %}</h2>
+            <h2>{% if type %}{{ type.name }}{% else %} {% trans "Pretraži obaveštenja" %} {% endif %}</h2>
         </div>
         <div class="form-group mx-sm-3 mb-3">
             <label for="" class="sr-only">search</label>
-            <input name="search" type="" class="form-control" id="" placeholder="Ključna reč">
+            <input name="search" type="" class="form-control" id="" placeholder="{% trans 'Ključna reč' %}">
         </div>
-        <button type="submit" class="btn-grad-search mb-3">Pretraži</button>
+        <button type="submit" class="btn-grad-search mb-3">{% trans "Pretraži" %}</button>
     </form>
     <table class="table table-striped border sortable mb-4">
         <!--sortable omogucava sort sa skripte na dnu-->        
         <thead class="thead-dark">
             <tr>
                 <th scope="col"></th>
-                <th scope="col" style="max-width: 55px">Naslov</th>
-                <th style="max-width: 65px;" scope="col">Sadržaj</th>
-                <th style="max-width: 65px;" scope="col">Datum</th>
-                <th style="max-width: 55px; text-align: center;" scope="col">Akcija</th>
+                <th scope="col" style="max-width: 55px">{% trans "Naslov" %}</th>
+                <th style="max-width: 65px;" scope="col">{% trans "Sadržaj" %}</th>
+                <th style="max-width: 65px;" scope="col">{% trans "Datum" %}</th>
+                <th style="max-width: 55px; text-align: center;" scope="col">{% trans "Akcija" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -56,7 +57,7 @@
                 <td data-bind="text: text()" class="text-truncate" style="max-width: 55px">{{ obavestenje.obavestenje.tekst }}</td>
                 <td class="text-truncate" style="max-width: 85px">{{ obavestenje.obavestenje.datum_vreme_kreiranja }}</td>
                 <td style="text-align: center;">
-                    <a href="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" class="btn-grad-delete">Obriši</a>
+                    <a href="{% url 'profil:obrisi_obavestenje' obavestenje.obavestenje.id %}" class="btn-grad-delete">{% trans "Obriši" %}</a>
                 </td>
             </tr>
             {% endfor %}
@@ -64,8 +65,9 @@
     </table>
     <hr>
 </div>
-<button class="btn btn-info btn-block mt-4" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">Prikaži
-    profil</button>
+<button class="btn btn-info btn-block mt-4" onclick="toggler('user_table');name_toggler('btn_data')" id="btn_data">
+    {% trans "Prikaži profil" %}
+</button>
 <br>
 <!-- za edit nemanja zivkovic
 <div class="row">
@@ -93,8 +95,8 @@
         {% endfor %} -->
     </table>
 
-    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type="submit">Sačuvaj izmene</button>
-    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>Restartuj izmene</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type="submit">{% trans "Sačuvaj izmene" %}</button>
+    <button class="btn btn-info mt-3 mb-3 ml-lg-2" type='reset'>{% trans "Restartuj izmene" %}</button>
 
     </form>
 
@@ -114,13 +116,20 @@
     function name_toggler(divId) {
         if (document.getElementById(divId).innerText == 'Prikaži profil') {
             document.getElementById(divId).innerText = 'Sakrij profil';
+        } else if (document.getElementById(divId).innerText == 'Show profile') {
+            document.getElementById(divId).innerText = 'Hide profile';
+        } else if (document.getElementById(divId).innerText == 'Hide profile') {
+            document.getElementById(divId).innerText = 'Show profile';
         } else if (document.getElementById(divId).innerText == 'Sakrij profil') {
             document.getElementById(divId).innerText = 'Prikaži profil';
-
         } else if (document.getElementById(divId).innerText == 'Prikaži obaveštenja') {
             document.getElementById(divId).innerText = 'Sakrij obaveštenja';
         } else if (document.getElementById(divId).innerText == 'Sakrij obaveštenja') {
             document.getElementById(divId).innerText = 'Prikaži obaveštenja';
+        } else if (document.getElementById(divId).innerText == 'Hide notices') {
+            document.getElementById(divId).innerText = 'Show notices';
+        } else if (document.getElementById(divId).innerText == 'Show notices') {
+            document.getElementById(divId).innerText = 'Hide notices';
         }
     };
 </script>

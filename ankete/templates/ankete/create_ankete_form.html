@@ -1,8 +1,9 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %} 
 {% load widget_tweaks %}
 {% block title %}
-<title>Create Ankete</title>
+<title>{% trans "Napravi Ankete" %}</title>
 {% endblock %} 
 
 {% block content %}
@@ -28,7 +29,7 @@
 <div class="row mt-3">
   <div class="col-lg-8 col-lg-offset-2">
     <div class="">
-      <h3 class="">Napravi ANKETU</h3>
+      <h3 class="">{% trans "Napravi Anketu" %}</h3>
     </div>
 <form action="" method="POST">
   {%csrf_token%}
@@ -36,7 +37,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
-                <label for="pitanje_text">Naziv ankete</label>
+                <label for="pitanje_text">{% trans "Naziv ankete" %}</label>
                 {% render_field form.naziv class="form-control"%}
             </div>
         </div>
@@ -44,7 +45,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="form-group">
-                <label for="pitanje_text">Opis anketa</label>
+                <label for="pitanje_text">{% trans "Opis anketa" %}</label>
                 {% render_field form.opis class="form-control" rows="3" %}
             </div>
         </div>
@@ -59,7 +60,7 @@
     </div>-->
     <div class="row">
       <div class="col-lg-6">
-          <button type="submit" class="admin-btn-lightgreen">Sačuvaj anketu</button>
+          <button type="submit" class="admin-btn-lightgreen">{% trans "Sačuvaj anketu" %}</button>
       </div>
   </div>
   </div>

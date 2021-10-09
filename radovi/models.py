@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from datetime import datetime
+from django.utils.translation import gettext_lazy as _
 
 from profil.models import Oblast, Profil
 from profil.validators import validate_file_extension
@@ -24,12 +25,12 @@ class Rad(models.Model):
         validators=[
                 MinValueValidator(1900),
                 MaxValueValidator(datetime.now().year)],
-        help_text="Koristi sledeći format: GGGG")
+        help_text=_("Koristi sledeći format: GGGG"))
 
     opis = models.FileField(upload_to='radovi/opis/pdfs', validators=[validate_file_extension])
     biografije = models.FileField(upload_to='radovi/biografije/pdfs', validators=[validate_file_extension])
 
-    datum_podnosenja = models.DateField(help_text='Koristi sledeći format: GGGG-MM-DD')
+    datum_podnosenja = models.DateField(help_text=_('Koristi sledeći format: GGGG-MM-DD'))
 
     prihvacen_rad = models.BooleanField(default=None, null=True)
 

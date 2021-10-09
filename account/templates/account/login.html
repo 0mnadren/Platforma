@@ -1,6 +1,7 @@
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Login</title>
+<title>{% trans 'Prijavi se' %}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endblock title %}
 {% load crispy_forms_tags %}
@@ -19,29 +20,29 @@
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="" method="post">
                             {% csrf_token %}
-                            <h3 class="text-center text-info">Prijava</h3>
+                            <h3 class="text-center text-info">{% trans 'Prijavi se' %}</h3>
                             <div class="form-group">
-                                <label for="username" class="text-info">Korisnicko ime:</label><br>
+                                <label for="username" class="text-info">{% blocktrans %}Korisničko ime:{% endblocktrans %}</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Lozinka:</label><br>
+                                <label for="password" class="text-info">{% blocktrans %}Lozinka:{% endblocktrans %}</label><br>
                                 <input type="password" name="password" id="password" class="form-control">
                             </div><br>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col">
-                                        <input style="float: left;" type="submit" name="submit" class="btn btn-info btn-md" value="Prijavi se">
+                                        <input style="float: left;" type="submit" name="submit" class="btn btn-info btn-md" value="{% trans 'Prijavi se' %}">
                                     </div>
                                     <div class="col">
-                                        <a href="{% url 'account:register' %}" style="float: right;" name="register" class="text-right btn btn-info btn-md" value="Register here">Registruj se</a>
+                                        <a href="{% url 'account:register' %}" style="float: right;" name="register" class="text-right btn btn-info btn-md" value="Register here">{% trans "Registruj se" %}</a>
                                     </div>
                                 </div>                                
                             </div>
                             <br>
                             <div id="register-link" class="text-center">
                                 <br><br><br>
-                                <a href="{% url 'password_reset' %}" class="text-info">Zaboravljena lozinka?</a>
+                                <a href="{% url 'password_reset' %}" class="text-info">{% blocktrans %}Zaboravljena lozinka?{% endblocktrans %}</a>
                             </div>
                         </form>
                     </div>

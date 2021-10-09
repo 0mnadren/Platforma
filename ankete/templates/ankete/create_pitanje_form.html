@@ -1,8 +1,9 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %} 
 {% load widget_tweaks %}
 {% block title %}
-<title>Create Ankete</title>
+<title>{% trans "Napravi Ankete" %}</title>
 {% endblock %} {% block content %}
 <style>
     .admin-btn-green {
@@ -52,7 +53,7 @@
     <div class="col-lg-8 col-lg-offset-2">
         <div class="">
             <div class="">
-                <h3 class="">Napravi novo pitanje</h3>
+                <h3 class="">{% trans "Napravi novo pitanje" %}</h3>
             </div>
                 
             <form method="POST">
@@ -61,7 +62,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="pitanje_text">Unesite pitanje</label>
+                                <label for="pitanje_text">{% trans "Unesite pitanje" %}</label>
                                 {% render_field form.pitanje_text class="form-control" rows="3" %}
                             </div>
                         </div>
@@ -70,19 +71,19 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="option1">Opcija 1</label>
+                                <label for="option1">{% trans "Opcija" %} 1</label>
                                 {% render_field form.opcija_one class="form-control" %}
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="option2">Opcija 2</label>
+                                <label for="option2">{% trans "Opcija" %} 2</label>
                                 {% render_field form.opcija_two class="form-control" %}
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="option3">Opcija 3</label>
+                                <label for="option3">{% trans "Opcija" %} 3</label>
                                 {% render_field form.opcija_three class="form-control" %}
                             </div>
                         </div>
@@ -91,11 +92,11 @@
                     <div class="row">
                         <hr />
                         <div class="col-lg-6">
-                            <button type="submit" class="admin-btn-green">Napravi pitanje</button>
+                            <button type="submit" class="admin-btn-green">{% trans "Napravi pitanje" %}</button>
                         </div>
                         <hr>
                         <div class="col-lg-6">
-                            <a href="{% url 'ankete:admin_ankete'%}" class="admin-btn-outline-green">Nema više pitanja</a>
+                            <a href="{% url 'ankete:admin_ankete'%}" class="admin-btn-outline-green mt-2">{% trans "Nema više pitanja" %}</a>
                         </div>
                     </div>
                 </div>

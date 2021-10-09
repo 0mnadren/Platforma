@@ -1,29 +1,30 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Lista Radova</title>
+<title>{% trans "Lista Radova" %}</title>
 <link rel="stylesheet" href="{% static 'radovi/css/style.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<h1 class="mt-4">Lista Radova</h1>
-<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen mt-2 mb-2">Radovi</a>
-<h2 class="mt-3">Neocenjeni radovi</h2>
+<h1 class="mt-4">{% trans "Lista Radova" %}</h1>
+<a href="{% url 'radovi:radovi_admin_home' %}" class="admin-btn-lightgreen mt-2 mb-2">{% trans "Radovi" %}</a>
+<h2 class="mt-3">{% trans "Neocenjeni radovi" %}</h2>
 <hr>
 {% for rad in radovi_nema_odluka reversed %}
-    <h5 class="mt-4 mb-4"><a href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || Programski poziv --> {{ rad.programski_poziv }}</a></h5>
+    <h5 class="mt-4 mb-4"><a href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || {% trans "Programski poziv" %} --> {{ rad.programski_poziv }}</a></h5>
     <hr>
 {% endfor %}
 <br><br>
-<h2>Ocenjeni radovi</h2>
+<h2>{% trans "Ocenjeni radovi" %}</h2>
 <hr>
 {% for rad in radovi_ima_odluka %}
 {% if rad.prihvacen_rad == True %}
-    <h5 class="mt-4 mb-4"><a style="color: var(--link-color);" href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || Programski poziv --> {{ rad.programski_poziv }}</a></h5>
+    <h5 class="mt-4 mb-4"><a style="color: var(--link-color);" href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || {% trans "Programski poziv" %} --> {{ rad.programski_poziv }}</a></h5>
     <hr>
 {% elif rad.prihvacen_rad == False %}
-    <h5 class="mt-4 mb-4"><a style="color: var(--accent-color);" href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || Programski poziv --> {{ rad.programski_poziv }}</a></h5>
+    <h5 class="mt-4 mb-4"><a style="color: var(--accent-color);" href="{% url 'radovi:naucni_rad_admin' rad.id %}">{{ rad }} || {% trans "Programski poziv" %} --> {{ rad.programski_poziv }}</a></h5>
     <hr>
 {% endif %}
 {% endfor %}

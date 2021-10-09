@@ -1,11 +1,12 @@
 {% extends 'base_profil.html' %}
+{% load i18n %}
 
 {% block title %}
-<title>400 Stranica</title>
+<title>400 {% trans "Stranica" %}</title>
 {% endblock %}
 
 {% block content %}
   <div class="jumbotron mt-5">
-    <h1>LOŠ ZAHTEV!</h1>
+    <h1>{% trans "LOŠ ZAHTEV" %}!</h1>
   </div>
 {% endblock %}

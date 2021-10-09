@@ -1,3 +1,4 @@
+{% load i18n %}
 {% for prosledjen_rad in prosledjeni_radovi %}
     <tr>
         <td>{{ forloop.counter }}</td>
@@ -7,7 +8,7 @@
         <td>{{ prosledjen_rad.kada_poslat }}</td>
 
         {% if prosledjen_rad.zakljucani_odgovori %}
-        <td style="color:green;">Recenzent je ocenio rad</td>
+        <td style="color:green;">{% trans "Recenzent je ocenio rad" %}</td>
 
         <!-- Da bi dosli do ukupnog broja poena mora da se uporede dve tabele Profil i PrograsmkiPozivPitanja          -->
             {% for odgovor in prosledjen_rad.profil.programskipozivodgovori_set.all %}
@@ -19,22 +20,22 @@
             {% endfor %}
 
         {% else %}
-        <td style="color:var(--dark-accent-color);">Recenzent nije ocenio rad</td>
+        <td style="color:var(--dark-accent-color);">{% trans "Recenzent nije ocenio rad" %}</td>
         <td></td>
         {% endif %}
 
         {% if prosledjen_rad.rad.prihvacen_rad == None %}
-        <td>Nije doneta konacna odluka</td>
+        <td>{% trans "Nije doneta konacna odluka" %}</td>
         {% elif prosledjen_rad.rad.prihvacen_rad == True %}
-        <td style="color:green;">Rad je prihvacen</td>
+        <td style="color:green;">{% trans "Rad je prihvacen" %}</td>
         {% else %}
-        <td style="color:var(--dark-accent-color);">Rad je odbijen</td>
+        <td style="color:var(--dark-accent-color);">{% trans "Rad je odbijen" %}</td>
         {% endif %}
 
         <td>
             <form method="POST" action="{% url 'radovi:oduzimanje_rada_admin' prosledjen_rad.id %}">
                 {% csrf_token %}
-                <button type="submit" class="admin-btn-red">Oduzmi</button>
+                <button type="submit" class="admin-btn-red">{% trans "Oduzmi" %}</button>
             </form>
         </td>
     </tr>

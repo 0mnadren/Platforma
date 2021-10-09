@@ -1,25 +1,26 @@
 {% extends 'base_admin.html' %}
+{% load i18n %}
 {% load static %}
 {% block title %}
-<title>Prijava detaljno</title>
+<title>{% trans 'Prijava detaljno' %}</title>
 <link rel="stylesheet" href="{% static 'administrator/css/style.css' %}">
 {% endblock title %}
 
 {% block content %}
 
-<h2 class="mt-4 mb-4">Prijavu poslao korisnik: {{ prijava.user.username }}</h2>
+<h2 class="mt-4 mb-4">{% blocktrans %}Prijavu poslao korisnik:{% endblocktrans %} {{ prijava.user.username }}</h2>
 
-<a href="{% url 'administrator:pregled_prijava' %}" class="admin-btn-lightgreen mb-4">Lista prijava</a>
+<a href="{% url 'administrator:pregled_prijava' %}" class="admin-btn-lightgreen mb-4">{% trans 'Lista prijava' %}</a>
 
 <hr>
 <div class="table-overflow">
 <table class="naucni_rad_admin-table mt-5 mb-5">
     <tr>
-        <th>Ime i prezime</th>
+        <th>{% trans 'Ime i prezime' %}</th>
         <td>{{ prijava.ime }} {{ prijava.prezime }}</td>
     </tr>
     <tr>
-        <th>Oblasti</th>
+        <th>{% trans 'Oblasti' %}</th>
         <td>
           {% for oblast in prijava.oblasti.all %}
             {{ oblast.naziv }}
@@ -27,31 +28,31 @@
         </td>
     </tr>
     <tr>
-        <th>Nacionalnost</th>
+        <th>{% trans 'Nacionalnost' %}</th>
         <td>{{ prijava.nacionalnost }}</td>
     </tr>
     <tr>
-        <th>NIO (naučna istraživačka organizacija)</th>
+        <th>{% trans 'NIO (naučna istraživačka organizacija)' %}</th>
         <td>{{ prijava.NIO }}</td>
     </tr>
     <tr>
-        <th>Naučno zvanje</th>
+        <th>{% trans 'Naučno zvanje' %}</th>
         <td>{{ prijava.naucno_zvanje }}</td>
     </tr>
     <tr>
-        <th>Angažovanje</th>
+        <th>{% trans 'Angažovanje' %}</th>
         <td>{{ prijava.angazovanje }}</td>
     </tr>
     <tr>
-        <th>Adresa</th>
+        <th>{% trans 'Adresa' %}</th>
         <td>{{ prijava.adresa }}</td>
     </tr>
     <tr>
-        <th>Broj telefona</th>
+        <th>{% trans 'Broj telefona' %}</th>
         <td>{{ prijava.broj_telefona }}</td>
     </tr>
     <tr>
-        <th>Veb-stranica</th>
+        <th>{% trans 'Veb-stranica' %}</th>
       {% if prijava.website %}
         <td><a href="{{ prijava.website.url }}" target="_blank"><u>{{ prijava.website }}</u></a></td>
       {% else %}
@@ -59,47 +60,47 @@
       {% endif %}
     </tr>
     <tr>
-        <th>Biografija</th>
-        <td><a href="{{ prijava.biografija.url }}" target="_blank"><u>Biografija.pdf</u></a></td>
+        <th>{% trans 'Biografija' %}</th>
+        <td><a href="{{ prijava.biografija.url }}" target="_blank"><u>{% trans 'Biografija.pdf' %}</u></a></td>
     </tr>
     <tr>
-      <th>Naučni rad 1</th>
+      <th>{% trans 'Naučni rad 1' %}</th>
       <td>{{ prijava.naucni_rad_1 }}</td>
     </tr>
     <tr>
-      <th>Naučni rad 2</th>
+      <th>{% trans 'Naučni rad 2' %}</th>
       <td>{{ prijava.naucni_rad_2 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 3</th>
+      <th>{% trans 'Naučni rad 3' %}</th>
       <td>{{ prijava.naucni_rad_3 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 4</th>
+      <th>{% trans 'Naučni rad 4' %}</th>
       <td>{{ prijava.naucni_rad_4 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 5</th>
+      <th>{% trans 'Naučni rad 5' %}</th>
       <td>{{ prijava.naucni_rad_5 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 6</th>
+      <th>{% trans 'Naučni rad 6' %}</th>
       <td>{{ prijava.naucni_rad_6 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 7</th>
+      <th>{% trans 'Naučni rad 7' %}</th>
       <td>{{ prijava.naucni_rad_7 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 8</th>
+      <th>{% trans 'Naučni rad 8' %}</th>
       <td>{{ prijava.naucni_rad_8 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 9</th>
+      <th>{% trans 'Naučni rad 9' %}</th>
       <td>{{ prijava.naucni_rad_9 }}</td>
     </tr>
       <tr>
-      <th>Naučni rad 10</th>
+      <th>{% trans 'Naučni rad 10' %}</th>
       <td>{{ prijava.naucni_rad_10 }}</td>
     </tr>
 </table>
@@ -110,19 +111,19 @@
 {% if prijava.user.profile_accepted == None %}
 <div class="mt-3 mb-3">
   <button type="button" class="admin-btn-green" data-toggle="modal" data-target="#odobri_prijavu">
-    Odobri prijavu
+    {% trans 'Odobri prijavu' %}
   </button>
   <button type="button" class="admin-btn-red ml-2" data-toggle="modal" data-target="#odbij_prijavu">
-    Odbij prijavu
+    {% trans 'Odbij prijavu' %}
   </button>
 </div>
 {% elif prijava.user.profile_accepted == True %}
 <button type="button" class="admin-btn-red mt-3 mb-3" data-toggle="modal" data-target="#odbij_prijavu">
-  Odbij prijavu
+  {% trans 'Odbij prijavu' %}
 </button>
 {% else %}
 <button type="button" class="admin-btn-green mt-3 mb-3" data-toggle="modal" data-target="#odobri_prijavu">
-  Odobri prijavu
+  {% trans 'Odobri prijavu' %}
 </button>
 {% endif %}
 
@@ -130,18 +131,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Odobri prijavu?</h5>
+        <h5 class="modal-title">{% trans 'Odobri prijavu' %}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da odobrite ovu prijavu?</p>
+        <p>{% blocktrans %}Da li ste sigurni da želite da odobrite ovu prijavu?{% endblocktrans %}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans 'Poništi' %}</button>
 
         <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odobrio prijavu!   -->
         <form action="{% url 'administrator:prijava_prihvacena' prijava.id %}">
-          <input type="submit" value="Odobri" class="btn btn-success">
+          <input type="submit" value="{% trans 'Odobri' %}" class="btn btn-success">
         </form>
 
       </div>
@@ -153,18 +154,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Odbij prijavu?</h5>
+        <h5 class="modal-title">{% trans 'Odbij prijavu' %}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Da li ste sigurni da želite da odbijete ovu prijavu?</p>
+        <p>{% blocktrans %}Da li ste sigurni da želite da odbijete ovu prijavu?{% endblocktrans %}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Poništi</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">{% trans 'Poništi' %}</button>
 
         <!--   Ovo sam ubacio da bi prosledili admina do view-a kako bi odbio prijavu!   -->
         <form action="{% url 'administrator:prijava_odbijena' prijava.id%}">
-          <input type="submit" value="Odbij" class="btn btn-danger">
+          <input type="submit" value="{% trans 'Odbij' %}" class="btn btn-danger">
         </form>
 
       </div>
