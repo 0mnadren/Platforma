@@ -19,13 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.conf.urls.i18n import i18n_patterns
-from django.utils.translation import gettext_lazy as _
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+urlpatterns = []
 
 urlpatterns += i18n_patterns(
+    path('admin/', admin.site.urls),
+
     path('', include('account.urls', namespace='account')),
     path('profil/', include('profil.urls', namespace='profil')),
     path('administrator/', include('administrator.urls', namespace='administrator')),
