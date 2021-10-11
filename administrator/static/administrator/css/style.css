@@ -1,4 +1,4 @@
-.admin-ul > li {
+.admin-ul > a > li {
     margin-bottom: 2rem;
     padding: 1rem;
     background-color: var(--card-color);
@@ -8,7 +8,7 @@ a:hover {
     color: #FFF !important;
 }
 
-.admin-ul > li:hover {
+.admin-ul > a > li:hover {
     background-color: var(--link-color);
     transform: scaleX(1.05);
     border-radius: 20px;
