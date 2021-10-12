@@ -11,13 +11,13 @@
 <h1 class="mt-4">{% blocktrans %}Dobrodošao Admin{% endblocktrans %} {{ user.username }}!</h1>
 
 <ul class="admin-ul mt-5">
-    <li><a href="{% url 'admin:index' %}">{% trans "Django Admin" %}</a></li>
-    <li><a href="{% url 'administrator:pregled_prijava' %}">{% trans 'Pregled prijava recezenata' %}</a></li>
-    <li><a href="{% url 'administrator:lista_oblasti_admin' %}">{% trans "Dodaj oblast" %}</a></li>
-    <li><a href="{% url 'ankete:admin_ankete' %}">{% trans "Ankete" %}</a></li>
-    <li><a href="{% url 'administrator:kreiraj_obavestenje' %}">{% trans "Obaveštenja" %}</a></li>
-    <li><a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}">{% blocktrans %}Programski poziv{% endblocktrans %}</a></li>
-    <li><a href="{% url 'radovi:radovi_admin_home' %}">{% trans "Naučni radovi" %}</a></li>
+    <a href="{% url 'admin:index' %}"><li>{% trans "Django Admin" %}</li></a>
+    <a href="{% url 'administrator:pregled_prijava' %}"><li>{% trans 'Pregled prijava recezenata' %}</li></a>
+    <a href="{% url 'administrator:lista_oblasti_admin' %}"><li>{% trans "Dodaj oblast" %}</li></a>
+    <a href="{% url 'ankete:admin_ankete' %}"><li>{% trans "Ankete" %}</li></a>
+    <a href="{% url 'administrator:kreiraj_obavestenje' %}"><li>{% trans "Obaveštenja" %}</li></a>
+    <a href="{% url 'programski_pozivi:kreiraj_programski_poziv' %}"><li>{% blocktrans %}Programski poziv{% endblocktrans %}</li></a>
+    <a href="{% url 'radovi:radovi_admin_home' %}"><li>{% trans "Naučni radovi" %}</li></a>
 </ul>
 
 {% endblock content %}
