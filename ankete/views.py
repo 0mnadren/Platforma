@@ -186,8 +186,6 @@ def glasaj_anketa(request, pk):
 def ignorisi_anketa(request, pk):
     anketa = get_object_or_404(Anketa, pk=pk)
     user = request.user
-    #profil = Profil.objects.filter(id=user.profil.id).first()
-    #print(anketa.id, profil.id)
     anketa_ignorisi = get_object_or_404(AnketaPopunjena,
                                         profil=user.profil.id, anketa=anketa.id, popunjena_anketa=False)
     if request.method == "POST":
