@@ -9,4 +9,4 @@ UserAdmin.list_display = ('username', 'email', 'is_staff', 'profile_accepted', '
 
 admin.site.register(User, UserAdmin)
 admin.site.site_header = _('Portal za ocenjivanje naučnih radova Django Admin')
-admin.site.site_url = '/'
+admin.site.site_url = '/en/'
