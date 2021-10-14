@@ -12,6 +12,7 @@ a:hover {
     background-color: var(--link-color);
     transform: scaleX(1.05);
     border-radius: 20px;
+    color: #FFF;
 }
 
 
