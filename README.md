@@ -49,7 +49,7 @@ On this project worked team of 4 members:
 <br>
 
 ## Link to the site
-[Platformfor evaluation of scientific papers](https://portalnaucnihradova.pythonanywhere.com/)
+[Platform for evaluation of scientific papers](https://portalnaucnihradova.pythonanywhere.com/)
 
 #### © 2021 Platform for evaluation of scientific papers. All Rights Reserved.
 
