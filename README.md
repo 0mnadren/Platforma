@@ -4,7 +4,7 @@
 This platform is for the evaluation of scientific papers by reviewers. <br>
 The portal provides a simple and straightforward process for **accessing** and **evaluating papers**. <br>
 In addition to this opportunity, you can **participate in surveys that are part of the research work**. <br>
-To access the content, <a href="https://portalnaucnihradova.pythonanywhere.com/register/">register</a> and become part of our scientific team!
+To access the content, <a href="https://portalnaucnihradova.pythonanywhere.com/en/register/">register</a> and become part of our scientific team!
 
 <br>
 
